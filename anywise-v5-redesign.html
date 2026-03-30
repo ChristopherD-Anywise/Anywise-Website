@@ -622,41 +622,33 @@ nav .container {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.values-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 2rem;
 }
-.value-card {
-  background: rgba(57,168,73,0.06);
-  border: 1px solid var(--border-accent);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+.value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  font-size: 0.88rem;
 }
-.value-card:hover {
-  transform: translateY(-6px);
-  background: rgba(57,168,73,0.12);
-  box-shadow: 0 12px 40px rgba(57,168,73,0.15);
+.value-name {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
 }
-.value-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  opacity: 0.7;
+.value-dash {
+  width: 2rem;
+  height: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+  align-self: center;
 }
-.value-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.6rem;
-}
-.value-card p {
-  font-size: 0.85rem;
+.value-desc {
   color: var(--text-secondary);
   line-height: 1.5;
-  margin: 0;
 }
 
 /* ═══ CAPABILITIES ═══ */
@@ -1341,7 +1333,8 @@ footer {
   .hero-stats-bar { flex-direction: column; }
   .cap-grid, .product-grid, .news-grid { grid-template-columns: 1fr; }
   .track-stats { grid-template-columns: 1fr 1fr; }
-  .values-row { grid-template-columns: 1fr; }
+  .value-row { flex-direction: column; gap: 0.2rem; }
+  .value-dash { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .footer-locations { flex-wrap: wrap; justify-content: center; }
@@ -1444,21 +1437,21 @@ footer {
       <p class="label">Our Purpose</p>
       <h2 class="purpose-statement">Empowering people and organisations to create a <em>positive impact</em> in the world by enabling better decisions.</h2>
       <p class="label" style="margin-top:3rem;">Our Values</p>
-      <div class="values-row">
-        <div class="value-card">
-          <div class="value-icon">&#9878;</div>
-          <h3>Act Ethically &amp; with Integrity</h3>
-          <p>We hold ourselves to the highest standards of honesty, transparency and accountability in everything we do.</p>
+      <div class="values-list">
+        <div class="value-row">
+          <span class="value-name">Act Ethically &amp; with Integrity</span>
+          <span class="value-dash"></span>
+          <span class="value-desc">We hold ourselves to the highest standards of honesty, transparency and accountability in everything we do.</span>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#9733;</div>
-          <h3>Be Curious &amp; Innovative</h3>
-          <p>We embrace continuous learning and creative problem-solving to deliver forward-thinking solutions.</p>
+        <div class="value-row">
+          <span class="value-name">Be Curious &amp; Innovative</span>
+          <span class="value-dash"></span>
+          <span class="value-desc">We embrace continuous learning and creative problem-solving to deliver forward-thinking solutions.</span>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#10038;</div>
-          <h3>Champion Empowerment &amp; Collaboration</h3>
-          <p>We lift each other up, share knowledge freely and work together to achieve extraordinary outcomes.</p>
+        <div class="value-row">
+          <span class="value-name">Champion Empowerment &amp; Collaboration</span>
+          <span class="value-dash"></span>
+          <span class="value-desc">We lift each other up, share knowledge freely and work together to achieve extraordinary outcomes.</span>
         </div>
       </div>
     </div>
