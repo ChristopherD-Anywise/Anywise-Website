@@ -771,49 +771,38 @@ nav .container {
   margin-top: 0.45rem;
   flex-shrink: 0;
 }
-.approach-features {
+.approach-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
-.feature-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.6rem;
-  box-shadow: none;
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  position: relative;
-  overflow: hidden;
+.approach-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: start;
 }
-/* Left accent line */
-.feature-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 2px;
-  background: var(--gradient-al);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.approach-item-num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  transition: color 0.3s;
 }
-.feature-card:hover::before { transform: scaleY(1); }
-.feature-card:hover {
-  border-color: var(--border-accent);
-  transform: translateX(6px) translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25), 0 0 20px rgba(57,168,73,0.04);
-  background: var(--bg-card-hover);
-}
-.feature-card h4 {
+.approach-item h4 {
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s;
 }
-.feature-card p {
-  font-size: 0.82rem;
+.approach-item p {
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+.approach-item:hover .approach-item-num {
+  color: var(--lime);
 }
 
 /* ═══ PRODUCTS ═══ */
@@ -1498,22 +1487,34 @@ footer {
           <li>Sovereign capability focus aligned to Australia's strategic priorities</li>
         </ul>
       </div>
-      <div class="approach-features reveal-right">
-        <div class="feature-card">
-          <h4>Human-centred by design</h4>
-          <p>Every system we build keeps the human in the decision loop — augmenting judgement, not replacing it.</p>
+      <div class="approach-list reveal-right">
+        <div class="approach-item">
+          <span class="approach-item-num">01</span>
+          <div>
+            <h4>Human-centred by design</h4>
+            <p>Every system we build keeps the human in the decision loop — augmenting judgement, not replacing it.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <h4>Practitioner-led advisory</h4>
-          <p>Our advisors carry operational credibility, not just credentials. Advice grounded in what actually works in complex environments.</p>
+        <div class="approach-item">
+          <span class="approach-item-num">02</span>
+          <div>
+            <h4>Practitioner-led advisory</h4>
+            <p>Our advisors carry operational credibility, not just credentials. Advice grounded in what actually works in complex environments.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <h4>Sovereign and secure</h4>
-          <p>We understand data sovereignty, security obligations, and the sensitivity that defence and government work demands.</p>
+        <div class="approach-item">
+          <span class="approach-item-num">03</span>
+          <div>
+            <h4>Sovereign and secure</h4>
+            <p>We understand data sovereignty, security obligations, and the sensitivity that defence and government work demands.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <h4>Outcome accountability</h4>
-          <p>We mobilise to deliver. Clear milestones, transparent progress, and shared ownership of results.</p>
+        <div class="approach-item">
+          <span class="approach-item-num">04</span>
+          <div>
+            <h4>Outcome accountability</h4>
+            <p>We mobilise to deliver. Clear milestones, transparent progress, and shared ownership of results.</p>
+          </div>
         </div>
       </div>
     </div>
