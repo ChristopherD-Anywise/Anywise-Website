@@ -934,47 +934,26 @@ nav .container {
   max-width: 600px;
   margin-bottom: 3rem;
 }
-.track-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
+.track-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
 }
-.track-stat {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2.2rem 1.5rem;
-  text-align: center;
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  position: relative;
-  overflow: hidden;
+.track-item {
+  flex: 1;
+  padding: 0.5rem 1rem;
 }
-.track-stat::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gradient-al);
-  transform: scaleX(0);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.track-item + .track-item {
+  border-left: 1px solid var(--border);
 }
-.track-stat:hover::after { transform: scaleX(1); }
-.track-stat:hover {
-  border-color: var(--border-accent);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-.track-stat h3 {
+.track-item h3 {
   font-size: 2.4rem;
   font-weight: 800;
-  background: var(--gradient-al);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
-.track-stat p {
+.track-item p {
   font-size: 0.72rem;
   color: var(--text-tertiary);
   line-height: 1.5;
@@ -1284,7 +1263,9 @@ footer {
   .approach-grid, .products-head, .team-grid, .cta-box { grid-template-columns: 1fr; }
   .cap-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid-bottom { grid-template-columns: 1fr; }
-  .track-stats { grid-template-columns: repeat(2, 1fr); }
+  .track-row { display: grid; grid-template-columns: 1fr 1fr; }
+  .track-item + .track-item { border-left: none; }
+  .track-item { border-bottom: 1px solid var(--border); padding: 1rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .cta-image { min-height: 250px; }
 }
@@ -1321,7 +1302,9 @@ footer {
   .hero { min-height: auto; padding: 8rem 0 2rem; }
   .hero-stats-bar { flex-direction: column; }
   .cap-grid, .product-grid, .news-grid { grid-template-columns: 1fr; }
-  .track-stats { grid-template-columns: 1fr 1fr; }
+  .track-row { display: grid; grid-template-columns: 1fr 1fr; }
+  .track-item + .track-item { border-left: none; }
+  .track-item { border-bottom: 1px solid var(--border); padding: 1rem; }
   .value-row { flex-direction: column; gap: 0.2rem; }
   .value-dash { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1600,20 +1583,20 @@ footer {
   <div class="container">
     <p class="label reveal">Track Record</p>
     <h2 class="reveal">Trusted at the intersection of defence, government, and emerging technology.</h2>
-    <div class="track-stats">
-      <div class="track-stat reveal-scale" data-count="50" data-suffix="+">
+    <div class="track-row reveal">
+      <div class="track-item" data-count="50" data-suffix="+">
         <h3 class="counter">50+</h3>
         <p>Defence &amp; government engagements delivered</p>
       </div>
-      <div class="track-stat reveal-scale" data-count="3" data-suffix="+">
+      <div class="track-item" data-count="3" data-suffix="+">
         <h3 class="counter">3+</h3>
         <p>Jurisdictions across APAC/EU/allied partners</p>
       </div>
-      <div class="track-stat reveal-scale">
+      <div class="track-item">
         <h3>ISO</h3>
         <p>Quality management certified</p>
       </div>
-      <div class="track-stat reveal-scale">
+      <div class="track-item">
         <h3>AIC+</h3>
         <p>Australian Industry Capability committed</p>
       </div>
