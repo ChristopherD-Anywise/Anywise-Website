@@ -848,7 +848,7 @@ nav .container {
 }
 .product-card:hover {
   border-color: var(--border-accent);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 50px rgba(57,168,73,0.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 /* Spotlight gradient that follows cursor — positioned via JS */
 .product-card::before {
@@ -874,17 +874,6 @@ nav .container {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .product-card:hover .product-card-img { transform: scale(1.08); }
-/* Gradient overlay on hover */
-.product-card-img-wrap::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 60%;
-  background: linear-gradient(to top, rgba(45, 127, 54, 0.3), transparent);
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.product-card:hover .product-card-img-wrap::after { opacity: 1; }
 
 .product-card-body { padding: 1.5rem; }
 .product-card-tag {
@@ -1043,23 +1032,13 @@ nav .container {
 }
 .news-card:hover {
   border-color: var(--border-accent);
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 30px rgba(57,168,73,0.04);
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 .news-card-thumb-wrap {
   position: relative;
   overflow: hidden;
 }
-/* Green overlay on hover */
-.news-card-thumb-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(57,168,73,0.2), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.news-card:hover .news-card-thumb-wrap::after { opacity: 1; }
 .news-card-thumb {
   width: 100%;
   height: 130px;
@@ -1120,10 +1099,6 @@ nav .container {
   overflow: hidden;
   position: relative;
   transition: border-color var(--transition), box-shadow var(--transition);
-}
-.cta-box:hover {
-  border-color: var(--border-accent);
-  box-shadow: 0 12px 48px rgba(0,0,0,0.3), 0 0 40px rgba(57,168,73,0.04);
 }
 .cta-content { padding: 3.5rem; }
 .cta-content h2 {
@@ -1909,7 +1884,7 @@ document.querySelectorAll('.product-card, .cap-card').forEach(card => {
       const centerY = rect.height / 2;
       const rotateX = ((y - centerY) / centerY) * -4;
       const rotateY = ((x - centerX) / centerX) * 4;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
   });
   card.addEventListener('mouseleave', () => {
