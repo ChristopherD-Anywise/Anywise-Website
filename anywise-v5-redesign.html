@@ -247,14 +247,14 @@ nav .container {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a.active { color: var(--accent) !important; }
 .nav-links a.active::after { width: 100%; }
-.nav-cta {
-  background: var(--accent) !important;
-  color: var(--bg-deep) !important;
+a.nav-cta {
+  background: var(--accent);
+  color: var(--bg-deep);
   padding: 0.5rem 1.2rem;
   border-radius: 6px;
-  font-weight: 600 !important;
-  font-size: 0.78rem !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 600;
+  font-size: 0.78rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -735,20 +735,6 @@ nav .container {
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
-}
-.approach-left h2 {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  margin-bottom: 2rem;
-}
-.approach-left p {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.7;
 }
 .approach-bullets {
   list-style: none;
