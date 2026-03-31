@@ -627,6 +627,7 @@ a.nav-cta {
   flex-direction: column;
   gap: 0.6rem;
   margin-top: 2rem;
+  text-align: left;
 }
 .value-row {
   display: flex;
@@ -735,6 +736,20 @@ a.nav-cta {
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
+}
+.approach-grid h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+}
+.approach-grid > div > p:not(.label) {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.7;
 }
 .approach-bullets {
   list-style: none;
@@ -1883,7 +1898,9 @@ document.querySelectorAll('.product-card, .cap-card').forEach(card => {
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
