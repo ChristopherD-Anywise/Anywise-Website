@@ -1,0 +1,245 @@
+[
+  {
+    "slug": "transforming-operational-challenges",
+    "title": "Transforming Operational Challenges into Dual-Use Intelligence Solutions in Engineering",
+    "date": "2026-02-15",
+    "readTime": 3,
+    "category": "Insights",
+    "author": "Anywise Team",
+    "heroImage": "",
+    "intro": "Engineering environments in defence and government present a unique set of operational challenges — complexity, consequence, and constraint converge in ways that commercial tools simply weren't designed to handle. At Anywise, we've spent years working inside these environments, and what we've learned has shaped every product we build.",
+    "sections": [
+      {
+        "heading": "From Problem to Practical Solution",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The pattern we see repeatedly is this: organisations accumulate data — sensor data, maintenance records, operational logs — but struggle to turn it into decisions. The data exists, but the pathway from raw information to actionable insight is blocked by fragmentation, complexity, and the sheer volume of inputs competing for engineer attention."
+          },
+          {
+            "type": "paragraph",
+            "content": "Our approach to dual-use intelligence acknowledges this reality. We build platforms that work with the data that already exists in your environment, not platforms that require you to rebuild your data infrastructure before you can get value. The intelligence layer sits above what you have — normalising, correlating, and reasoning across it — so that the output is decisions, not dashboards."
+          },
+          {
+            "type": "pullquote",
+            "content": "The pathway from raw information to actionable insight is blocked by fragmentation, complexity, and the sheer volume of inputs competing for engineer attention."
+          }
+        ]
+      },
+      {
+        "heading": "Dual-Use: A Feature, Not a Compromise",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Defence and government organisations increasingly recognise that the same analytical capability that reduces operational risk in a military context also delivers significant value in civilian government and industrial settings. A platform designed to monitor the structural health of a defence asset applies directly to critical infrastructure monitoring. A decision support tool built for operational headquarters translates to government crisis management."
+          },
+          {
+            "type": "paragraph",
+            "content": "We design for this explicitly. Our platforms are not defence tools repurposed for government — they are purpose-built with the operational requirements of both environments in mind. Classified environment support, sovereign deployment, and regulatory compliance are not afterthoughts — they are foundational design requirements."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Sovereign by design: deployed on Australian-owned infrastructure",
+              "Operates at classification levels where commercial cloud cannot",
+              "Regulatory compliance built in, not bolted on",
+              "Integration layer connects to your existing systems without replacement"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What This Means for Your Organisation",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "If your engineering environment is generating data that isn't driving decisions, the problem isn't the data. It's the pathway between the data and the decision-maker. That's the problem we solve — and we solve it in environments where the stakes make getting it right non-negotiable."
+          },
+          {
+            "type": "paragraph",
+            "content": "We're working with defence and government organisations across Australia to deploy intelligence platforms that are already proving their value in operational environments. If you're dealing with engineering complexity, operational risk, or the challenge of turning data into decisions at pace — we'd like to talk."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "dcsp-catalyst-for-real-change",
+    "title": "The DCSP Must Be a Catalyst for Real Change",
+    "date": "2026-01-04",
+    "readTime": 4,
+    "category": "Policy",
+    "author": "Anywise Team",
+    "heroImage": "",
+    "intro": "Australia's Defence Capability Sustainment Program represents a significant commitment — in funding, intent, and political capital. But commitment alone does not deliver capability. The DCSP will only achieve its stated goals if it is designed and implemented as a genuine catalyst for industrial transformation, not a procurement round with better branding.",
+    "sections": [
+      {
+        "heading": "The Problem with Business as Usual",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Australian defence sustainment has a long history of incremental improvement dressed as transformation. Programs are announced, industry partners are engaged, and the result — after years of effort — is a modestly improved version of what existed before. The underlying structural issues remain: sovereign capability gaps, over-reliance on OEM support arrangements, and an industrial base that lacks the depth to absorb genuine capability transfer."
+          },
+          {
+            "type": "paragraph",
+            "content": "The DCSP has the potential to be different. The funding commitment is real, the strategic logic is sound, and there is genuine political will to see Australian industry capability grow. The question is whether the implementation machinery will match the ambition."
+          },
+          {
+            "type": "pullquote",
+            "content": "Commitment alone does not deliver capability. The DCSP will only achieve its goals if it is designed as a genuine catalyst for industrial transformation."
+          }
+        ]
+      },
+      {
+        "heading": "What Real Change Looks Like",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Real change in defence sustainment requires three things to happen together: genuine capability transfer (not just work share), investment in the data and analytical infrastructure that makes modern sustainment possible, and procurement structures that reward sovereign capability rather than penalising it against the buying power of established primes."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Genuine capability transfer, not work-share arrangements that preserve OEM dependency",
+              "Investment in data infrastructure that enables intelligent sustainment",
+              "Procurement structures that actively favour sovereign capability development",
+              "Performance metrics that measure capability outcomes, not contract deliverables"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": "Australian SMEs working in the defence technology space — and Anywise is one of them — have the capability to deliver genuinely sovereign solutions to sustainment challenges. We are not asking for special treatment. We are asking for procurement processes that allow sovereign capability to compete on its merits, without being structurally disadvantaged by assessment frameworks designed for a different era."
+          }
+        ]
+      },
+      {
+        "heading": "The Anywise Perspective",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "We have built our platforms specifically for the Australian defence sustainment environment. Our products address real problems in engineering intelligence, health and usage monitoring, and facilities management — problems that are directly relevant to the DCSP's sustainment objectives. We are ready to contribute to the program's success."
+          },
+          {
+            "type": "paragraph",
+            "content": "What we are watching carefully is whether the program's implementation creates genuine pathways for sovereign technology companies to participate meaningfully, or whether it replicates the patterns of previous programs. The DCSP can be the catalyst Australia's defence industrial base needs. The decisions made in the next 18 months will determine which it becomes."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "vicworx-preparing-for-lift-off",
+    "title": "VICWORX is Preparing for Lift Off",
+    "date": "2025-02-25",
+    "readTime": 3,
+    "category": "News",
+    "author": "Anywise Team",
+    "heroImage": "",
+    "intro": "Victoria's advanced manufacturing sector is at an inflection point. VICWORX — a collaborative initiative bringing together Victorian manufacturers, research institutions, and defence industry partners — is positioning the state to capture a meaningful share of the capability investment flowing through Australia's defence and advanced manufacturing programs.",
+    "sections": [
+      {
+        "heading": "What VICWORX Represents",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "VICWORX is not another government-funded industry body with a glossy brochure and a vague mission. It is a practical collaboration designed to solve a specific problem: Victorian manufacturers have the capability to contribute to advanced defence and government programs, but lack the pathways to demonstrate that capability and access prime opportunities."
+          },
+          {
+            "type": "paragraph",
+            "content": "The initiative connects manufacturers with the technology partners, research institutions, and defence primes that can help them move up the value chain. Anywise is participating because we see a direct alignment between what VICWORX is trying to achieve and our own mission: sovereign, Australian-developed technology that delivers genuine operational value."
+          },
+          {
+            "type": "pullquote",
+            "content": "Victorian manufacturers have the capability to contribute to advanced defence programs, but lack the pathways to demonstrate that capability and access prime opportunities."
+          }
+        ]
+      },
+      {
+        "heading": "The Role of Technology in Manufacturing Transformation",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Advanced manufacturing transformation is not just about new equipment or processes — it requires new information infrastructure. The manufacturers that will thrive in the next decade are those that can instrument their operations, reason over their data, and make decisions at the pace of modern supply chains."
+          },
+          {
+            "type": "paragraph",
+            "content": "This is where Anywise's engineering intelligence platforms — particularly ENG|AIDE and FABHUMS — have direct relevance. We are working with VICWORX participants to explore how intelligence technology can accelerate their operational transformation and create the data-driven manufacturing environments that defence prime contractors and government customers increasingly require."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Operational data infrastructure as a competitive differentiator",
+              "Intelligence platforms that connect manufacturing data to decisions",
+              "Certification-ready health and usage monitoring for complex components",
+              "Engineering risk management that satisfies defence prime requirements"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What Comes Next",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The lift-off metaphor is apt — VICWORX is at the point where the pre-launch preparations are complete and the real work begins. Program engagement is deepening, industry connections are forming, and the pathways between Victorian capability and national defence programs are becoming tangible."
+          },
+          {
+            "type": "paragraph",
+            "content": "We'll be sharing more about our involvement in VICWORX and the outcomes we're working toward. For manufacturers interested in understanding how intelligence technology can support their own capability transformation, we're happy to talk."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "commitment-to-ethical-quality-business",
+    "title": "Strengthening Our Commitment to Ethical, Quality-Driven Business",
+    "date": "2024-10-03",
+    "readTime": 2,
+    "category": "Company",
+    "author": "Anywise Team",
+    "heroImage": "",
+    "intro": "B Corp certification is not a marketing credential. It is a structured commitment to a specific standard of business conduct — one that requires ongoing verification, transparent reporting, and a genuine willingness to be held accountable for how your business impacts the people and communities it touches.",
+    "sections": [
+      {
+        "heading": "What B Corp Means for Anywise",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "We sought B Corp certification because it aligns with what we already believed about how technology companies operating in high-stakes environments should conduct themselves. Defence and government technology is not a neutral domain. The platforms we build affect operational decisions that have real consequences for people. The ethical standards we apply to that work matter."
+          },
+          {
+            "type": "paragraph",
+            "content": "B Corp certification requires us to meet rigorous standards across five dimensions: governance, workers, community, environment, and customers. It requires us to report on those standards openly and to have that reporting independently verified. For a company that builds tools for decision-making environments, operating with the same transparency we advocate for in others is not optional — it is essential."
+          },
+          {
+            "type": "pullquote",
+            "content": "The platforms we build affect operational decisions that have real consequences for people. The ethical standards we apply to that work matter."
+          }
+        ]
+      },
+      {
+        "heading": "Ethical Technology in Practice",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "For Anywise, ethical technology is not a constraint on capability — it is a design requirement. We build explainability into our analytical platforms because operators need to understand why a recommendation was made, not just what it was. We maintain sovereign deployment capability because data sovereignty is a legitimate operational requirement. We design for the humans who use our tools, not just for the systems they connect to."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Explainable AI: every recommendation includes a transparent evidence chain",
+              "Data sovereignty: deployed on Australian-owned infrastructure",
+              "Human-centred design: tools built for the operators who use them",
+              "Continuous accountability: B Corp verification and independent reporting"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": "We see our B Corp status as a foundation, not a destination. The standards will evolve, our business will grow, and the challenges of operating ethically in complex environments will continue to require active attention. We are committed to meeting that challenge — and to being transparent about where we are falling short as well as where we are succeeding."
+          }
+        ]
+      }
+    ]
+  }
+]
