@@ -2004,6 +2004,7 @@ function applyTheme(theme) {
   if (meta) meta.content = theme === 'light' ? '#f5f6f3' : '#0e110e';
   themeToggle.textContent = theme === 'light' ? '☾' : '☀';
   localStorage.setItem('anywise-theme', theme);
+  if (window.updateGlobeTheme) window.updateGlobeTheme(theme === 'light');
 }
 // Set initial icon based on current theme
 themeToggle.textContent = document.documentElement.dataset.theme === 'light' ? '☾' : '☀';
@@ -2122,7 +2123,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 <script type="module">
 import * as THREE from 'three';
-const isLightTheme = document.documentElement.dataset.theme === 'light';
+let isLight = document.documentElement.dataset.theme === 'light';
 
 const container = document.getElementById('globe-container');
 if (!container) throw new Error('No globe container');
@@ -2137,21 +2138,25 @@ camera.position.z = 1.9;
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearColor(isLightTheme ? 0xf5f6f3 : 0x0a0d0a, 1);
+renderer.setClearColor(isLight ? 0xf5f6f3 : 0x0a0d0a, 1);
 container.appendChild(renderer.domElement);
 
 // Earth sphere
 const geometry = new THREE.SphereGeometry(1, 64, 64);
-
-// Load NASA Blue Marble texture
 const textureLoader = new THREE.TextureLoader();
-const earthTexture = textureLoader.load(
-  isLightTheme
-    ? 'https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg'
-    : 'https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg',
-  () => { renderer.render(scene, camera); }
-);
-earthTexture.colorSpace = THREE.SRGBColorSpace;
+
+function loadEarthTexture(light) {
+  const tex = textureLoader.load(
+    light
+      ? 'https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg'
+      : 'https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg',
+    () => { renderer.render(scene, camera); }
+  );
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+const earthTexture = loadEarthTexture(isLight);
 
 const earthMaterial = new THREE.MeshStandardMaterial({
   map: earthTexture,
@@ -2171,46 +2176,77 @@ scene.add(earth);
 
 // Atmospheric glow (green-tinted rim)
 const glowGeometry = new THREE.SphereGeometry(1.02, 64, 64);
-const glowMaterial = new THREE.ShaderMaterial({
-  vertexShader: `
-    varying vec3 vNormal;
-    void main() {
-      vNormal = normalize(normalMatrix * normal);
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  `,
-  fragmentShader: isLightTheme ? `
-    varying vec3 vNormal;
-    void main() {
-      float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
-      gl_FragColor = vec4(0.8, 0.9, 0.8, 1.0) * intensity * 0.3;
-    }
-  ` : `
-    varying vec3 vNormal;
-    void main() {
-      float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
-      gl_FragColor = vec4(0.22, 0.66, 0.29, 1.0) * intensity * 0.6;
-    }
-  `,
-  side: THREE.BackSide,
-  blending: THREE.AdditiveBlending,
-  transparent: true
-});
-const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+
+function makeGlowMaterial(light) {
+  return new THREE.ShaderMaterial({
+    vertexShader: `
+      varying vec3 vNormal;
+      void main() {
+        vNormal = normalize(normalMatrix * normal);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: light ? `
+      varying vec3 vNormal;
+      void main() {
+        float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
+        gl_FragColor = vec4(0.8, 0.9, 0.8, 1.0) * intensity * 0.3;
+      }
+    ` : `
+      varying vec3 vNormal;
+      void main() {
+        float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
+        gl_FragColor = vec4(0.22, 0.66, 0.29, 1.0) * intensity * 0.6;
+      }
+    `,
+    side: THREE.BackSide,
+    blending: THREE.AdditiveBlending,
+    transparent: true
+  });
+}
+
+const glowMesh = new THREE.Mesh(glowGeometry, makeGlowMaterial(isLight));
 scene.add(glowMesh);
 
 // Lighting — brighter to make earth visible
-const ambientLight = new THREE.AmbientLight(0xffffff, isLightTheme ? 0.8 : 0.6);
+const ambientLight = new THREE.AmbientLight(0xffffff, isLight ? 0.8 : 0.6);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, isLightTheme ? 3.5 : 2.5);
-directionalLight.position.set(isLightTheme ? 5 : -5, 3, 5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, isLight ? 3.5 : 2.5);
+directionalLight.position.set(isLight ? 5 : -5, 3, 5);
 scene.add(directionalLight);
 
 // Green point light for brand tinting
-const greenLight = new THREE.PointLight(0x39a849, isLightTheme ? 0.3 : 0.8, 10);
+const greenLight = new THREE.PointLight(0x39a849, isLight ? 0.3 : 0.8, 10);
 greenLight.position.set(2, 1, 3);
 scene.add(greenLight);
+
+// Theme update function — called by applyTheme() in main script
+function updateGlobeTheme(newIsLight) {
+  isLight = newIsLight;
+
+  // Renderer background
+  renderer.setClearColor(isLight ? 0xf5f6f3 : 0x0a0d0a, 1);
+
+  // Swap texture
+  const oldTexture = earthMaterial.map;
+  const newTexture = loadEarthTexture(isLight);
+  earthMaterial.map = newTexture;
+  earthMaterial.needsUpdate = true;
+  if (oldTexture) oldTexture.dispose();
+
+  // Update glow shader (replace material — ShaderMaterial can't swap fragmentShader at runtime)
+  const oldGlowMat = glowMesh.material;
+  glowMesh.material = makeGlowMaterial(isLight);
+  oldGlowMat.dispose();
+
+  // Update lighting
+  ambientLight.intensity = isLight ? 0.8 : 0.6;
+  directionalLight.intensity = isLight ? 3.5 : 2.5;
+  directionalLight.position.set(isLight ? 5 : -5, 3, 5);
+  greenLight.intensity = isLight ? 0.3 : 0.8;
+}
+window.updateGlobeTheme = updateGlobeTheme;
 
 // Animation loop
 const baseDistance = 1.9;
