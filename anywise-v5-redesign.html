@@ -1308,6 +1308,18 @@ footer {
   .stat-box { opacity: 1 !important; transform: none !important; }
 }
 </style>
+<script>
+  // Set theme before first paint — Sydney time, DST-aware
+  (function() {
+    var hour = new Date(
+      new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })
+    ).getHours();
+    var isLight = hour >= 6 && hour < 18;
+    document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.content = isLight ? '#f5f6f3' : '#0e110e';
+  })();
+</script>
 </head>
 <body>
 
