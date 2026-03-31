@@ -1493,6 +1493,8 @@ footer {
     var themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) themeMeta.content = isLight ? '#f5f6f3' : '#0e110e';
   })();
+  // Queuing stub — replaced by the real function when the Three.js module loads
+  window.updateGlobeTheme = function(light) { window.__pendingGlobeTheme = light; };
 </script>
 </head>
 <body>
@@ -2247,6 +2249,11 @@ function updateGlobeTheme(newIsLight) {
   greenLight.intensity = isLight ? 0.3 : 0.8;
 }
 window.updateGlobeTheme = updateGlobeTheme;
+// Flush any theme change that arrived before this module loaded
+if (window.__pendingGlobeTheme !== undefined) {
+  updateGlobeTheme(window.__pendingGlobeTheme);
+  delete window.__pendingGlobeTheme;
+}
 
 // Animation loop
 const baseDistance = 1.9;
