@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products & Technology | Anywise</title>
+<meta name="description" content="Sovereign, Australian-designed intelligence platforms for defence and government. WISDOM, ENG|AIDE, FABHUMS, CAMP|AIDE, AIDE.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Page-specific styles ──────────────────────────────────────────────── */
+.products-hero {
+  padding: 7rem 0 4rem;
+  text-align: center;
+}
+.products-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0.75rem 0 1rem;
+}
+.products-hero p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ─── Card Grid ─────────────────────────────────────────────────────────── */
+.products-grid-section {
+  padding: 3rem 0 6rem;
+}
+.prod-grid-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.prod-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.prod-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.prod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px var(--border-accent);
+  border-color: var(--border-accent);
+}
+
+.prod-card-img {
+  aspect-ratio: 16/9;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.prod-card-img svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.2;
+}
+
+.prod-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.prod-card-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.prod-card-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.prod-card-body p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+.prod-card-highlight {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  font-family: var(--mono);
+}
+.prod-card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.15s, gap 0.15s;
+}
+.prod-card-link:hover {
+  color: var(--accent);
+  gap: 0.6rem;
+}
+
+/* ─── CTA Strip ─────────────────────────────────────────────────────────── */
+.prod-cta {
+  padding: 5rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.prod-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-grid-top { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .prod-grid-top,
+  .prod-grid-bottom { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../anywise-v5-redesign.html" class="nav-brand">any<span>wise</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../anywise-v5-redesign.html#capabilities">Capabilities</a></li>
+      <li><a href="../anywise-v5-redesign.html#approach">Approach</a></li>
+      <li><a href="../products/index.html" class="active">Products</a></li>
+      <li><a href="../anywise-v5-redesign.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="products-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../anywise-v5-redesign.html">Home</a>
+      <span>/</span>
+      <span>Products</span>
+    </div>
+    <span class="label">Products &amp; Technology</span>
+    <h1>Sovereign, Australian-designed<br>intelligence platforms.</h1>
+    <p>Five purpose-built platforms that transform operational complexity into actionable intelligence — for defence, government, and industry.</p>
+  </div>
+</section>
+
+<!-- ═══ PRODUCT GRID ═══ -->
+<section class="products-grid-section">
+  <div class="container">
+
+    <!-- Top row: 3 columns -->
+    <div class="prod-grid-top">
+
+      <!-- WISDOM -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Strategic Intelligence</div>
+          <h3>WISDOM</h3>
+          <p>Accelerated, reliable decision-making for complex strategic environments. Integrates disparate data sources into coherent operational pictures.</p>
+          <div class="prod-card-highlight">→ Strategic decision support</div>
+          <a href="wisdom.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- ENG|AIDE -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"/>
+            <path d="M5 19L4 20M9.26 9.26L5 19l10-5"/>
+            <path d="M20 4l-6.5 6.5"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Engineering Intelligence</div>
+          <h3>ENG|AIDE</h3>
+          <p>Reducing operational risk and improving reliability through intelligent engineering support. Real-time analysis of complex system interdependencies.</p>
+          <div class="prod-card-highlight">→ Operational risk reduction</div>
+          <a href="engaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- FABHUMS -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Health &amp; Usage Monitoring</div>
+          <h3>FABHUMS</h3>
+          <p>Enhancing safety and extending asset life through continuous health and usage monitoring. Predictive insights before failures occur.</p>
+          <div class="prod-card-highlight">→ Asset life extension</div>
+          <a href="fabhums.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Bottom row: 2 columns -->
+    <div class="prod-grid-bottom">
+
+      <!-- CAMP|AIDE -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <path d="M9 22V12h6v10"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Facilities Intelligence</div>
+          <h3>CAMP|AIDE</h3>
+          <p>Faster planning and safer outcomes for facilities and estate management. Intelligent support for complex, multi-site operational environments.</p>
+          <div class="prod-card-highlight">→ Facilities planning intelligence</div>
+          <a href="campaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- AIDE -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Enterprise Intelligence</div>
+          <h3>AIDE</h3>
+          <p>Unified foresight at decision speed. The enterprise intelligence layer that connects all Anywise platforms into a single coherent operational view.</p>
+          <div class="prod-card-highlight">→ Enterprise-wide foresight</div>
+          <a href="aide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="prod-cta">
+  <div class="container">
+    <span class="label">Get in touch</span>
+    <h2>Ready to explore our products?</h2>
+    <p>Tell us about your challenge and we'll show you how Anywise can help.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../anywise-v5-redesign.html" class="nav-brand" style="font-size:1.15rem;">any<span>wise</span></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../anywise-v5-redesign.html#capabilities">Technology</a>
+        <a href="../anywise-v5-redesign.html#capabilities">Services</a>
+        <a href="../anywise-v5-redesign.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="wisdom.html">WISDOM</a>
+        <a href="engaide.html">ENG|AIDE</a>
+        <a href="fabhums.html">FABHUMS</a>
+        <a href="campaide.html">CAMP|AIDE</a>
+        <a href="aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../anywise-v5-redesign.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="#" data-engage>Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>
