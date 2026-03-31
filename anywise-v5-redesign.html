@@ -2126,6 +2126,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 <script type="module">
 import * as THREE from 'three';
 let isLight = document.documentElement.dataset.theme === 'light';
+let pendingTexture = null;
 
 const container = document.getElementById('globe-container');
 if (!container) throw new Error('No globe container');
@@ -2234,12 +2235,16 @@ function updateGlobeTheme(newIsLight) {
   renderer.setClearColor(isLight ? 0xf5f6f3 : 0x0a0d0a, 1);
 
   // Swap texture — deferred into load callback so old texture stays visible until new one is ready
+  // pendingTexture tracks in-flight loads; if superseded, the stale texture is disposed rather than leaked
   const oldTexture = earthMaterial.map;
-  loadEarthTexture(isLight, (newTex) => {
+  const expectedTexture = loadEarthTexture(isLight, (newTex) => {
+    if (pendingTexture !== newTex) { newTex.dispose(); return; }
+    pendingTexture = null;
     earthMaterial.map = newTex;
     earthMaterial.needsUpdate = true;
     if (oldTexture) oldTexture.dispose();
   });
+  pendingTexture = expectedTexture;
 
   // Update glow shader (replace material — ShaderMaterial can't swap fragmentShader at runtime)
   const oldGlowMat = glowMesh.material;
@@ -2253,11 +2258,11 @@ function updateGlobeTheme(newIsLight) {
   greenLight.intensity = isLight ? 0.3 : 0.8;
 }
 window.updateGlobeTheme = updateGlobeTheme;
-// Flush any theme change that arrived before this module loaded
-if (window.__pendingGlobeTheme !== undefined) {
+// Flush any theme change that arrived before this module loaded (skip if already correct)
+if (window.__pendingGlobeTheme !== undefined && window.__pendingGlobeTheme !== isLight) {
   updateGlobeTheme(window.__pendingGlobeTheme);
-  delete window.__pendingGlobeTheme;
 }
+delete window.__pendingGlobeTheme;
 
 // Animation loop
 const baseDistance = 1.9;
