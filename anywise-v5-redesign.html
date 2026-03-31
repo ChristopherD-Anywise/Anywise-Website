@@ -565,10 +565,11 @@ a.nav-cta {
 .hero h1 .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.1em;
 }
 .hero h1 .line-inner {
   display: block;
+  line-height: 1.25;
+  margin-top: -0.1em;
   transform: translateY(115%);
   transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -738,7 +739,7 @@ a.nav-cta {
 .hero.in-view .stat-box:nth-child(3) { transition-delay: 0.55s; }
 
 .stat-box h3 {
-  font-family: var(--mono);
+  font-family: var(--font);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--white);
@@ -752,7 +753,7 @@ a.nav-cta {
   font-size: 0.68rem;
   color: rgba(255,255,255,0.5);
   line-height: 1.4;
-  font-family: var(--mono);
+  font-family: var(--font);
   letter-spacing: 0.02em;
 }
 
