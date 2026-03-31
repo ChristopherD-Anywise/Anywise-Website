@@ -2147,12 +2147,15 @@ container.appendChild(renderer.domElement);
 const geometry = new THREE.SphereGeometry(1, 64, 64);
 const textureLoader = new THREE.TextureLoader();
 
-function loadEarthTexture(light) {
+function loadEarthTexture(light, onLoad) {
   const tex = textureLoader.load(
     light
       ? 'https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg'
       : 'https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg',
-    () => { renderer.render(scene, camera); }
+    (loadedTex) => {
+      if (onLoad) onLoad(loadedTex);
+      renderer.render(scene, camera);
+    }
   );
   tex.colorSpace = THREE.SRGBColorSpace;
   return tex;
@@ -2230,12 +2233,13 @@ function updateGlobeTheme(newIsLight) {
   // Renderer background
   renderer.setClearColor(isLight ? 0xf5f6f3 : 0x0a0d0a, 1);
 
-  // Swap texture
+  // Swap texture — deferred into load callback so old texture stays visible until new one is ready
   const oldTexture = earthMaterial.map;
-  const newTexture = loadEarthTexture(isLight);
-  earthMaterial.map = newTexture;
-  earthMaterial.needsUpdate = true;
-  if (oldTexture) oldTexture.dispose();
+  loadEarthTexture(isLight, (newTex) => {
+    earthMaterial.map = newTex;
+    earthMaterial.needsUpdate = true;
+    if (oldTexture) oldTexture.dispose();
+  });
 
   // Update glow shader (replace material — ShaderMaterial can't swap fragmentShader at runtime)
   const oldGlowMat = glowMesh.material;
