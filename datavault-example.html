@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0e110e">
+  <title>DataVault — Enterprise data, simplified.</title>
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.170.0/build/three.module.js" } }
+  </script>
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      /* Brand colors — DataVault blue */
+      --apple:          #1e40af;
+      --lime:           #0284c7;
+      --mint:           #0e3a8c;
+
+      /* Gradient shorthands */
+      --gradient-al:    linear-gradient(135deg, var(--apple), var(--lime));
+      --gradient-lm:    linear-gradient(135deg, var(--lime), var(--mint));
+      --gradient-ma:    linear-gradient(135deg, var(--mint), var(--apple));
+      --gradient-full:  linear-gradient(135deg, var(--mint), var(--apple), var(--lime));
+
+      /* Dark mode surfaces */
+      --bg-deep:        #080b14;
+      --bg:             #0c0f1a;
+      --bg-elevated:    #121829;
+      --bg-card:        #181f33;
+      --bg-card-hover:  #1e2740;
+
+      /* Text */
+      --text-primary:   #f0f2f8;
+      --text-secondary: #8e9ab5;
+      --text-tertiary:  #5a6785;
+
+      /* Borders */
+      --border:         rgba(255,255,255,0.07);
+      --border-accent:  rgba(30,64,175,0.3);
+
+      /* Accent */
+      --accent:         var(--apple);
+      --accent-dim:     var(--mint);
+      --accent-muted:   rgba(30,64,175,0.06);
+      --accent-glow:    rgba(30,64,175,0.15);
+
+      /* Radii */
+      --radius:    8px;
+      --radius-lg: 14px;
+
+      /* Transitions */
+      --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Scroll progress (set by JS) */
+      --scroll-progress: 0;
+    }
+
+    [data-theme="light"] {
+      --bg-deep:        #f0f4ff;
+      --bg:             #f5f8ff;
+      --bg-elevated:    #ffffff;
+      --bg-card:        #ffffff;
+      --bg-card-hover:  #edf2ff;
+      --text-primary:   #0c1024;
+      --text-secondary: #3a4a6b;
+      --text-tertiary:  #6a7a9b;
+      --border:         rgba(0,0,0,0.08);
+      --border-accent:  rgba(30,64,175,0.2);
+      --accent:         var(--mint);
+      --accent-dim:     var(--apple);
+      --accent-muted:   rgba(30,64,175,0.04);
+      --accent-glow:    rgba(30,64,175,0.08);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+    [data-theme="light"] html { color-scheme: light; }
+
+    body {
+      font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 5px; border: 2px solid var(--bg-deep); }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    /* ============================================================
+       ACCESSIBILITY
+    ============================================================ */
+    .skip-link {
+      position: absolute; top: -40px; left: 1rem;
+      background: var(--accent); color: white;
+      padding: 0.5rem 1rem; border-radius: var(--radius);
+      font-weight: 600; text-decoration: none;
+      z-index: 9999; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* ============================================================
+       SCROLL PROGRESS BAR
+    ============================================================ */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 2px;
+      width: calc(var(--scroll-progress) * 100%);
+      background: var(--gradient-al);
+      z-index: 1001;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 10px 0 0.9rem;
+      transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(12,15,26,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="light"] nav.scrolled {
+      background: rgba(245,248,255,0.92);
+    }
+
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.25rem; font-weight: 700;
+      text-decoration: none; color: var(--text-primary);
+    }
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500;
+      position: relative; padding-bottom: 2px;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gradient-al);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    #themeToggle {
+      background: none; border: none; color: var(--text-primary);
+      font-size: 1.1rem; cursor: pointer; padding: 0.4rem;
+      line-height: 1; transition: transform var(--transition);
+    }
+    #themeToggle:hover { transform: scale(1.15); }
+
+    .nav-cta {
+      background: var(--accent); color: white;
+      padding: 0.6rem 1.4rem; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.84rem; text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .nav-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: conic-gradient(from 0deg, transparent 0%, var(--lime) 25%, transparent 50%);
+      animation: shineSpin 3s linear infinite;
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .nav-cta:hover::before { opacity: 0.4; }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+
+    @keyframes shineSpin { to { transform: rotate(360deg); } }
+
+    /* Mobile hamburger */
+    #mobileToggle {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer;
+      padding: 0.5rem; width: 36px; height: 36px;
+    }
+    #mobileToggle span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text-primary); border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    #mobileToggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #mobileToggle.active span:nth-child(2) { opacity: 0; }
+    #mobileToggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      #mobileToggle { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
+        max-height: 0; overflow: hidden;
+        transition: max-height var(--transition-slow);
+      }
+      .nav-links.open { max-height: 400px; }
+      .nav-links li { border-bottom: 1px solid var(--border); }
+      .nav-links a, .nav-links button { display: block; padding: 1rem 1.5rem; }
+      .nav-cta { margin: 1rem 1.5rem; display: inline-block; text-align: center; }
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding-bottom: 5rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    #globe-container {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background:
+        linear-gradient(to top, rgba(8,11,20,0.95) 0%, rgba(8,11,20,0.6) 45%, rgba(8,11,20,0.1) 100%),
+        linear-gradient(to bottom, rgba(8,11,20,0.4) 0%, rgba(8,11,20,0) 30%);
+    }
+    [data-theme="light"] .hero-overlay {
+      background:
+        linear-gradient(to top, rgba(245,248,255,0.96) 0%, rgba(245,248,255,0.65) 45%, rgba(245,248,255,0.2) 100%),
+        linear-gradient(to bottom, rgba(245,248,255,0.5) 0%, rgba(245,248,255,0) 30%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 3;
+      max-width: 1160px; margin: 0 auto;
+      width: 100%; padding: 0 2rem;
+    }
+
+    .hero-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-tertiary);
+      margin-bottom: 1.8rem;
+      opacity: 1;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5.5vw, 4.5rem);
+      font-weight: 800; line-height: 1.05;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .hero h1 .line {
+      display: block;
+      transform: translateY(115%);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero h1 .line:nth-child(2) { transition-delay: 0.18s; }
+    .hero h1 .line.line-visible { transform: translateY(0); }
+
+    .hero h1 em {
+      background: var(--gradient-full);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: normal;
+    }
+    [data-theme="light"] .hero h1 em {
+      background: linear-gradient(135deg, #0e3a8c, #1e40af, #0284c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--text-secondary);
+      max-width: 520px; line-height: 1.7;
+      opacity: 0; transform: translateY(15px);
+      transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
+    }
+    .hero-sub.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero stats bar */
+    .hero-stats {
+      display: flex; gap: 0;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-top: 2.5rem;
+      width: fit-content; overflow: hidden;
+    }
+    [data-theme="light"] .hero-stats {
+      background: rgba(0,0,0,0.03);
+    }
+    .hero-stats .stat {
+      padding: 1.1rem 2rem;
+      border-right: 1px solid var(--border);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .hero-stats .stat:last-child { border-right: none; }
+    .hero-stats .stat.visible { opacity: 1; transform: translateY(0); }
+    .hero-stats .stat:nth-child(1) { transition-delay: 0.35s; }
+    .hero-stats .stat:nth-child(2) { transition-delay: 0.45s; }
+    .hero-stats .stat:nth-child(3) { transition-delay: 0.55s; }
+    .stat-value { font-size: 1.25rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .stat-label { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 0.2rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    @media (max-width: 768px) {
+      .hero { padding-bottom: 3rem; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stats .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stats .stat:last-child { border-bottom: none; }
+    }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+    ============================================================ */
+    section { padding: 5rem 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+
+    @media (max-width: 768px) {
+      section { padding: 3rem 0; }
+      .container { padding: 0 1rem; }
+    }
+
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .label::before {
+      content: '';
+      display: inline-block;
+      width: 0; height: 1px;
+      background: var(--gradient-al);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+    .label.visible::before { width: 2rem; }
+
+    section h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .section-divider {
+      width: 100%; height: 1px;
+      background: var(--border);
+      position: relative;
+    }
+    .section-divider::after {
+      content: '';
+      position: absolute; inset: 0;
+      width: 0;
+      background: var(--gradient-al);
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .section-divider.visible::after { width: 100%; }
+
+    /* Scroll reveal */
+    .reveal       { opacity: 0; transform: translateY(30px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-scale { opacity: 0; transform: scale(0.92);       transition: opacity 0.7s ease, transform 0.7s ease; }
+
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible, .reveal-scale.visible {
+      opacity: 1; transform: none;
+    }
+    .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ============================================================
+       PURPOSE & VALUES SECTION
+    ============================================================ */
+    #purpose { background: var(--bg-elevated); }
+
+    .values-list { display: flex; flex-direction: column; }
+
+    .value-row {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: border-color var(--transition);
+    }
+    .value-row:first-child { border-top: 1px solid var(--border); }
+    .value-row:hover { border-color: var(--border-accent); }
+
+    .value-name {
+      font-weight: 700; font-size: 1.05rem;
+      color: var(--accent);
+      white-space: nowrap; min-width: 18rem;
+    }
+    .value-dash { color: var(--text-tertiary); flex-shrink: 0; }
+    .value-desc { color: var(--text-secondary); line-height: 1.7; flex: 1; }
+
+    @media (max-width: 1024px) { .value-name { min-width: 12rem; } }
+    @media (max-width: 768px) {
+      .value-row { flex-wrap: wrap; gap: 0.5rem; }
+      .value-name { min-width: auto; width: 100%; margin-bottom: 0.25rem; }
+      .value-dash { display: none; }
+    }
+
+    /* ============================================================
+       CAPABILITIES SECTION
+    ============================================================ */
+    #capabilities { background: var(--bg); }
+
+    .capabilities-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1024px) { .capabilities-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px)  { .capabilities-grid { grid-template-columns: 1fr; } }
+
+    .capability-card {
+      padding: 2.2rem;
+      background: linear-gradient(145deg, var(--bg-card), var(--bg-elevated));
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--lime);
+      border-radius: var(--radius-lg);
+      position: relative; overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+      cursor: default;
+    }
+    .capability-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent-muted), transparent 70%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .capability-card:hover::before { opacity: 1; }
+    .capability-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gradient-al);
+      transition: width 0.4s;
+    }
+    .capability-card:hover::after { width: 100%; }
+    .capability-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 50px var(--accent-glow);
+      border-color: var(--border-accent);
+    }
+    .card-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--accent);
+      opacity: 0.7; margin-bottom: 1rem;
+    }
+    .capability-card h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .capability-card p  { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ============================================================
+       APPROACH SECTION
+    ============================================================ */
+    #approach { background: var(--bg-elevated); }
+
+    .approach-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    @media (max-width: 768px) { .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .approach-left p.body-text { color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; margin-top: 1rem; }
+
+    .approach-items { display: flex; flex-direction: column; }
+    .approach-item {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.4rem 0; border-bottom: 1px solid var(--border);
+    }
+    .approach-item:first-child { border-top: 1px solid var(--border); }
+    .approach-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--accent);
+      font-weight: 500; min-width: 2rem; padding-top: 0.15rem;
+    }
+    .approach-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .approach-item p  { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ============================================================
+       PRODUCTS SECTION
+    ============================================================ */
+    #products { background: var(--bg); }
+
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px)  { .products-grid { grid-template-columns: 1fr; } }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      border-color: var(--border-accent);
+    }
+    .product-image-wrap {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .product-image-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--gradient-al);
+      opacity: 0.06;
+    }
+    .product-icon {
+      font-size: 2rem; opacity: 0.4; position: relative; z-index: 1;
+    }
+    .product-body { padding: 1.5rem; }
+    .product-tag {
+      font-size: 0.65rem; color: var(--accent); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .product-card h3 { font-size: 1.1rem; font-weight: 700; margin: 0.5rem 0 0.6rem; }
+    .product-card p  { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ============================================================
+       TRACK RECORD SECTION
+    ============================================================ */
+    #track { background: var(--bg-elevated); }
+
+    .track-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 768px) { .track-grid { grid-template-columns: 1fr; } }
+
+    .track-stat {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .track-stat:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .counter-wrap {
+      font-size: clamp(2.5rem, 5vw, 3.2rem);
+      font-weight: 800; color: var(--accent);
+      line-height: 1; margin-bottom: 0.6rem;
+    }
+    .counter { display: inline; }
+    .track-stat .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-tertiary);
+    }
+
+    /* ============================================================
+       CTA SECTION
+    ============================================================ */
+    #cta { background: var(--bg); }
+
+    .cta-box {
+      padding: 4rem;
+      background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      max-width: 720px; margin: 0 auto;
+    }
+
+    .cta-box h2 { margin-bottom: 1rem; }
+    .cta-box p  { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+    .cta-buttons {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center; margin-top: 2.5rem;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: var(--radius);
+      font-weight: 600; font-size: 0.84rem;
+      text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer; border: 1px solid transparent;
+    }
+
+    .btn-accent {
+      background: var(--accent); color: white;
+    }
+    .btn-accent::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: conic-gradient(from 0deg, transparent 0%, var(--lime) 25%, transparent 50%);
+      animation: shineSpin 3s linear infinite;
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .btn-accent:hover::before { opacity: 0.4; }
+    .btn-accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--accent-glow), 0 0 20px rgba(30,64,175,0.1);
+    }
+
+    .btn-outline {
+      background: transparent; color: var(--text-primary);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+    }
+    [data-theme="light"] .btn-outline { border-color: rgba(0,0,0,0.15); }
+    [data-theme="light"] .btn-outline:hover { border-color: rgba(0,0,0,0.3); background: rgba(0,0,0,0.03); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+    .footer-brand .nav-brand { font-size: 1.2rem; display: block; margin-bottom: 0.75rem; }
+    .footer-brand p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; max-width: 220px; }
+
+    .footer-col h4 {
+      font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-primary); margin-bottom: 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.88rem; transition: color var(--transition);
+    }
+    .footer-col a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem; color: var(--text-tertiary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; }
+      .hero h1 .line { transform: none !important; }
+      .hero-sub { opacity: 1 !important; transform: none !important; }
+      .hero-stats .stat { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+
+  <!-- Theme detection IIFE — runs before first paint to prevent flash -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('anywise-theme');
+      var isLight;
+      if (stored === 'light' || stored === 'dark') {
+        isLight = stored === 'light';
+      } else {
+        isLight = false;
+        try {
+          var hour = new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })).getHours();
+          isLight = hour >= 6 && hour < 18;
+        } catch(e) {}
+      }
+      document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.content = isLight ? '#f5f8ff' : '#0c0f1a';
+      // Queuing stub — replaced by Three.js module on load
+      window.updateGlobeTheme = function(light) { window.__pendingGlobeTheme = light; };
+    })();
+  </script>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">Data<span>Vault</span></a>
+
+      <button id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#track">Track Record</a></li>
+        <li>
+          <button id="themeToggle" aria-label="Toggle light/dark theme">☀</button>
+        </li>
+        <li>
+          <a href="https://datavault.io/demo" class="nav-cta">Request demo</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div id="globe-container"></div>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content" id="main-content">
+      <p class="hero-tagline" aria-hidden="true">Enterprise-grade security.</p>
+
+      <h1>
+        <span class="line">Enterprise data,</span>
+        <span class="line"><em>simplified.</em></span>
+      </h1>
+
+      <p class="hero-sub">
+        Enterprise-grade security shouldn't require complexity. We abstract the overhead so your teams can focus on what matters.
+      </p>
+
+      <div class="hero-stats" aria-label="Key metrics">
+        <div class="stat">
+          <div class="stat-value">500+</div>
+          <div class="stat-label">Enterprise clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">99.99%</div>
+          <div class="stat-label">Uptime SLA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">$100M+</div>
+          <div class="stat-label">Data daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       PURPOSE & VALUES
+  ============================================================ -->
+  <section id="purpose">
+    <div class="container">
+      <p class="label reveal">Our purpose</p>
+      <h2 class="reveal">Built on principles<br>that don't compromise.</h2>
+
+      <div class="values-list">
+        <div class="value-row reveal">
+          <span class="value-name">Security</span>
+          <span class="value-dash">—</span>
+          <span class="value-desc">End-to-end encryption and zero-knowledge architecture ensure your data remains yours alone. We never have access to your keys.</span>
+        </div>
+        <div class="value-row reveal">
+          <span class="value-name">Transparency</span>
+          <span class="value-dash">—</span>
+          <span class="value-desc">We believe in open, honest communication about how data flows through our systems. Audit logs, open-source SDKs, no hidden data practices.</span>
+        </div>
+        <div class="value-row reveal">
+          <span class="value-name">Simplicity</span>
+          <span class="value-dash">—</span>
+          <span class="value-desc">Complex infrastructure doesn't have to mean complex interfaces or APIs. We abstract the hard parts so your engineers can ship faster.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       CAPABILITIES
+  ============================================================ -->
+  <section id="capabilities">
+    <div class="container">
+      <p class="label reveal">Capabilities</p>
+      <h2 class="reveal">What DataVault does.</h2>
+
+      <div class="capabilities-grid">
+        <div class="capability-card reveal">
+          <p class="card-number">01 — Encryption</p>
+          <h3>End-to-end encryption</h3>
+          <p>All data encrypted at rest and in transit using AES-256. Customer-managed keys with full key rotation support. You control access, always.</p>
+        </div>
+        <div class="capability-card reveal">
+          <p class="card-number">02 — Analytics</p>
+          <h3>Real-time analytics dashboard</h3>
+          <p>Visualize data trends as they happen with our intuitive, privacy-preserving dashboard. No server-side decryption required.</p>
+        </div>
+        <div class="capability-card reveal">
+          <p class="card-number">03 — Integrations</p>
+          <h3>Custom API integrations</h3>
+          <p>Connect to any system in your stack. Well-documented REST and GraphQL APIs with SDKs for every major language.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       APPROACH
+  ============================================================ -->
+  <section id="approach">
+    <div class="container">
+      <div class="approach-grid">
+        <div class="approach-left reveal-left">
+          <p class="label">Our approach</p>
+          <h2>Security by design,<br>not by default.</h2>
+          <p class="body-text">
+            We learned from decades of enterprise deployments that true simplicity comes from deep technical expertise applied with restraint. The best security is the kind users never have to think about — it just works.
+          </p>
+        </div>
+        <div class="approach-right reveal-right">
+          <div class="approach-items">
+            <div class="approach-item">
+              <span class="approach-num">01</span>
+              <div>
+                <h4>Abstract the overhead</h4>
+                <p>We handle key management, rotation, auditing, and compliance so your team focuses on building product.</p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <span class="approach-num">02</span>
+              <div>
+                <h4>Zero-trust architecture</h4>
+                <p>Every request is authenticated and authorized independently. No implicit trust, no lateral movement.</p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <span class="approach-num">03</span>
+              <div>
+                <h4>Compliance as a byproduct</h4>
+                <p>SOC 2 Type II, GDPR, HIPAA, and ISO 27001 compliance come built-in — not bolted on later.</p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <span class="approach-num">04</span>
+              <div>
+                <h4>Transparent by default</h4>
+                <p>Full audit logs, open-source SDKs, and independent security reviews. Nothing happens without a trace.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       PRODUCTS
+  ============================================================ -->
+  <section id="products">
+    <div class="container">
+      <p class="label reveal">Products</p>
+      <h2 class="reveal">Three tools. One platform.</h2>
+
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-image-wrap">
+            <span class="product-icon">🔐</span>
+          </div>
+          <div class="product-body">
+            <p class="product-tag">Storage</p>
+            <h3>DataVault Core</h3>
+            <p>Encrypted storage with intuitive interfaces for secure data management and retrieval. Customer-managed keys, full audit trail.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-image-wrap">
+            <span class="product-icon">📊</span>
+          </div>
+          <div class="product-body">
+            <p class="product-tag">Analytics</p>
+            <h3>DataVault Analytics</h3>
+            <p>Real-time insights on your encrypted data with zero server-side decryption. Dashboards that don't compromise privacy.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-image-wrap">
+            <span class="product-icon">⚡</span>
+          </div>
+          <div class="product-body">
+            <p class="product-tag">Developer</p>
+            <h3>DataVault API</h3>
+            <p>Integration toolkit for building secure data workflows into your applications. REST, GraphQL, webhooks, and SDKs included.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       TRACK RECORD
+  ============================================================ -->
+  <section id="track">
+    <div class="container">
+      <p class="label reveal">Track record</p>
+      <h2 class="reveal">Trusted by enterprises<br>that can't afford to fail.</h2>
+
+      <div class="track-grid">
+        <div class="track-stat reveal" data-count="500" data-suffix="+">
+          <div class="counter-wrap"><span class="counter">0</span><span>+</span></div>
+          <p class="stat-label">Enterprise clients</p>
+        </div>
+        <div class="track-stat reveal" data-count="9999" data-suffix="" data-display="99.99%">
+          <div class="counter-wrap">99.99<span>%</span></div>
+          <p class="stat-label">Uptime SLA</p>
+        </div>
+        <div class="track-stat reveal" data-count="100" data-suffix="M+">
+          <div class="counter-wrap">$<span class="counter">0</span><span>M+</span></div>
+          <p class="stat-label">Data processed daily</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- ============================================================
+       CTA SECTION
+  ============================================================ -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box reveal-scale">
+        <p class="label" style="justify-content: center;">Get started</p>
+        <h2>Ready to simplify<br>your data security?</h2>
+        <p>Join 500+ enterprises that trust DataVault with their most sensitive data. Get a personalised demo in under 30 minutes.</p>
+        <div class="cta-buttons">
+          <a href="https://datavault.io/demo" class="btn btn-accent">Request demo</a>
+          <a href="https://datavault.io/docs" class="btn btn-outline">Read the docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-brand">Data<span>Vault</span></a>
+          <p>Enterprise-grade data security, simplified. Trusted by 500+ companies worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Core</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DataVault, Inc. All rights reserved.</p>
+        <p><a href="#" style="color: var(--text-tertiary); text-decoration: none;">Privacy</a> · <a href="#" style="color: var(--text-tertiary); text-decoration: none;">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // ── Theme toggle ──────────────────────────────────────────────
+    const themeToggle = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = theme === 'light' ? '#f5f8ff' : '#0c0f1a';
+      themeToggle.textContent = theme === 'light' ? '☾' : '☀';
+      localStorage.setItem('anywise-theme', theme);
+      if (window.updateGlobeTheme) window.updateGlobeTheme(theme === 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+    });
+    // Set initial toggle icon to match current theme
+    applyTheme(document.documentElement.dataset.theme);
+
+    // ── Mobile menu ───────────────────────────────────────────────
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!isOpen));
+      navLinks.classList.toggle('open');
+      mobileToggle.classList.toggle('active');
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('open');
+        mobileToggle.classList.remove('active');
+      }
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('open');
+        mobileToggle.classList.remove('active');
+      });
+    });
+
+    // ── Scroll handler ────────────────────────────────────────────
+    let cachedHeroHeight = null;
+    window.addEventListener('resize', () => { cachedHeroHeight = null; }, { passive: true });
+
+    window.addEventListener('scroll', () => {
+      const heroHeight = cachedHeroHeight || (cachedHeroHeight = document.getElementById('hero')?.offsetHeight || 600);
+
+      // Scroll progress bar
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) || 0;
+      document.documentElement.style.setProperty('--scroll-progress', scrollPercent);
+
+      // Nav scrolled state
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > heroHeight * 0.3);
+
+      // Globe scroll progress
+      window.__globeScrollProgress = Math.min(window.scrollY / heroHeight, 1);
+    }, { passive: true });
+
+    // ── IntersectionObserver — scroll reveals ─────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .label, .section-divider').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // ── Hero entrance animations ──────────────────────────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      // H1 line reveal
+      setTimeout(() => {
+        document.querySelectorAll('.hero h1 .line').forEach(line => line.classList.add('line-visible'));
+      }, 100);
+
+      // Sub text reveal
+      setTimeout(() => {
+        document.querySelector('.hero-sub')?.classList.add('visible');
+      }, 500);
+
+      // Stats bar reveal
+      setTimeout(() => {
+        document.querySelectorAll('.hero-stats .stat').forEach(stat => stat.classList.add('visible'));
+      }, 600);
+    });
+
+    // ── Rotating tagline ──────────────────────────────────────────
+    const taglines = ['Enterprise-grade security.', 'Zero-knowledge architecture.', 'Compliance built-in.'];
+    let taglineIndex = 0;
+    const taglineEl = document.querySelector('.hero-tagline');
+
+    if (taglineEl) {
+      setInterval(() => {
+        taglineEl.style.opacity = '0';
+        taglineEl.style.transform = 'translateY(-8px)';
+        setTimeout(() => {
+          taglineIndex = (taglineIndex + 1) % taglines.length;
+          taglineEl.textContent = taglines[taglineIndex];
+          taglineEl.style.opacity = '1';
+          taglineEl.style.transform = 'translateY(0)';
+        }, 400);
+      }, 3000);
+    }
+
+    // ── Capability card spotlight (mouse tracking) ─────────────────
+    document.querySelectorAll('.capability-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // ── Counter animation ─────────────────────────────────────────
+    const animateCounters = (() => {
+      let fired = false;
+      return () => {
+        if (fired) return;
+        fired = true;
+        document.querySelectorAll('.track-stat').forEach(stat => {
+          const counter = stat.querySelector('.counter');
+          if (!counter) return;
+          const target = parseInt(stat.dataset.count);
+          const suffix = stat.dataset.suffix || '';
+          let current = 0;
+          const increment = target / 60;
+          const update = () => {
+            current = Math.min(current + increment, target);
+            counter.textContent = Math.floor(current);
+            if (current < target) requestAnimationFrame(update);
+            else counter.textContent = target;
+          };
+          requestAnimationFrame(update);
+        });
+      };
+    })();
+
+    const trackSection = document.getElementById('track');
+    if (trackSection) {
+      const trackObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateCounters();
+          trackObserver.unobserve(entries[0].target);
+        }
+      }, { threshold: 0.5 });
+      trackObserver.observe(trackSection);
+    }
+  </script>
+
+  <!-- ============================================================
+       THREE.JS GLOBE (ES Module)
+  ============================================================ -->
+  <script type="module">
+    import * as THREE from 'three';
+
+    let isLight = document.documentElement.dataset.theme === 'light';
+    const prefersRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const container = document.getElementById('globe-container');
+    if (!container) throw new Error('No globe container');
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.z = 1.9;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(isLight ? 0xf5f8ff : 0x080b14, 1);
+    container.appendChild(renderer.domElement);
+
+    // Earth sphere
+    const geometry = new THREE.SphereGeometry(1, 64, 64);
+    const textureLoader = new THREE.TextureLoader();
+
+    function loadEarthTexture(light, onLoad) {
+      const tex = textureLoader.load(
+        light
+          ? 'https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg'
+          : 'https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg',
+        (loadedTex) => {
+          if (onLoad) onLoad(loadedTex);
+          renderer.render(scene, camera);
+        }
+      );
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    }
+
+    const earthTexture = loadEarthTexture(isLight);
+    const earthMaterial = new THREE.MeshStandardMaterial({ map: earthTexture, roughness: 1, metalness: 0 });
+    const earth = new THREE.Mesh(geometry, earthMaterial);
+    earth.rotation.y = -2.32; // face Australia (~133°E)
+    earth.rotation.x = 0.44;
+    scene.add(earth);
+
+    // Atmospheric glow — blue/cyan for tech theme
+    const glowGeometry = new THREE.SphereGeometry(1.02, 64, 64);
+
+    function makeGlowMaterial(light) {
+      return new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec3 vNormal;
+          void main() {
+            vNormal = normalize(normalMatrix * normal);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: light ? `
+          varying vec3 vNormal;
+          void main() {
+            float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
+            gl_FragColor = vec4(0.5, 0.7, 1.0, 1.0) * intensity * 0.25;
+          }
+        ` : `
+          varying vec3 vNormal;
+          void main() {
+            float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
+            gl_FragColor = vec4(0.12, 0.40, 0.87, 1.0) * intensity * 0.7;
+          }
+        `,
+        side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
+        transparent: true
+      });
+    }
+
+    const glowMesh = new THREE.Mesh(glowGeometry, makeGlowMaterial(isLight));
+    scene.add(glowMesh);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, isLight ? 0.8 : 0.6);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, isLight ? 3.5 : 2.5);
+    directionalLight.position.set(isLight ? 5 : -5, 3, 5);
+    scene.add(directionalLight);
+
+    // Blue accent light for tech glow
+    const accentLight = new THREE.PointLight(0x0284c7, isLight ? 0.3 : 0.9, 10);
+    accentLight.position.set(2, 1, 3);
+    scene.add(accentLight);
+
+    // Theme update function
+    function updateGlobeTheme(newIsLight) {
+      isLight = newIsLight;
+      renderer.setClearColor(isLight ? 0xf5f8ff : 0x080b14, 1);
+
+      // Defer texture swap until new texture is GPU-ready (prevents black flash)
+      const oldTexture = earthMaterial.map;
+      loadEarthTexture(isLight, (newTex) => {
+        earthMaterial.map = newTex;
+        earthMaterial.needsUpdate = true;
+        if (oldTexture) oldTexture.dispose();
+      });
+
+      // Replace glow material entirely (can't mutate fragment shader at runtime)
+      const oldGlowMat = glowMesh.material;
+      glowMesh.material = makeGlowMaterial(isLight);
+      oldGlowMat.dispose();
+
+      ambientLight.intensity = isLight ? 0.8 : 0.6;
+      directionalLight.intensity = isLight ? 3.5 : 2.5;
+      directionalLight.position.set(isLight ? 5 : -5, 3, 5);
+      accentLight.intensity = isLight ? 0.3 : 0.9;
+    }
+
+    // Register real function, flush any pending theme that arrived before module loaded
+    window.updateGlobeTheme = updateGlobeTheme;
+    if (window.__pendingGlobeTheme !== undefined) {
+      updateGlobeTheme(window.__pendingGlobeTheme);
+      delete window.__pendingGlobeTheme;
+    }
+
+    // Animation loop
+    const baseDistance = 1.9;
+    let isVisible = true;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!isVisible) return;
+
+      if (!prefersRM) {
+        earth.rotation.y += 0.0008;
+        glowMesh.rotation.y += 0.0008;
+      }
+
+      // Scroll zoom — camera pulls in as user scrolls hero
+      const progress = window.__globeScrollProgress || 0;
+      camera.position.z = Math.max(baseDistance - progress * 0.7, 1.2);
+
+      renderer.render(scene, camera);
+    }
+
+    // Pause when off-screen (performance)
+    const obs = new IntersectionObserver(entries => {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0 });
+    obs.observe(container);
+
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }, { passive: true });
+
+    animate();
+  </script>
+
+</body>
+</html>

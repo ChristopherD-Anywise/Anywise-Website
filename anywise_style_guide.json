@@ -1,0 +1,286 @@
+{
+  "brand": {
+    "name": "Anywise",
+    "version": "2.0",
+    "guidelines_version": "1.0",
+    "date": "28 July 2020",
+    "designed_by": "Bloke Design",
+    "website": "anywise.com.au",
+    "tagline": "Purpose Driven Projects",
+    "description": "The word 'Anywise' combines 'any' and 'wise', meaning in any way, by any means possible, or anything it takes.",
+    "company": {
+      "legal_name": "Anywise Consulting Pty Ltd",
+      "abn": "86 169 092 960",
+      "registered_address": "Level 4/333 Collins Street, Melbourne 3000",
+      "postal_address": "PO BOX 292 Brunswick East, Victoria, Australia 3067",
+      "email": "sales@anywise.com.au",
+      "phone_office": "+61 3 9078 6938",
+      "offices": ["Melbourne", "Sydney", "Brisbane", "Perth", "Canberra"],
+      "insurances": {
+        "professional_indemnity": "$10m",
+        "public_liability": "$10m",
+        "workcover": "Victoria"
+      },
+      "certifications": ["Certified B Corporation (since 2018)", "Certified Scrum Master (all staff and suppliers)"],
+      "philanthropy": "20% of annual profits directed to philanthropic activities",
+      "ownership": "Veteran-owned business with 50% female board representation"
+    }
+  },
+
+  "identity": {
+    "primary_mark": {
+      "description": "The primary wordmark is the preferred expression of the Anywise brand and the foundation of the core identity.",
+      "typography_notes": "Bold, heavy weight with tightened letter spacing. Angled tops on 'n' and 'i' for character.",
+      "variants": [
+        {
+          "name": "Full Colour Solid",
+          "use_case": "Default usage on light/white backgrounds"
+        },
+        {
+          "name": "Full Colour Reverse",
+          "use_case": "Use on dark or coloured backgrounds"
+        },
+        {
+          "name": "1 Colour Solid",
+          "use_case": "Single colour applications"
+        },
+        {
+          "name": "1 Colour Reverse",
+          "use_case": "Single colour on dark backgrounds"
+        }
+      ],
+      "with_tagline_variants": [
+        "Full Colour Solid",
+        "Full Colour Reverse",
+        "1 Colour Solid",
+        "1 Colour Reverse"
+      ]
+    },
+    "logomark": {
+      "name": "any.",
+      "description": "The 'any.' mark is a peelable element from the core identity used as an icon where the full wordmark becomes too small or illegible.",
+      "use_cases": ["LinkedIn", "YouTube", "Instagram", "Twitter", "Website favicon"],
+      "note": "Should always be used where the word Anywise is present.",
+      "variants": [
+        "Full Colour Solid",
+        "Full Colour Reverse",
+        "1 Colour Solid",
+        "Alternative Colour Reverse"
+      ]
+    },
+    "clear_space": {
+      "description": "No copy or images should appear within the clear space around the logo.",
+      "minimum_size": {
+        "print": {
+          "width": "21mm",
+          "height": "6.5mm"
+        },
+        "digital": {
+          "width": "80px",
+          "height": "22px"
+        }
+      }
+    }
+  },
+
+  "colour_palette": {
+    "primary": [
+      {
+        "name": "Apple",
+        "hex": "#39a849",
+        "rgb": { "r": 57, "g": 168, "b": 73 },
+        "notes": "Primary green — main brand colour"
+      },
+      {
+        "name": "Lime",
+        "hex": "#c3e01b",
+        "rgb": { "r": 195, "g": 224, "b": 27 },
+        "notes": "Accent green"
+      },
+      {
+        "name": "Mint",
+        "hex": "#2d7f36",
+        "rgb": { "r": 45, "g": 127, "b": 54 },
+        "notes": "Deep green"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "rgb": { "r": 0, "g": 0, "b": 0 }
+      },
+      {
+        "name": "Dark Grey",
+        "hex": "#232021",
+        "rgb": { "r": 35, "g": 32, "b": 33 }
+      },
+      {
+        "name": "Light Grey",
+        "hex": "#e0e0e0",
+        "rgb": { "r": 224, "g": 224, "b": 224 }
+      },
+      {
+        "name": "Cream",
+        "hex": "#fcf9e3",
+        "rgb": { "r": 252, "g": 249, "b": 227 }
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "rgb": { "r": 255, "g": 255, "b": 255 }
+      }
+    ],
+    "gradients": {
+      "apple_to_lime": ["#39a849", "#c3e01b"],
+      "lime_to_mint": ["#c3e01b", "#2d7f36"],
+      "mint_to_apple": ["#2d7f36", "#39a849"]
+    },
+    "rationale": "Three shades of green represent growth and new beginnings. Green is uncommon in the consulting industry, differentiating Anywise from competitors, and reflects the company's ethical and sustainable values."
+  },
+
+  "typography": {
+    "display_headings_titles": {
+      "font_family": "Open Sans Bold",
+      "weight": "Bold",
+      "source": "https://fonts.google.com/specimen/Open+Sans",
+      "use": "Headings and titles"
+    },
+    "sub_headings": {
+      "font_family": "Open Sans Semi-Bold",
+      "weight": "Semi-Bold",
+      "source": "https://fonts.google.com/specimen/Open+Sans",
+      "use": "Sub-headings"
+    },
+    "body_copy": {
+      "font_family": "Roboto Regular",
+      "weight": "Regular",
+      "source": "https://fonts.google.com/specimen/Roboto",
+      "use": "Body copy — open, welcoming and easy to read"
+    }
+  },
+
+  "graphic_language": {
+    "description": "Three symbols derived to represent the brand personality and expression. Can be used to create background patterns, textures, graphical shapes, pictograms, illustrations, and motion graphics.",
+    "symbols": [
+      {
+        "name": "any.thing",
+        "symbol": "positive / plus sign (+)",
+        "meaning": "Everything done is to make a difference and have impact"
+      },
+      {
+        "name": "any.way",
+        "symbol": "upward arrow",
+        "meaning": "Represents growth, direction, agility, and always progressing"
+      },
+      {
+        "name": "any.one",
+        "symbol": "human silhouette",
+        "meaning": "Represents diversity, inclusivity, and openness to working with anyone"
+      }
+    ]
+  },
+
+  "brand_voice": {
+    "personality_words": ["open-hearted", "diverse", "inclusive"],
+    "tone_principles": [
+      "Purpose driven by conviction",
+      "Innovative and agile",
+      "Ethical and responsible",
+      "Welcoming of all people and backgrounds"
+    ],
+    "voice_expressions": [
+      "any.thing is possible",
+      "any.thing with purpose",
+      "any.thing goes",
+      "any.thing to make a difference",
+      "any.thing to create impact",
+      "any.way forward",
+      "any.way to progress",
+      "any.way responsibly",
+      "any.one matters",
+      "any.one can make a difference",
+      "any.one is welcome",
+      "any.where",
+      "any.when",
+      "any.how",
+      "any.who"
+    ]
+  },
+
+  "photography_imagery": {
+    "style_guidelines": [
+      "Treat images to look consistent with the Anywise brand",
+      "Never use stock photos that look staged",
+      "Apply brand green colour treatments to images where appropriate"
+    ],
+    "portrait_guidelines": {
+      "background": "Dark grey",
+      "attire": "Smart casual — no polos, no full suits and ties",
+      "mood": "Emotion, warmth, fun, natural"
+    }
+  },
+
+  "brand_applications": {
+    "documents_presentations": {
+      "notes": "Use brand colours, typography, and graphic language elements in all document and presentation templates"
+    },
+    "email_footer": {
+      "elements": ["Name", "Title", "Mobile", "Phone", "Email", "Website", "Social media icons", "Anywise wordmark with tagline"]
+    },
+    "social_media": {
+      "linkedin_cover": {
+        "elements": ["Green background", "Graphic language pattern", "anywise wordmark", "Tagline", "any. logomark"]
+      },
+      "post_style": {
+        "elements": ["Photography with brand treatment", "any.thing symbol as overlay", "Bold headline text", "anywise wordmark and certified B Corp logo"]
+      }
+    },
+    "case_studies": {
+      "sections": ["At a glance", "Challenge", "Solution", "Impact", "Client quote"],
+      "at_a_glance_fields": ["Industry", "Services", "Products", "Duration"]
+    },
+    "website": {
+      "navigation": ["about", "services", "industries", "purpose", "resources"],
+      "key_sections": [
+        "Hero banner with brand statement",
+        "any.thing is possible — services",
+        "any.one is welcome — team",
+        "any.news — blog/articles",
+        "Purpose driven projects — why we work",
+        "turn strategy into action — industries",
+        "Partners"
+      ]
+    },
+    "podcast": {
+      "name": "any.talk",
+      "subtitle": "an anywise podcast",
+      "cover_art_style": "Cream background, green circles, Open Sans Bold typography"
+    },
+    "animation_motion": {
+      "concept": "Animated reveal of the 'any.' prefix followed by cycling word completions: any.thing → any.way → any.one → anywise",
+      "background": "Solid Apple green (#39a849)",
+      "text_colour": "White and Lime (#c3e01b)"
+    }
+  },
+
+  "services": [
+    "Program and Product Management",
+    "Project Management",
+    "Systems and Software Engineering",
+    "Integrated Logistics Support Management",
+    "Learning and Development",
+    "Data Analysis and Software Development",
+    "Business Development",
+    "Strategy and Planning",
+    "Government Engagement",
+    "Engineering",
+    "Design and Product Development"
+  ],
+
+  "industries": [
+    "Government and Defence",
+    "Humanitarian Sector",
+    "Emergency and Disaster Services"
+  ]
+}
