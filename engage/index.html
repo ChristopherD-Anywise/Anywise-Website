@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engage Us | Anywise</title>
+<meta name="description" content="Get in touch with Anywise. Tell us about your challenge and we'll get back to you within one business day.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Standalone Engage Page ────────────────────────────────────────────── */
+.engage-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem;
+}
+
+.engage-standalone {
+  width: 100%;
+  max-width: 640px;
+}
+
+.engage-standalone .engage-panel {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+}
+
+.engage-standalone .engage-header {
+  margin-bottom: 1.75rem;
+}
+
+.engage-standalone .engage-sub {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0.4rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../anywise-v5-redesign.html" class="nav-brand">any<span>wise</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../anywise-v5-redesign.html#capabilities">Capabilities</a></li>
+      <li><a href="../anywise-v5-redesign.html#approach">Approach</a></li>
+      <li><a href="../products/index.html">Products</a></li>
+      <li><a href="../anywise-v5-redesign.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ ENGAGE FORM ═══ -->
+<main class="engage-page">
+  <div class="engage-standalone">
+    <div class="breadcrumb" style="margin-bottom:1.5rem;">
+      <a href="../anywise-v5-redesign.html">Home</a>
+      <span>/</span>
+      <span>Engage Us</span>
+    </div>
+
+    <div class="engage-panel">
+      <div class="engage-header">
+        <span class="label">Get in touch</span>
+        <h1 style="font-size:2rem;font-weight:700;margin:0.5rem 0 0.35rem;letter-spacing:-0.02em;">Engage Us</h1>
+        <p class="engage-sub">Tell us about your challenge. We'll get back to you within one business day.</p>
+      </div>
+
+      <form
+        class="engage-form"
+        id="engageForm"
+        action="mailto:sales@anywise.com.au"
+        method="POST"
+        enctype="text/plain"
+      >
+        <div class="engage-row">
+          <div class="engage-group">
+            <label for="engName">Full name <span aria-hidden="true">*</span></label>
+            <input class="engage-input" id="engName" name="name" type="text"
+              placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="engage-group">
+            <label for="engEmail">Work email <span aria-hidden="true">*</span></label>
+            <input class="engage-input" id="engEmail" name="email" type="email"
+              placeholder="jane@organisation.gov.au" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="engage-row">
+          <div class="engage-group">
+            <label for="engOrg">Organisation <span aria-hidden="true">*</span></label>
+            <input class="engage-input" id="engOrg" name="organisation" type="text"
+              placeholder="Department / Company" required>
+          </div>
+          <div class="engage-group">
+            <label for="engRole">Your role</label>
+            <input class="engage-input" id="engRole" name="role" type="text"
+              placeholder="e.g. CTO, Project Manager">
+          </div>
+        </div>
+
+        <div class="engage-group">
+          <label for="engEnquiry">What are you looking for? <span aria-hidden="true">*</span></label>
+          <select class="engage-select" id="engEnquiry" name="enquiry" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="product">Product enquiry</option>
+            <option value="partnership">Partnership or collaboration</option>
+            <option value="general">General enquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="engage-group" id="engProductGroup" hidden>
+          <label for="engProduct">Which product? <span aria-hidden="true">*</span></label>
+          <select class="engage-select" id="engProduct" name="product">
+            <option value="" disabled selected>Select a product…</option>
+            <option value="WISDOM">WISDOM</option>
+            <option value="ENG|AIDE">ENG|AIDE</option>
+            <option value="FABHUMS">FABHUMS</option>
+            <option value="CAMP|AIDE">CAMP|AIDE</option>
+            <option value="AIDE">AIDE</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="engage-group">
+          <label for="engMessage">Message <span aria-hidden="true">*</span></label>
+          <textarea class="engage-textarea" id="engMessage" name="message"
+            placeholder="Tell us about your challenge, context, or what you'd like to explore with Anywise…"
+            required></textarea>
+        </div>
+
+        <div class="engage-actions">
+          <p class="engage-note">We respect your privacy. Your details are never shared with third parties.</p>
+          <button type="submit" class="btn btn-primary">Send &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../anywise-v5-redesign.html" class="nav-brand" style="font-size:1.15rem;">any<span>wise</span></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../anywise-v5-redesign.html#capabilities">Technology</a>
+        <a href="../anywise-v5-redesign.html#capabilities">Services</a>
+        <a href="../anywise-v5-redesign.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="../products/wisdom.html">WISDOM</a>
+        <a href="../products/engaide.html">ENG|AIDE</a>
+        <a href="../products/fabhums.html">FABHUMS</a>
+        <a href="../products/campaide.html">CAMP|AIDE</a>
+        <a href="../products/aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../anywise-v5-redesign.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="index.html">Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+<script>
+/* Conditional product dropdown for standalone page */
+(function() {
+  var enquirySelect = document.getElementById('engEnquiry');
+  var productGroup = document.getElementById('engProductGroup');
+  var productSelect = document.getElementById('engProduct');
+  if (!enquirySelect) return;
+  enquirySelect.addEventListener('change', function() {
+    var show = enquirySelect.value === 'product';
+    productGroup.hidden = !show;
+    productSelect.required = show;
+  });
+})();
+</script>
+</body>
+</html>
