@@ -22,6 +22,7 @@
 <meta name="twitter:image" content="https://www.anywise.com.au/og-image.png">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1540,10 +1541,10 @@ footer {
     <ul class="nav-links" id="navLinks">
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li><a href="#products">Products</a></li>
+      <li><a href="products/index.html">Products</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#news">Insights</a></li>
-      <li><a href="#contact" class="nav-cta"><span>Engage Us</span></a></li>
+      <li><a href="blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
       <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
     </ul>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -1579,7 +1580,7 @@ footer {
         <p class="hero-sub">We mobilise high-performing teams to solve your most complex capability, technology, and strategic challenges — where the stakes are highest.</p>
         <div class="hero-actions">
           <a href="#capabilities" class="btn btn-primary">Our Capabilities</a>
-          <a href="#contact" class="btn btn-accent"><span>Engage Us &rarr;</span></a>
+          <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
         </div>
       </div>
     </div>
@@ -2348,5 +2349,6 @@ window.addEventListener('resize', () => {
 
 animate();
 </script>
+<script src="shared.js"></script>
 </body>
 </html>
