@@ -413,6 +413,23 @@ a.nav-cta {
 }
 .nav-cta span { position: relative; z-index: 1; }
 
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+  opacity: 0.7;
+}
+.theme-toggle:hover {
+  opacity: 1;
+  color: var(--text-primary);
+  border-color: var(--border-accent);
+}
 .mobile-toggle {
   display: none;
   background: none; border: none; cursor: pointer;
@@ -1449,15 +1466,21 @@ footer {
 }
 </style>
 <script>
-  // Set theme before first paint — Sydney time, DST-aware
+  // Set theme before first paint — localStorage first, then Sydney time fallback
   (function() {
-    var isLight = false;
-    try {
-      var hour = new Date(
-        new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })
-      ).getHours();
-      isLight = hour >= 6 && hour < 18;
-    } catch(e) {}
+    var stored = localStorage.getItem('anywise-theme');
+    var isLight;
+    if (stored === 'light' || stored === 'dark') {
+      isLight = stored === 'light';
+    } else {
+      isLight = false;
+      try {
+        var hour = new Date(
+          new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })
+        ).getHours();
+        isLight = hour >= 6 && hour < 18;
+      } catch(e) {}
+    }
     document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
     var themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) themeMeta.content = isLight ? '#f5f6f3' : '#0e110e';
@@ -1481,6 +1504,7 @@ footer {
       <li><a href="#news">Insights</a></li>
       <li><a href="#contact" class="nav-cta"><span>Engage Us</span></a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -1962,6 +1986,22 @@ links.querySelectorAll('a').forEach(a => {
     toggle.classList.remove('active');
     links.classList.remove('open');
   });
+});
+
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = theme === 'light' ? '#f5f6f3' : '#0e110e';
+  themeToggle.textContent = theme === 'light' ? '☾' : '☀';
+  localStorage.setItem('anywise-theme', theme);
+}
+// Set initial icon based on current theme
+themeToggle.textContent = document.documentElement.dataset.theme === 'light' ? '☾' : '☀';
+themeToggle.addEventListener('click', function() {
+  const current = document.documentElement.dataset.theme;
+  applyTheme(current === 'light' ? 'dark' : 'light');
 });
 
 // ── SCROLL REVEAL ENGINE ──
