@@ -52,13 +52,19 @@ Extract from `anywise-v5-redesign.html`:
 - Nav styles and behaviour
 - Footer styles
 - Typography scale (General Sans + JetBrains Mono)
-- Button variants (`.btn-primary`, `.btn-accent`, `.btn-ghost`)
+- Button variants (`.btn-primary`, `.btn-accent`) — note: `.btn-ghost` does not exist in the current codebase and must be created as a new variant (border: 1px solid `var(--border)`, transparent background, `var(--text-primary)` text)
 - Section divider (`.section-divider`)
 - `.container`, `.label`, `.reveal` utility classes
 - Light/dark mode toggle logic (JS)
 - Theme detection IIFE (Sydney timezone-aware, from existing implementation)
 
 The main page `anywise-v5-redesign.html` is updated to `<link rel="stylesheet" href="shared.css">` and its inline styles reduced accordingly. All new pages link the same file with a relative path (e.g. `../shared.css` from within subdirectories).
+
+**JS extraction scope:** Only the theme detection IIFE and light/dark toggle logic are extracted into `shared.css` (via an accompanying `shared.js`). The scroll progress bar, active nav link detection, and globe initialisation remain in `anywise-v5-redesign.html` only — they are main-page-specific and will not work on product/blog pages.
+
+**Relative path convention:** All inner pages (e.g. `products/wisdom.html`) prefix paths with `../` for root-level assets: `../shared.css`, `../shared.js`, `../favicon.svg`. Nav links: `../products/index.html`, `../blog/index.html`, `../anywise-v5-redesign.html`.
+
+**Local development note:** The blog `post.html` and `blog/index.html` use `fetch()` to load `posts.json`. `fetch()` fails on `file://` URLs in most browsers. Development requires a local HTTP server — e.g. VS Code Live Server extension or `python3 -m http.server 8080` from the repo root.
 
 ---
 
@@ -148,7 +154,7 @@ Block types: `paragraph`, `image` (with optional caption), `list` (unordered), `
 
 - Header: label "Latest Insights", H1 "any.news"
 - No category filter tabs (too few posts currently — add when count grows)
-- Post list: each item = thumbnail (left, fixed size), date + category + read time, title, intro snippet
+- Post list: each item = thumbnail (left, fixed size), date + category + read time, title, excerpt (first 160 characters of `intro`, truncated with ellipsis via JS — no separate `excerpt` field needed in the JSON schema)
 - Posts sorted newest first
 - Content loaded from `posts.json` via `fetch()`
 - "No posts" empty state if JSON fails to load
@@ -201,11 +207,11 @@ Block types: `paragraph`, `image` (with optional caption), `list` (unordered), `
 ### Design
 
 - Matches existing site design system exactly: CSS custom properties, General Sans font, dark/light mode aware
-- Panel: max-width 620px, centered, `border: 1px solid var(--accent-border)`, `border-radius: 20px`
-- Overlay: `rgba(4,8,4,0.85)` with `backdrop-filter: blur(8px)` — same feel as mobile nav overlay
+- Panel: max-width 620px, centered, `border: 1px solid var(--border-accent)`, `border-radius: 20px`
+- Overlay: `rgba(10,13,10,0.85)` (`var(--bg-deep)` at opacity) with `backdrop-filter: blur(8px)` — same feel as mobile nav overlay
 - Animation: slides up (translateY) on open, fades out on close
-- Inputs use `var(--surface)` background, `var(--border)` border, focus state uses `var(--accent-border)`
-- Submit button: `.btn-primary` style (accent green background, dark text)
+- Inputs use `var(--bg-card)` background, `var(--border)` border, focus state uses `var(--border-accent)`
+- Submit button: `.btn-primary` style (accent green background, `var(--bg-deep)` text)
 - Privacy note below submit: "We respect your privacy. Your details are never shared with third parties."
 - Form submission: `mailto:sales@anywise.com.au` via `action` attribute (no backend required initially). Can be upgraded to Formspree or similar later.
 
@@ -224,6 +230,9 @@ anywise  |  Capabilities  Approach  Products  About  Insights  [Engage Us →]
 - "Engage Us" triggers the modal (not a page navigation)
 - "Capabilities" and "Approach" link back to `/#capabilities` and `/#approach` (main page anchors) from inner pages
 - On product and blog pages, all nav links use relative paths (e.g. `../products/index.html`, `../blog/index.html`)
+- "Engage Us" nav CTA: on all pages it triggers the modal overlay via JS (`openEngageModal()`). It does NOT navigate to `engage/index.html`. The `href` attribute is `#` with `event.preventDefault()`.
+- `engage/index.html` exists as a fallback standalone page for direct linking (e.g. from external emails or campaigns). It is not linked in the nav.
+- Mobile nav `nth-child` animation delays: the existing CSS has delays for 6 items. When nav is updated, these selectors must be updated to match the new item count.
 
 ---
 
@@ -252,3 +261,5 @@ All new pages inherit the existing theme system from `shared.css`:
 - Search functionality on blog
 - Post tagging / category filtering (add when post count warrants it)
 - Case studies, downloadable PDFs, customer quotes on product pages (future)
+- Dynamic OG/SEO meta tags for blog posts: `<title>` and `og:title` are set via JS after slug resolution, which social crawlers won't see. Accepted tradeoff for client-side rendering — full SEO requires server-side rendering or a static site generator (future).
+- Post tagging / category filtering on blog (add when post count warrants it)
