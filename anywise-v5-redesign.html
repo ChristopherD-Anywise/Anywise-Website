@@ -94,6 +94,119 @@
   --accent-glow:    rgba(57,168,73,0.06);
 }
 
+/* ═══ LIGHT MODE — HERO ═══ */
+[data-theme="light"] #globe-container {
+  background: #f5f6f3;
+}
+
+[data-theme="light"] .hero-bg::before {
+  background: linear-gradient(to top,
+    rgba(255,255,255,0.88) 0%,
+    rgba(255,255,255,0.6)  40%,
+    rgba(255,255,255,0.25) 70%,
+    rgba(255,255,255,0.4)  100%
+  );
+}
+
+[data-theme="light"] .hero-tagline {
+  color: rgba(0,0,0,0.5);
+}
+
+[data-theme="light"] .hero-sub {
+  color: rgba(0,0,0,0.6);
+}
+
+/* ═══ LIGHT MODE — NAVIGATION ═══ */
+[data-theme="light"] nav {
+  background: rgba(250,251,248,0.85);
+}
+
+[data-theme="light"] nav.scrolled {
+  background: rgba(250,251,248,0.95);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Mobile nav overlay */
+[data-theme="light"] .nav-links.open {
+  background: rgba(250,251,248,0.98);
+}
+
+/* ═══ LIGHT MODE — BUTTONS ═══ */
+[data-theme="light"] .btn-primary {
+  border: 1px solid rgba(0,0,0,0.12);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-primary:hover {
+  border-color: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .btn-accent {
+  color: #1a1d1a;
+}
+
+[data-theme="light"] .btn-accent::before {
+  background: conic-gradient(
+    from var(--btn-shine-angle),
+    transparent 60%,
+    rgba(57,168,73,0.4) 75%,
+    rgba(255,255,255,0.6) 80%,
+    rgba(57,168,73,0.4) 85%,
+    transparent 100%
+  );
+}
+
+/* ═══ LIGHT MODE — STATS BAR ═══ */
+[data-theme="light"] .hero-stats-bar {
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .stat-box {
+  background: rgba(255,255,255,0.7);
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .stat-box:hover {
+  background: rgba(255,255,255,0.85);
+}
+
+[data-theme="light"] .stat-box p {
+  color: rgba(0,0,0,0.5);
+}
+
+/* ═══ LIGHT MODE — CAPABILITY CARDS ═══ */
+[data-theme="light"] .cap-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-left: 3px solid var(--accent);
+}
+
+[data-theme="light"] .cap-card:hover {
+  background: var(--bg-card-hover);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(57,168,73,0.06);
+}
+
+/* ═══ LIGHT MODE — PRODUCT & NEWS CARDS ═══ */
+[data-theme="light"] .product-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .news-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ═══ LIGHT MODE — CREDENTIALS MARQUEE ═══ */
+[data-theme="light"] .creds-track img {
+  filter: grayscale(1) brightness(0.4);
+  opacity: 0.5;
+}
+
+[data-theme="light"] .creds-track img:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
