@@ -396,6 +396,11 @@ nav .container {
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
 .nav-links a.active { color: var(--accent) !important; }
 .nav-links a.active::after { width: 100%; }
 a.nav-cta {
@@ -405,9 +410,13 @@ a.nav-cta {
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.78rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+}
+a.nav-cta:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 .nav-cta::before {
   content: '';
@@ -441,11 +450,21 @@ a.nav-cta {
   color: var(--text-primary);
   border-color: var(--border-accent);
 }
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  opacity: 1;
+}
 .mobile-toggle {
   display: none;
   background: none; border: none; cursor: pointer;
   width: 24px; height: 16px;
   position: relative; z-index: 1001;
+}
+.mobile-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 .mobile-toggle span {
   display: block; width: 100%; height: 1.5px;
@@ -1519,10 +1538,10 @@ footer {
       <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#news">Insights</a></li>
-      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
       <li><a href="#contact" class="nav-cta"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
     </ul>
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1955,6 +1974,14 @@ const navLinksAll = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 // Hero elements
 const heroSection = document.querySelector('.hero');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let heroHeight = heroSection ? heroSection.offsetHeight : 0;
+
+// Cache hero height on load and resize
+function cacheHeroHeight() {
+  if (heroSection) heroHeight = heroSection.offsetHeight;
+}
+cacheHeroHeight();
+window.addEventListener('resize', cacheHeroHeight);
 
 window.addEventListener('scroll', () => {
   const sy = window.scrollY;
@@ -1967,8 +1994,7 @@ window.addEventListener('scroll', () => {
 
   // Hero fly-toward-earth zoom + content fade
   if (heroSection) {
-    const heroH = heroSection.offsetHeight;
-    const zoomProgress = Math.min(Math.max(sy / heroH, 0), 1);
+    const zoomProgress = Math.min(Math.max(sy / heroHeight, 0), 1);
 
     // Dispatch scroll progress to Three.js globe (module script listens)
     window.__globeScrollProgress = zoomProgress;
@@ -1995,13 +2021,16 @@ window.addEventListener('scroll', () => {
 const toggle = document.getElementById('mobileToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => {
+  const isOpen = toggle.classList.contains('active');
   toggle.classList.toggle('active');
   links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', !isOpen);
 });
 links.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     toggle.classList.remove('active');
     links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
   });
 });
 
@@ -2033,24 +2062,30 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .label, .section-divider').forEach((el, i) => {
-  // Staggered delay for sibling elements
-  const parent = el.parentElement;
-  const siblings = parent ? Array.from(parent.children).filter(c =>
-    c.classList.contains('reveal') || c.classList.contains('reveal-left') ||
-    c.classList.contains('reveal-right') || c.classList.contains('reveal-scale')
-  ) : [];
-  const idx = siblings.indexOf(el);
-  if (idx > 0) {
-    el.style.transitionDelay = `${idx * 0.1}s`;
+  // Staggered delay for sibling elements — skip if prefers-reduced-motion
+  if (!prefersReducedMotion) {
+    const parent = el.parentElement;
+    const siblings = parent ? Array.from(parent.children).filter(c =>
+      c.classList.contains('reveal') || c.classList.contains('reveal-left') ||
+      c.classList.contains('reveal-right') || c.classList.contains('reveal-scale')
+    ) : [];
+    const idx = siblings.indexOf(el);
+    if (idx > 0) {
+      el.style.transitionDelay = `${idx * 0.1}s`;
+    }
   }
   revealObserver.observe(el);
 });
 
 // ── HERO ENTRANCE — trigger after brief delay for smooth page load ──
 const hero = document.querySelector('.hero');
-requestAnimationFrame(() => {
-  setTimeout(() => hero.classList.add('in-view'), 150);
-});
+if (!prefersReducedMotion) {
+  requestAnimationFrame(() => {
+    setTimeout(() => hero.classList.add('in-view'), 150);
+  });
+} else {
+  hero.classList.add('in-view');
+}
 
 // ── COUNTER ANIMATION ──
 function animateCounter(el) {
