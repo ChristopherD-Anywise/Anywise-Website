@@ -259,6 +259,9 @@
 </head>
 <body>
 
+<!-- Skip to Content Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
   <div class="container">
@@ -277,6 +280,9 @@
     </button>
   </div>
 </nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
 
 <!-- ═══ CONTENT (rendered by JS) ═══ -->
 <div id="postContent">
@@ -379,7 +385,7 @@
     /* Hero image or placeholder */
     var heroHtml = '';
     if (post.heroImage) {
-      heroHtml = '<img src="' + escapeHtml(post.heroImage) + '" alt="" class="post-hero-img">';
+      heroHtml = '<img src="' + escapeHtml(post.heroImage) + '" alt="' + escapeHtml(post.title) + '" class="post-hero-img">';
     } else {
       heroHtml = '<div class="post-hero-placeholder">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +

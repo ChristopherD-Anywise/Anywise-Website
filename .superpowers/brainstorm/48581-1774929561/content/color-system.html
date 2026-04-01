@@ -1,0 +1,112 @@
+<h2>Design Section 1: Light Mode Color System</h2>
+<p class="subtitle">CSS custom property overrides under <code>[data-theme="light"]</code></p>
+
+<div class="section">
+  <h3>Background Surfaces</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <!-- Dark Mode -->
+    <div>
+      <p class="label">Dark Mode (Current)</p>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#0a0d0a;border:1px solid rgba(255,255,255,0.15);"></div>
+          <div><strong style="color:#eee;">--bg-deep</strong><br><span style="color:#888;font-size:0.85em;">#0a0d0a</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#0e110e;border:1px solid rgba(255,255,255,0.15);"></div>
+          <div><strong style="color:#eee;">--bg</strong><br><span style="color:#888;font-size:0.85em;">#0e110e</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#151a16;border:1px solid rgba(255,255,255,0.15);"></div>
+          <div><strong style="color:#eee;">--bg-elevated</strong><br><span style="color:#888;font-size:0.85em;">#151a16</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#1a201b;border:1px solid rgba(255,255,255,0.15);"></div>
+          <div><strong style="color:#eee;">--bg-card</strong><br><span style="color:#888;font-size:0.85em;">#1a201b</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#212822;border:1px solid rgba(255,255,255,0.15);"></div>
+          <div><strong style="color:#eee;">--bg-card-hover</strong><br><span style="color:#888;font-size:0.85em;">#212822</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Light Mode -->
+    <div>
+      <p class="label">Light Mode (Proposed)</p>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#f5f6f3;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div><strong style="color:#eee;">--bg-deep</strong><br><span style="color:#888;font-size:0.85em;">#f5f6f3 — warm off-white</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#fafbf8;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div><strong style="color:#eee;">--bg</strong><br><span style="color:#888;font-size:0.85em;">#fafbf8 — near-white with green tint</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#ffffff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div><strong style="color:#eee;">--bg-elevated</strong><br><span style="color:#888;font-size:0.85em;">#ffffff — pure white elevated</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#ffffff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div><strong style="color:#eee;">--bg-card</strong><br><span style="color:#888;font-size:0.85em;">#ffffff — white cards</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:#f0f2ed;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div><strong style="color:#eee;">--bg-card-hover</strong><br><span style="color:#888;font-size:0.85em;">#f0f2ed — subtle green-gray hover</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Text Colors</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <div>
+      <p class="label">Dark Mode (Current)</p>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#f2f1ee;border:1px solid rgba(255,255,255,0.15);"></div><div><strong style="color:#eee;">--text-primary</strong> <span style="color:#888;">#f2f1ee</span></div></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#9a9d95;border:1px solid rgba(255,255,255,0.15);"></div><div><strong style="color:#eee;">--text-secondary</strong> <span style="color:#888;">#9a9d95</span></div></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#626860;border:1px solid rgba(255,255,255,0.15);"></div><div><strong style="color:#eee;">--text-tertiary</strong> <span style="color:#888;">#626860</span></div></div>
+      </div>
+    </div>
+    <div>
+      <p class="label">Light Mode (Proposed)</p>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#1a1d1a;border:1px solid rgba(0,0,0,0.1);"></div><div><strong style="color:#eee;">--text-primary</strong> <span style="color:#888;">#1a1d1a — near-black, green-tinted</span></div></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#4a5248;border:1px solid rgba(0,0,0,0.1);"></div><div><strong style="color:#eee;">--text-secondary</strong> <span style="color:#888;">#4a5248 — muted dark green</span></div></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:6px;background:#7a8275;border:1px solid rgba(0,0,0,0.1);"></div><div><strong style="color:#eee;">--text-tertiary</strong> <span style="color:#888;">#7a8275 — soft gray-green</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Borders, Accents &amp; Shadows</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <div>
+      <p class="label">Dark Mode</p>
+      <ul style="color:#aaa;font-size:0.9em;line-height:1.8;">
+        <li><code>--border</code>: rgba(255,255,255,0.07)</li>
+        <li><code>--border-accent</code>: rgba(57,168,73,0.22)</li>
+        <li><code>--accent</code>: #39a849</li>
+        <li><code>--accent-dim</code>: #2d7f36</li>
+        <li>Shadows: black-based, high opacity</li>
+      </ul>
+    </div>
+    <div>
+      <p class="label">Light Mode (Proposed)</p>
+      <ul style="color:#aaa;font-size:0.9em;line-height:1.8;">
+        <li><code>--border</code>: rgba(0,0,0,0.08)</li>
+        <li><code>--border-accent</code>: rgba(57,168,73,0.25)</li>
+        <li><code>--accent</code>: #2d7f36 — slightly darker for contrast on white</li>
+        <li><code>--accent-dim</code>: #39a849</li>
+        <li>Shadows: green-tinted, lower opacity, softer spread</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: rgba(57,168,73,0.08); border-radius: 8px; border: 1px solid rgba(57,168,73,0.2);">
+  <p style="margin:0;color:#ccc;font-size:0.9em;">Note: All light-mode background colors are tinted slightly toward green to maintain brand cohesion. No pure whites (#fff) for page backgrounds — only for elevated surfaces like cards. The accent green darkens slightly (#2d7f36) to maintain WCAG AA contrast on light backgrounds.</p>
+</div>

@@ -1,0 +1,327 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - region "top of page"
+    - generic [ref=e10]:
+      - banner [ref=e11]:
+        - generic [ref=e17]:
+          - generic:
+            - generic:
+              - link "CONTACT US" [ref=e19] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e20]: CONTACT US
+              - link "CONTACT US" [ref=e22] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e23]: CONTACT US
+              - generic [ref=e28]:
+                - link "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e34] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e35]
+                - navigation "Site" [ref=e41]:
+                  - button "Menu" [ref=e43] [cursor=pointer]:
+                    - img [ref=e47]
+      - main [ref=e52]:
+        - generic [ref=e57]:
+          - generic:
+            - generic:
+              - img "Strip Overlay_right only.png" [ref=e71]
+              - heading "News & Media" [level=1] [ref=e81]:
+                - generic [ref=e83]: News &
+                - generic [ref=e85]: Media
+              - generic [ref=e95]:
+                - generic:
+                  - generic:
+                    - link "all posts" [ref=e100] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/newsmedia
+                      - generic [ref=e101]: all posts
+                    - link "insights" [ref=e103] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/insights
+                      - generic [ref=e104]: insights
+                    - link "podcasts" [ref=e106] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/podcasts
+                      - generic [ref=e107]: podcasts
+                    - link "news & media" [ref=e109] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/news-media
+                      - generic [ref=e110]: news & media
+              - article [ref=e124]:
+                - generic [ref=e125]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - heading "Transforming Operational Challenges into Dual-Use Intelligence Solutions in Engineering" [level=1] [ref=e130]
+                      - generic [ref=e131]:
+                        - list [ref=e132]:
+                          - listitem [ref=e133]:
+                            - 'img "Writer: Anywise HQ" [ref=e136]'
+                            - link "Anywise HQ" [ref=e137] [cursor=pointer]:
+                              - /url: https://www.anywise.com.au/profile/8e7db752-c3f6-48b7-ae44-e2f9efad2eb814359/profile
+                          - listitem [ref=e138]: ·Feb 16
+                          - listitem [ref=e139]: ·3 min read
+                        - button "More actions" [ref=e141] [cursor=pointer]:
+                          - img [ref=e142]
+                    - paragraph [ref=e144]: "Updated: Feb 25"
+                  - generic [ref=e151]:
+                    - paragraph [ref=e153]:
+                      - generic [ref=e154]: Operational challenges often reveal hidden opportunities for innovation. At the recent Combat Engineer and Logistics (CEL) forum, Anywise demonstrated how a straightforward problem in deployable bridging systems evolved into a suite of intelligence products with applications beyond Defence.
+                    - paragraph [ref=e159]:
+                      - generic [ref=e160]: This journey highlights how understanding equipment use and improving planning can reduce risk and enhance efficiency in both military and civilian contexts.
+                    - figure [ref=e167]:
+                      - generic [ref=e168]:
+                        - img "Eye-level view of a deployable military bridge over a river" [ref=e171] [cursor=pointer]
+                        - button "Expand image":
+                          - img
+                      - generic [ref=e174]: Deployable military bridge in use
+                    - heading "From Problem to Practical Solution" [level=2] [ref=e179]:
+                      - generic [ref=e180]: From Problem to Practical Solution
+                    - paragraph [ref=e185]:
+                      - generic [ref=e186]:
+                        - text: "The starting point was a simple but critical question: How do we restore confidence in deployable bridging systems? These systems are vital for military operations, but inconsistent usage data made it difficult to assess their condition and reliability. Anywise developed"
+                        - strong [ref=e187]: FABHUMS
+                        - text: ", a configuration tracking system that transformed scattered data into trustworthy information about serviceability."
+                    - paragraph [ref=e192]:
+                      - generic [ref=e193]: "The key insight was clear: truly understanding what equipment you have and how it has been used allows you to reduce risk without unnecessary replacement. This approach saves resources and extends the life of valuable assets."
+                    - heading "Improving Planning with Digital Tools" [level=2] [ref=e198]:
+                      - generic [ref=e199]: Improving Planning with Digital Tools
+                    - paragraph [ref=e204]:
+                      - generic [ref=e205]:
+                        - text: Once confidence in equipment status improved, the next challenge was planning. How can teams plan better and faster with reliable data? This led to the creation of
+                        - strong [ref=e206]: ENG|AIDE
+                        - text: ", a digital twin and planning support environment. ENG|AIDE structures workflows, validates calculations, and improves data quality. It also reduces friction between assessment and action, making planning more efficient and accurate."
+                    - paragraph [ref=e211]:
+                      - generic [ref=e212]: "A design principle emerged from these developments: let machines handle repetitive micro-decisions so people can focus on judgement. This principle guides the evolution of Anywise systems and supports better decision-making in complex environments."
+                    - heading "Advancing Edge Intelligence" [level=2] [ref=e217]:
+                      - generic [ref=e218]: Advancing Edge Intelligence
+                    - paragraph [ref=e223]:
+                      - generic [ref=e224]:
+                        - text: Building on these foundations, Anywise developed
+                        - strong [ref=e225]: AELIAS
+                        - text: ", an edge intelligence architecture based on the"
+                        - strong [ref=e226]: WISDOM
+                        - text: "human-machine teaming platform. AELIAS supports a family of systems designed to operate in challenging conditions:"
+                    - list [ref=e231]:
+                      - listitem [level=1] [ref=e232]:
+                        - paragraph [ref=e233]:
+                          - generic [ref=e234]:
+                            - strong [ref=e235]: Route planning and condition monitoring
+                            - text: ": Low-power sensors and edge AI assess route viability, bridge loads, and vehicle signatures without needing continuous data streaming."
+                      - listitem [level=1] [ref=e236]:
+                        - paragraph [ref=e237]:
+                          - generic [ref=e238]:
+                            - strong [ref=e239]: Logistics and engineering intelligence overlays
+                            - text: ": These provide actionable data layers that assist planning in contested, degraded, or remote environments."
+                      - listitem [level=1] [ref=e240]:
+                        - paragraph [ref=e241]:
+                          - generic [ref=e242]:
+                            - strong [ref=e243]: Smart deployable infrastructure
+                            - text: ": Camps, shelters, generators, and fuel systems equipped with sensors monitor and report only essential information."
+                    - figure [ref=e249]:
+                      - generic [ref=e250]:
+                        - img "Close-up view of a sensor device mounted on a military vehicle for route condition monitoring" [ref=e253] [cursor=pointer]
+                        - button "Expand image":
+                          - img
+                      - generic [ref=e256]: Sensor device on military vehicle monitoring route conditions
+                    - heading "Dual-Use Applications Beyond Defence" [level=2] [ref=e261]:
+                      - generic [ref=e262]: Dual-Use Applications Beyond Defence
+                    - paragraph [ref=e267]:
+                      - generic [ref=e268]: "Although these systems were developed for defence engineering, they address challenges common to many civilian sectors:"
+                    - list [ref=e273]:
+                      - listitem [level=1] [ref=e274]:
+                        - paragraph [ref=e275]:
+                          - generic [ref=e276]:
+                            - strong [ref=e277]: Emergency response and disaster relief
+                            - text: ": Reliable infrastructure and rapid planning tools help responders act quickly and safely."
+                      - listitem [level=1] [ref=e278]:
+                        - paragraph [ref=e279]:
+                          - generic [ref=e280]:
+                            - strong [ref=e281]: Remote infrastructure and mining operations
+                            - text: ": Monitoring equipment and routes in isolated areas improves safety and efficiency."
+                      - listitem [level=1] [ref=e282]:
+                        - paragraph [ref=e283]:
+                          - generic [ref=e284]:
+                            - strong [ref=e285]: Temporary works and construction logistics
+                            - text: ": Tracking and planning tools reduce delays and equipment failures."
+                      - listitem [level=1] [ref=e286]:
+                        - paragraph [ref=e287]:
+                          - generic [ref=e288]:
+                            - strong [ref=e289]: National stockpile staging and asset management
+                            - text: ": Accurate data on equipment condition supports better inventory management."
+                    - paragraph [ref=e293]:
+                      - generic [ref=e294]: These examples show how defence innovations can provide practical benefits in civilian contexts, improving safety, reducing costs, and enhancing operational confidence.
+                    - heading "Practical Takeaways" [level=2] [ref=e299]:
+                      - generic [ref=e300]: Practical Takeaways
+                    - list [ref=e305]:
+                      - listitem [level=1] [ref=e306]:
+                        - paragraph [ref=e307]:
+                          - generic [ref=e308]: Understanding equipment usage reduces unnecessary replacements and lowers risk.
+                      - listitem [level=1] [ref=e309]:
+                        - paragraph [ref=e310]:
+                          - generic [ref=e311]: Digital twins and planning tools improve workflow and decision-making.
+                      - listitem [level=1] [ref=e312]:
+                        - paragraph [ref=e313]:
+                          - generic [ref=e314]: Edge intelligence systems provide reliable data in difficult environments without heavy data demands.
+                      - listitem [level=1] [ref=e315]:
+                        - paragraph [ref=e316]:
+                          - generic [ref=e317]: Defence technologies can be adapted to support emergency services, mining, construction, and asset management.
+                    - figure [ref=e324]:
+                      - generic [ref=e325]:
+                        - button "Expand image":
+                          - img
+                    - heading "Perspective from Growth" [level=2] [ref=e329]:
+                      - generic [ref=e330]: Perspective from Growth
+                    - paragraph [ref=e353]:
+                      - generic [ref=e354]: "Chris, our Head of Growth, captured it well:"
+                    - paragraph [ref=e359]:
+                      - generic [ref=e360]: “Our products start with real constraints, not feature lists. We build practical intelligence layers that sit directly on the infrastructure people rely on, reducing noise and elevating clarity. That same approach works across defence, emergency management and civilian infrastructure.”
+                    - heading [level=2] [ref=e362]
+                    - heading "What’s Next" [level=2] [ref=e374]:
+                      - generic [ref=e375]: What’s Next
+                    - paragraph [ref=e380]:
+                      - generic [ref=e381]: "Under the AELIAS architecture we’re continuing to advance:"
+                    - list [ref=e386]:
+                      - listitem [level=1] [ref=e387]:
+                        - paragraph [ref=e388]:
+                          - generic [ref=e389]: Route viability and load intelligence
+                      - listitem [level=1] [ref=e392]:
+                        - paragraph [ref=e393]:
+                          - generic [ref=e394]: Engineering and logistics overlays
+                      - listitem [level=1] [ref=e397]:
+                        - paragraph [ref=e398]:
+                          - generic [ref=e399]: Smart camp and fuel monitoring
+                      - listitem [level=1] [ref=e402]:
+                        - paragraph [ref=e403]:
+                          - generic [ref=e404]: Low‑power fire detection mesh networks
+                      - listitem [level=1] [ref=e407]:
+                        - paragraph [ref=e408]:
+                          - generic [ref=e409]: Infrastructure planning & reporting tools
+                    - paragraph [ref=e414]:
+                      - generic [ref=e415]: All designed to give decision‑makers clarity over complexity.
+                    - heading "Closing Thought" [level=2] [ref=e420]:
+                      - generic [ref=e421]: Closing Thought
+                    - paragraph [ref=e423]:
+                      - generic [ref=e424]: The future of deployable infrastructure, whether for military operations or civilian response, isn’t about bigger systems. This approach encourages organisations to rethink how they manage equipment and plan operations, focusing on data quality and human-machine collaboration.
+                  - generic [ref=e433]:
+                    - button "Share via Facebook" [ref=e435] [cursor=pointer]:
+                      - img "Facebook" [ref=e436]
+                    - button "Share via X (Twitter)" [ref=e440] [cursor=pointer]:
+                      - img "X" [ref=e441]
+                    - button "Share via LinkedIn" [ref=e445] [cursor=pointer]:
+                      - img "LinkedIn" [ref=e446]
+                    - button "Share via link" [ref=e451] [cursor=pointer]:
+                      - img [ref=e452]
+      - contentinfo [ref=e455]:
+        - generic [ref=e466]:
+          - generic [ref=e467]:
+            - generic:
+              - generic:
+                - link "anywise logo" [ref=e472] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "anywise logo" [ref=e473]
+                - generic:
+                  - paragraph [ref=e474]:
+                    - generic [ref=e475]: Melbourne | Sydney | Brisbane | Perth | Canberra
+                  - paragraph [ref=e476]:
+                    - generic [ref=e477]: North Carolina USA
+                  - paragraph [ref=e478]:
+                    - generic [ref=e480]:
+                      - link "1800 861 893" [ref=e481] [cursor=pointer]:
+                        - /url: tel:+61 3 9078 6938
+                      - link "sales@anywise.com.au" [ref=e482] [cursor=pointer]:
+                        - /url: mailto:sales@anywise.com.au?subject=Website Enquiry
+                - link "facebook_white.png" [ref=e484] [cursor=pointer]:
+                  - /url: https://www.facebook.com/anywiseAUS
+                  - img "facebook_white.png" [ref=e485]
+                - link "twitter_white.png" [ref=e487] [cursor=pointer]:
+                  - /url: https://twitter.com/anywiseaus
+                  - img "twitter_white.png" [ref=e488]
+                - link "linkedin_white.png" [ref=e490] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/anywiseaus
+                  - img "linkedin_white.png" [ref=e491]
+                - paragraph [ref=e492]:
+                  - generic [ref=e493]:
+                    - generic [ref=e494]: ©2025 Anywise |
+                    - link "Privacy Policy" [ref=e498] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/privacy-policy
+                    - generic [ref=e499]: "|"
+                    - link "Contact" [ref=e503] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/contact
+                    - generic [ref=e504]: "|"
+                  - generic [ref=e507]: Careers
+                  - generic [ref=e508]:
+                    - generic [ref=e510]:
+                      - link "|" [ref=e512] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e513] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e515] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                    - link "Defence Industry Disclosure" [ref=e516] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                      - generic [ref=e518]: Defence Industry Disclosure
+                    - link "|" [ref=e522] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                    - link [ref=e523] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                  - link "Whistleblowing Policy" [ref=e525] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - generic [ref=e528]: Whistleblowing Policy
+                  - generic [ref=e531]:
+                    - link "|" [ref=e533] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - link [ref=e534] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                  - link "Grievance/Complaints Mechanism Policy" [ref=e535] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-privacy-policy
+                    - generic [ref=e541]: Grievance/Complaints Mechanism Policy
+                - paragraph [ref=e542]:
+                  - generic [ref=e544]:
+                    - text: Design by
+                    - link "Bloke Design" [ref=e546] [cursor=pointer]:
+                      - /url: https://bloke.design
+          - generic [ref=e547]:
+            - generic:
+              - generic:
+                - link "Certified B Corp" [ref=e552] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/certification
+                  - img "Certified B Corp" [ref=e553]
+                - link "BFTW-2022-Governance-Badge.png" [ref=e555] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/best-for-the-world-2022-governance
+                  - img "BFTW-2022-Governance-Badge.png" [ref=e556]
+                - img "Defence Business of the year Finalist in 2018" [ref=e559]
+                - link "Australian Owned Business" [ref=e561] [cursor=pointer]:
+                  - /url: https://ausowned.com.au/about/
+                  - img "Australian Owned Business" [ref=e562]
+                - link "Australian Veteran Owned Business" [ref=e564] [cursor=pointer]:
+                  - /url: https://www.avob.org.au/
+                  - img "Australian Veteran Owned Business" [ref=e565]
+                - img "FACE.png" [ref=e568]
+                - link "Certified Scrum Master" [ref=e570] [cursor=pointer]:
+                  - /url: https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster
+                  - img "Certified Scrum Master" [ref=e571]
+                - img "WePayFairly.png" [ref=e574]
+                - generic "USFH+Logo+Transparent+Background.png" [ref=e575] [cursor=pointer]:
+                  - link [ref=e576]:
+                    - /url: https://www.anywise.com.au/post/anywise-accepts-the-generous-invitation-of-the-uluru-statement-from-the-heart
+                - generic "Certified System ISO 9001 RGB_1x.jpg" [ref=e577]:
+                  - img "Certified System ISO 9001 RGB_1x.jpg" [ref=e579]
+                - generic "Certified System ISO 45001 YELLOW RGB_2x" [ref=e580]
+                - generic "Certified System AS 9120 GREEN RGB_1x.jp" [ref=e582]
+                - generic:
+                  - paragraph [ref=e584]:
+                    - generic [ref=e585]: Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution. UluruStatement.org
+                  - paragraph [ref=e586]
+                  - paragraph [ref=e587]:
+                    - generic [ref=e588]: Anywise acknowledges the Traditional Owners of the land on which we operate. We also pay our respects to Elders past, present, and emerging.
+    - region "bottom of page"
+  - button [ref=e589] [cursor=pointer]:
+    - img [ref=e591]
+  - region "We use cookies and similar technologies to enable services and functionality on our site and to understand your interaction with our service. By clicking on accept, you agree to our use of such technologies for marketing and analytics.See Privacy Policy" [ref=e594]:
+    - generic [ref=e595]:
+      - generic [ref=e596]:
+        - generic [ref=e598]:
+          - text: We use cookies and similar technologies to enable services and functionality on our site and to understand your interaction with our service. By clicking on accept, you agree to our use of such technologies for marketing and analytics.
+          - link [ref=e599] [cursor=pointer]:
+            - /url: https://www.anywise.com.au/privacy-policy
+            - text: See Privacy Policy
+        - generic [ref=e600]:
+          - button "Cookie Settings" [ref=e601] [cursor=pointer]
+          - button "Accept" [ref=e602] [cursor=pointer]
+      - button "Close" [ref=e604]:
+        - img "Close" [ref=e605] [cursor=pointer]

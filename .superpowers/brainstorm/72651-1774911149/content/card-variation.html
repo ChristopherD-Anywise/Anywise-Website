@@ -1,0 +1,188 @@
+<h2>Card Pattern Variation</h2>
+<p class="subtitle">Currently 6 sections use near-identical bordered card grids. Let's give each section its own visual identity. Here are the sections that need variation — click each to see proposed alternatives.</p>
+
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+  .section-demo { background:#0e110e; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:1.5rem; margin-bottom:1.5rem; font-family:'General Sans',sans-serif; }
+  .section-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.15em; color:#39a849; margin-bottom:0.3rem; font-family:'JetBrains Mono',monospace; }
+  .section-title { font-size:0.85rem; font-weight:600; color:#f2f1ee; margin-bottom:0.8rem; }
+  .current-tag { font-size:0.55rem; padding:0.15rem 0.5rem; background:rgba(255,100,100,0.15); color:rgba(255,150,150,0.8); border-radius:3px; display:inline-block; margin-left:0.5rem; }
+  .proposed-tag { font-size:0.55rem; padding:0.15rem 0.5rem; background:rgba(57,168,73,0.15); color:rgba(57,168,73,0.8); border-radius:3px; display:inline-block; margin-left:0.5rem; }
+  .comparison { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .mini-card { background:#1a201b; border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:0.8rem; font-size:0.7rem; color:#9a9d95; }
+  .mini-card h4 { font-size:0.75rem; color:#f2f1ee; margin-bottom:0.3rem; }
+</style>
+
+<!-- SECTION 1: Values -->
+<div class="section-demo">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <div>
+      <div class="section-label">Purpose & Values Section</div>
+      <div class="section-title">Value Cards (3 cards)</div>
+    </div>
+  </div>
+  <div class="comparison">
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">CURRENT <span class="current-tag">Card Grid</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;">
+        <div class="mini-card" style="text-align:center;border-color:rgba(57,168,73,0.22);">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem;opacity:0.7;">&#9878;</div>
+          <h4 style="font-size:0.65rem;">Act Ethically</h4>
+          <div style="font-size:0.55rem;">We hold ourselves...</div>
+        </div>
+        <div class="mini-card" style="text-align:center;border-color:rgba(57,168,73,0.22);">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem;opacity:0.7;">&#9733;</div>
+          <h4 style="font-size:0.65rem;">Be Curious</h4>
+          <div style="font-size:0.55rem;">We embrace...</div>
+        </div>
+        <div class="mini-card" style="text-align:center;border-color:rgba(57,168,73,0.22);">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem;opacity:0.7;">&#10038;</div>
+          <h4 style="font-size:0.65rem;">Champion</h4>
+          <div style="font-size:0.55rem;">We lift each...</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">PROPOSED <span class="proposed-tag">Inline Text Flow</span></div>
+      <div style="padding:0.6rem;font-size:0.7rem;color:#9a9d95;line-height:1.7;">
+        <div style="display:flex;gap:0.6rem;align-items:baseline;margin-bottom:0.5rem;">
+          <span style="color:#39a849;font-weight:600;font-size:0.75rem;white-space:nowrap;">Act Ethically</span>
+          <span style="width:2rem;height:1px;background:rgba(255,255,255,0.1);flex-shrink:0;margin-top:0.3rem;"></span>
+          <span style="font-size:0.65rem;">We hold ourselves to the highest standards</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:baseline;margin-bottom:0.5rem;">
+          <span style="color:#39a849;font-weight:600;font-size:0.75rem;white-space:nowrap;">Be Curious</span>
+          <span style="width:2rem;height:1px;background:rgba(255,255,255,0.1);flex-shrink:0;margin-top:0.3rem;"></span>
+          <span style="font-size:0.65rem;">We embrace continuous learning</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:baseline;">
+          <span style="color:#39a849;font-weight:600;font-size:0.75rem;white-space:nowrap;">Champion Empowerment</span>
+          <span style="width:2rem;height:1px;background:rgba(255,255,255,0.1);flex-shrink:0;margin-top:0.3rem;"></span>
+          <span style="font-size:0.65rem;">We lift each other up</span>
+        </div>
+      </div>
+      <div style="font-size:0.55rem;color:#626860;margin-top:0.3rem;">No cards needed. Values flow as text under the purpose statement. Remove emoji icons entirely.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: Approach Features -->
+<div class="section-demo">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <div>
+      <div class="section-label">Approach Section</div>
+      <div class="section-title">Feature Cards (4 stacked cards, right column)</div>
+    </div>
+  </div>
+  <div class="comparison">
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">CURRENT <span class="current-tag">Stacked Cards</span></div>
+      <div style="display:flex;flex-direction:column;gap:0.3rem;">
+        <div class="mini-card"><h4 style="font-size:0.65rem;">Human-centred by design</h4><div style="font-size:0.55rem;">Every system keeps the human in the loop</div></div>
+        <div class="mini-card"><h4 style="font-size:0.65rem;">Practitioner-led advisory</h4><div style="font-size:0.55rem;">Operational credibility, not just credentials</div></div>
+        <div class="mini-card"><h4 style="font-size:0.65rem;">Sovereign and secure</h4><div style="font-size:0.55rem;">Data sovereignty and security obligations</div></div>
+        <div class="mini-card"><h4 style="font-size:0.65rem;">Outcome accountability</h4><div style="font-size:0.55rem;">Clear milestones, transparent progress</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">PROPOSED <span class="proposed-tag">Numbered List (no cards)</span></div>
+      <div style="padding:0.4rem;">
+        <div style="display:flex;gap:0.8rem;margin-bottom:0.8rem;align-items:start;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#39a849;flex-shrink:0;">01</span>
+          <div><div style="font-size:0.75rem;color:#f2f1ee;font-weight:600;margin-bottom:0.15rem;">Human-centred by design</div><div style="font-size:0.6rem;color:#9a9d95;">Every system keeps the human in the loop</div></div>
+        </div>
+        <div style="display:flex;gap:0.8rem;margin-bottom:0.8rem;align-items:start;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#39a849;flex-shrink:0;">02</span>
+          <div><div style="font-size:0.75rem;color:#f2f1ee;font-weight:600;margin-bottom:0.15rem;">Practitioner-led advisory</div><div style="font-size:0.6rem;color:#9a9d95;">Operational credibility, not just credentials</div></div>
+        </div>
+        <div style="display:flex;gap:0.8rem;margin-bottom:0.8rem;align-items:start;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#39a849;flex-shrink:0;">03</span>
+          <div><div style="font-size:0.75rem;color:#f2f1ee;font-weight:600;margin-bottom:0.15rem;">Sovereign and secure</div><div style="font-size:0.6rem;color:#9a9d95;">Data sovereignty and security obligations</div></div>
+        </div>
+        <div style="display:flex;gap:0.8rem;align-items:start;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#39a849;flex-shrink:0;">04</span>
+          <div><div style="font-size:0.75rem;color:#f2f1ee;font-weight:600;margin-bottom:0.15rem;">Outcome accountability</div><div style="font-size:0.6rem;color:#9a9d95;">Clear milestones, transparent progress</div></div>
+        </div>
+      </div>
+      <div style="font-size:0.55rem;color:#626860;margin-top:0.3rem;">Numbered list creates rhythm without card borders. Feels more editorial.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Track Record -->
+<div class="section-demo">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <div>
+      <div class="section-label">Track Record Section</div>
+      <div class="section-title">Stats Cards (4 boxed stats)</div>
+    </div>
+  </div>
+  <div class="comparison">
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">CURRENT <span class="current-tag">Card Grid</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;">
+        <div class="mini-card" style="text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#39a849;">50+</div><div style="font-size:0.55rem;">Engagements</div></div>
+        <div class="mini-card" style="text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#39a849;">3+</div><div style="font-size:0.55rem;">Jurisdictions</div></div>
+        <div class="mini-card" style="text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#39a849;">ISO</div><div style="font-size:0.55rem;">Certified</div></div>
+        <div class="mini-card" style="text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#39a849;">AIC+</div><div style="font-size:0.55rem;">Committed</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.65rem;color:#626860;margin-bottom:0.5rem;">PROPOSED <span class="proposed-tag">Inline Stats Row</span></div>
+      <div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:0.6rem;">
+        <div style="flex:1;padding:0.5rem;">
+          <div style="font-size:1.6rem;font-weight:800;color:#f2f1ee;letter-spacing:-0.03em;">50+</div>
+          <div style="font-size:0.55rem;color:#626860;">Engagements</div>
+        </div>
+        <div style="flex:1;padding:0.5rem;border-left:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:1.6rem;font-weight:800;color:#f2f1ee;letter-spacing:-0.03em;">3+</div>
+          <div style="font-size:0.55rem;color:#626860;">Jurisdictions</div>
+        </div>
+        <div style="flex:1;padding:0.5rem;border-left:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:1.6rem;font-weight:800;color:#f2f1ee;letter-spacing:-0.03em;">ISO</div>
+          <div style="font-size:0.55rem;color:#626860;">Certified</div>
+        </div>
+        <div style="flex:1;padding:0.5rem;border-left:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:1.6rem;font-weight:800;color:#f2f1ee;letter-spacing:-0.03em;">AIC+</div>
+          <div style="font-size:0.55rem;color:#626860;">Committed</div>
+        </div>
+      </div>
+      <div style="font-size:0.55rem;color:#626860;margin-top:0.5rem;">No cards. Simple stat row with dividers — cleaner, less visual weight. Numbers in white, not gradient.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEEP AS-IS NOTES -->
+<div style="background:rgba(57,168,73,0.04);border:1px solid rgba(57,168,73,0.15);border-radius:10px;padding:1.2rem;margin-top:1rem;">
+  <div style="font-size:0.75rem;font-weight:600;color:#f2f1ee;margin-bottom:0.5rem;">Sections That Keep Cards (Already Justified)</div>
+  <div style="font-size:0.7rem;color:#9a9d95;line-height:1.6;">
+    <strong style="color:#f2f1ee;">Capabilities (3 cards)</strong> — These have the green gradient backgrounds and cursor spotlight. They're the most distinctive cards and earn their visual weight. <strong>Keep as-is.</strong><br>
+    <strong style="color:#f2f1ee;">Products (5 cards)</strong> — Image + content cards are appropriate here since each product needs its own visual identity. <strong>Keep as-is.</strong><br>
+    <strong style="color:#f2f1ee;">News (4 cards)</strong> — Thumbnail + headline is a standard pattern that works well for articles. <strong>Keep as-is.</strong>
+  </div>
+</div>
+
+<div class="options" style="margin-top:1.5rem;">
+  <div class="option" data-choice="approve-all" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Approve All 3 Changes</h3>
+      <p>Values to inline text, Approach features to numbered list, Track stats to inline row. Keep Capabilities, Products, and News cards as-is.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="keep-value-cards" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Keep Value Cards, Change Other Two</h3>
+      <p>Values stay as cards (they provide visual balance under the purpose statement). Approach features to numbered list, Track stats to inline row.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="discuss" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Let Me Pick Individually</h3>
+      <p>I want to approve/reject each section change separately.</p>
+    </div>
+  </div>
+</div>

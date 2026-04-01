@@ -1,0 +1,142 @@
+<h2>Blog Home Page — Layout Options</h2>
+<p class="subtitle">Which grid layout feels right for any.news?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <!-- Layout A mockup -->
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <div style="background: rgba(255,255,255,0.08); padding: 0.4rem 0.6rem; border-radius:4px; margin-bottom:0.5rem; text-align:center; font-size:0.65rem; opacity:0.7;">NAV</div>
+        <div style="background: rgba(255,255,255,0.05); padding: 0.6rem; border-radius:4px; margin-bottom:0.5rem; text-align:center;">
+          <div style="font-size:0.8rem; font-weight:600;">any.news</div>
+          <div style="opacity:0.5; font-size:0.6rem;">Insights from Anywise</div>
+          <div style="display:flex; gap:0.3rem; justify-content:center; margin-top:0.3rem;">
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">All</span>
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">Insights</span>
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">Defence</span>
+          </div>
+        </div>
+        <!-- Featured post large -->
+        <div style="background: rgba(99,255,150,0.08); border:1px solid rgba(99,255,150,0.15); border-radius:6px; padding:0.6rem; margin-bottom:0.4rem;">
+          <div style="background:rgba(255,255,255,0.06); height:3rem; border-radius:4px; margin-bottom:0.4rem;"></div>
+          <div style="font-size:0.65rem; font-weight:600; line-height:1.3;">Featured: Transforming Operational Challenges...</div>
+          <div style="opacity:0.4; font-size:0.55rem; margin-top:0.2rem;">15 Feb 2026 · 3 min</div>
+        </div>
+        <!-- 3 smaller cards -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.3rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.06); height:1.5rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; line-height:1.3; opacity:0.8;">The DCSP Must Be a Catalyst...</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.06); height:1.5rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; line-height:1.3; opacity:0.8;">VICWORX Preparing for Lift Off...</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.06); height:1.5rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; line-height:1.3; opacity:0.8;">Strengthening Commitment...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Featured + Grid</h3>
+      <p>Latest post is hero-sized at the top. Remaining posts in a 3-column card grid below. Category filter tabs. Best for surfacing the most recent piece prominently.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <div style="background: rgba(255,255,255,0.08); padding: 0.4rem 0.6rem; border-radius:4px; margin-bottom:0.5rem; text-align:center; font-size:0.65rem; opacity:0.7;">NAV</div>
+        <div style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius:4px; margin-bottom:0.5rem; text-align:center;">
+          <div style="font-size:0.8rem; font-weight:600;">any.news</div>
+          <div style="opacity:0.5; font-size:0.6rem;">Insights from Anywise</div>
+        </div>
+        <!-- 2-column editorial list -->
+        <div style="display:flex; flex-direction:column; gap:0.35rem;">
+          <div style="display:grid; grid-template-columns:2.5rem 1fr; gap:0.4rem; background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem; align-items:center;">
+            <div style="background:rgba(255,255,255,0.08); height:2.5rem; border-radius:3px;"></div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:600; line-height:1.3;">Transforming Operational Challenges...</div>
+              <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">15 Feb 2026 · 3 min · Insights</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:2.5rem 1fr; gap:0.4rem; background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem; align-items:center;">
+            <div style="background:rgba(255,255,255,0.08); height:2.5rem; border-radius:3px;"></div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:600; line-height:1.3;">The DCSP Must Be a Catalyst...</div>
+              <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">4 Jan 2026 · 4 min · Defence</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:2.5rem 1fr; gap:0.4rem; background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem; align-items:center;">
+            <div style="background:rgba(255,255,255,0.08); height:2.5rem; border-radius:3px;"></div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:600; line-height:1.3;">VICWORX Preparing for Lift Off...</div>
+              <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">25 Feb 2025 · 2 min · Industry</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:2.5rem 1fr; gap:0.4rem; background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem; align-items:center;">
+            <div style="background:rgba(255,255,255,0.08); height:2.5rem; border-radius:3px;"></div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:600; line-height:1.3;">Strengthening Commitment to Ethical...</div>
+              <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">3 Oct 2024 · 3 min · Culture</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Editorial List</h3>
+      <p>Thumbnail + title + meta in a clean vertical list. Dense, scannable — like a newspaper index. Good when post count grows. No featured post distinction.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <div style="background: rgba(255,255,255,0.08); padding: 0.4rem 0.6rem; border-radius:4px; margin-bottom:0.5rem; text-align:center; font-size:0.65rem; opacity:0.7;">NAV</div>
+        <div style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius:4px; margin-bottom:0.5rem; text-align:center;">
+          <div style="font-size:0.8rem; font-weight:600;">any.news</div>
+          <div style="opacity:0.5; font-size:0.6rem;">Insights from Anywise</div>
+          <div style="display:flex; gap:0.3rem; justify-content:center; margin-top:0.3rem;">
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">All</span>
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">Insights</span>
+            <span style="background:rgba(255,255,255,0.1);padding:0.15rem 0.4rem;border-radius:999px;font-size:0.55rem;">Defence</span>
+          </div>
+        </div>
+        <!-- Masonry-style 2+1 grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-bottom:0.35rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.08); height:2rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; font-weight:600; line-height:1.3; opacity:0.9;">Transforming Operational Challenges...</div>
+            <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">15 Feb 2026 · 3 min</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.08); height:2rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; font-weight:600; line-height:1.3; opacity:0.9;">The DCSP Must Be a Catalyst...</div>
+            <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">4 Jan 2026 · 4 min</div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.08); height:2rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; font-weight:600; line-height:1.3; opacity:0.9;">VICWORX Preparing for Lift Off...</div>
+            <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">25 Feb 2025 · 2 min</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="background:rgba(255,255,255,0.08); height:2rem; border-radius:3px; margin-bottom:0.3rem;"></div>
+            <div style="font-size:0.55rem; font-weight:600; line-height:1.3; opacity:0.9;">Strengthening Commitment...</div>
+            <div style="opacity:0.4; font-size:0.5rem; margin-top:0.15rem;">3 Oct 2024 · 3 min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Equal Card Grid</h3>
+      <p>All posts as equal-weight cards in a 2-column grid. No hierarchy — every post gets the same prominence. Simple and consistent.</p>
+    </div>
+  </div>
+
+</div>

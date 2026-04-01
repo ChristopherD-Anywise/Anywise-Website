@@ -1,0 +1,240 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - region "top of page"
+    - button "Skip to Main Content"
+    - generic [ref=e10]:
+      - banner [ref=e11]:
+        - generic [ref=e17]:
+          - generic:
+            - generic:
+              - link "CONTACT US" [ref=e19] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e20]: CONTACT US
+              - link "CONTACT US" [ref=e22] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e23]: CONTACT US
+              - generic [ref=e28]:
+                - link "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e34] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e35]
+                - navigation "Site" [ref=e41]:
+                  - button "Menu" [ref=e43] [cursor=pointer]:
+                    - img [ref=e47]
+      - main [ref=e52]:
+        - generic [ref=e57]:
+          - generic:
+            - generic:
+              - img "Strip Overlay_right only.png" [ref=e71]
+              - heading "News & Media" [level=1] [ref=e81]:
+                - generic [ref=e83]: News &
+                - generic [ref=e85]: Media
+              - generic [ref=e95]:
+                - generic:
+                  - generic:
+                    - link "all posts" [ref=e100] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/newsmedia
+                      - generic [ref=e101]: all posts
+                    - link "insights" [ref=e103] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/insights
+                      - generic [ref=e104]: insights
+                    - link "podcasts" [ref=e106] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/podcasts
+                      - generic [ref=e107]: podcasts
+                    - link "news & media" [ref=e109] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/news-media
+                      - generic [ref=e110]: news & media
+              - article [ref=e124]:
+                - generic [ref=e125]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - heading "Strengthening Our Commitment to Ethical, Sustainable, and Quality-Driven Business" [level=1] [ref=e130]
+                      - generic [ref=e131]:
+                        - list [ref=e132]:
+                          - listitem [ref=e133]:
+                            - 'img "Writer: Adam Evans" [ref=e136]'
+                            - link "Adam Evans" [ref=e137] [cursor=pointer]:
+                              - /url: https://www.anywise.com.au/profile/adam-evans68276/profile
+                          - listitem [ref=e138]: ·Oct 3, 2024
+                          - listitem [ref=e139]: ·3 min read
+                        - button "More actions" [ref=e141] [cursor=pointer]:
+                          - img [ref=e142]
+                    - paragraph [ref=e144]: "Updated: Dec 16, 2025"
+                  - generic [ref=e151]:
+                    - paragraph [ref=e156]:
+                      - generic [ref=e157]: At Anywise, we are on an exciting path of continuous improvement. As we work towards recertifying our B-Corp status, we are also actively pursuing ISO certifications for 9001, 45001, 14001, and 27001. These certifications represent our commitment to ethical business practices, ensuring quality, safeguarding employee well-being, protecting data, and minimising our environmental impact.
+                    - 'heading "Working Towards B-Corp Recertification: A Purpose-Driven Business" [level=2] [ref=e159]':
+                      - generic [ref=e160]: "Working Towards B-Corp Recertification: A Purpose-Driven Business"
+                    - paragraph [ref=e162]:
+                      - generic [ref=e163]: B-Corp certification represents the highest standards of social and environmental responsibility, and we are committed to maintaining this esteemed status. Our recertification process is a thorough review of how we continue to positively impact all stakeholders, with a strong focus on ethical governance, community engagement, and sustainability.
+                    - paragraph [ref=e165]:
+                      - generic [ref=e166]: This certification goes beyond recognition—it forms the foundation of our decision-making processes. As we work through the recertification, we reaffirm our commitment to responsible sourcing, diversity and inclusion, and environmental stewardship. Each step towards recertification enhances our resolve to deliver positive outcomes for the world around us.
+                    - 'heading "ISO Certifications: Building a Framework for Quality, Safety, Security, and Sustainability" [level=4] [ref=e168]':
+                      - generic [ref=e169]: "ISO Certifications: Building a Framework for Quality, Safety, Security, and Sustainability"
+                    - paragraph [ref=e171]:
+                      - generic [ref=e172]: "In tandem with our B-Corp recertification efforts, we are working towards achieving ISO certifications in four key areas:"
+                    - list [ref=e174]:
+                      - listitem [level=1] [ref=e175]:
+                        - paragraph [ref=e176]:
+                          - generic [ref=e177]:
+                            - strong [ref=e178]: ISO 9001 (Quality Management System)
+                            - text: ": We are dedicated to consistently meeting customer expectations and regulatory requirements. Working towards ISO 9001 certification ensures that we are developing a robust framework to continuously improve quality, ensure customer satisfaction, and deliver services through a process-driven approach."
+                      - listitem [level=1] [ref=e179]:
+                        - paragraph [ref=e180]:
+                          - generic [ref=e181]:
+                            - strong [ref=e182]: ISO 45001 (Occupational Health and Safety Management System)
+                            - text: ": Ensuring the health and safety of our employees is paramount. Pursuing ISO 45001 certification reflects our commitment to implementing effective processes that help us proactively manage workplace risks, foster a safer working environment, and promote the overall well-being of our team."
+                      - listitem [level=1] [ref=e183]:
+                        - paragraph [ref=e184]:
+                          - generic [ref=e185]:
+                            - strong [ref=e186]: ISO 14001 (Environmental Management System)
+                            - text: ": Sustainability is a core value at Anywise. By working towards ISO 14001 certification, we are formalising our environmental practices to reduce our ecological footprint, minimise waste, and ensure responsible resource management. This aligns perfectly with our broader sustainability goals and B-Corp values, reinforcing our dedication to environmental responsibility."
+                      - listitem [level=1] [ref=e187]:
+                        - paragraph [ref=e188]:
+                          - generic [ref=e189]:
+                            - strong [ref=e190]: ISO 27001 (Information Security Management System)
+                            - text: ": In today’s digital world, safeguarding sensitive information is critical. As we work towards ISO 27001 certification, we are establishing a rigorous information security framework to protect our data and that of our clients. This certification demonstrates our commitment to ensuring data privacy and security in an increasingly interconnected world."
+                    - figure [ref=e197]:
+                      - generic [ref=e198]:
+                        - button "Expand image":
+                          - img
+                    - paragraph [ref=e202]:
+                      - emphasis [ref=e204]:
+                        - generic [ref=e205]: "Caption: an unnamed artist's impression of how ethical and sustainable businesses of the future may look. Perhaps we should invite them around to the Anywise office to show them what it looks like in real life..."
+                    - heading "A Unified Approach to Responsible Business" [level=4] [ref=e210]:
+                      - generic [ref=e211]: A Unified Approach to Responsible Business
+                    - paragraph [ref=e213]:
+                      - generic [ref=e214]: Our pursuit of both B-Corp recertification and multiple ISO certifications demonstrates our holistic approach to responsible and sustainable business. While B-Corp focuses on social and environmental impact, ISO standards provide structured frameworks for quality, safety, environmental, and information security management. Together, these certifications strengthen our ability to deliver ethical, high-quality services while prioritising the well-being of people, the environment, and our data security.
+                    - heading "Looking Ahead" [level=4] [ref=e216]:
+                      - generic [ref=e217]: Looking Ahead
+                    - paragraph [ref=e219]:
+                      - generic [ref=e220]: As we continue working towards these certifications, we remain committed to the principle of continuous improvement. Achieving these certifications is not just about compliance—it’s about embodying excellence in every aspect of our operations. By aligning with both B-Corp and ISO standards, we are setting ourselves up for long-term success and demonstrating our role as a responsible, forward-thinking partner.
+                    - paragraph [ref=e222]:
+                      - generic [ref=e223]: Looking to the future, our dedication to ethical, sustainable, and quality-driven practices will only grow stronger. These certifications reaffirm our commitment to building a business that positively impacts people, protects the planet, upholds data security, and consistently delivers the highest standards of excellence.
+                  - generic [ref=e229]:
+                    - button "Share via Facebook" [ref=e231] [cursor=pointer]:
+                      - img "Facebook" [ref=e232]
+                    - button "Share via X (Twitter)" [ref=e236] [cursor=pointer]:
+                      - img "X" [ref=e237]
+                    - button "Share via LinkedIn" [ref=e241] [cursor=pointer]:
+                      - img "LinkedIn" [ref=e242]
+                    - button "Share via link" [ref=e247] [cursor=pointer]:
+                      - img [ref=e248]
+      - contentinfo [ref=e251]:
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - generic:
+              - generic:
+                - link "anywise logo" [ref=e268] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "anywise logo" [ref=e269]
+                - generic:
+                  - paragraph [ref=e270]:
+                    - generic [ref=e271]: Melbourne | Sydney | Brisbane | Perth | Canberra
+                  - paragraph [ref=e272]:
+                    - generic [ref=e273]: North Carolina USA
+                  - paragraph [ref=e274]:
+                    - generic [ref=e276]:
+                      - link "1800 861 893" [ref=e277] [cursor=pointer]:
+                        - /url: tel:+61 3 9078 6938
+                      - link "sales@anywise.com.au" [ref=e278] [cursor=pointer]:
+                        - /url: mailto:sales@anywise.com.au?subject=Website Enquiry
+                - link "facebook_white.png" [ref=e280] [cursor=pointer]:
+                  - /url: https://www.facebook.com/anywiseAUS
+                  - img "facebook_white.png" [ref=e281]
+                - link "twitter_white.png" [ref=e283] [cursor=pointer]:
+                  - /url: https://twitter.com/anywiseaus
+                  - img "twitter_white.png" [ref=e284]
+                - link "linkedin_white.png" [ref=e286] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/anywiseaus
+                  - img "linkedin_white.png" [ref=e287]
+                - paragraph [ref=e288]:
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: ©2025 Anywise |
+                    - link "Privacy Policy" [ref=e294] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/privacy-policy
+                    - generic [ref=e295]: "|"
+                    - link "Contact" [ref=e299] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/contact
+                    - generic [ref=e300]: "|"
+                  - generic [ref=e303]: Careers
+                  - generic [ref=e304]:
+                    - generic [ref=e306]:
+                      - link "|" [ref=e308] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e309] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e311] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                    - link "Defence Industry Disclosure" [ref=e312] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                      - generic [ref=e314]: Defence Industry Disclosure
+                    - link "|" [ref=e318] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                    - link [ref=e319] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                  - link "Whistleblowing Policy" [ref=e321] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - generic [ref=e324]: Whistleblowing Policy
+                  - generic [ref=e327]:
+                    - link "|" [ref=e329] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - link [ref=e330] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                  - link "Grievance/Complaints Mechanism Policy" [ref=e331] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-privacy-policy
+                    - generic [ref=e337]: Grievance/Complaints Mechanism Policy
+                - paragraph [ref=e338]:
+                  - generic [ref=e340]:
+                    - text: Design by
+                    - link "Bloke Design" [ref=e342] [cursor=pointer]:
+                      - /url: https://bloke.design
+          - generic [ref=e343]:
+            - generic:
+              - generic:
+                - link "Certified B Corp" [ref=e348] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/certification
+                  - img "Certified B Corp" [ref=e349]
+                - link "BFTW-2022-Governance-Badge.png" [ref=e351] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/best-for-the-world-2022-governance
+                  - img "BFTW-2022-Governance-Badge.png" [ref=e352]
+                - img "Defence Business of the year Finalist in 2018" [ref=e355]
+                - link "Australian Owned Business" [ref=e357] [cursor=pointer]:
+                  - /url: https://ausowned.com.au/about/
+                  - img "Australian Owned Business" [ref=e358]
+                - link "Australian Veteran Owned Business" [ref=e360] [cursor=pointer]:
+                  - /url: https://www.avob.org.au/
+                  - img "Australian Veteran Owned Business" [ref=e361]
+                - img "FACE.png" [ref=e364]
+                - link "Certified Scrum Master" [ref=e366] [cursor=pointer]:
+                  - /url: https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster
+                  - img "Certified Scrum Master" [ref=e367]
+                - img "WePayFairly.png" [ref=e370]
+                - generic "USFH+Logo+Transparent+Background.png" [ref=e371] [cursor=pointer]:
+                  - link [ref=e372]:
+                    - /url: https://www.anywise.com.au/post/anywise-accepts-the-generous-invitation-of-the-uluru-statement-from-the-heart
+                - generic "Certified System ISO 9001 RGB_1x.jpg" [ref=e373]:
+                  - img "Certified System ISO 9001 RGB_1x.jpg" [ref=e375]
+                - generic "Certified System ISO 45001 YELLOW RGB_2x" [ref=e376]
+                - generic "Certified System AS 9120 GREEN RGB_1x.jp" [ref=e378]
+                - generic:
+                  - paragraph [ref=e380]:
+                    - generic [ref=e381]: Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution. UluruStatement.org
+                  - paragraph [ref=e382]
+                  - paragraph [ref=e383]:
+                    - generic [ref=e384]: Anywise acknowledges the Traditional Owners of the land on which we operate. We also pay our respects to Elders past, present, and emerging.
+    - region "bottom of page"
+  - button [ref=e385] [cursor=pointer]:
+    - img [ref=e387]
+  - region "We use cookies and similar technologies to enable services and functionality on our site and to understand your interaction with our service. By clicking on accept, you agree to our use of such technologies for marketing and analytics.See Privacy Policy" [active] [ref=e390]:
+    - generic [ref=e391]:
+      - generic [ref=e392]:
+        - generic [ref=e394]:
+          - text: We use cookies and similar technologies to enable services and functionality on our site and to understand your interaction with our service. By clicking on accept, you agree to our use of such technologies for marketing and analytics.
+          - link [ref=e395] [cursor=pointer]:
+            - /url: https://www.anywise.com.au/privacy-policy
+            - text: See Privacy Policy
+        - generic [ref=e396]:
+          - button "Cookie Settings" [ref=e397] [cursor=pointer]
+          - button "Accept" [ref=e398] [cursor=pointer]
+      - button "Close" [ref=e400]:
+        - img "Close" [ref=e401] [cursor=pointer]

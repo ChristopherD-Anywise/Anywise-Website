@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anywise | Ethical Technology and Services</title>
+<meta name="description" content="Decision augmentation for defence and government. Anywise delivers intelligent technology and agile services. Wholly Australian-owned, B Corp certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #0a0e13;
+  --bg: #0f1419;
+  --bg-elevated: #151b23;
+  --bg-card: #1a2129;
+  --bg-card-hover: #1f2832;
+  --border: rgba(255,255,255,0.06);
+  --border-accent: rgba(109,191,68,0.2);
+  --text-primary: #f0f2f5;
+  --text-secondary: #8b95a5;
+  --text-tertiary: #5a6474;
+  --accent: #6dbf44;
+  --accent-dim: #5aa636;
+  --accent-muted: rgba(109,191,68,0.08);
+  --accent-glow: rgba(109,191,68,0.12);
+  --white: #ffffff;
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── SECTION LABEL ── */
+.label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.label::before {
+  content: '——';
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ NAV ═══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0.9rem 0;
+  transition: background var(--transition), backdrop-filter var(--transition);
+}
+nav.scrolled {
+  background: rgba(15, 20, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.nav-brand span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 0.78rem !important;
+  transition: background 0.2s, transform 0.15s !important;
+}
+.nav-cta:hover {
+  background: var(--accent-dim) !important;
+  transform: translateY(-1px);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  width: 24px; height: 16px;
+  position: relative; z-index: 1001;
+}
+.mobile-toggle span {
+  display: block; width: 100%; height: 1.5px;
+  background: var(--text-secondary);
+  transition: all 0.3s;
+  position: absolute; left: 0;
+}
+.mobile-toggle span:nth-child(1) { top: 0; }
+.mobile-toggle span:nth-child(2) { top: 7px; }
+.mobile-toggle span:nth-child(3) { top: 14px; }
+.mobile-toggle.active span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.mobile-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-toggle.active span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+
+/* ═══ HERO ═══ */
+.hero {
+  padding: 10rem 0 5rem;
+  position: relative;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+}
+.hero-content { max-width: 580px; }
+.hero .label { margin-bottom: 2rem; }
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.8rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+  display: block;
+}
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.2rem;
+  max-width: 460px;
+}
+.hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-primary:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); }
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-accent:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+/* Hero stat boxes */
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  width: 320px;
+  margin-top: 2rem;
+}
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.2rem;
+}
+.stat-box h3 {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
+}
+.stat-box p {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+  font-family: var(--mono);
+  letter-spacing: 0.02em;
+}
+.stat-box.wide {
+  grid-column: 1 / -1;
+}
+.stat-box.wide h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.stat-box.wide p {
+  font-size: 0.68rem;
+}
+
+/* ═══ CAPABILITIES ═══ */
+.capabilities {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border);
+}
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.cap-card {
+  padding: 2rem 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  transition: border-color var(--transition), background var(--transition);
+}
+.cap-card:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card);
+}
+.cap-num {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 1.2rem;
+}
+.cap-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.cap-card p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ═══ APPROACH ═══ */
+.approach {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.approach-left h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+.approach-left p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+.approach-bullets {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+.approach-bullets li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: start;
+  gap: 0.7rem;
+  line-height: 1.5;
+}
+.approach-bullets li::before {
+  content: '●';
+  color: var(--accent);
+  font-size: 0.5rem;
+  margin-top: 0.4rem;
+  flex-shrink: 0;
+}
+.approach-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: border-color var(--transition);
+}
+.feature-card:hover { border-color: var(--border-accent); }
+.feature-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+.feature-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ═══ PRODUCTS ═══ */
+.products {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.products-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: end;
+}
+.products-head h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.products-head p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.product-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+.product-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+.product-card-body { padding: 1.5rem; }
+.product-card-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.6rem;
+}
+.product-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.product-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.product-card-highlight {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+/* Wide card spans 2 cols */
+.product-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+/* ═══ TRACK RECORD ═══ */
+.track {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+.track h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+.track-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.track-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.track-stat h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+.track-stat p {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  font-family: var(--mono);
+}
+
+/* ═══ TEAM ═══ */
+.team {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.team h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+}
+.team h2 em { font-style: normal; color: var(--accent); }
+.team-sub {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+.team p { font-size: 0.9rem; margin-bottom: 0.8rem; }
+.team-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.team-img img { width: 100%; }
+.team-values-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+.tv {
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+}
+.tv h4 { font-size: 0.82rem; color: var(--text-primary); font-weight: 600; }
+.tv p { font-size: 0.68rem; color: var(--text-tertiary); margin: 0; }
+
+/* ═══ NEWS ═══ */
+.news {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border);
+}
+.news-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+.news-head h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.news-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+  display: block;
+}
+.news-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+.news-card-thumb { width: 100%; height: 130px; object-fit: cover; }
+.news-card-body { padding: 1.2rem; }
+.news-date {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.news-card h3 { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+
+/* ═══ CTA ═══ */
+.cta {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.cta-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.cta-content {
+  padding: 3.5rem;
+}
+.cta-content h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+}
+.cta-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}
+.cta-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.cta-image {
+  position: relative;
+  overflow: hidden;
+}
+.cta-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ═══ CREDENTIALS ═══ */
+.creds {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+}
+.creds-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+.creds-inner img {
+  height: 40px; width: auto;
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  filter: grayscale(0.3);
+}
+.creds-inner img:hover { opacity: 0.8; }
+.creds-inner img.tall { height: 60px; }
+
+/* ═══ FOOTER ═══ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 0 1.5rem;
+  background: var(--bg-deep);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+.footer-brand p {
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin-top: 0.6rem;
+}
+.footer-col h4 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+.footer-col a {
+  display: block;
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+  padding: 0.2rem 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p, .footer-bottom a {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  font-family: var(--mono);
+}
+.footer-bottom a { transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--accent); }
+.footer-locations {
+  display: flex; gap: 1.5rem;
+}
+.acknowledgement {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.66rem;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-stats { width: 100%; max-width: 400px; }
+  .approach-grid, .products-head, .team-grid, .cta-box { grid-template-columns: 1fr; }
+  .cap-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid-bottom { grid-template-columns: 1fr; }
+  .track-stats { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .cta-image { min-height: 250px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed; inset: 0;
+    background: var(--bg);
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 999;
+  }
+  .nav-links.open a { font-size: 1.1rem; }
+  .mobile-toggle { display: block; }
+  .hero { padding: 7rem 0 4rem; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .cap-grid, .product-grid, .news-grid { grid-template-columns: 1fr; }
+  .track-stats { grid-template-columns: 1fr 1fr; }
+  .team-values-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-locations { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-brand">any<span>wise</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">Insights</a></li>
+      <li><a href="#contact" class="nav-cta">Engage Us</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content reveal">
+      <p class="label">Defence &amp; Government Technology</p>
+      <h1>Decision augmentation, <em>ethically engineered.</em></h1>
+      <p class="hero-sub">We mobilise high-performing teams to solve your most complex capability, technology, and strategic challenges — where the stakes are highest.</p>
+      <div class="hero-actions">
+        <a href="#capabilities" class="btn btn-primary">Our Capabilities</a>
+        <a href="#contact" class="btn btn-accent">Engage Us →</a>
+      </div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat-box">
+        <h3>10+</h3>
+        <p>Years in defence &amp; gov</p>
+      </div>
+      <div class="stat-box">
+        <h3>AU · US</h3>
+        <p>Operating jurisdictions</p>
+      </div>
+      <div class="stat-box wide">
+        <h3>Ethical AI</h3>
+        <p>Human-centred decision augmentation framework</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPABILITIES ═══ -->
+<section class="capabilities" id="capabilities">
+  <div class="container">
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <p class="cap-num">01 — Capability</p>
+        <h3>Ethical Decision Augmentation</h3>
+        <p>Applying rigorous ethical frameworks to human-AI teaming — so your people make better decisions, faster, without surrendering judgement to the machine.</p>
+      </div>
+      <div class="cap-card reveal">
+        <p class="cap-num">02 — Capability</p>
+        <h3>Defence Procurement &amp; Advisory</h3>
+        <p>Deep knowledge of Australian sovereign capability processes, CASG procurement pathways, and the AUKUS technology ecosystem — translating complexity into clear strategy.</p>
+      </div>
+      <div class="cap-card reveal">
+        <p class="cap-num">03 — Capability</p>
+        <h3>Technology Strategy &amp; Integration</h3>
+        <p>From requirement to delivery — we bridge the gap between policy intent and technical execution, mobilising expert teams to deliver on your most critical programmes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ APPROACH ═══ -->
+<section class="approach" id="approach">
+  <div class="container">
+    <div class="approach-grid">
+      <div class="reveal">
+        <p class="label">Our Approach</p>
+        <h2>Rigour, ethics, and human performance — at every step.</h2>
+        <p>Anywise was built on the premise that technology without ethical grounding creates risk, not advantage. We bring the practitioner's eye and the technologist's toolkit to every engagement.</p>
+        <ul class="approach-bullets">
+          <li>Embedded practitioner expertise with lived operational experience</li>
+          <li>Ethics-by-design across all AI and automation recommendations</li>
+          <li>High-performing team mobilisation, matched to mission complexity</li>
+          <li>Sovereign capability focus aligned to Australia's strategic priorities</li>
+        </ul>
+      </div>
+      <div class="approach-features reveal">
+        <div class="feature-card">
+          <h4>Human-centred by design</h4>
+          <p>Every system we build keeps the human in the decision loop — augmenting judgement, not replacing it.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Practitioner-led advisory</h4>
+          <p>Our advisors carry operational credibility, not just credentials. Advice grounded in what actually works in complex environments.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Sovereign and secure</h4>
+          <p>We understand data sovereignty, DISP obligations, and the sensitivity that defence and government work demands.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Outcome accountability</h4>
+          <p>We mobilise to deliver. Clear milestones, transparent progress, and shared ownership of results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="products-head reveal">
+      <div>
+        <p class="label">Products &amp; Technology</p>
+        <h2>Sovereign, Australian-designed intelligence platforms.</h2>
+      </div>
+      <p>Our products combine advanced data integration, GenAI-enabled analytics and human expertise to deliver augmented intelligence directly into the hands of user communities — from defence and emergency services to infrastructure and industry.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <img class="product-card-img" src="https://static.wixstatic.com/media/7f952a_24fdd43f52fb4b9caee6a8681023e560~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_24fdd43f52fb4b9caee6a8681023e560~mv2.png" alt="WISDOM">
+        <div class="product-card-body">
+          <p class="product-card-tag">Strategic Intelligence</p>
+          <h3>WISDOM</h3>
+          <p>A secure intelligence platform fusing fragmented data, generative AI and experienced analysts to transform information overload into decision-ready foresight.</p>
+          <p class="product-card-highlight">Accelerated, reliable decision-making.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-card-img" src="https://static.wixstatic.com/media/7f952a_ea2f32f556c240bc8db88d7ba70044e0~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_ea2f32f556c240bc8db88d7ba70044e0~mv2.png" alt="ENG|AIDE">
+        <div class="product-card-body">
+          <p class="product-card-tag">Engineering Intelligence</p>
+          <h3>ENG|AIDE</h3>
+          <p>Dual-use engineering assistance that transforms technical documentation, telemetry and lifecycle data into clear, actionable insights across defence and industry.</p>
+          <p class="product-card-highlight">Reducing operational risk, improving reliability.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-card-img" src="https://static.wixstatic.com/media/7f952a_3e2d3289d68440598bd34548fe774603~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_3e2d3289d68440598bd34548fe774603~mv2.png" alt="FABHUMS">
+        <div class="product-card-body">
+          <p class="product-card-tag">Health &amp; Usage Monitoring</p>
+          <h3>FABHUMS</h3>
+          <p>A world-first, fully integrated Health and Usage Monitoring System for deployable bridging. Real-time structural health, predictive maintenance across mixed fleets.</p>
+          <p class="product-card-highlight">Enhancing safety, extending asset life.</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-grid-bottom">
+      <div class="product-card reveal">
+        <img class="product-card-img" src="https://static.wixstatic.com/media/7f952a_b2f35870d2344d98955ab0eccb0933d3~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_b2f35870d2344d98955ab0eccb0933d3~mv2.png" alt="CAMP|AIDE">
+        <div class="product-card-body">
+          <p class="product-card-tag">Facilities Intelligence</p>
+          <h3>CAMP|AIDE</h3>
+          <p>Augmented decision support for camp planning and deployable infrastructure. Integrates spatial data, engineering constraints and logistics into coherent, risk-aware sustainment models.</p>
+          <p class="product-card-highlight">Faster planning, safer outcomes.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-card-img" src="https://static.wixstatic.com/media/7f952a_1a4f7471555f4b9bb4965da42225ed50~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_1a4f7471555f4b9bb4965da42225ed50~mv2.png" alt="AIDE">
+        <div class="product-card-body">
+          <p class="product-card-tag">Enterprise Intelligence</p>
+          <h3>AIDE</h3>
+          <p>Enterprise-grade intelligence that synthesises human–machine outputs across the organisation into a unified, forward-looking operational picture for leaders in both secure and civilian contexts.</p>
+          <p class="product-card-highlight">Unified foresight at decision speed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRACK RECORD ═══ -->
+<section class="track" id="track">
+  <div class="container">
+    <p class="label reveal">Track Record</p>
+    <h2 class="reveal">Trusted at the intersection of defence, government, and emerging technology.</h2>
+    <div class="track-stats">
+      <div class="track-stat reveal">
+        <h3>50+</h3>
+        <p>Defence &amp; government engagements delivered</p>
+      </div>
+      <div class="track-stat reveal">
+        <h3>3+</h3>
+        <p>Jurisdictions across AU/US/allied partners</p>
+      </div>
+      <div class="track-stat reveal">
+        <h3>DISP</h3>
+        <p>Defence Industry Security Programme aligned</p>
+      </div>
+      <div class="track-stat reveal">
+        <h3>AIC+</h3>
+        <p>Australian Industry Capability committed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section class="team" id="about">
+  <div class="container">
+    <div class="team-grid">
+      <div class="reveal">
+        <p class="label">Our People</p>
+        <h2>any.<em>one</em> is welcome</h2>
+        <p class="team-sub">The Anywise Team</p>
+        <p>We are open-hearted and highly skilled — a diverse team welcoming people from every walk of life. We've built an inclusive culture grounded in acceptance, respect and genuine collaboration.</p>
+        <p>Our "T-Shaped" people bring deep specialist expertise and broad collaborative reach, working arm-in-arm to achieve your goals.</p>
+        <div class="team-values-row">
+          <div class="tv"><h4>Inclusive</h4><p>All walks of life</p></div>
+          <div class="tv"><h4>Ethical</h4><p>B Corp Certified</p></div>
+          <div class="tv"><h4>Veteran-Owned</h4><p>AVOB Member</p></div>
+          <div class="tv"><h4>Sovereign</h4><p>100% Australian</p></div>
+        </div>
+      </div>
+      <div class="team-img reveal">
+        <img src="https://static.wixstatic.com/media/57d1d0_cafa24267c3e4204b4ba58ba916dd70c~mv2.png/v1/fill/w_700,h_464,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/57d1d0_cafa24267c3e4204b4ba58ba916dd70c~mv2.png" alt="The Anywise team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWS ═══ -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="news-head reveal">
+      <div>
+        <p class="label">Latest Insights</p>
+        <h2>any.news</h2>
+      </div>
+    </div>
+    <div class="news-grid">
+      <a href="https://www.anywise.com.au/post/transforming-operational-challenges-into-dual-use-intelligence-solutions-in-engineering" class="news-card reveal">
+        <img class="news-card-thumb" src="https://static.wixstatic.com/media/7f952a_cb19018ab2fe4c37bcd9bd2965bf6d2f~mv2.jpg/v1/fill/w_400,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/blog_podcastEp1-Hero.jpg" alt="">
+        <div class="news-card-body">
+          <span class="news-date">15 Feb 2026 · 3 min</span>
+          <h3>Transforming Operational Challenges into Dual-Use Intelligence Solutions</h3>
+        </div>
+      </a>
+      <a href="https://www.anywise.com.au/post/the-dcsp-must-be-more-than-a-new-acronym-it-must-be-a-catalyst-for-real-change" class="news-card reveal">
+        <img class="news-card-thumb" src="https://static.wixstatic.com/media/7f952a_e52cb4de647743f284ad3f7a1e674b79~mv2.png/v1/fill/w_400,h_260,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/blog_podcastEp1-Hero.png" alt="">
+        <div class="news-card-body">
+          <span class="news-date">4 Jan 2026 · 4 min</span>
+          <h3>The DCSP Must Be a Catalyst for Real Change</h3>
+        </div>
+      </a>
+      <a href="https://www.anywise.com.au/post/vicworx-is-preparing-for-lift-off" class="news-card reveal">
+        <img class="news-card-thumb" src="https://static.wixstatic.com/media/60cb3d_dd936abb4356474c9c7761479d8a683b~mv2.png/v1/fill/w_400,h_260,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/blog_podcastEp1-Hero.png" alt="">
+        <div class="news-card-body">
+          <span class="news-date">25 Feb 2025 · 2 min</span>
+          <h3>VICWORX is Preparing for Lift Off</h3>
+        </div>
+      </a>
+      <a href="https://www.anywise.com.au/post/working-towards-b-corp-recertification-and-iso-certifications-strengthening-our-commitment-to-ethic" class="news-card reveal">
+        <img class="news-card-thumb" src="https://static.wixstatic.com/media/60cb3d_d6a0ba6b031f4c7b9422c8dc23e470d0~mv2.webp/v1/fill/w_400,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/blog_podcastEp1-Hero.webp" alt="">
+        <div class="news-card-body">
+          <span class="news-date">3 Oct 2024 · 3 min</span>
+          <h3>Strengthening Our Commitment to Ethical, Quality-Driven Business</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-content">
+        <h2>Ready to tackle your most complex challenge?</h2>
+        <p>Whether you're navigating a procurement decision, standing up a new capability, or exploring what ethical AI looks like in your context — let's talk.</p>
+        <div class="cta-actions">
+          <a href="mailto:sales@anywise.com.au" class="btn btn-primary">Start a Conversation</a>
+          <a href="#capabilities" class="btn btn-accent">View Capabilities</a>
+        </div>
+      </div>
+      <div class="cta-image">
+        <img src="https://static.wixstatic.com/media/7f952a_3bdc986ee9814972a5d59810924e0339~mv2.jpg/v1/fill/w_600,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_3bdc986ee9814972a5d59810924e0339~mv2.jpg" alt="Anywise team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CREDENTIALS ═══ -->
+<section class="creds">
+  <div class="container">
+    <div class="creds-inner">
+      <img src="https://static.wixstatic.com/media/f17a4e_530c464fba6c44bc8739653159c3dda9~mv2.png/v1/fill/w_48,h_78,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/bCorp.png" alt="B Corp" class="tall">
+      <img src="https://static.wixstatic.com/media/23c452_92d26629419c48859a9bae74b1b35361~mv2.png/v1/fill/w_66,h_78,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/BFTW-2022-Governance-Badge.png" alt="Best for the World" class="tall">
+      <img src="https://static.wixstatic.com/media/f17a4e_5644ccb23a8f45dfb44829f7444636c2~mv2.png/v1/fill/w_60,h_60,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/australianOwned.png" alt="Australian Owned">
+      <img src="https://static.wixstatic.com/media/a94747_2404800898e54440b5ad4d65881e330c~mv2.png/v1/fill/w_56,h_56,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AVOB.png" alt="AVOB">
+      <img src="https://static.wixstatic.com/media/7f952a_75b417fc73604468988accf2c48ef322~mv2.jpg/v1/fill/w_40,h_80,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/7f952a_75b417fc73604468988accf2c48ef322~mv2.jpg" alt="ISO 9001" class="tall">
+      <img src="https://static.wixstatic.com/media/f17a4e_30c4e8c238544c1fa967078e5bfe8449~mv2.png/v1/fill/w_60,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SCRUM_CSM.png" alt="Scrum Master">
+      <img src="https://static.wixstatic.com/media/f17a4e_966b8c1159804e758e13a10335972192~mv2.png/v1/crop/x_0,y_21,w_512,h_491/fill/w_56,h_56,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/WePayFairly.png" alt="We Pay Fairly">
+      <img src="https://static.wixstatic.com/media/f17a4e_505baeeddb094d06a6c08dac7fed40c3~mv2.png/v1/fill/w_70,h_58,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/FACE.png" alt="FACE">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-brand" style="font-size:1.15rem;">any<span>wise</span></a>
+        <p>Ethical decision augmentation for defence and government. Melbourne, Australia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="#capabilities">Decision Augmentation</a>
+        <a href="#capabilities">Procurement Advisory</a>
+        <a href="#capabilities">Technology Strategy</a>
+        <a href="#approach">Team Mobilisation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About Anywise</a>
+        <a href="#approach">Our Approach</a>
+        <a href="#news">Insights</a>
+        <a href="https://www.anywise.com.au/contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://www.anywise.com.au/privacy-policy">Privacy Policy</a>
+        <a href="https://www.anywise.com.au/defence-industry-disclosure">DISP Compliance</a>
+        <a href="https://www.anywise.com.au/copy-of-grievance-policy">Whistleblowing</a>
+        <a href="https://www.anywise.com.au/copy-of-privacy-policy">Grievance Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="copyrightYear">2025</span> Anywise Consulting Pty Ltd. All rights reserved. ABN registered.</p>
+      <div class="footer-locations">
+        <a href="#">Melbourne</a>
+        <a href="#">Sydney</a>
+        <a href="#">Brisbane</a>
+        <a href="#">Perth</a>
+        <a href="#">Canberra</a>
+      </div>
+    </div>
+    <div class="acknowledgement">
+      Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution.
+      <a href="https://ulurustatement.org" style="color: var(--text-tertiary); text-decoration: underline;">UluruStatement.org</a><br>
+      Anywise acknowledges the Traditional Owners of the land on which we operate. We pay our respects to Elders past, present, and emerging.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPT ═══ -->
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+const toggle = document.getElementById('mobileToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    links.classList.remove('open');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 5) * 0.06}s`;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

@@ -43,24 +43,73 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
 
+  function closeMobileMenu() {
+    if (navLinks && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      mobileToggle.classList.remove('open');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      mobileToggle.focus();
+    }
+  }
+
   if (mobileToggle && navLinks) {
     mobileToggle.addEventListener('click', function () {
       const isOpen = navLinks.classList.toggle('open');
       mobileToggle.classList.toggle('open', isOpen);
       mobileToggle.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
+
+      /* Set focus to first menu item when opening */
+      if (isOpen) {
+        setTimeout(function () {
+          const firstLink = navLinks.querySelector('a');
+          if (firstLink) firstLink.focus();
+        }, 100);
+      }
     });
 
     /* Close on nav link click */
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
-        if (navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
-          mobileToggle.classList.remove('open');
-          mobileToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
+        closeMobileMenu();
       });
+    });
+
+    /* Focus trap: Keep focus within menu while open */
+    document.addEventListener('keydown', function (e) {
+      if (!navLinks.classList.contains('open')) return;
+
+      /* Escape key closes menu */
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+
+      /* Tab trap: cycle focus within menu */
+      if (e.key === 'Tab') {
+        const focusableElements = navLinks.querySelectorAll('a, button');
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const activeElement = document.activeElement;
+
+        if (e.shiftKey) {
+          /* Shift+Tab on first element, focus last */
+          if (activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          /* Tab on last element, focus first */
+          if (activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
     });
   }
 
@@ -86,6 +135,12 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ─── Dynamic Copyright Year ──────────────────────────────────────────── */
+  const copyrightEl = document.getElementById('copyrightYear');
+  if (copyrightEl) {
+    copyrightEl.textContent = new Date().getFullYear();
   }
 
   /* ─── Engage Us Modal ─────────────────────────────────────────────────── */

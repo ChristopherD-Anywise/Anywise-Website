@@ -1,0 +1,61 @@
+<h2>Hero Background Direction</h2>
+<p class="subtitle">Which visual approach for the WebGL hero feels right for Anywise's defence/government identity?</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0d0a; padding:2rem; min-height:220px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+      <!-- Lightning + Planet mockup -->
+      <div style="position:absolute; top:55%; left:50%; transform:translate(-50%,-50%); width:200px; height:200px; border-radius:50%; background:radial-gradient(circle at 25% 90%, #1a3d1e 15%, #000000de 70%, #000000ed 100%); box-shadow: 0 0 60px rgba(57,168,73,0.15), 0 0 120px rgba(57,168,73,0.05);"></div>
+      <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:2px; height:100%; background:linear-gradient(to bottom, transparent, rgba(57,168,73,0.4), rgba(195,224,27,0.2), transparent); filter:blur(3px);"></div>
+      <div style="position:absolute; top:0; left:45%; transform:translateX(-50%); width:1px; height:100%; background:linear-gradient(to bottom, transparent, rgba(57,168,73,0.2), transparent); filter:blur(6px);"></div>
+      <div style="position:absolute; top:0; left:55%; width:1px; height:100%; background:linear-gradient(to bottom, transparent, rgba(195,224,27,0.15), transparent); filter:blur(4px);"></div>
+      <div style="position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, rgba(57,168,73,0.08), transparent);"></div>
+    </div>
+    <div class="card-body">
+      <h3>A: Lightning Energy Beam + Dark Planet</h3>
+      <p>Central vertical energy beam with GLSL lightning shaders in green hues. A dark planet sphere sits in the lower half. Moody, powerful, defence-grade. Closest to the Hero Odyssey reference.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0d0a; padding:2rem; min-height:220px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+      <!-- Atmospheric planet with orbital rings -->
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at 30% 40%, #2d7f36 5%, #1a3d1e 30%, #0a0d0a 70%); box-shadow: 0 0 80px rgba(57,168,73,0.2), 0 0 160px rgba(57,168,73,0.08), inset -20px -10px 40px rgba(0,0,0,0.8);"></div>
+      <!-- Orbital ring -->
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotateX(75deg); width:260px; height:260px; border-radius:50%; border:1px solid rgba(57,168,73,0.15);"></div>
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotateX(75deg) rotateZ(30deg); width:300px; height:300px; border-radius:50%; border:1px solid rgba(195,224,27,0.08);"></div>
+      <!-- Atmospheric glow -->
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:200px; height:200px; border-radius:50%; background:transparent; box-shadow: 0 0 40px rgba(57,168,73,0.12);"></div>
+    </div>
+    <div class="card-body">
+      <h3>B: Atmospheric Planet with Orbital Rings</h3>
+      <p>Centered glowing planet with orbital ring paths around it. Subtle green atmospheric glow. More sci-fi/space, less raw energy. Clean and elegant.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0d0a; padding:2rem; min-height:220px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+      <!-- Lightning + Planet + particles hybrid -->
+      <div style="position:absolute; top:60%; left:50%; transform:translate(-50%,-50%); width:220px; height:220px; border-radius:50%; background:radial-gradient(circle at 25% 85%, #1e3a20 15%, #000000de 65%, #000000ed 100%); box-shadow: 0 0 60px rgba(57,168,73,0.15);"></div>
+      <!-- Multiple energy beams -->
+      <div style="position:absolute; top:0; left:48%; width:3px; height:55%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.5) 40%, rgba(195,224,27,0.3) 70%, transparent 100%); filter:blur(2px);"></div>
+      <div style="position:absolute; top:0; left:42%; width:1px; height:50%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.2) 50%, transparent 100%); filter:blur(5px);"></div>
+      <div style="position:absolute; top:0; left:56%; width:2px; height:45%; background:linear-gradient(to bottom, transparent 0%, rgba(195,224,27,0.15) 50%, transparent 100%); filter:blur(4px);"></div>
+      <!-- Scattered particles -->
+      <div style="position:absolute; top:20%; left:30%; width:3px; height:3px; background:rgba(57,168,73,0.6); border-radius:50%; box-shadow:0 0 6px rgba(57,168,73,0.4);"></div>
+      <div style="position:absolute; top:35%; left:65%; width:2px; height:2px; background:rgba(195,224,27,0.5); border-radius:50%; box-shadow:0 0 4px rgba(195,224,27,0.3);"></div>
+      <div style="position:absolute; top:15%; left:55%; width:2px; height:2px; background:rgba(57,168,73,0.4); border-radius:50%; box-shadow:0 0 5px rgba(57,168,73,0.3);"></div>
+      <div style="position:absolute; top:45%; left:25%; width:2px; height:2px; background:rgba(195,224,27,0.3); border-radius:50%; box-shadow:0 0 4px rgba(195,224,27,0.2);"></div>
+      <!-- Bottom atmospheric glow -->
+      <div style="position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top, rgba(57,168,73,0.06), transparent);"></div>
+    </div>
+    <div class="card-body">
+      <h3>C: Full Hybrid — Lightning + Planet + Particles</h3>
+      <p>Combines it all: GLSL lightning beams converging on a dark planet, floating green particles scattered around. Maximum visual impact. The "go big" option — layered energy, atmosphere, and depth.</p>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:1.5rem; padding:1rem; border:1px solid rgba(255,255,255,0.08); border-radius:8px; background:rgba(255,255,255,0.02);">
+  <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0;"><strong style="color:rgba(255,255,255,0.7);">Note:</strong> These are static mockups showing the visual direction. The actual implementation will use real-time WebGL shaders for the lightning (animated, flickering, organic) and CSS/canvas for the planet with atmospheric glow effects. All in Anywise brand greens.</p>
+</div>

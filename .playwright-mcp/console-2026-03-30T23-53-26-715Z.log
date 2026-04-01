@@ -1,0 +1,2 @@
+[  220560ms] SyntaxError: Failed to execute 'querySelector' on 'Document': '#' is not a valid selector.
+    at HTMLAnchorElement.<anonymous> (http://localhost:8765/anywise-v5-redesign.html:1886:29)

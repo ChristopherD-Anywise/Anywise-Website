@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WISDOM — Product Page Mockup</title>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c08;
+    --surface: #0f140f;
+    --surface-2: #161d16;
+    --border: rgba(255,255,255,0.08);
+    --text-primary: #f0f4f0;
+    --text-secondary: rgba(240,244,240,0.55);
+    --accent: #4ade80;
+    --accent-dim: rgba(74,222,128,0.12);
+    --accent-border: rgba(74,222,128,0.25);
+    --max-w: 1100px;
+  }
+
+  body {
+    font-family: 'General Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,12,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; }
+  .nav-cta { background: var(--accent-dim); border: 1px solid var(--accent-border); color: var(--accent) !important; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.875rem !important; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+  .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 3rem;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(74,222,128,0.05) 0%, transparent 70%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 1rem;
+  }
+  .hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 480px; margin-bottom: 2rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #080c08; font-weight: 600;
+    padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;
+  }
+  .btn-ghost {
+    border: 1px solid var(--border); color: var(--text-primary);
+    padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;
+  }
+  .hero-image {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(74,222,128,0.08) 0%, transparent 70%);
+  }
+  .image-placeholder-label {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0.4;
+  }
+  .image-placeholder-label svg { width: 2rem; height: 2rem; }
+
+  /* WHAT IT DOES */
+  .what-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .what-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .what-text h2 { font-size: 1.75rem; font-weight: 700; margin: 0.5rem 0 1rem; line-height: 1.2; }
+  .what-text p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+  .what-visual {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); font-size: 0.85rem;
+  }
+  .what-visual .image-placeholder-label { opacity: 0.4; }
+
+  /* BENEFITS */
+  .benefits-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .benefits-section h2 { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0 2rem; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .benefit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.25rem;
+  }
+  .benefit-card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .benefit-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .benefit-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* HOW IT WORKS + USE CASES */
+  .how-cases-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .how-cases-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .how-section h2, .cases-section h2 { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0 1.5rem; }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 2rem; height: 2rem;
+    background: var(--accent-dim); border: 1px solid var(--accent-border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; color: var(--accent); flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .step h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .step p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+  .use-cases { display: flex; flex-direction: column; gap: 1rem; }
+  .use-case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+  }
+  .use-case h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .use-case p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* FEATURES */
+  .features-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .features-section h2 { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0 2rem; }
+  .features-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .feature-item {
+    border-left: 2px solid var(--accent-border);
+    padding-left: 1rem;
+  }
+  .feature-item h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .feature-item p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+  .features-visual {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .features-visual .image-placeholder-label { opacity: 0.4; }
+
+  /* CTA */
+  .cta-section {
+    padding: 5rem 0;
+  }
+  .cta-box {
+    background: var(--surface);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 3.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .cta-box h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .cta-box p { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; }
+  .cta-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    display: flex; gap: 0.5rem; align-items: center;
+    font-size: 0.8rem; color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { opacity: 0.4; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../anywise-v5-redesign.html" class="nav-brand">any<span>wise</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Capabilities</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Insights</a></li>
+    <li><a href="#" class="nav-cta">Engage Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="#">Home</a><span>/</span>
+          <a href="#">Products</a><span>/</span>
+          <span style="color: var(--text-primary);">WISDOM</span>
+        </div>
+        <p class="label">Strategic Intelligence</p>
+        <h1>WISDOM</h1>
+        <p>A secure intelligence platform fusing fragmented data, generative AI and experienced analysts to transform information overload into decision-ready foresight.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Engage Us →</a>
+          <a href="#" class="btn-ghost">All Products</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-placeholder-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Product hero image
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT DOES -->
+<section class="what-section">
+  <div class="container">
+    <div class="what-inner">
+      <div class="what-text">
+        <p class="label">Overview</p>
+        <h2>What is WISDOM?</h2>
+        <p>WISDOM addresses the challenge of decision-making in complex, data-rich environments where fragmented information, competing priorities and time pressure combine to create risk.</p>
+        <p style="margin-top: 1rem;">By combining multi-source data ingestion, GenAI-enabled synthesis and experienced human analysts, WISDOM delivers structured, decision-ready intelligence directly into the hands of commanders, planners and leaders — across defence, government and critical infrastructure.</p>
+      </div>
+      <div class="what-visual">
+        <div class="image-placeholder-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Product diagram / screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY BENEFITS -->
+<section class="benefits-section">
+  <div class="container">
+    <p class="label">Why WISDOM</p>
+    <h2>Key Benefits</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="icon">↗</div>
+        <h3>Faster decisions</h3>
+        <p>Reduces analyst burden by surfacing the signal from the noise — automatically and at speed.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">🔒</div>
+        <h3>Secure by design</h3>
+        <p>Built for classified and sensitive environments, with deployment options for on-premise or sovereign cloud.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">⚙</div>
+        <h3>GenAI-enabled</h3>
+        <p>Human-machine teaming at the core — AI assists, humans decide. No black-box outputs.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">🇦🇺</div>
+        <h3>Sovereign capability</h3>
+        <p>Designed, built and operated in Australia. No foreign dependencies on critical intelligence infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS + USE CASES -->
+<section class="how-cases-section">
+  <div class="container">
+    <div class="how-cases-inner">
+      <div class="how-section">
+        <p class="label">Process</p>
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Ingest</h3>
+              <p>WISDOM connects to disparate data sources — reports, telemetry, feeds, documents — and normalises them into a unified schema.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Analyse</h3>
+              <p>GenAI layers synthesise patterns and anomalies. Experienced analysts review and enrich the outputs, adding context and judgement.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Deliver</h3>
+              <p>Decision-ready intelligence is delivered in structured formats — briefings, dashboards, or direct integration into command systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cases-section">
+        <p class="label">Applications</p>
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+          <div class="use-case">
+            <h3>Defence Procurement</h3>
+            <p>Synthesising supplier, risk and capability data to support complex acquisition decisions with confidence.</p>
+          </div>
+          <div class="use-case">
+            <h3>Emergency Services Command</h3>
+            <p>Real-time situational awareness across multiple agencies, delivering a unified operational picture under pressure.</p>
+          </div>
+          <div class="use-case">
+            <h3>Government Policy Intelligence</h3>
+            <p>Translating complex, multi-source data landscapes into structured strategic recommendations for senior decision-makers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <div class="features-inner">
+      <div>
+        <p class="label">Capabilities</p>
+        <h2>Feature Breakdown</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <h3>Data Fusion</h3>
+            <p>Multi-source ingestion with schema normalisation across structured and unstructured formats.</p>
+          </div>
+          <div class="feature-item">
+            <h3>GenAI Layer</h3>
+            <p>LLM-assisted synthesis with human review gates at every stage.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Analyst Workbench</h3>
+            <p>Purpose-built interface for enrichment, annotation and confidence scoring.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Secure Hosting</h3>
+            <p>On-premise or sovereign cloud. No data leaves the customer's environment without consent.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Output Formats</h3>
+            <p>Structured briefings, dashboards, API endpoints and command system integration.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Audit Trail</h3>
+            <p>Full provenance tracking — every output traceable to its source data.</p>
+          </div>
+        </div>
+      </div>
+      <div class="features-visual">
+        <div class="image-placeholder-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Feature screenshot / graphic
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <h2>Ready to explore WISDOM for your organisation?</h2>
+        <p>Whether you're navigating a procurement decision, standing up a new intelligence capability, or evaluating what sovereign AI looks like in your context — let's talk.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-primary">Engage Us →</a>
+          <a href="#" class="btn-ghost">View All Products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Anywise Pty Ltd · Melbourne · Sydney · Brisbane · Perth · Canberra</p>
+</footer>
+
+</body>
+</html>

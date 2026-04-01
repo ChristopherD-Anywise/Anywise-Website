@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 3 — Australia Focus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0d0a;
+  color: #f2f1ee;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Full-screen earth — zoomed in, focused on Australia/Oceania region
+   Using a NASA Blue Marble night image where Australia is visible.
+   background-position shifts to center on Australia (right-center of most earth projections) */
+.earth-bg {
+  position: fixed;
+  inset: -75%;
+  /* This is the same Unsplash nighttime earth image —
+     background-position targets the Australia/SE Asia region */
+  background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format');
+  background-size: cover;
+  background-position: 72% 55%;
+  filter: brightness(0.6) saturate(0.8);
+}
+
+.earth-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    transparent 20%,
+    rgba(57,168,73,0.04) 35%,
+    rgba(57,168,73,0.08) 50%,
+    transparent 70%
+  );
+}
+
+/* Lightning overlay — fading */
+.lightning-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.beam {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  filter: blur(3px);
+}
+
+.beam-1 {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.4) 15%, rgba(195,224,27,0.25) 40%, rgba(57,168,73,0.3) 65%, transparent 100%);
+  animation: beamPulse 3s ease-in-out infinite alternate;
+}
+
+.beam-2 {
+  left: 46%;
+  width: 1px;
+  filter: blur(6px);
+  background: linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.2) 30%, rgba(57,168,73,0.1) 70%, transparent 100%);
+  animation: beamPulse 4s ease-in-out infinite alternate-reverse;
+}
+
+.beam-3 {
+  left: 55%;
+  width: 2px;
+  filter: blur(5px);
+  background: linear-gradient(to bottom, transparent 0%, rgba(195,224,27,0.12) 35%, rgba(195,224,27,0.08) 65%, transparent 100%);
+  animation: beamPulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes beamPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Transition gradient */
+.transition-gradient {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,13,10,0.97) 0%, rgba(10,13,10,0.85) 15%, rgba(10,13,10,0.5) 35%, rgba(10,13,10,0.2) 55%, transparent 75%);
+  pointer-events: none;
+}
+
+.green-bleed {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(57,168,73,0.04), transparent);
+  pointer-events: none;
+}
+
+/* Next section */
+.next-section {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  padding: 0 3rem 3rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.section-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  background: linear-gradient(90deg, #39a849, #c3e01b);
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cap-card {
+  padding: 1.8rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+}
+
+.cap-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(57,168,73,0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.cap-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f2f1ee;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.cap-card p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.55;
+}
+
+.stage-label {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.6);
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.06);
+  z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<div class="earth-bg"></div>
+
+<div class="lightning-overlay">
+  <div class="beam beam-1"></div>
+  <div class="beam beam-2"></div>
+  <div class="beam beam-3"></div>
+</div>
+
+<div class="transition-gradient"></div>
+<div class="green-bleed"></div>
+
+<div class="next-section">
+  <div class="section-divider"></div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <p class="cap-num">01 — Capability</p>
+      <h3>Ethical Decision Augmentation</h3>
+      <p>Applying rigorous ethical frameworks to human-AI teaming — so your people make better decisions, faster, without surrendering judgement to the machine.</p>
+    </div>
+    <div class="cap-card">
+      <p class="cap-num">02 — Capability</p>
+      <h3>Defence Procurement & Advisory</h3>
+      <p>Deep knowledge of Australian sovereign capability processes, CASG procurement pathways, and the AUKUS technology ecosystem.</p>
+    </div>
+    <div class="cap-card">
+      <p class="cap-num">03 — Capability</p>
+      <h3>Technology Strategy & Integration</h3>
+      <p>From requirement to delivery — we bridge the gap between policy intent and technical execution.</p>
+    </div>
+  </div>
+</div>
+
+<div class="stage-label">Stage 3 — Earth zoomed in, centered on Australia</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<h2>Site File Structure</h2>
+<p class="subtitle">Approach A — shared CSS + individual HTML pages</p>
+
+<div class="section">
+  <div class="mockup">
+    <div class="mockup-header">Repository Layout</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 0.85rem; line-height: 2;">
+      <div style="color: var(--accent, #22c55e);">anywise-v5-redesign.html</div>
+      <div style="color: var(--accent, #22c55e);">shared.css &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← new: design system, nav, footer</span></div>
+      <br>
+      <div style="opacity:0.6;">products/</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← products home</span></div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">wisdom.html</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">engaide.html</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">fabhums.html</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">campaide.html</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">aide.html</div>
+      <br>
+      <div style="opacity:0.6;">blog/</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← blog home / listing</span></div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">post.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← single template, renders via ?slug=</span></div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">posts.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← all post content lives here</span></div>
+      <br>
+      <div style="opacity:0.6;">engage/</div>
+      <div style="padding-left:1.5rem; color: var(--accent, #22c55e);">index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="opacity:0.5; font-family: sans-serif;">← standalone engage us page</span></div>
+      <br>
+      <div style="opacity:0.5;">favicon.svg</div>
+      <div style="opacity:0.5;">docs/</div>
+      <div style="opacity:0.5;">screenshots/</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>How it fits together</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.75rem;">
+    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem;">
+      <div class="label">shared.css</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">CSS custom properties (dark/light), nav, footer, typography, buttons, section dividers — everything that appears on every page.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem;">
+      <div class="label">posts.json</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">Array of post objects. blog/post.html reads ?slug= from the URL, finds the matching post, and renders it. No new HTML file needed per post.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem;">
+      <div class="label">product pages</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">Each product gets its own HTML file: hero, how it works, use cases, features, CTA. All link shared.css.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem;">
+      <div class="label">engage/index.html</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">Standalone page (also openable as a modal overlay from the main nav CTA). Contains the qualified enquiry form.</p>
+    </div>
+  </div>
+</div>
