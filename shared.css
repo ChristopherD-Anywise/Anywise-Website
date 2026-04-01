@@ -447,6 +447,7 @@ footer {
   margin-bottom: 1rem;
 }
 .engage-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.engage-group[hidden] { display: none; }
 .engage-group.full { grid-column: 1 / -1; }
 .engage-group label { font-size: 0.78rem; font-weight: 500; color: var(--text-secondary); }
 .engage-group input,
