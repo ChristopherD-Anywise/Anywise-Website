@@ -1,0 +1,120 @@
+/* brand.css — Brand tokens for this project.
+ * This is the ONLY file you edit when rebranding.
+ * Every value here is consumed by shared.css via CSS custom properties.
+ *
+ * AFTER EDITING TOKENS: also update the 6 hardcoded rgba values in shared.css
+ * that are derived from --bg and --bg-deep (see README.md for the full table).
+ */
+
+/* ─── Dark mode (default) ─── */
+:root {
+  /* Brand palette */
+  --apple:          #39a849;
+  --lime:           #c3e01b;
+  --mint:           #2d7f36;
+
+  /* Gradients */
+  --gradient-al:    linear-gradient(135deg, #39a849, #c3e01b);
+  --gradient-lm:    linear-gradient(135deg, #c3e01b, #2d7f36);
+  --gradient-ma:    linear-gradient(135deg, #2d7f36, #39a849);
+  --gradient-full:  linear-gradient(135deg, #2d7f36, #39a849, #c3e01b);
+
+  /* Surfaces */
+  --bg-deep:        #0a0d0a;
+  --bg:             #0e110e;
+  --bg-elevated:    #151a16;
+  --bg-card:        #1a201b;
+  --bg-card-hover:  #212822;
+
+  /* Borders */
+  --border:         rgba(255,255,255,0.07);
+  --border-accent:  rgba(57,168,73,0.22);
+
+  /* Text */
+  --text-primary:   #f2f1ee;
+  --text-secondary: #9a9d95;
+  --text-tertiary:  #626860;
+
+  /* Accent */
+  --accent:         #39a849;
+  --accent-dim:     #2d7f36;
+  --accent-muted:   rgba(57,168,73,0.06);
+  --accent-glow:    rgba(57,168,73,0.1);
+
+  /* Misc */
+  --white:          #ffffff;
+  --font:           'General Sans', -apple-system, sans-serif;
+  --mono:           'JetBrains Mono', monospace;
+  --radius:         8px;
+  --radius-lg:      14px;
+  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Light mode overrides ─── */
+[data-theme="light"] {
+  --bg-deep:        #f5f6f3;
+  --bg:             #fafbf8;
+  --bg-elevated:    #ffffff;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #f0f2ed;
+
+  --text-primary:   #1a1d1a;
+  --text-secondary: #4a5248;
+  --text-tertiary:  #7a8275;
+
+  /* --white flips to near-black for nav text in light mode */
+  --white:          #1a1d1a;
+
+  --border:         rgba(0,0,0,0.08);
+  --border-accent:  rgba(57,168,73,0.25);
+
+  --accent:         #2d7f36;
+  --accent-dim:     #39a849;
+  --accent-muted:   rgba(45,127,54,0.06);
+  --accent-glow:    rgba(45,127,54,0.08);
+}
+
+/* ─── Light mode component overrides ─── */
+/* These override components defined in shared.css using brand-specific values */
+
+[data-theme="light"] .btn-primary {
+  border-color: rgba(45,127,54,0.3);
+  background: var(--accent);
+}
+
+[data-theme="light"] .btn-accent {
+  color: var(--accent);
+}
+
+[data-theme="light"] .btn-accent:hover {
+  box-shadow: 0 4px 16px rgba(45,127,54,0.15);
+}
+
+[data-theme="light"] #nav {
+  background: #fafbf8;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] #nav.scrolled {
+  background: rgba(250,251,248,0.95);
+}
+
+[data-theme="light"] .nav-links.open {
+  background: rgba(250,251,248,0.98);
+}
+
+/* ─── Logo mark ─── */
+/* .nav-brand is the wordmark — update font, weight, letter-spacing, colour here */
+.nav-brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* .nav-brand span wraps the accent portion of the brand name (e.g. "wise" in "Anywise") */
+.nav-brand span {
+  color: var(--accent);
+}
