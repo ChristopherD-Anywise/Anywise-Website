@@ -2198,8 +2198,8 @@ const textureLoader = new THREE.TextureLoader();
 function loadEarthTexture(light, onLoad) {
   const tex = textureLoader.load(
     light
-      ? 'https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg'
-      : 'https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg',
+      ? './assets/textures/earth-blue-marble.jpg'
+      : './assets/textures/earth-night.jpg',
     (loadedTex) => {
       if (onLoad) onLoad(loadedTex);
       renderer.render(scene, camera);
