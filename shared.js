@@ -122,28 +122,28 @@ function injectEngageModal() {
         method="POST"
         enctype="text/plain"
       >
-        <div class="engage-row">
+        <div class="engage-form-row">
           <div class="engage-group">
             <label for="engName">Full name <span aria-hidden="true">*</span></label>
-            <input class="engage-input" id="engName" name="name" type="text"
+            <input id="engName" name="name" type="text"
               placeholder="Jane Smith" autocomplete="name" required>
           </div>
           <div class="engage-group">
             <label for="engEmail">Work email <span aria-hidden="true">*</span></label>
-            <input class="engage-input" id="engEmail" name="email" type="email"
+            <input id="engEmail" name="email" type="email"
               placeholder="jane@organisation.gov.au" autocomplete="email" required>
           </div>
         </div>
 
-        <div class="engage-row">
+        <div class="engage-form-row">
           <div class="engage-group">
             <label for="engOrg">Organisation <span aria-hidden="true">*</span></label>
-            <input class="engage-input" id="engOrg" name="organisation" type="text"
+            <input id="engOrg" name="organisation" type="text"
               placeholder="Department / Company" required>
           </div>
           <div class="engage-group">
             <label for="engRole">Your role</label>
-            <input class="engage-input" id="engRole" name="role" type="text"
+            <input id="engRole" name="role" type="text"
               placeholder="e.g. CTO, Project Manager">
           </div>
         </div>
@@ -180,7 +180,7 @@ function injectEngageModal() {
         </div>
 
         <div class="engage-actions">
-          <p class="engage-note">We respect your privacy. Your details are never shared with third parties.</p>
+          <p class="engage-privacy">We respect your privacy. Your details are never shared with third parties.</p>
           <button type="submit" class="btn btn-primary">Send &rarr;</button>
         </div>
       </form>

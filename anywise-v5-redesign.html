@@ -481,9 +481,9 @@ a.nav-cta:focus-visible {
 .mobile-toggle span:nth-child(1) { top: 0; }
 .mobile-toggle span:nth-child(2) { top: 7px; }
 .mobile-toggle span:nth-child(3) { top: 14px; }
-.mobile-toggle.active span:nth-child(1) { top: 7px; transform: rotate(45deg); background: var(--accent); }
-.mobile-toggle.active span:nth-child(2) { opacity: 0; }
-.mobile-toggle.active span:nth-child(3) { top: 7px; transform: rotate(-45deg); background: var(--accent); }
+.mobile-toggle.open span:nth-child(1) { top: 7px; transform: rotate(45deg); background: var(--accent); }
+.mobile-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-toggle.open span:nth-child(3) { top: -7px; transform: rotate(-45deg); background: var(--accent); }
 
 /* ═══ HERO ═══ */
 .hero {
@@ -2030,14 +2030,14 @@ window.addEventListener('scroll', () => {
 const toggle = document.getElementById('mobileToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => {
-  const isOpen = toggle.classList.contains('active');
-  toggle.classList.toggle('active');
+  const isOpen = toggle.classList.contains('open');
+  toggle.classList.toggle('open');
   links.classList.toggle('open');
   toggle.setAttribute('aria-expanded', !isOpen);
 });
 links.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
-    toggle.classList.remove('active');
+    toggle.classList.remove('open');
     links.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
   });

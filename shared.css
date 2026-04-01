@@ -290,9 +290,9 @@ a.nav-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset
   transition: var(--transition);
   position: relative;
 }
-.mobile-toggle.active span:nth-child(1) { top: 7px; transform: rotate(45deg); background: var(--accent); }
-.mobile-toggle.active span:nth-child(2) { opacity: 0; }
-.mobile-toggle.active span:nth-child(3) { top: -7px; transform: rotate(-45deg); background: var(--accent); }
+.mobile-toggle.open span:nth-child(1) { top: 7px; transform: rotate(45deg); background: var(--accent); }
+.mobile-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-toggle.open span:nth-child(3) { top: -7px; transform: rotate(-45deg); background: var(--accent); }
 
 @media (max-width: 768px) {
   .mobile-toggle { display: flex; }
