@@ -30,9 +30,9 @@
 /* ─── DOM Ready ───────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* Theme toggle */
+  /* Theme toggle — skip if the page has its own handler (e.g. main page with globe) */
   const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
+  if (themeToggle && !window.__themeHandled) {
     themeToggle.addEventListener('click', function () {
       const current = document.documentElement.getAttribute('data-theme');
       window.applyTheme(current === 'dark' ? 'light' : 'dark');
