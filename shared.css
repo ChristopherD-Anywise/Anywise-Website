@@ -251,18 +251,28 @@ nav .container {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 a.nav-cta {
-  background: none;
-  color: var(--text-secondary) !important;
-  padding: 0;
-  border-radius: 0;
-  font-weight: 500;
-  font-size: 0.8rem;
-  transition: color 0.2s;
+  background: var(--accent);
+  color: var(--bg-deep) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  transition: box-shadow 0.3s;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 }
-a.nav-cta:hover { color: var(--text-primary) !important; transform: none; box-shadow: none; }
-a.nav-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+a.nav-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--gradient-al);
+  transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+a.nav-cta:hover { box-shadow: 0 4px 16px var(--accent-glow); }
+a.nav-cta:hover::after { width: 100%; }
+a.nav-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
