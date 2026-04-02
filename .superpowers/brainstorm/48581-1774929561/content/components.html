@@ -1,0 +1,100 @@
+<h2>Design Section 2: Component-Specific Overrides</h2>
+<p class="subtitle">Targeted rules for elements that can't be handled by variable swaps alone</p>
+
+<div class="section">
+  <h3>1. Hero Section</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <p class="label">Current (Dark)</p>
+    <ul style="color:#aaa;font-size:0.9em;line-height:1.8;margin-bottom:1rem;">
+      <li>Night Earth globe texture</li>
+      <li>Dark gradient overlay: <code>rgba(0,0,0,0.92)</code> → <code>rgba(0,0,0,0.25)</code></li>
+      <li>White heading text, green gradient on italic line</li>
+      <li>Green atmospheric glow shader on globe</li>
+      <li>Renderer clear color: <code>#0a0d0a</code></li>
+    </ul>
+    <p class="label">Light Mode Changes</p>
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Globe texture</strong> → NASA Blue Marble Day (<code>earth-day.jpg</code>)</li>
+      <li><strong>Overlay gradient</strong> → Light: <code>rgba(255,255,255,0.85)</code> → <code>rgba(255,255,255,0.3)</code></li>
+      <li><strong>Heading text</strong> → Dark: <code>var(--text-primary)</code> = <code>#1a1d1a</code></li>
+      <li><strong>Italic gradient line</strong> → Keep green gradient (works on both light/dark)</li>
+      <li><strong>Glow shader</strong> → Softer, warm white-green tint instead of bright green</li>
+      <li><strong>Renderer clear color</strong> → <code>#f5f6f3</code> (match --bg-deep)</li>
+      <li><strong>Directional light</strong> → Increase intensity, reposition to simulate sun</li>
+      <li><strong>Sub-text</strong> → <code>rgba(0,0,0,0.6)</code> instead of <code>rgba(255,255,255,0.7)</code></li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>2. Navigation</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Backdrop</strong> → <code>rgba(250,251,248,0.85)</code> with blur (currently <code>rgba(10,13,10,0.85)</code>)</li>
+      <li><strong>Nav links</strong> → Dark text, green hover</li>
+      <li><strong>CTA button</strong> → Keep green accent button (works on both)</li>
+      <li><strong>Bottom border</strong> → <code>rgba(0,0,0,0.06)</code></li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>3. Capability Cards</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <p class="label">Current</p>
+    <p style="color:#aaa;font-size:0.9em;">Dark green gradients: <code>linear-gradient(145deg, #1a3d1e, #1b5e2a, #163d1f)</code></p>
+    <p class="label">Light Mode</p>
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Background</strong> → White card with subtle green-tinted left border</li>
+      <li><strong>Border</strong> → <code>rgba(0,0,0,0.08)</code> + <code>3px solid var(--accent)</code> on left</li>
+      <li><strong>Spotlight effect</strong> → Softer, using <code>rgba(57,168,73,0.06)</code> instead of <code>0.15</code></li>
+      <li><strong>Hover</strong> → Slight shadow elevation instead of gradient shift</li>
+      <li><strong>Text</strong> → Dark text (auto via variables)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>4. Stats Bar (Track Record)</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Background</strong> → <code>rgba(255,255,255,0.7)</code> with blur (currently <code>rgba(0,0,0,0.35)</code>)</li>
+      <li><strong>Border</strong> → <code>rgba(0,0,0,0.08)</code></li>
+      <li><strong>Stat values</strong> → Dark green <code>var(--accent)</code> (keeps contrast on white)</li>
+      <li><strong>Stat labels</strong> → <code>rgba(0,0,0,0.5)</code></li>
+      <li><strong>Dividers</strong> → <code>rgba(0,0,0,0.06)</code> (currently <code>rgba(255,255,255,0.06)</code>)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>5. Product Cards, News Cards, CTA Section</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Product cards</strong> → White bg, subtle border, green-tinted shadow on hover</li>
+      <li><strong>News cards</strong> → White bg, image overlay reduced to <code>rgba(0,0,0,0.3)</code></li>
+      <li><strong>CTA section</strong> → Light gray bg (<code>var(--bg-deep)</code>), green radial glow uses <code>rgba(57,168,73,0.06)</code></li>
+      <li><strong>Credentials marquee</strong> → Logos need no change (already work on both), fade edges switch to white gradient</li>
+      <li><strong>Footer</strong> → Light gray bg, dark text (auto via variables)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>6. JavaScript / Globe Logic</h3>
+  <div style="padding: 1.2rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+    <ul style="color:#ccc;font-size:0.9em;line-height:1.8;">
+      <li><strong>Time detection</strong> → Get current AEDT time on page load (UTC+11). If 6am–6pm, set <code>document.documentElement.dataset.theme = 'light'</code></li>
+      <li><strong>Globe texture</strong> → Conditional load: day texture for light, night for dark</li>
+      <li><strong>Day texture URL</strong> → <code>https://unpkg.com/three-globe@2.41.12/example/img/earth-blue-marble.jpg</code></li>
+      <li><strong>Renderer clear color</strong> → Set based on theme</li>
+      <li><strong>Lighting</strong> → Increase directional light intensity to 3.5, reposition to (5, 3, 5) for sun effect</li>
+      <li><strong>Glow shader</strong> → Reduce intensity multiplier from 0.6 to 0.3, shift color toward warm white</li>
+      <li><strong>Green point light</strong> → Reduce intensity from 0.8 to 0.3 in light mode</li>
+    </ul>
+  </div>
+</div>
+
+<div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: rgba(57,168,73,0.08); border-radius: 8px; border: 1px solid rgba(57,168,73,0.2);">
+  <p style="margin:0;color:#ccc;font-size:0.9em;"><strong>Transition:</strong> On page load, the JS sets <code>data-theme</code> before first paint. A <code>0.5s</code> CSS transition on <code>background-color</code> and <code>color</code> on key elements ensures a smooth fade if the theme changes. The globe texture loads asynchronously — the scene renders with correct lighting immediately, texture fills in.</p>
+</div>

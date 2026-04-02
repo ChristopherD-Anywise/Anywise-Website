@@ -1,0 +1,109 @@
+<h2>Anywise Website — Issue Triage</h2>
+<p class="subtitle">Select everything you want included in the plan. We'll work through each group.</p>
+
+<div class="section">
+  <span class="label">🔴 Security</span>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="threejs-sri" onclick="toggleSelect(this)">
+      <div class="letter">S1</div>
+      <div class="content">
+        <h3>Three.js — bundle locally + SRI</h3>
+        <p>Currently loaded from jsDelivr CDN. Supply chain risk. Bundle locally or add Subresource Integrity hash.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="unpkg-textures" onclick="toggleSelect(this)">
+      <div class="letter">S2</div>
+      <div class="content">
+        <h3>unpkg earth textures — download locally</h3>
+        <p>Two earth JPGs loaded from unpkg. No fallback if unavailable. Download and commit to repo.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="wix-images" onclick="toggleSelect(this)">
+      <div class="letter">S3</div>
+      <div class="content">
+        <h3>Wix CDN images — host locally</h3>
+        <p>Product cards, certifications, team photo, blog thumbnails all served from static.wixstatic.com. Faster + no Wix dependency.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="label">🟡 Accessibility (WCAG AA)</span>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="a11y-structure" onclick="toggleSelect(this)">
+      <div class="letter">A1</div>
+      <div class="content">
+        <h3>Structural landmarks — &lt;main&gt; + skip link</h3>
+        <p>No &lt;main&gt; element. No skip-to-content link. Screen readers and keyboard users can't navigate efficiently.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a11y-alt" onclick="toggleSelect(this)">
+      <div class="letter">A2</div>
+      <div class="content">
+        <h3>Alt text — images and decorative icons</h3>
+        <p>Blog thumbnails have empty alt="". Product card icons and decoration need aria-hidden or descriptive alt.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a11y-contrast" onclick="toggleSelect(this)">
+      <div class="letter">A3</div>
+      <div class="content">
+        <h3>Colour contrast — secondary text</h3>
+        <p>--text-secondary (#9a9d95) on dark background may fail WCAG AA (4.5:1 ratio required for normal text).</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a11y-mobile-focus" onclick="toggleSelect(this)">
+      <div class="letter">A4</div>
+      <div class="content">
+        <h3>Mobile nav — focus trap + z-index fix</h3>
+        <p>Menu opens but focus isn't moved into it. z-index 999 is below the nav bar (1000) causing layering issues.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a11y-nav-href" onclick="toggleSelect(this)">
+      <div class="letter">A5</div>
+      <div class="content">
+        <h3>Nav brand link — href="#" → proper home link</h3>
+        <p>Clicking the Anywise wordmark goes nowhere (href="#"). Should link to home.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="label">🟢 Quick Fixes</span>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="copyright-year" onclick="toggleSelect(this)">
+      <div class="letter">Q1</div>
+      <div class="content">
+        <h3>Copyright year — 2025 → 2026</h3>
+        <p>Footer says © 2025. Update to 2026 (or make it dynamic with JS).</p>
+      </div>
+    </div>
+    <div class="option" data-choice="og-image" onclick="toggleSelect(this)">
+      <div class="letter">Q2</div>
+      <div class="content">
+        <h3>OG / Twitter card image — create og-image.png</h3>
+        <p>og:image points to anywise.com.au/og-image.png which doesn't exist. Need to create a 1200×630 social preview image.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="favicon" onclick="toggleSelect(this)">
+      <div class="letter">Q3</div>
+      <div class="content">
+        <h3>Favicon — review two-tone Anywise vs green A</h3>
+        <p>Current favicon is a green "A" SVG. The two-tone Anywise logo is also available. Decide which to keep.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="index-html" onclick="toggleSelect(this)">
+      <div class="letter">Q4</div>
+      <div class="content">
+        <h3>index.html — add root redirect/entry point</h3>
+        <p>No index.html at root. Hosting services default to index.html. Add one that serves or redirects to the main page.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="background:var(--bg-card,#1a201b);border:1px solid var(--border,rgba(255,255,255,0.07));border-radius:8px;padding:1.25rem;">
+  <span class="label">ℹ️ Out of scope for now (per feedback)</span>
+  <p style="margin-top:0.5rem;opacity:0.7;font-size:0.9rem;">Monolithic file refactor — deferred until multi-page work. Fonts (Fontshare/Google Fonts) — CDN is standard practice for fonts, low risk.</p>
+</div>

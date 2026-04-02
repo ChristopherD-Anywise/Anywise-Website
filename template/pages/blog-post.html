@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading…</title><!-- JS sets this dynamically -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+/* ─── Post Layout ───────────────────────────────────────────────────────── */
+.post-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: var(--text-secondary);
+}
+
+.post-hero {
+  padding: 6rem 0 0;
+}
+.post-hero-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+  margin-top: 2rem;
+}
+.post-hero-placeholder {
+  width: 100%;
+  aspect-ratio: 21/9;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.post-hero-placeholder svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.1;
+}
+
+.post-header {
+  max-width: 740px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+.post-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 1rem 0;
+}
+.post-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+.post-meta-bar .post-cat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.post-meta-sep { color: var(--text-tertiary); }
+.post-meta-bar .post-date,
+.post-meta-bar .post-author,
+.post-meta-bar .post-read {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+/* ─── Article Body ──────────────────────────────────────────────────────── */
+.post-body {
+  max-width: 740px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+.post-section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 2.5rem 0 1rem;
+}
+.post-body p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.02rem;
+  margin-bottom: 1.25rem;
+}
+.post-body ul {
+  margin: 0 0 1.25rem 1.25rem;
+}
+.post-body ul li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.02rem;
+  margin-bottom: 0.4rem;
+}
+.post-body ul li::marker {
+  color: var(--accent);
+}
+.pullquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-muted);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+}
+.post-block-img {
+  width: 100%;
+  border-radius: var(--radius);
+  display: block;
+  margin: 1.5rem 0 0.5rem;
+}
+.post-block-img-caption {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* ─── Social Share ──────────────────────────────────────────────────────── */
+.post-share {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.share-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.5rem;
+}
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: border-color 0.15s, background 0.15s;
+}
+.share-btn:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-elevated);
+}
+.share-btn svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+.share-copied {
+  font-size: 0.82rem;
+  color: var(--accent);
+  display: none;
+}
+.share-copied.show { display: inline; }
+
+/* ─── More Posts ────────────────────────────────────────────────────────── */
+.post-more {
+  padding: 4rem 0 6rem;
+  border-top: 1px solid var(--border);
+}
+.post-more h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.more-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.more-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.2s;
+  display: block;
+}
+.more-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+.more-card-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  font-family: var(--mono);
+}
+.more-card-meta .post-cat {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-family: var(--font);
+}
+.more-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ─── Not Found ─────────────────────────────────────────────────────────── */
+.post-not-found {
+  padding: 8rem 0;
+  text-align: center;
+}
+.post-not-found h2 { margin-bottom: 1rem; font-size: 1.8rem; }
+.post-not-found p { color: var(--text-secondary); margin-bottom: 2rem; }
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .more-grid { grid-template-columns: 1fr; }
+  .post-hero { padding: 5rem 0 0; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;">
+      <a href="home.html" class="nav-brand"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="product-index.html"><!-- REPLACE: Nav link 1 --></a></li>
+        <li><a href="blog-index.html"><!-- REPLACE: Nav link 2 --></a></li>
+        <li><a href="#" data-engage>Engage Us</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◑</button>
+        <a href="#" class="nav-cta" data-engage><!-- REPLACE: CTA label --></a>
+        <button id="mobileToggle" class="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Post content — all rendered by inline JS -->
+  <div id="postContent">
+    <div class="post-loading">
+      <p>Loading…</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="home.html" class="nav-brand" style="display:inline-block;margin-bottom:0.75rem;"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+          <p style="font-size:0.875rem;color:var(--text-secondary);max-width:280px;"><!-- REPLACE: Brand tagline --></p>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="product-index.html"><!-- REPLACE: Footer link --></a></li>
+            <li><a href="blog-index.html"><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="#" data-engage><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal"><!-- REPLACE: Legal line --></p>
+        <p class="footer-locations"><!-- REPLACE: Cities --></p>
+        <p class="acknowledgement"><!-- REPLACE: Acknowledgement of Country --></p>
+        <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">© <!-- REPLACE: Year --> <!-- REPLACE: Company name -->. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared.js"></script>
+  <script>
+(function() {
+  const container = document.getElementById('postContent');
+
+  function formatDate(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderBlock(block) {
+    switch (block.type) {
+      case 'paragraph':
+        return '<p>' + escapeHtml(block.content) + '</p>';
+      case 'pullquote':
+        return '<blockquote class="pullquote">' + escapeHtml(block.content) + '</blockquote>';
+      case 'list':
+        return '<ul>' + block.items.map(function(item) {
+          return '<li>' + escapeHtml(item) + '</li>';
+        }).join('') + '</ul>';
+      case 'image':
+        var cap = block.caption ? '<p class="post-block-img-caption">' + escapeHtml(block.caption) + '</p>' : '';
+        return '<img src="' + escapeHtml(block.src) + '" alt="' + escapeHtml(block.caption || '') + '" class="post-block-img" loading="lazy">' + cap;
+      default:
+        return '';
+    }
+  }
+
+  function renderMoreCard(post) {
+    return '<a href="post.html?slug=' + encodeURIComponent(post.slug) + '" class="more-card">' +
+      '<div class="more-card-meta">' +
+        '<span class="post-cat">' + escapeHtml(post.category) + '</span>' +
+        '<span>·</span>' +
+        '<span>' + formatDate(post.date) + '</span>' +
+      '</div>' +
+      '<h4>' + escapeHtml(post.title) + '</h4>' +
+    '</a>';
+  }
+
+  function renderPost(post, allPosts) {
+    /* Update page title — REPLACE: update brand name suffix if desired */
+    document.title = escapeHtml(post.title);
+
+    /* Hero image or placeholder */
+    var heroHtml = '';
+    if (post.heroImage) {
+      heroHtml = '<img src="' + escapeHtml(post.heroImage) + '" alt="" class="post-hero-img">';
+    } else {
+      heroHtml = '<div class="post-hero-placeholder">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+        '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
+        '<circle cx="8.5" cy="8.5" r="1.5"/>' +
+        '<path d="M21 15l-5-5L5 21"/>' +
+        '</svg></div>';
+    }
+
+    /* Sections */
+    var sectionsHtml = post.sections.map(function(section) {
+      var blocksHtml = section.blocks.map(renderBlock).join('');
+      return '<h2 class="post-section-heading">' + escapeHtml(section.heading) + '</h2>' + blocksHtml;
+    }).join('');
+
+    /* More posts: 2 most recent excluding current */
+    var morePosts = allPosts
+      .filter(function(p) { return p.slug !== post.slug; })
+      .sort(function(a, b) { return b.date.localeCompare(a.date); })
+      .slice(0, 2);
+
+    var moreHtml = '';
+    if (morePosts.length) {
+      moreHtml = '<section class="post-more"><div class="container"><h3>More articles</h3>' +
+        '<div class="more-grid">' + morePosts.map(renderMoreCard).join('') + '</div>' +
+        '</div></section>';
+    }
+
+    container.innerHTML =
+      /* Hero */
+      '<section class="post-hero"><div class="container">' +
+        '<div class="breadcrumb">' +
+          '<a href="home.html" style="color:var(--text-tertiary);text-decoration:none;">Home</a><span>/</span>' +
+          '<a href="blog-index.html" style="color:var(--text-tertiary);text-decoration:none;"><!-- REPLACE: Blog section name --></a><span>/</span>' +
+          '<span>' + escapeHtml(post.title.length > 50 ? post.title.slice(0, 50) + '…' : post.title) + '</span>' +
+        '</div>' +
+        heroHtml +
+      '</div></section>' +
+
+      /* Header */
+      '<header class="post-header">' +
+        '<div class="post-meta-bar">' +
+          '<span class="post-cat">' + escapeHtml(post.category) + '</span>' +
+          '<span class="post-meta-sep">·</span>' +
+          '<span class="post-date">' + formatDate(post.date) + '</span>' +
+          '<span class="post-meta-sep">·</span>' +
+          '<span class="post-author">' + escapeHtml(post.author) + '</span>' +
+          '<span class="post-meta-sep">·</span>' +
+          '<span class="post-read">' + post.readTime + ' min read</span>' +
+        '</div>' +
+        '<h1>' + escapeHtml(post.title) + '</h1>' +
+        '<p style="color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin-top:0.5rem">' + escapeHtml(post.intro) + '</p>' +
+      '</header>' +
+
+      /* Body */
+      '<article class="post-body">' + sectionsHtml + '</article>' +
+
+      /* Share */
+      '<div class="post-share">' +
+        '<span class="share-label">Share</span>' +
+        '<a class="share-btn" id="shareLinkedIn" href="#" target="_blank" rel="noopener">' +
+          '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>' +
+          'LinkedIn' +
+        '</a>' +
+        '<a class="share-btn" id="shareX" href="#" target="_blank" rel="noopener">' +
+          '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' +
+          'X' +
+        '</a>' +
+        '<button class="share-btn" id="shareCopy">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>' +
+          'Copy link' +
+        '</button>' +
+        '<span class="share-copied" id="shareCopied">Copied!</span>' +
+      '</div>' +
+
+      moreHtml;
+
+    /* Wire up share buttons */
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent(post.title);
+    document.getElementById('shareLinkedIn').href =
+      'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+    document.getElementById('shareX').href =
+      'https://x.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+    document.getElementById('shareCopy').addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        var msg = document.getElementById('shareCopied');
+        msg.classList.add('show');
+        setTimeout(function() { msg.classList.remove('show'); }, 2000);
+      });
+    });
+  }
+
+  function renderNotFound() {
+    document.title = 'Post not found';
+    container.innerHTML =
+      '<div class="container"><div class="post-not-found">' +
+        '<h2>Post not found</h2>' +
+        '<p>We couldn\'t find the article you\'re looking for.</p>' +
+        '<a href="blog-index.html" class="btn btn-ghost">Back to blog</a>' +
+      '</div></div>';
+  }
+
+  /* Get slug from URL */
+  var params = new URLSearchParams(window.location.search);
+  var slug = params.get('slug');
+
+  if (!slug) {
+    renderNotFound();
+    return;
+  }
+
+  fetch('posts.json')
+    .then(function(r) {
+      if (!r.ok) throw new Error('Failed to load');
+      return r.json();
+    })
+    .then(function(posts) {
+      var post = posts.find(function(p) { return p.slug === slug; });
+      if (!post) {
+        renderNotFound();
+      } else {
+        renderPost(post, posts);
+      }
+    })
+    .catch(function() {
+      renderNotFound();
+    });
+})();
+  </script>
+</body>
+</html>

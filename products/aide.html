@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIDE — Enterprise Intelligence | Anywise</title>
+<meta name="description" content="AIDE is the enterprise intelligence layer connecting all Anywise platforms into a single coherent operational view — giving leaders the visibility to act decisively across every domain.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIDE — Enterprise Intelligence | Anywise">
+<meta property="og:description" content="AIDE is the enterprise intelligence layer connecting all Anywise platforms into a single coherent operational view — giving leaders the visibility to act decisively across every domain.">
+<meta property="og:image" content="https://www.anywise.com.au/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIDE — Enterprise Intelligence | Anywise">
+<meta name="twitter:description" content="AIDE is the enterprise intelligence layer connecting all Anywise platforms into a single coherent operational view — giving leaders the visibility to act decisively across every domain.">
+<meta name="twitter:image" content="https://www.anywise.com.au/og-image.jpg">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Product Page Layout ───────────────────────────────────────────────── */
+.prod-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.prod-hero {
+  padding: 7rem 0 5rem;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.prod-hero-content .prod-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content .prod-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.prod-hero-img {
+  aspect-ratio: 4/3;
+}
+
+/* ─── Two-column sections ───────────────────────────────────────────────── */
+.prod-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* Flip: image first, text second */
+.prod-two-col.flip .prod-text { order: 2; }
+.prod-two-col.flip .prod-visual { order: 1; }
+
+.prod-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.prod-text p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prod-text p:last-child { margin-bottom: 0; }
+
+.prod-img-16-9 { aspect-ratio: 16/9; }
+.prod-img-4-3 { aspect-ratio: 4/3; }
+
+/* ─── Benefits Grid ─────────────────────────────────────────────────────── */
+.prod-benefits {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-benefits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.prod-benefits-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.75rem;
+}
+.prod-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+.benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.benefit-icon svg { width: 1.2rem; height: 1.2rem; }
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.benefit-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── How it Works + Use Cases ──────────────────────────────────────────── */
+.prod-how {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.prod-steps { list-style: none; }
+.prod-step {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.prod-step:last-child { margin-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-top: 0.15rem;
+}
+.step-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.use-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.use-case {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.use-case h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.use-case p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Feature Breakdown ─────────────────────────────────────────────────── */
+.prod-features {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  color: var(--accent);
+}
+.feature-check svg { width: 0.7rem; height: 0.7rem; }
+.feature-item-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.feature-item-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Product CTA ───────────────────────────────────────────────────────── */
+.prod-final-cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.prod-final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.prod-final-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero-inner,
+  .prod-two-col,
+  .prod-how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .prod-two-col.flip .prod-text { order: unset; }
+  .prod-two-col.flip .prod-visual { order: unset; }
+  .prod-benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .prod-benefits-grid { grid-template-columns: 1fr; }
+  .prod-hero { padding: 5rem 0 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip to Content Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#capabilities">Capabilities</a></li>
+      <li><a href="../index.html#approach">Approach</a></li>
+      <li><a href="../products/index.html" class="active">Products &amp; Services</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<!-- ═══ HERO ═══ -->
+<section class="prod-hero">
+  <div class="prod-page">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Products &amp; Services</a>
+      <span>/</span>
+      <span>AIDE</span>
+    </div>
+    <div class="prod-hero-inner">
+      <div class="prod-hero-content reveal">
+        <div class="prod-tag">Enterprise Intelligence</div>
+        <h1>AIDE</h1>
+        <p class="prod-tagline">Unified foresight at decision speed. AIDE is the enterprise intelligence layer that connects Anywise platforms into a single coherent operational view — giving leaders the visibility to act decisively across every domain.</p>
+        <div class="prod-hero-actions">
+          <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+          <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
+        </div>
+      </div>
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;" aria-label="AIDE logo">
+          <text x="150" y="55" text-anchor="middle" fill="var(--text-primary)" font-size="60" font-weight="800" font-family="var(--font)" letter-spacing="-0.03em">AIDE</text>
+          <text x="150" y="75" text-anchor="middle" fill="var(--text-tertiary)" font-size="10" font-family="var(--font)" letter-spacing="0.15em">ENTERPRISE INTELLIGENCE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS AIDE ═══ -->
+<section class="prod-section">
+  <div class="prod-page">
+    <div class="prod-two-col flip">
+      <div class="prod-visual reveal-scale">
+        <div style="aspect-ratio:16/9;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AIDE overview: unified operational picture from multiple intelligence sources">
+            <text x="200" y="16" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)" letter-spacing="0.08em">UNIFIED OPERATIONAL PICTURE</text>
+            <rect x="30" y="28" width="80" height="36" rx="6" fill="rgba(57,168,73,0.10)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="70" y="44" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Strategic Intel</text>
+            <text x="70" y="56" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">WISDOM</text>
+            <rect x="122" y="28" width="80" height="36" rx="6" fill="rgba(57,168,73,0.10)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="162" y="44" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Engineering</text>
+            <text x="162" y="56" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">ENG|AIDE</text>
+            <rect x="214" y="28" width="80" height="36" rx="6" fill="rgba(57,168,73,0.10)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="254" y="44" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Asset Health</text>
+            <text x="254" y="56" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">FABHUMS</text>
+            <rect x="306" y="28" width="80" height="36" rx="6" fill="rgba(57,168,73,0.10)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="346" y="44" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Facilities</text>
+            <text x="346" y="56" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">CAMP|AIDE</text>
+            <path d="M70 64 V84 H200 V92" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M162 64 V84" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M254 64 V84" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M346 64 V84 H200 V92" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <circle cx="200" cy="120" r="26" fill="rgba(57,168,73,0.18)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="200" y="124" text-anchor="middle" fill="#39a849" font-size="12" font-weight="700" font-family="var(--font)">AIDE</text>
+            <path d="M200 146 V162" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="200" y="178" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Forward-looking operational picture</text>
+            <text x="200" y="192" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">For leaders across secure and civilian contexts</text>
+          </svg>
+        </div>
+      </div>
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Overview</div>
+        <h2>What is AIDE?</h2>
+        <p>AIDE is the enterprise intelligence platform that sits above Anywise's domain-specific tools — WISDOM, ENG|AIDE, FABHUMS, and CAMP|AIDE — and integrates their outputs into a single operational picture. Where the domain platforms answer specific questions, AIDE answers the enterprise question: given everything we know across all domains, where should we focus our attention and resources right now?</p>
+        <p>Designed for senior leaders and enterprise operations teams, AIDE provides the cross-domain correlation, pattern recognition, and priority synthesis that are impossible when domain information exists only in separate systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY BENEFITS ═══ -->
+<section class="prod-benefits">
+  <div class="prod-page">
+    <div class="prod-benefits-header reveal">
+      <span class="label">Why AIDE</span>
+      <h2>Key Benefits</h2>
+    </div>
+    <div class="prod-benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <h3>Unified Operational Picture</h3>
+        <p>Single pane of glass across all operational domains. No more switching between systems or manually correlating data from separate platforms.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3>Cross-Domain Intelligence</h3>
+        <p>Identify relationships between events in different domains that individual platform operators would never see. Strategic insight from operational data.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3>Executive Decision Support</h3>
+        <p>Outputs calibrated for senior leader decision-making: priority-ordered, evidence-grounded, and formatted for rapid assimilation.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M18 8h1a4 4 0 010 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <h3>Continuous Situational Awareness</h3>
+        <p>Automated monitoring across all connected platforms with intelligent alerting that surfaces only what genuinely requires leadership attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS + USE CASES ═══ -->
+<section class="prod-how">
+  <div class="prod-page">
+    <div class="prod-how-inner">
+      <div class="reveal">
+        <div class="prod-section-label">Process</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">How It Works</h2>
+        <ol class="prod-steps">
+          <li class="prod-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Connect &amp; Integrate</h4>
+              <p>AIDE connects to all Anywise domain platforms and, through its API layer, to existing enterprise systems including ERP, HR, finance, and C2 platforms — creating a unified data foundation.</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Correlate &amp; Synthesise</h4>
+              <p>Cross-domain analytical reasoning identifies patterns, dependencies, and emerging risks that span operational boundaries. AIDE surfaces the connections that siloed systems cannot see.</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Present &amp; Prioritise</h4>
+              <p>Outputs are calibrated for each user role — from operational staff to CXOs — with appropriate depth, framing, and priority ordering for each audience.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="prod-section-label">Applications</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">Use Cases</h2>
+        <div class="use-cases-list">
+          <div class="use-case">
+            <h4>Defence Headquarters Operations</h4>
+            <p>Integrated operational picture for headquarters staff synthesising logistics, engineering, intelligence, and facilities status into a unified operational view.</p>
+          </div>
+          <div class="use-case">
+            <h4>Government Agency Operations</h4>
+            <p>Enterprise visibility for agency leaders with obligations spanning multiple operational domains and regulatory environments.</p>
+          </div>
+          <div class="use-case">
+            <h4>Large Program Management</h4>
+            <p>Cross-domain program visibility for complex capability acquisition and sustainment programs where technical, operational, and commercial threads must be managed together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURE BREAKDOWN ═══ -->
+<section class="prod-features">
+  <div class="prod-page">
+    <div class="prod-two-col">
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Capabilities</div>
+        <h2>Feature Breakdown</h2>
+        <div class="prod-feature-list" style="margin-top:1.5rem;">
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Platform Integration Hub</h4>
+              <p>Native integration with WISDOM, ENG|AIDE, FABHUMS, and CAMP|AIDE. Open API for third-party enterprise systems.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Cross-Domain Correlation</h4>
+              <p>Automated identification of relationships and dependencies between events across operational domains.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Role-Based Dashboards</h4>
+              <p>Configurable dashboard templates for different user roles, from operational staff to board-level executives.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Priority Intelligence Feed</h4>
+              <p>AI-curated feed of priority items requiring attention, reducing cognitive load for busy operations teams.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Automated Reporting</h4>
+              <p>Scheduled and triggered reports in formats appropriate for each audience — from operational briefings to board papers.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Audit Trail</h4>
+              <p>Complete, tamper-evident audit trail of all information inputs, analytical outputs, and user decisions for governance and accountability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-visual reveal-scale">
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AIDE capability: enterprise intelligence hub integrating all Anywise platforms">
+            <text x="200" y="18" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.08em">ENTERPRISE INTELLIGENCE HUB</text>
+            <!-- Platform inputs (ring layout) -->
+            <rect x="20" y="34" width="80" height="36" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="60" y="56" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">WISDOM</text>
+            <rect x="112" y="34" width="80" height="36" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="152" y="56" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">ENG|AIDE</text>
+            <rect x="204" y="34" width="80" height="36" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="244" y="56" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">FABHUMS</text>
+            <rect x="296" y="34" width="88" height="36" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="340" y="56" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">CAMP|AIDE</text>
+            <!-- Down arrows -->
+            <path d="M60 70 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M152 70 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M244 70 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M340 70 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- AIDE core -->
+            <rect x="60" y="90" width="280" height="56" rx="12" fill="rgba(57,168,73,0.18)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="200" y="114" text-anchor="middle" fill="#39a849" font-size="14" font-weight="700" font-family="var(--font)">AIDE</text>
+            <text x="200" y="132" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Cross-domain correlation  |  Priority intelligence  |  Audit trail</text>
+            <!-- Output arrows -->
+            <path d="M130 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M200 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M270 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Role-based outputs -->
+            <rect x="40" y="168" width="120" height="44" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="100" y="186" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Operations</text>
+            <text x="100" y="200" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Priority action feed</text>
+            <rect x="172" y="168" width="120" height="44" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="232" y="186" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Executives</text>
+            <text x="232" y="200" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Board-ready reports</text>
+            <rect x="304" y="168" width="84" height="44" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="346" y="186" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">API</text>
+            <text x="346" y="200" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">3rd party</text>
+            <!-- Bottom label -->
+            <text x="200" y="236" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.06em">ROLE-BASED DASHBOARDS</text>
+            <text x="200" y="252" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Unified foresight at decision speed</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="prod-final-cta">
+  <div class="prod-page">
+    <span class="label">Get started</span>
+    <h2>Ready to explore AIDE<br>for your organisation?</h2>
+    <p>Tell us about your enterprise intelligence challenge. We'll show you how AIDE can help.</p>
+    <div class="prod-final-cta-actions">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+      <a href="index.html" class="btn btn-ghost">View All Products &amp; Services</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../index.html#capabilities">Technology</a>
+        <a href="../index.html#capabilities">Services</a>
+        <a href="../index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="wisdom.html">WISDOM</a>
+        <a href="engaide.html">ENG|AIDE</a>
+        <a href="fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="impact-framework.html">Impact Measurement</a>
+        <a href="fabhums.html">FABHUMS</a>
+        <a href="campaide.html">CAMP|AIDE</a>
+        <a href="ils.html">ILS</a>
+        <a href="aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../index.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="#" data-engage>Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>

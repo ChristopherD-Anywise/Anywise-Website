@@ -1,0 +1,52 @@
+<h2>How should we scope the plan?</h2>
+<p class="subtitle">5 high-priority issues identified — should they be one plan or two?</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:0.75rem;margin:2rem 0;">
+  <div style="background:rgba(57,168,73,0.08);border:1px solid rgba(57,168,73,0.2);border-radius:10px;padding:1.2rem;text-align:center;">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">Aa</div>
+    <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">1. Font Swap</div>
+    <div style="font-size:0.75rem;opacity:0.6;">Replace Inter with a distinctive typeface</div>
+    <div style="margin-top:0.6rem;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(57,168,73,0.15);border-radius:4px;display:inline-block;">Visual</div>
+  </div>
+  <div style="background:rgba(57,168,73,0.08);border:1px solid rgba(57,168,73,0.2);border-radius:10px;padding:1.2rem;text-align:center;">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#9632;</div>
+    <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">2. Gradient Restraint</div>
+    <div style="font-size:0.75rem;opacity:0.6;">Reduce gradient text from 7+ uses to 1-2</div>
+    <div style="margin-top:0.6rem;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(57,168,73,0.15);border-radius:4px;display:inline-block;">Visual</div>
+  </div>
+  <div style="background:rgba(57,168,73,0.08);border:1px solid rgba(57,168,73,0.2);border-radius:10px;padding:1.2rem;text-align:center;">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#9638;</div>
+    <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">3. Card Variation</div>
+    <div style="font-size:0.75rem;opacity:0.6;">Break monotony of identical card patterns</div>
+    <div style="margin-top:0.6rem;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(57,168,73,0.15);border-radius:4px;display:inline-block;">Visual</div>
+  </div>
+  <div style="background:rgba(57,168,73,0.08);border:1px solid rgba(57,168,73,0.2);border-radius:10px;padding:1.2rem;text-align:center;">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#8597;</div>
+    <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">4. Hover Diversity</div>
+    <div style="font-size:0.75rem;opacity:0.6;">Vary the identical translateY + glow effect</div>
+    <div style="margin-top:0.6rem;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(57,168,73,0.15);border-radius:4px;display:inline-block;">Visual</div>
+  </div>
+  <div style="background:rgba(100,100,255,0.08);border:1px solid rgba(100,100,255,0.2);border-radius:10px;padding:1.2rem;text-align:center;">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">&lt;/&gt;</div>
+    <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">5. Meta Tags</div>
+    <div style="font-size:0.75rem;opacity:0.6;">Favicon, Open Graph, Twitter cards</div>
+    <div style="margin-top:0.6rem;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(100,100,255,0.15);border-radius:4px;display:inline-block;">Technical</div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="combined" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>One Combined Plan</h3>
+      <p>All 5 issues in a single plan. Simpler to track, implement in one pass. Makes sense since the visual changes (1-4) are interrelated and the meta tags (5) are quick to add.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="separate" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Two Separate Plans</h3>
+      <p>Visual design (1-4) in one plan, technical metadata (5) in another. Useful if you want to review and approve the design changes independently from the technical work.</p>
+    </div>
+  </div>
+</div>

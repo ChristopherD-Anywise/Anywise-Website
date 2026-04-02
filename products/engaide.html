@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENG|AIDE — Engineering Intelligence | Anywise</title>
+<meta name="description" content="ENG|AIDE reduces operational risk and improves reliability through intelligent engineering support. Anywise's engineering intelligence platform for defence and industrial environments.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ENG|AIDE — Engineering Intelligence | Anywise">
+<meta property="og:description" content="ENG|AIDE reduces operational risk and improves reliability through intelligent engineering support. Anywise's engineering intelligence platform for defence and industrial environments.">
+<meta property="og:image" content="https://www.anywise.com.au/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ENG|AIDE — Engineering Intelligence | Anywise">
+<meta name="twitter:description" content="ENG|AIDE reduces operational risk and improves reliability through intelligent engineering support. Anywise's engineering intelligence platform for defence and industrial environments.">
+<meta name="twitter:image" content="https://www.anywise.com.au/og-image.jpg">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Product Page Layout ───────────────────────────────────────────────── */
+.prod-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.prod-hero {
+  padding: 7rem 0 5rem;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.prod-hero-content .prod-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content .prod-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.prod-hero-img {
+  aspect-ratio: 4/3;
+}
+
+/* ─── Two-column sections ───────────────────────────────────────────────── */
+.prod-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* Flip: image first, text second */
+.prod-two-col.flip .prod-text { order: 2; }
+.prod-two-col.flip .prod-visual { order: 1; }
+
+.prod-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.prod-text p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prod-text p:last-child { margin-bottom: 0; }
+
+.prod-img-16-9 { aspect-ratio: 16/9; }
+.prod-img-4-3 { aspect-ratio: 4/3; }
+
+/* ─── Benefits Grid ─────────────────────────────────────────────────────── */
+.prod-benefits {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-benefits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.prod-benefits-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.75rem;
+}
+.prod-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+.benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.benefit-icon svg { width: 1.2rem; height: 1.2rem; }
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.benefit-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── How it Works + Use Cases ──────────────────────────────────────────── */
+.prod-how {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.prod-steps { list-style: none; }
+.prod-step {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.prod-step:last-child { margin-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-top: 0.15rem;
+}
+.step-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.use-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.use-case {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.use-case h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.use-case p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Feature Breakdown ─────────────────────────────────────────────────── */
+.prod-features {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  color: var(--accent);
+}
+.feature-check svg { width: 0.7rem; height: 0.7rem; }
+.feature-item-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.feature-item-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Product CTA ───────────────────────────────────────────────────────── */
+.prod-final-cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.prod-final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.prod-final-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero-inner,
+  .prod-two-col,
+  .prod-how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .prod-two-col.flip .prod-text { order: unset; }
+  .prod-two-col.flip .prod-visual { order: unset; }
+  .prod-benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .prod-benefits-grid { grid-template-columns: 1fr; }
+  .prod-hero { padding: 5rem 0 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip to Content Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#capabilities">Capabilities</a></li>
+      <li><a href="../index.html#approach">Approach</a></li>
+      <li><a href="../products/index.html" class="active">Products &amp; Services</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<!-- ═══ HERO ═══ -->
+<section class="prod-hero">
+  <div class="prod-page">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Products &amp; Services</a>
+      <span>/</span>
+      <span>ENG|AIDE</span>
+    </div>
+    <div class="prod-hero-inner">
+      <div class="prod-hero-content reveal">
+        <div class="prod-tag">Engineering Intelligence</div>
+        <h1>ENG|AIDE</h1>
+        <p class="prod-tagline">Reducing operational risk and improving reliability through intelligent engineering support. ENG|AIDE analyses complex system interdependencies in real time — before failures cascade into incidents.</p>
+        <div class="prod-hero-actions">
+          <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+          <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
+        </div>
+      </div>
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <img src="../assets/images/products%20%26%20services/Eng-Aide%20Logo.png" alt="ENG|AIDE logo" style="width:80%;height:auto;" data-logo>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS ENG|AIDE ═══ -->
+<section class="prod-section">
+  <div class="prod-page">
+    <div class="prod-two-col flip">
+      <div class="prod-visual reveal-scale">
+        <img src="../assets/images/products%20%26%20services/ENG_AIDE_Tablet.png" alt="ENG|AIDE running on a Panasonic rugged tablet" style="width:100%;height:auto;border-radius:var(--radius-lg);">
+      </div>
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Overview</div>
+        <h2>What is ENG|AIDE?</h2>
+        <p>ENG|AIDE is an engineering intelligence platform purpose-built for complex, high-consequence operational environments. It continuously monitors system health, flags emerging risks, and provides engineers with actionable recommendations to prevent failures before they occur.</p>
+        <p>Designed for defence and industrial environments where engineering failure is not an option, ENG|AIDE replaces reactive maintenance with predictive operational awareness. It integrates with existing engineering management systems and delivers outputs in formats that operational engineers actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY BENEFITS ═══ -->
+<section class="prod-benefits">
+  <div class="prod-page">
+    <div class="prod-benefits-header reveal">
+      <span class="label">Why ENG|AIDE</span>
+      <h2>Key Benefits</h2>
+    </div>
+    <div class="prod-benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Risk Reduction</h3>
+        <p>Identify failure modes before they manifest. Structured risk models calibrated for your specific asset and operational context.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3>Real-Time Monitoring</h3>
+        <p>Continuous system health surveillance across distributed assets. Alerts when parameters approach critical thresholds.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Interdependency Mapping</h3>
+        <p>Model complex system relationships to understand second and third-order effects before making engineering decisions.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h3>Regulatory Compliance</h3>
+        <p>Maintain complete, auditable engineering decision records that satisfy safety case and regulatory reporting requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS + USE CASES ═══ -->
+<section class="prod-how">
+  <div class="prod-page">
+    <div class="prod-how-inner">
+      <div class="reveal">
+        <div class="prod-section-label">Process</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">How It Works</h2>
+        <ol class="prod-steps">
+          <li class="prod-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Monitor &amp; Detect</h4>
+              <p>ENG|AIDE integrates with SCADA, maintenance management, and sensor systems to create a continuous monitoring layer across your asset base.</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Analyse &amp; Correlate</h4>
+              <p>Pattern recognition and interdependency analysis identifies emerging risks and correlates signals across systems to detect complex failure precursors.</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Recommend &amp; Report</h4>
+              <p>Prioritised maintenance recommendations are delivered with supporting evidence, risk scores, and projected outcomes for each course of action.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="prod-section-label">Applications</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">Use Cases</h2>
+        <div class="use-cases-list">
+          <div class="use-case">
+            <h4>Defence Platform Maintenance</h4>
+            <p>Predictive maintenance scheduling for complex defence platforms, reducing unplanned downtime and extending operational availability.</p>
+          </div>
+          <div class="use-case">
+            <h4>Industrial Infrastructure</h4>
+            <p>Continuous monitoring of critical infrastructure with automated escalation when safety thresholds are approached.</p>
+          </div>
+          <div class="use-case">
+            <h4>Fleet Management</h4>
+            <p>Fleet-wide health monitoring with cross-platform pattern analysis identifying systemic engineering issues.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURE BREAKDOWN ═══ -->
+<section class="prod-features">
+  <div class="prod-page">
+    <div class="prod-two-col">
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Capabilities</div>
+        <h2>Feature Breakdown</h2>
+        <div class="prod-feature-list" style="margin-top:1.5rem;">
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Multi-system Integration</h4>
+              <p>Connects to existing SCADA, CMMS, and sensor networks without requiring infrastructure replacement.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Failure Mode Analysis</h4>
+              <p>Structured analysis of known and emerging failure modes calibrated to your specific asset and operating environment.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Safety Case Support</h4>
+              <p>Automated generation of safety case evidence and engineering decision documentation for regulatory compliance.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Predictive Scheduling</h4>
+              <p>Risk-weighted maintenance scheduling optimises availability while minimising unnecessary maintenance burden.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Threshold Alerting</h4>
+              <p>Configurable alert rules with escalation logic appropriate to the severity and urgency of each risk.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>AIDE Integration</h4>
+              <p>Feed engineering health data into Anywise's enterprise AIDE platform for unified operational awareness.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-visual reveal-scale">
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ENG|AIDE capability overview: system monitoring, failure analysis, and predictive maintenance">
+            <!-- Asset layer -->
+            <text x="200" y="18" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.08em">MONITORED SYSTEMS</text>
+            <rect x="20" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="56" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">SCADA</text>
+            <text x="56" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Telemetry</text>
+            <rect x="108" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="144" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">CMMS</text>
+            <text x="144" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Work orders</text>
+            <rect x="196" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="232" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Sensors</text>
+            <text x="232" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Real-time</text>
+            <rect x="284" y="28" width="96" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="332" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Documentation</text>
+            <text x="332" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Tech pubs</text>
+            <!-- Down arrows -->
+            <path d="M56 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M144 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M232 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M332 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- ENG|AIDE processing -->
+            <rect x="30" y="90" width="340" height="56" rx="10" fill="rgba(57,168,73,0.15)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="200" y="114" text-anchor="middle" fill="#39a849" font-size="13" font-weight="700" font-family="var(--font)">ENG|AIDE Analysis Engine</text>
+            <text x="200" y="132" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Failure mode analysis  |  Risk assessment  |  Predictive scheduling</text>
+            <!-- Down arrows to outputs -->
+            <path d="M110 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M200 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M290 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Output cards -->
+            <rect x="50" y="168" width="120" height="48" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="110" y="188" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Safety Case Evidence</text>
+            <text x="110" y="202" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Regulatory compliance</text>
+            <rect x="190" y="168" width="120" height="48" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="250" y="188" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Maintenance Plans</text>
+            <text x="250" y="202" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Risk-weighted schedule</text>
+            <rect x="120" y="228" width="160" height="38" rx="6" fill="rgba(57,168,73,0.08)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="200" y="248" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">Threshold Alerts → AIDE Platform</text>
+            <text x="200" y="260" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Enterprise operational awareness</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="prod-final-cta">
+  <div class="prod-page">
+    <span class="label">Get started</span>
+    <h2>Ready to explore ENG|AIDE<br>for your organisation?</h2>
+    <p>Tell us about your engineering environment. We'll show you how ENG|AIDE can help.</p>
+    <div class="prod-final-cta-actions">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+      <a href="index.html" class="btn btn-ghost">View All Products &amp; Services</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../index.html#capabilities">Technology</a>
+        <a href="../index.html#capabilities">Services</a>
+        <a href="../index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="wisdom.html">WISDOM</a>
+        <a href="engaide.html">ENG|AIDE</a>
+        <a href="fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="impact-framework.html">Impact Measurement</a>
+        <a href="fabhums.html">FABHUMS</a>
+        <a href="campaide.html">CAMP|AIDE</a>
+        <a href="ils.html">ILS</a>
+        <a href="aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../index.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="#" data-engage>Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>

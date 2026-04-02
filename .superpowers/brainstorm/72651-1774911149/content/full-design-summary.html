@@ -1,0 +1,132 @@
+<h2>Full Design Summary — High Priority Fixes</h2>
+<p class="subtitle">All 5 issues with approved decisions. Review and approve to proceed to spec.</p>
+
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+  .fix-card { background:#0e110e; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:1.5rem; margin-bottom:1rem; font-family:'General Sans',sans-serif; }
+  .fix-num { font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:#39a849; letter-spacing:0.1em; margin-bottom:0.3rem; }
+  .fix-title { font-size:1rem; font-weight:700; color:#f2f1ee; margin-bottom:0.6rem; }
+  .fix-detail { font-size:0.75rem; color:#9a9d95; line-height:1.65; }
+  .fix-detail strong { color:#f2f1ee; }
+  .change-list { margin:0.5rem 0 0 0; padding:0; list-style:none; }
+  .change-list li { font-size:0.7rem; color:#9a9d95; padding:0.25rem 0; display:flex; gap:0.5rem; align-items:start; }
+  .change-list li::before { content:''; width:5px; height:5px; border-radius:50%; background:#39a849; flex-shrink:0; margin-top:0.35rem; }
+</style>
+
+<div class="fix-card">
+  <div class="fix-num">01 — TYPOGRAPHY</div>
+  <div class="fix-title">Replace Inter with General Sans</div>
+  <div class="fix-detail">
+    <ul class="change-list">
+      <li>Swap Google Fonts import from Inter to General Sans via Fontshare API</li>
+      <li>Update <strong>--font</strong> CSS variable to <strong>'General Sans'</strong></li>
+      <li>Load weights: 400, 500, 600, 700 (matching current Inter weight usage)</li>
+      <li>Keep JetBrains Mono for monospace labels/tags — no change</li>
+      <li>Audit line-heights and letter-spacing — General Sans may need minor tweaks</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fix-card">
+  <div class="fix-num">02 — GRADIENT RESTRAINT</div>
+  <div class="fix-title">Gradient Text on Hero + Purpose Only</div>
+  <div class="fix-detail">
+    <strong>Keep gradient on:</strong>
+    <ul class="change-list">
+      <li>Hero h1 "ethically engineered." — the primary brand moment</li>
+      <li>Purpose statement "positive impact" — the secondary brand moment</li>
+    </ul>
+    <strong style="display:block;margin-top:0.6rem;">Switch to solid #39a849:</strong>
+    <ul class="change-list">
+      <li>Nav brand "wise" span</li>
+      <li>Hero stat box accent numbers (10+, APAC/EU, Ethical AI)</li>
+      <li>Track record stat numbers (50+, 3+, ISO, AIC+)</li>
+      <li>Team heading "one" em tag</li>
+      <li>Team sub-heading "The Anywise Team"</li>
+      <li>Product card highlight text</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fix-card">
+  <div class="fix-num">03 — CARD PATTERN VARIATION</div>
+  <div class="fix-title">Three Sections Get New Layouts</div>
+  <div class="fix-detail">
+    <strong>Values → Inline text flow</strong>
+    <ul class="change-list">
+      <li>Remove .value-card components and emoji icons</li>
+      <li>Replace with horizontal rows: value name (accent) — dash — description</li>
+      <li>Flows directly under purpose statement, no grid needed</li>
+    </ul>
+    <strong style="display:block;margin-top:0.6rem;">Approach features → Numbered list</strong>
+    <ul class="change-list">
+      <li>Remove .feature-card components with borders and backgrounds</li>
+      <li>Replace with numbered items: monospace number + title + description</li>
+      <li>No cards, no borders — editorial feel</li>
+    </ul>
+    <strong style="display:block;margin-top:0.6rem;">Track stats → Inline row</strong>
+    <ul class="change-list">
+      <li>Remove .track-stat card grid</li>
+      <li>Replace with horizontal stat row, separated by thin vertical dividers</li>
+      <li>Numbers in white (not gradient), labels below in tertiary color</li>
+    </ul>
+    <strong style="display:block;margin-top:0.6rem;">Keep as-is:</strong> Capability cards, Product cards, News cards
+  </div>
+</div>
+
+<div class="fix-card">
+  <div class="fix-num">04 — HOVER DIVERSITY</div>
+  <div class="fix-title">Each Section Gets Its Own Interaction</div>
+  <div class="fix-detail">
+    <ul class="change-list">
+      <li><strong>Capability cards:</strong> No change — cursor spotlight + gradient bg is already distinctive</li>
+      <li><strong>Product cards:</strong> Keep 3D tilt + subtle image zoom. Remove -6px lift and green image overlay</li>
+      <li><strong>News cards:</strong> Replace lift with scale(1.02). Remove green shadow and green overlay. Keep arrow reveal</li>
+      <li><strong>Approach features:</strong> Number color shifts #39a849 → #c3e01b on hover. Title brightens. No movement</li>
+      <li><strong>Track stats:</strong> No hover effect (informational, not interactive)</li>
+      <li><strong>CTA box:</strong> Remove box hover. Keep subtle image zoom. Buttons keep their own hover states</li>
+      <li><strong>Values:</strong> N/A — becomes inline text, no hover needed</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fix-card">
+  <div class="fix-num">05 — META TAGS & ASSETS</div>
+  <div class="fix-title">Favicon, Open Graph, Twitter Cards</div>
+  <div class="fix-detail">
+    <strong>Create assets:</strong>
+    <ul class="change-list">
+      <li>SVG favicon — "A" lettermark in brand green on transparent, or "anywise" wordmark</li>
+      <li>OG image (1200x630) — dark background with brand name, tagline, and green accent</li>
+    </ul>
+    <strong style="display:block;margin-top:0.6rem;">Add meta tags:</strong>
+    <ul class="change-list">
+      <li><strong>&lt;link rel="icon"&gt;</strong> pointing to SVG favicon</li>
+      <li><strong>og:title</strong> — "Anywise | Ethical Technology and Services"</li>
+      <li><strong>og:description</strong> — existing meta description</li>
+      <li><strong>og:image</strong> — path to OG image</li>
+      <li><strong>og:url, og:type</strong> — site URL, "website"</li>
+      <li><strong>twitter:card</strong> — "summary_large_image"</li>
+      <li><strong>twitter:title, twitter:description, twitter:image</strong> — matching OG values</li>
+      <li><strong>&lt;meta name="theme-color" content="#0e110e"&gt;</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div class="options" style="margin-top:1.5rem;">
+  <div class="option" data-choice="approve-design" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Approve — Write the Spec</h3>
+      <p>All 5 fixes look good. Write the design spec document and prepare for implementation planning.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="revise" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>I Want to Revise Something</h3>
+      <p>Let me call out what needs changing before we commit to the spec.</p>
+    </div>
+  </div>
+</div>

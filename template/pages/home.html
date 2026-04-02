@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><!-- REPLACE: Page title --></title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;">
+      <a href="home.html" class="nav-brand"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent portion --></span></a>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="product-index.html"><!-- REPLACE: Nav link 1 --></a></li>
+        <li><a href="blog-index.html"><!-- REPLACE: Nav link 2 --></a></li>
+        <li><a href="#" data-engage>Engage Us</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◑</button>
+        <a href="#" class="nav-cta" data-engage><!-- REPLACE: CTA label --></a>
+        <button id="mobileToggle" class="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section style="padding: 8rem 0 4rem; text-align: center;">
+    <div class="container">
+      <div class="label reveal"><!-- REPLACE: Hero label --></div>
+      <h1 class="reveal" style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; margin: 1rem 0 1.5rem; line-height: 1.1;">
+        <!-- REPLACE: Hero headline line 1 --><br>
+        <span style="background: var(--gradient-al); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><!-- REPLACE: Gradient headline portion --></span>
+      </h1>
+      <p class="reveal" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 2.5rem;">
+        <!-- REPLACE: Hero tagline -->
+      </p>
+      <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary" data-engage><!-- REPLACE: Primary CTA --></a>
+        <a href="product-index.html" class="btn btn-accent"><!-- REPLACE: Secondary CTA --></a>
+      </div>
+      <!-- Globe placeholder — wire Three.js separately if needed. See README for theme hook. -->
+      <div id="globe-container" style="width:100%;max-width:600px;height:400px;margin:3rem auto 0;display:flex;align-items:center;justify-content:center;">
+        <div class="img-placeholder" style="width:100%;height:100%;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Globe placeholder</span>
+        </div>
+      </div>
+      <!-- Stats bar -->
+      <div class="reveal" style="display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border);">
+        <div style="text-align:center;">
+          <div style="font-size:2rem;font-weight:700;background:var(--gradient-al);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><!-- REPLACE: Stat 1 value --></div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);"><!-- REPLACE: Stat 1 label --></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:2rem;font-weight:700;background:var(--gradient-al);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><!-- REPLACE: Stat 2 value --></div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);"><!-- REPLACE: Stat 2 label --></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:2rem;font-weight:700;background:var(--gradient-al);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><!-- REPLACE: Stat 3 value --></div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);"><!-- REPLACE: Stat 3 label --></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Capabilities -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div class="label reveal"><!-- REPLACE: Capabilities label --></div>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.02em;margin:0.75rem 0 1rem;"><!-- REPLACE: Capabilities heading --></h2>
+      <p class="reveal" style="color:var(--text-secondary);max-width:560px;margin-bottom:3rem;"><!-- REPLACE: Capabilities intro --></p>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+        <!-- REPLACE: Capability cards — copy this block per capability -->
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
+          <div style="font-size:1.5rem;margin-bottom:1rem;"><!-- REPLACE: Icon/emoji --></div>
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.5rem;"><!-- REPLACE: Capability title --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Capability description --></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Products grid -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div class="label reveal"><!-- REPLACE: Products label --></div>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.02em;margin:0.75rem 0 2.5rem;"><!-- REPLACE: Products heading --></h2>
+      <!-- Top row: 3 cards -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem;">
+        <!-- REPLACE: 3 product cards -->
+        <a href="product-detail.html" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;transition:var(--transition);" class="reveal">
+          <div class="label" style="margin-bottom:0.75rem;"><!-- REPLACE: Product tag --></div>
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;"><!-- REPLACE: Product name --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Product summary --></p>
+        </a>
+        <a href="product-detail.html" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;transition:var(--transition);" class="reveal">
+          <div class="label" style="margin-bottom:0.75rem;"><!-- REPLACE: Product tag --></div>
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;"><!-- REPLACE: Product name --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Product summary --></p>
+        </a>
+        <a href="product-detail.html" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;transition:var(--transition);" class="reveal">
+          <div class="label" style="margin-bottom:0.75rem;"><!-- REPLACE: Product tag --></div>
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;"><!-- REPLACE: Product name --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Product summary --></p>
+        </a>
+      </div>
+      <!-- Bottom row: 2 cards -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+        <!-- REPLACE: 2 product cards -->
+        <a href="product-detail.html" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;transition:var(--transition);" class="reveal">
+          <div class="label" style="margin-bottom:0.75rem;"><!-- REPLACE: Product tag --></div>
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;"><!-- REPLACE: Product name --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Product summary --></p>
+        </a>
+        <a href="product-detail.html" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;transition:var(--transition);" class="reveal">
+          <div class="label" style="margin-bottom:0.75rem;"><!-- REPLACE: Product tag --></div>
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;"><!-- REPLACE: Product name --></h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);"><!-- REPLACE: Product summary --></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- News cards -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div class="label reveal"><!-- REPLACE: News label --></div>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.02em;margin:0.75rem 0 2.5rem;"><!-- REPLACE: News heading --></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+        <!-- REPLACE: News cards — copy per article -->
+        <a href="blog-post.html?slug=<!-- REPLACE: slug -->" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;text-decoration:none;" class="reveal">
+          <div style="font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.5rem;font-family:var(--mono);"><!-- REPLACE: Date --></div>
+          <h3 style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;line-height:1.4;"><!-- REPLACE: Article title --></h3>
+          <p style="font-size:0.875rem;color:var(--text-secondary);"><!-- REPLACE: Article excerpt --></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="home.html" class="nav-brand" style="display:inline-block;margin-bottom:0.75rem;"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent portion --></span></a>
+          <p style="font-size:0.875rem;color:var(--text-secondary);max-width:280px;"><!-- REPLACE: Brand tagline --></p>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="product-index.html"><!-- REPLACE: Footer link --></a></li>
+            <li><a href="blog-index.html"><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="#" data-engage><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal"><!-- REPLACE: Legal line e.g. ABN / cert --></p>
+        <p class="footer-locations"><!-- REPLACE: City · City · City --></p>
+        <p class="acknowledgement"><!-- REPLACE: Acknowledgement of Country --></p>
+        <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">© <!-- REPLACE: Year --> <!-- REPLACE: Company name -->. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared.js"></script>
+</body>
+</html>

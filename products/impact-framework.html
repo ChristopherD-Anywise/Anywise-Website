@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact Measurement & Reporting Frameworks — Anywise</title>
+<meta name="description" content="Turn fragmented program data into clear evidence of what works. Standardized data collection and automated reporting dashboards for multi-site programs.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Impact Measurement &amp; Reporting Frameworks | Anywise">
+<meta property="og:description" content="Turn fragmented program data into clear evidence of what works. Standardized data collection and automated reporting dashboards for multi-site programs.">
+<meta property="og:image" content="https://www.anywise.com.au/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Impact Measurement &amp; Reporting Frameworks | Anywise">
+<meta name="twitter:description" content="Turn fragmented program data into clear evidence of what works. Standardized data collection and automated reporting dashboards for multi-site programs.">
+<meta name="twitter:image" content="https://www.anywise.com.au/og-image.jpg">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Product Page Layout ───────────────────────────────────────────────── */
+.prod-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.prod-hero {
+  padding: 7rem 0 5rem;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.prod-hero-content .prod-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content .prod-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.prod-hero-img {
+  aspect-ratio: 4/3;
+}
+
+/* ─── Two-column sections ───────────────────────────────────────────────── */
+.prod-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* Flip: image first, text second */
+.prod-two-col.flip .prod-text { order: 2; }
+.prod-two-col.flip .prod-visual { order: 1; }
+
+.prod-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.prod-text p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prod-text p:last-child { margin-bottom: 0; }
+
+.prod-img-16-9 { aspect-ratio: 16/9; }
+.prod-img-4-3 { aspect-ratio: 4/3; }
+
+/* ─── Benefits Grid ─────────────────────────────────────────────────────── */
+.prod-benefits {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-benefits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.prod-benefits-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.75rem;
+}
+.prod-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+.benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.benefit-icon svg { width: 1.2rem; height: 1.2rem; }
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.benefit-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── How it Works + Use Cases ──────────────────────────────────────────── */
+.prod-how {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.prod-steps { list-style: none; }
+.prod-step {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.prod-step:last-child { margin-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-top: 0.15rem;
+}
+.step-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.use-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.use-case {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.use-case h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.use-case p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Feature Breakdown ─────────────────────────────────────────────────── */
+.prod-features {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  color: var(--accent);
+}
+.feature-check svg { width: 0.7rem; height: 0.7rem; }
+.feature-item-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.feature-item-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Product CTA ───────────────────────────────────────────────────────── */
+.prod-final-cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.prod-final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.prod-final-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero-inner,
+  .prod-two-col,
+  .prod-how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .prod-two-col.flip .prod-text { order: unset; }
+  .prod-two-col.flip .prod-visual { order: unset; }
+  .prod-benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .prod-benefits-grid { grid-template-columns: 1fr; }
+  .prod-hero { padding: 5rem 0 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip to Content Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#capabilities">Capabilities</a></li>
+      <li><a href="../index.html#approach">Approach</a></li>
+      <li><a href="../products/index.html" class="active">Products &amp; Services</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<!-- ═══ HERO ═══ -->
+<section class="prod-hero">
+  <div class="prod-page">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Products &amp; Services</a>
+      <span>/</span>
+      <span>Impact Measurement</span>
+    </div>
+    <div class="prod-hero-inner">
+      <div class="prod-hero-content reveal">
+        <div class="prod-tag">Program Intelligence</div>
+        <h1>Impact Measurement &amp; Reporting Frameworks</h1>
+        <p class="prod-tagline">Turn fragmented program data into clear evidence of what works. We design frameworks that standardize collection and automate reporting — no more quarterly panic.</p>
+        <div class="prod-hero-actions">
+          <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+          <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
+        </div>
+      </div>
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <img src="../assets/images/products%20%26%20services/Impact_Framework_Logo.png" alt="Impact Framework logo" style="width:80%;height:auto;" data-logo>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS WISDOM ═══ -->
+<section class="prod-section">
+  <div class="prod-page">
+    <div class="prod-two-col flip">
+      <div class="prod-visual reveal-scale">
+        <div style="aspect-ratio:16/9;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Impact measurement overview: from fragmented data to clear reporting">
+            <text x="200" y="16" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)" letter-spacing="0.08em">FROM FRAGMENTED TO CLEAR</text>
+            <!-- Before state -->
+            <text x="100" y="38" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">BEFORE</text>
+            <rect x="30" y="44" width="40" height="20" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1" transform="rotate(-5 50 54)"/>
+            <rect x="55" y="48" width="40" height="20" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1" transform="rotate(3 75 58)"/>
+            <rect x="80" y="42" width="40" height="20" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1" transform="rotate(-8 100 52)"/>
+            <rect x="40" y="72" width="40" height="20" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1" transform="rotate(6 60 82)"/>
+            <rect x="70" y="70" width="40" height="20" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1" transform="rotate(-3 90 80)"/>
+            <text x="100" y="108" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">50 spreadsheets</text>
+            <text x="100" y="118" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">30 teams · 60% reporting</text>
+            <!-- Arrow -->
+            <path d="M160 70 H240" stroke="#39a849" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <polygon points="238,66 246,70 238,74" fill="#39a849"/>
+            <text x="200" y="60" text-anchor="middle" fill="#39a849" font-size="8" font-weight="600" font-family="var(--font)">Anywise</text>
+            <!-- After state -->
+            <text x="320" y="38" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">AFTER</text>
+            <rect x="265" y="44" width="110" height="56" rx="8" fill="rgba(57,168,73,0.12)" stroke="#39a849" stroke-width="1"/>
+            <text x="320" y="64" text-anchor="middle" fill="#39a849" font-size="10" font-weight="600" font-family="var(--font)">Unified Dashboard</text>
+            <text x="320" y="78" text-anchor="middle" fill="var(--text-secondary)" font-size="7" font-family="var(--font)">Auto-consolidated</text>
+            <text x="320" y="88" text-anchor="middle" fill="var(--text-secondary)" font-size="7" font-family="var(--font)">Real-time</text>
+            <text x="320" y="118" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">1 framework · 1 truth</text>
+            <text x="320" y="128" text-anchor="middle" fill="#39a849" font-size="7" font-weight="600" font-family="var(--font)">95% reporting · Days not weeks</text>
+            <!-- Bottom -->
+            <rect x="80" y="148" width="240" height="30" rx="6" fill="rgba(57,168,73,0.06)" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <text x="200" y="167" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Less time on paperwork. More time running the program.</text>
+          </svg>
+        </div>
+      </div>
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Overview</div>
+        <h2>What is Impact Measurement & Reporting?</h2>
+        <p>Government programs, research initiatives, and community organizations need to demonstrate impact — but data lives in 50 different spreadsheets across 30 different teams, and nobody has time to chase it all down.</p>
+        <p>We design frameworks that standardize how teams collect data, then automatically pull it together into dashboards that show what's working and what isn't. No more manual consolidation. No more quarterly reporting panic.</p>
+        <p>One federal program we worked with went from 60% of teams submitting reports to 95%, and cut their reporting cycle from weeks to days. They spent less time on paperwork and more time actually running the program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY BENEFITS ═══ -->
+<section class="prod-benefits">
+  <div class="prod-page">
+    <div class="prod-benefits-header reveal">
+      <span class="label">Why Impact Measurement</span>
+      <h2>Key Benefits</h2>
+    </div>
+    <div class="prod-benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3>60% → 95% Compliance</h3>
+        <p>One federal program went from 60% of teams submitting reports to 95%</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Weeks → Days</h3>
+        <p>Cut reporting cycle from weeks to days, freeing up time for actual program work</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>Low-Connectivity Ready</h3>
+        <p>Data collection templates that work in low-bandwidth and offline environments</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 2v20M2 12h20M6 6l12 12M18 6l-12 12"/>
+          </svg>
+        </div>
+        <h3>Multi-Site Standardization</h3>
+        <p>Standardized frameworks that keep distributed teams aligned on data collection and reporting</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS + USE CASES ═══ -->
+<section class="prod-how">
+  <div class="prod-page">
+    <div class="prod-how-inner">
+      <div class="reveal">
+        <div class="prod-section-label">Process</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">How It Works</h2>
+        <ol class="prod-steps">
+          <li class="prod-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Map Your Data Landscape</h4>
+              <p>Understand what data your teams are already collecting, where it lives, and what's missing</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Design Collection Framework</h4>
+              <p>Standardize how teams collect data — templates that work in the field with limited connectivity</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Build Automated Dashboards</h4>
+              <p>Automated reporting pulls together data from all teams into dashboards that show what's working</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h4>Train &amp; Support</h4>
+              <p>Training for distributed teams and ongoing support to keep the system running</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="prod-section-label">Applications</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">Use Cases</h2>
+        <div class="use-cases-list">
+          <div class="use-case">
+            <h4>Federal reporting requirements</h4>
+          </div>
+          <div class="use-case">
+            <h4>Research tracking and outcomes</h4>
+          </div>
+          <div class="use-case">
+            <h4>Community program evaluation</h4>
+          </div>
+          <div class="use-case">
+            <h4>Cross-team data standardization</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURE BREAKDOWN ═══ -->
+<section class="prod-features">
+  <div class="prod-page">
+    <div class="prod-two-col">
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Capabilities</div>
+        <h2>Feature Breakdown</h2>
+        <div class="prod-feature-list" style="margin-top:1.5rem;">
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Impact measurement system design for multi-site programs</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Data collection templates that work in low-connectivity environments</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Automated reporting dashboards (Excel, PowerBI, or cloud-based)</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Training for distributed teams who aren't data specialists</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Support for remote teams with limited tech infrastructure</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-visual reveal-scale">
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Impact Measurement: distributed teams feeding into automated reporting">
+            <text x="200" y="18" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.08em">MULTI-SITE DATA STANDARDISATION</text>
+            <!-- Distributed teams -->
+            <rect x="15" y="32" width="70" height="40" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="50" y="50" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Site A</text>
+            <text x="50" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Remote</text>
+            <rect x="95" y="32" width="70" height="40" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="130" y="50" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Site B</text>
+            <text x="130" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Urban</text>
+            <rect x="175" y="32" width="70" height="40" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="210" y="50" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Site C</text>
+            <text x="210" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Low-conn.</text>
+            <rect x="255" y="32" width="50" height="40" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="280" y="54" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">···</text>
+            <rect x="315" y="32" width="70" height="40" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="350" y="50" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Site N</text>
+            <text x="350" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">30+ teams</text>
+            <!-- Arrows down -->
+            <path d="M50 72 V94" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M130 72 V94" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M210 72 V94" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <path d="M350 72 V94" stroke="rgba(57,168,73,0.2)" stroke-width="1"/>
+            <!-- Collection templates -->
+            <rect x="30" y="94" width="340" height="36" rx="8" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="200" y="114" text-anchor="middle" fill="#39a849" font-size="10" font-weight="600" font-family="var(--font)">Standardised Collection Templates</text>
+            <text x="200" y="126" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Works offline  |  Non-specialist friendly</text>
+            <!-- Arrow down -->
+            <path d="M200 130 V148" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Automated engine -->
+            <rect x="80" y="148" width="240" height="44" rx="10" fill="rgba(57,168,73,0.18)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="200" y="168" text-anchor="middle" fill="#39a849" font-size="12" font-weight="700" font-family="var(--font)">Automated Consolidation</text>
+            <text x="200" y="182" text-anchor="middle" fill="var(--text-secondary)" font-size="8" font-family="var(--font)">Excel  |  PowerBI  |  Cloud dashboards</text>
+            <!-- Outputs -->
+            <path d="M140 192 V212" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M260 192 V212" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <rect x="60" y="212" width="150" height="36" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="135" y="228" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">60% → 95% Compliance</text>
+            <text x="135" y="240" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Team reporting rates</text>
+            <rect x="230" y="212" width="140" height="36" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="300" y="228" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Weeks → Days</text>
+            <text x="300" y="240" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Reporting cycle time</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="prod-final-cta">
+  <div class="prod-page">
+    <span class="label">Get started</span>
+    <h2>Ready to measure what matters?</h2>
+    <p>Tell us about your reporting challenge. We'll design a framework that works for your teams.</p>
+    <div class="prod-final-cta-actions">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+      <a href="index.html" class="btn btn-ghost">View All Products &amp; Services</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../index.html#capabilities">Technology</a>
+        <a href="../index.html#capabilities">Services</a>
+        <a href="../index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="wisdom.html">WISDOM</a>
+        <a href="engaide.html">ENG|AIDE</a>
+        <a href="fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="impact-framework.html">Impact Measurement</a>
+        <a href="fabhums.html">FABHUMS</a>
+        <a href="campaide.html">CAMP|AIDE</a>
+        <a href="ils.html">ILS</a>
+        <a href="aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../index.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="#" data-engage>Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>

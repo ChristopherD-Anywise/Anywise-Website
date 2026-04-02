@@ -1,0 +1,20 @@
+{
+  "skill_name": "site-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a website using a templated system. Company: DataVault, secure data storage and analytics. Tagline: 'Enterprise data, simplified.' Values: Security, transparency, simplicity. Capabilities: 1) End-to-end encryption, 2) Real-time analytics dashboard, 3) Custom API integrations. Approach: Enterprise-grade security shouldn't require complexity. We abstract the overhead. Products: 1) DataVault Core (encrypted storage), 2) DataVault Analytics (real-time insights), 3) DataVault API (integration toolkit). Track record: 500+ enterprise clients, 99.99% uptime, $100M+ data processed daily. Design choices: Primary color #1e40af (blue), secondary color #0284c7 (sky blue), visual tone 'Professional & Corporate', include Purpose, Capabilities, Approach, Products, Track Record (skip Team & News), hero style 'Minimalist with text focus', yes to scroll animations, yes to globe (tech/global theme), offer at least 3 globe designs via MCP, CTA: 'Request demo' → https://datavault.io/demo",
+      "expected_output": "Complete, production-ready HTML with DataVault branding (blue colors), all requested sections, minimalist hero, 3+ globe design options presented from MCP (user selects one), interactive globe integrated, dark/light theme toggle, responsive design, accessibility features, ready to deploy"
+    },
+    {
+      "id": 2,
+      "prompt": "I want to use a template to create a website. Company: GreenPath (sustainable urban development). Tagline: 'Building cities that work for everyone.' Values: Environmental stewardship, community first, innovation. Capabilities: Masterplan design, stakeholder engagement, sustainability auditing. Approach: Partner with cities to co-create resilient communities. Products: 1) Masterplan Design, 2) Sustainability Audit, 3) Community Engagement Program. Track record: 25 cities transformed, 2M+ residents impacted, 40% emissions reduction. Design: Primary color #059669 (emerald), visual tone 'Organic & Natural', include all sections except News, hero style 'Dynamic with animated elements', yes to scroll animations, yes to globe (environmental/geographic focus), CTA: 'Schedule consultation' → https://greenpath.io/consult, footer with social links",
+      "expected_output": "HTML for GreenPath with emerald branding, organic/natural visual tone, dynamic hero with animations, 3+ environmentally-themed globe options from MCP, all sections included, mobile-responsive, accessibility-compliant, ready to deploy"
+    },
+    {
+      "id": 3,
+      "prompt": "I want to build a landing page using your template system. Company: SoundStudio (cloud music production). Tagline: 'Professional music creation, anywhere.' Values: Creativity, accessibility, community. Capabilities: Cloud collaboration, 1000+ instruments, AI mastering. Approach: Democratize music production by moving it to the cloud. Products: 1) SoundStudio Pro (full suite), 2) SoundStudio Lite (browser), 3) SoundStudio API (developers). Track record: 50K+ creators, 2M+ songs produced, 98% satisfaction. Design: Primary color #7c3aed (purple), secondary #a855f7 (bright purple), visual tone 'Playful & Creative', all sections except Team, hero style 'Bold statement with imagery', yes to scroll animations, yes to globe (creative/music-themed), 3+ creative globe designs from MCP, CTA: 'Start creating free' → https://soundstudio.io/signup",
+      "expected_output": "HTML for SoundStudio with purple branding, playful/creative tone, bold hero, 3+ music/creative-themed globe options from MCP, all sections, dynamic animations, mobile-responsive, accessibility-compliant, ready to deploy"
+    }
+  ]
+}

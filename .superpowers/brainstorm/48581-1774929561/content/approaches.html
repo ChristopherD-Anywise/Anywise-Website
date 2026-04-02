@@ -1,0 +1,87 @@
+<h2>Implementation Approach</h2>
+<p class="subtitle">How should we architect the light/dark theming system?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)" style="border-left: 3px solid #39a849;">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>CSS Custom Properties Swap — <em>Recommended</em></h3>
+      <p>Override all <code>--bg-*</code>, <code>--text-*</code>, <code>--border-*</code>, and <code>--accent-*</code> variables under a <code>[data-theme="light"]</code> selector on the root. JavaScript detects AEDT time and sets the attribute on page load.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Single source of truth — all colors flow from variables</li>
+            <li>Minimal CSS additions (~40 lines of variable overrides)</li>
+            <li>Globe texture swap handled separately in JS</li>
+            <li>Easy to extend later (manual toggle, user preference)</li>
+            <li>Smooth transition via <code>transition: background-color 0.5s, color 0.5s</code> on body</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Some hardcoded <code>rgba()</code> values throughout CSS need individual overrides</li>
+            <li>Hero overlay gradients need separate light-mode rules</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Duplicate Stylesheet Approach</h3>
+      <p>Create a complete parallel set of CSS rules scoped under <code>.light-mode</code> class. Toggle the class on body based on time.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Full control over every element in light mode</li>
+            <li>No risk of missed variable references</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Massive CSS duplication (~500+ lines)</li>
+            <li>Maintenance nightmare — every change needs updating in both themes</li>
+            <li>Bloats file size significantly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid: Variables + Targeted Overrides</h3>
+      <p>Use CSS custom property swaps for the bulk of theming (backgrounds, text, borders), but write targeted <code>[data-theme="light"]</code> rules for complex components that use hardcoded values (hero overlay, capability cards, globe glow shader).</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Best of both worlds — variables handle 80%, targeted rules handle edge cases</li>
+            <li>Handles hardcoded rgba() values and gradient overlays properly</li>
+            <li>Moderate CSS additions (~80-100 lines)</li>
+            <li>Clean separation between variable-driven and component-specific theming</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Slightly more complex than pure variable swap</li>
+            <li>Need to audit all hardcoded color values</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 2rem; padding: 1.5rem; background: rgba(57,168,73,0.08); border-radius: 8px; border: 1px solid rgba(57,168,73,0.2);">
+  <h3 style="margin-top:0;">💡 Recommendation: Approach C (Hybrid)</h3>
+  <p style="margin-bottom:0;">The Anywise site has ~15 hardcoded <code>rgba()</code> values in gradients, overlays, and card effects that won't respond to variable swaps alone. The hybrid approach handles these cleanly while keeping the variable system as the primary mechanism. It's the right balance of maintainability and completeness.</p>
+</div>

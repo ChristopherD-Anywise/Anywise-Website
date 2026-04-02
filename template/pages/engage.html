@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engage Us — <!-- REPLACE: Brand name --></title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+/* ─── Standalone Engage Page ────────────────────────────────────────────── */
+.engage-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem;
+}
+
+.engage-standalone {
+  width: 100%;
+  max-width: 640px;
+}
+
+.engage-standalone .engage-panel {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+}
+
+.engage-standalone .engage-header {
+  margin-bottom: 1.75rem;
+}
+
+.engage-standalone .engage-sub {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0.4rem;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <!-- Note: shared.js also injects the Engage Us modal on this page.
+       The nav "Engage Us" CTA will open the injected modal — acceptable behaviour.
+       No suppression needed unless duplication is undesirable for your project. -->
+  <nav id="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;">
+      <a href="home.html" class="nav-brand"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="product-index.html"><!-- REPLACE: Nav link 1 --></a></li>
+        <li><a href="blog-index.html"><!-- REPLACE: Nav link 2 --></a></li>
+        <li><a href="#" data-engage>Engage Us</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◑</button>
+        <a href="#" class="nav-cta" data-engage><!-- REPLACE: CTA label --></a>
+        <button id="mobileToggle" class="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Standalone engage form -->
+  <main class="engage-page">
+    <div class="engage-standalone">
+      <div class="breadcrumb reveal" style="margin-bottom:1.5rem;">
+        <span><a href="home.html" style="color:var(--text-tertiary);text-decoration:none;">Home</a></span>
+        <span>Engage Us</span>
+      </div>
+
+      <div class="engage-panel">
+        <div class="engage-header">
+          <span class="label"><!-- REPLACE: Label e.g. "Get in touch" --></span>
+          <h1 style="font-size:2rem;font-weight:700;margin:0.5rem 0 0.35rem;letter-spacing:-0.02em;"><!-- REPLACE: Form heading e.g. "Engage Us" --></h1>
+          <p class="engage-sub"><!-- REPLACE: Form subheading --></p>
+        </div>
+
+        <form
+          class="engage-form"
+          id="engageForm"
+          action="mailto:<!-- REPLACE: contact@yourdomain.com -->"
+          method="POST"
+          enctype="text/plain"
+        >
+          <div class="engage-form-row">
+            <div class="engage-group">
+              <label for="engName">Full name <span aria-hidden="true">*</span></label>
+              <input id="engName" name="name" type="text"
+                placeholder="<!-- REPLACE: Name placeholder -->" autocomplete="name" required>
+            </div>
+            <div class="engage-group">
+              <label for="engEmail">Work email <span aria-hidden="true">*</span></label>
+              <input id="engEmail" name="email" type="email"
+                placeholder="<!-- REPLACE: Email placeholder -->" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="engage-form-row">
+            <div class="engage-group">
+              <label for="engOrg">Organisation <span aria-hidden="true">*</span></label>
+              <input id="engOrg" name="organisation" type="text"
+                placeholder="<!-- REPLACE: Organisation placeholder -->" required>
+            </div>
+            <div class="engage-group">
+              <label for="engRole">Your role</label>
+              <input id="engRole" name="role" type="text"
+                placeholder="<!-- REPLACE: Role placeholder -->">
+            </div>
+          </div>
+
+          <div class="engage-group">
+            <label for="engEnquiry">What are you looking for? <span aria-hidden="true">*</span></label>
+            <select id="engEnquiry" name="enquiry" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="product">Product enquiry</option>
+              <option value="partnership">Partnership or collaboration</option>
+              <option value="general">General enquiry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Product dropdown — shown only when enquiry type = "product" -->
+          <div class="engage-group" id="engProductGroup" hidden>
+            <label for="engProduct">Which product? <span aria-hidden="true">*</span></label>
+            <select id="engProduct" name="product">
+              <option value="" disabled selected>Select a product…</option>
+              <!-- REPLACE: product options -->
+            </select>
+          </div>
+
+          <div class="engage-group">
+            <label for="engMessage">Message <span aria-hidden="true">*</span></label>
+            <textarea id="engMessage" name="message"
+              placeholder="<!-- REPLACE: Message placeholder -->"
+              required></textarea>
+          </div>
+
+          <div class="engage-actions">
+            <p class="engage-privacy"><!-- REPLACE: Privacy note --></p>
+            <button type="submit" class="btn btn-primary">Send →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="home.html" class="nav-brand" style="display:inline-block;margin-bottom:0.75rem;"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+          <p style="font-size:0.875rem;color:var(--text-secondary);max-width:280px;"><!-- REPLACE: Brand tagline --></p>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="product-index.html"><!-- REPLACE: Footer link --></a></li>
+            <li><a href="blog-index.html"><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="engage.html">Engage Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal"><!-- REPLACE: Legal line --></p>
+        <p class="footer-locations"><!-- REPLACE: Cities --></p>
+        <p class="acknowledgement"><!-- REPLACE: Acknowledgement of Country --></p>
+        <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">© <!-- REPLACE: Year --> <!-- REPLACE: Company name -->. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared.js"></script>
+  <script>
+/* Conditional product dropdown for standalone page */
+(function() {
+  var enquirySelect = document.getElementById('engEnquiry');
+  var productGroup = document.getElementById('engProductGroup');
+  var productSelect = document.getElementById('engProduct');
+  if (!enquirySelect) return;
+  enquirySelect.addEventListener('change', function() {
+    var show = enquirySelect.value === 'product';
+    productGroup.hidden = !show;
+    productSelect.required = show;
+  });
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<h2>Hover Effect Diversity</h2>
+<p class="subtitle">Currently almost every interactive element does the same thing: translateY(-6px) + green box-shadow. Here's a plan to give each section its own interaction personality.</p>
+
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+  .hover-section { background:#0e110e; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:1.5rem; margin-bottom:1rem; font-family:'General Sans',sans-serif; }
+  .hover-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.15em; color:#39a849; margin-bottom:0.2rem; font-family:'JetBrains Mono',monospace; }
+  .hover-title { font-size:0.85rem; font-weight:600; color:#f2f1ee; margin-bottom:0.6rem; }
+  .effect-row { display:flex; gap:1.5rem; align-items:center; }
+  .effect-current { font-size:0.7rem; color:rgba(255,100,100,0.7); flex:1; }
+  .effect-arrow { color:#626860; font-size:1.2rem; flex-shrink:0; }
+  .effect-proposed { font-size:0.7rem; color:rgba(57,168,73,0.8); flex:1; }
+  .effect-reason { font-size:0.6rem; color:#626860; margin-top:0.3rem; }
+</style>
+
+<div class="hover-section">
+  <div class="hover-label">Capability Cards</div>
+  <div class="hover-title">Keep Current (Already Distinctive)</div>
+  <div class="effect-row">
+    <div class="effect-current">translateY(-6px) + cursor spotlight + gradient top line</div>
+    <div class="effect-arrow">=</div>
+    <div class="effect-proposed" style="color:#f2f1ee;">No change — the cursor-tracking spotlight and gradient backgrounds make these unique enough</div>
+  </div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">Product Cards</div>
+  <div class="hover-title">Keep 3D Tilt, Remove Lift</div>
+  <div class="effect-row">
+    <div class="effect-current">3D tilt + translateY(-6px) + image zoom + green overlay</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">3D tilt only + subtle image zoom. Remove the -6px lift (tilt already creates depth). Remove green image overlay (let the image speak).</div>
+  </div>
+  <div class="effect-reason">The tilt is the star here — the lift competes with it. Cleaner to let one effect do the work.</div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">News Cards</div>
+  <div class="hover-title">Subtle Scale Instead of Lift</div>
+  <div class="effect-row">
+    <div class="effect-current">translateY(-6px) + green box-shadow + image zoom + green overlay + date color change + arrow reveal</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">scale(1.02) on whole card + image zoom. Remove green overlay, remove green shadow. Keep the arrow reveal — that's the good part.</div>
+  </div>
+  <div class="effect-reason">News cards should feel clickable and light, not dramatic. A gentle scale says "I'm a link" without the heavy green glow.</div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">Approach Features</div>
+  <div class="hover-title">Becoming Numbered List — Text Highlight Only</div>
+  <div class="effect-row">
+    <div class="effect-current">translateX(6px) + translateY(-2px) + left accent line + border color change</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">Number color shifts from #39a849 to #c3e01b on hover. Title text brightens. No movement.</div>
+  </div>
+  <div class="effect-reason">As a numbered list, movement-based hover would feel odd. Colour shift is more appropriate for text content.</div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">Track Record Stats</div>
+  <div class="hover-title">Becoming Inline Row — No Hover</div>
+  <div class="effect-row">
+    <div class="effect-current">translateY(-4px) + border change + gradient bottom line</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">No hover effect. Stats are informational, not interactive. Remove unnecessary interaction suggestion.</div>
+  </div>
+  <div class="effect-reason">Not everything needs a hover state. Stats are display-only — adding hover implies they're clickable when they're not.</div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">CTA Box</div>
+  <div class="hover-title">Remove Box Hover, Keep Button Hover</div>
+  <div class="effect-row">
+    <div class="effect-current">Whole box: border change + green shadow + image zoom</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">Keep subtle image zoom. Remove box border/shadow change — the buttons are the interactive elements, not the container.</div>
+  </div>
+  <div class="effect-reason">Hovering the entire CTA section creates a confusing interaction target. Focus hover on the actual buttons.</div>
+</div>
+
+<div class="hover-section">
+  <div class="hover-label">Value Cards</div>
+  <div class="hover-title">Becoming Inline Text — No Hover Needed</div>
+  <div class="effect-row">
+    <div class="effect-current">translateY(-6px) + background change + green shadow</div>
+    <div class="effect-arrow">&rarr;</div>
+    <div class="effect-proposed">N/A — values become inline text flow, no hover.</div>
+  </div>
+</div>
+
+<div class="options" style="margin-top:1.5rem;">
+  <div class="option" data-choice="approve-hover" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Approve All Hover Changes</h3>
+      <p>Each section gets its own interaction personality. Less movement overall, more intentional where it remains.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="discuss-hover" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>I Want to Adjust Some</h3>
+      <p>Let me call out specific sections I disagree with.</p>
+    </div>
+  </div>
+</div>

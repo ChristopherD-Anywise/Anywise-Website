@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><!-- REPLACE: Product name --> — <!-- REPLACE: Brand name --></title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+/* ─── Product Page Layout ───────────────────────────────────────────────── */
+.prod-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.prod-hero {
+  padding: 7rem 0 5rem;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.prod-hero-content .prod-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content .prod-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.prod-hero-img {
+  aspect-ratio: 4/3;
+}
+
+/* ─── Two-column sections ───────────────────────────────────────────────── */
+.prod-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* Flip: image first, text second */
+.prod-two-col.flip .prod-text { order: 2; }
+.prod-two-col.flip .prod-visual { order: 1; }
+
+.prod-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.prod-text p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prod-text p:last-child { margin-bottom: 0; }
+
+.prod-img-16-9 { aspect-ratio: 16/9; }
+.prod-img-4-3 { aspect-ratio: 4/3; }
+
+/* ─── Benefits Grid ─────────────────────────────────────────────────────── */
+.prod-benefits {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-benefits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.prod-benefits-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.75rem;
+}
+.prod-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+.benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.benefit-icon svg { width: 1.2rem; height: 1.2rem; }
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.benefit-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── How it Works + Use Cases ──────────────────────────────────────────── */
+.prod-how {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.prod-steps { list-style: none; }
+.prod-step {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.prod-step:last-child { margin-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-top: 0.15rem;
+}
+.step-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.use-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.use-case {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.use-case h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.use-case p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Feature Breakdown ─────────────────────────────────────────────────── */
+.prod-features {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  color: var(--accent);
+}
+.feature-check svg { width: 0.7rem; height: 0.7rem; }
+.feature-item-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.feature-item-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Product CTA ───────────────────────────────────────────────────────── */
+.prod-final-cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.prod-final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.prod-final-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero-inner,
+  .prod-two-col,
+  .prod-how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .prod-two-col.flip .prod-text { order: unset; }
+  .prod-two-col.flip .prod-visual { order: unset; }
+  .prod-benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .prod-benefits-grid { grid-template-columns: 1fr; }
+  .prod-hero { padding: 5rem 0 3rem; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;">
+      <a href="home.html" class="nav-brand"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="product-index.html"><!-- REPLACE: Nav link 1 --></a></li>
+        <li><a href="blog-index.html"><!-- REPLACE: Nav link 2 --></a></li>
+        <li><a href="#" data-engage>Engage Us</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◑</button>
+        <a href="#" class="nav-cta" data-engage><!-- REPLACE: CTA label --></a>
+        <button id="mobileToggle" class="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. Hero: text left / image right -->
+  <section class="prod-hero">
+    <div class="prod-page">
+      <div class="breadcrumb reveal">
+        <span><a href="home.html" style="color:var(--text-tertiary);text-decoration:none;">Home</a></span>
+        <span><a href="product-index.html" style="color:var(--text-tertiary);text-decoration:none;"><!-- REPLACE: Products section name --></a></span>
+        <span><!-- REPLACE: Product name --></span>
+      </div>
+      <div class="prod-hero-inner">
+        <div class="prod-hero-content reveal">
+          <div class="prod-tag"><!-- REPLACE: Product category label --></div>
+          <h1><!-- REPLACE: Product name --></h1>
+          <p class="prod-tagline"><!-- REPLACE: Product one-liner / tagline --></p>
+          <div class="prod-hero-actions">
+            <a href="#" class="btn btn-accent" data-engage><!-- REPLACE: Primary CTA --></a>
+            <a href="product-index.html" class="btn btn-ghost">All Products</a>
+          </div>
+        </div>
+        <div class="prod-hero-img reveal-scale">
+          <div class="img-placeholder" style="aspect-ratio:4/3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            <span><!-- REPLACE: Product name --> hero image</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. What is it: image left / text right (flip) -->
+  <section class="prod-section">
+    <div class="prod-page">
+      <div class="prod-two-col flip">
+        <div class="prod-visual reveal-scale">
+          <div class="img-placeholder" style="aspect-ratio:16/9">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Overview visual</span>
+          </div>
+        </div>
+        <div class="prod-text reveal">
+          <div class="prod-section-label"><!-- REPLACE: Section label e.g. "Overview" --></div>
+          <h2><!-- REPLACE: "What is [product]?" heading --></h2>
+          <p><!-- REPLACE: First overview paragraph --></p>
+          <p><!-- REPLACE: Second overview paragraph --></p>
+          <p><!-- REPLACE: Third overview paragraph (optional — remove if not needed) --></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Key benefits: 4-column grid -->
+  <section class="prod-benefits">
+    <div class="prod-page">
+      <div class="prod-benefits-header reveal">
+        <span class="label"><!-- REPLACE: Benefits label --></span>
+        <h2><!-- REPLACE: Benefits heading --></h2>
+      </div>
+      <div class="prod-benefits-grid">
+        <!-- REPLACE: 4 benefit cards -->
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3><!-- REPLACE: Benefit title --></h3>
+          <p><!-- REPLACE: Benefit description --></p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3><!-- REPLACE: Benefit title --></h3>
+          <p><!-- REPLACE: Benefit description --></p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3><!-- REPLACE: Benefit title --></h3>
+          <p><!-- REPLACE: Benefit description --></p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3><!-- REPLACE: Benefit title --></h3>
+          <p><!-- REPLACE: Benefit description --></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. How it works + use cases: 2-column -->
+  <section class="prod-how">
+    <div class="prod-page">
+      <div class="prod-how-inner">
+        <div class="reveal">
+          <div class="prod-section-label"><!-- REPLACE: How it works label e.g. "Process" --></div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;"><!-- REPLACE: How it works heading --></h2>
+          <ol class="prod-steps">
+            <!-- REPLACE: 3–5 steps -->
+            <li class="prod-step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4><!-- REPLACE: Step title --></h4>
+                <p><!-- REPLACE: Step description --></p>
+              </div>
+            </li>
+            <li class="prod-step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4><!-- REPLACE: Step title --></h4>
+                <p><!-- REPLACE: Step description --></p>
+              </div>
+            </li>
+            <li class="prod-step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4><!-- REPLACE: Step title --></h4>
+                <p><!-- REPLACE: Step description --></p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="reveal">
+          <div class="prod-section-label"><!-- REPLACE: Use cases label e.g. "Applications" --></div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;"><!-- REPLACE: Use cases heading --></h2>
+          <div class="use-cases-list">
+            <!-- REPLACE: 3–5 use cases -->
+            <div class="use-case">
+              <h4><!-- REPLACE: Use case title --></h4>
+              <p><!-- REPLACE: Use case description --></p>
+            </div>
+            <div class="use-case">
+              <h4><!-- REPLACE: Use case title --></h4>
+              <p><!-- REPLACE: Use case description --></p>
+            </div>
+            <div class="use-case">
+              <h4><!-- REPLACE: Use case title --></h4>
+              <p><!-- REPLACE: Use case description --></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Feature breakdown: feature list left / screenshot right -->
+  <section class="prod-features">
+    <div class="prod-page">
+      <div class="prod-two-col">
+        <div class="prod-text reveal">
+          <div class="prod-section-label"><!-- REPLACE: Features label e.g. "Capabilities" --></div>
+          <h2><!-- REPLACE: Features heading --></h2>
+          <div class="prod-feature-list" style="margin-top:1.5rem;">
+            <!-- REPLACE: 4–6 feature items -->
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-item-content">
+                <h4><!-- REPLACE: Feature name --></h4>
+                <p><!-- REPLACE: Feature description --></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prod-visual reveal-scale">
+          <div class="img-placeholder" style="aspect-ratio:4/3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span><!-- REPLACE: Product name --> screenshot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Final CTA -->
+  <section class="prod-final-cta">
+    <div class="prod-page">
+      <span class="label reveal"><!-- REPLACE: CTA label e.g. "Get started" --></span>
+      <h2 class="reveal"><!-- REPLACE: Final CTA heading --></h2>
+      <p class="reveal"><!-- REPLACE: Final CTA supporting text --></p>
+      <div class="prod-final-cta-actions reveal">
+        <a href="#" class="btn btn-accent" data-engage><!-- REPLACE: Primary CTA label --></a>
+        <a href="product-index.html" class="btn btn-ghost"><!-- REPLACE: Secondary CTA label --></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="home.html" class="nav-brand" style="display:inline-block;margin-bottom:0.75rem;"><!-- REPLACE: Brand name --><span><!-- REPLACE: Accent --></span></a>
+          <p style="font-size:0.875rem;color:var(--text-secondary);max-width:280px;"><!-- REPLACE: Brand tagline --></p>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="product-index.html"><!-- REPLACE: Footer link --></a></li>
+            <li><a href="blog-index.html"><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1rem;"><!-- REPLACE: Column heading --></h4>
+          <ul class="footer-links">
+            <li><a href="#" data-engage><!-- REPLACE: Footer link --></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal"><!-- REPLACE: Legal line --></p>
+        <p class="footer-locations"><!-- REPLACE: Cities --></p>
+        <p class="acknowledgement"><!-- REPLACE: Acknowledgement of Country --></p>
+        <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">© <!-- REPLACE: Year --> <!-- REPLACE: Company name -->. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared.js"></script>
+</body>
+</html>

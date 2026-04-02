@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "getting-started-with-your-new-site",
+    "title": "Getting Started With Your New Site",
+    "date": "2026-04-01",
+    "readTime": 3,
+    "category": "Guides",
+    "author": "Your Name",
+    "heroImage": "",
+    "intro": "This is a sample post demonstrating all available block types. Replace this content with your own articles.",
+    "sections": [
+      {
+        "heading": "What this template includes",
+        "blocks": [
+          { "type": "paragraph", "content": "Your site includes six page templates: home, product index, product detail, blog index, blog post, and an engage/contact page. All pages are styled via shared.css and branded via brand.css." },
+          { "type": "pullquote", "content": "Brand tokens in brand.css are the only values you change per project." },
+          { "type": "list", "items": ["Copy the template/ folder into your new project", "Edit brand.css to set your colours and fonts", "Update the 6 hardcoded rgba nav values in shared.css", "Replace <!-- REPLACE: ... --> comments throughout the HTML shells", "Run python3 -m http.server 8080 to preview blog pages locally"] }
+        ]
+      },
+      {
+        "heading": "Adding your own posts",
+        "blocks": [
+          { "type": "paragraph", "content": "Add posts by appending objects to this posts.json file. Each post needs a unique slug (URL-safe, lowercase, hyphens), a title, date (YYYY-MM-DD), readTime in minutes, category, author, and an intro paragraph." },
+          { "type": "image", "src": "", "caption": "Example image caption — replace src with a real URL or leave empty for a placeholder." }
+        ]
+      }
+    ]
+  }
+]

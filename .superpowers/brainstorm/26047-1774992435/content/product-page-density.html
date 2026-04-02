@@ -1,0 +1,217 @@
+<h2>Product Page — Layout Density</h2>
+<p class="subtitle">How do we fix the "too stretched" feel? Three approaches:</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <!-- Hero: full-width image top, text below -->
+        <div style="background:rgba(99,255,150,0.07); border:1px solid rgba(99,255,150,0.15); border-radius:6px; overflow:hidden; margin-bottom:0.35rem;">
+          <div style="background:rgba(255,255,255,0.07); height:3rem; width:100%;"></div>
+          <div style="padding:0.5rem;">
+            <div style="font-size:0.55rem; opacity:0.5;">Strategic Intelligence</div>
+            <div style="font-size:0.85rem; font-weight:700;">WISDOM</div>
+            <div style="font-size:0.5rem; opacity:0.7; line-height:1.3; margin-top:0.15rem;">Accelerated, reliable decision-making for complex environments.</div>
+            <div style="display:flex; gap:0.3rem; margin-top:0.3rem;">
+              <div style="background:rgba(99,255,150,0.2); border-radius:3px; padding:0.15rem 0.4rem; font-size:0.45rem; font-weight:600;">Engage Us →</div>
+              <div style="background:rgba(255,255,255,0.08); border-radius:3px; padding:0.15rem 0.4rem; font-size:0.45rem;">All Products</div>
+            </div>
+          </div>
+        </div>
+        <!-- What it does: dark band -->
+        <div style="background:rgba(255,255,255,0.06); border-radius:4px; padding:0.4rem; margin-bottom:0.35rem;">
+          <div style="font-size:0.55rem; font-weight:600; margin-bottom:0.2rem;">What is WISDOM?</div>
+          <div style="font-size:0.48rem; opacity:0.7; line-height:1.5;">A secure intelligence platform that fuses fragmented data sources, generative AI and experienced analysts to transform information overload into decision-ready foresight — built for defence, government and critical infrastructure.</div>
+        </div>
+        <!-- Benefits: 2x2 tight grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.25rem; margin-bottom:0.35rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.35rem;">
+            <div style="font-size:0.52rem; font-weight:600;">↗ Faster decisions</div>
+            <div style="font-size:0.45rem; opacity:0.55; line-height:1.3; margin-top:0.1rem;">Reduces analyst burden through fused intelligence layers.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.35rem;">
+            <div style="font-size:0.52rem; font-weight:600;">🔒 Secure by design</div>
+            <div style="font-size:0.45rem; opacity:0.55; line-height:1.3; margin-top:0.1rem;">Built for classified and sensitive environments.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.35rem;">
+            <div style="font-size:0.52rem; font-weight:600;">⚙ GenAI-enabled</div>
+            <div style="font-size:0.45rem; opacity:0.55; line-height:1.3; margin-top:0.1rem;">Human-machine teaming for reliable foresight.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.35rem;">
+            <div style="font-size:0.52rem; font-weight:600;">🇦🇺 Sovereign</div>
+            <div style="font-size:0.45rem; opacity:0.55; line-height:1.3; margin-top:0.1rem;">Australian-designed and operated.</div>
+          </div>
+        </div>
+        <!-- How it works + use cases side by side -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.25rem;">
+          <div style="background:rgba(255,255,255,0.04); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.25rem;">How It Works</div>
+            <div style="display:flex; flex-direction:column; gap:0.2rem;">
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.2rem 0.3rem; font-size:0.45rem;">① Ingest data sources</div>
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.2rem 0.3rem; font-size:0.45rem;">② GenAI + analyst fusion</div>
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.2rem 0.3rem; font-size:0.45rem;">③ Deliver foresight</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.25rem;">Use Cases</div>
+            <div style="display:flex; flex-direction:column; gap:0.2rem;">
+              <div style="font-size:0.45rem; opacity:0.7; line-height:1.3; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">Defence procurement support</div>
+              <div style="font-size:0.45rem; opacity:0.7; line-height:1.3; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">Emergency services command</div>
+              <div style="font-size:0.45rem; opacity:0.7; line-height:1.3; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">Government policy intelligence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Wider max-width + side-by-side sections</h3>
+      <p>Increase max content width. Pair "How it Works" and "Use Cases" side-by-side. Full-bleed hero image. Feels dense and editorial — less like a thin column.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <!-- Hero: two col with large image right -->
+        <div style="background:rgba(99,255,150,0.07); border:1px solid rgba(99,255,150,0.15); border-radius:6px; padding:0.5rem; margin-bottom:0.35rem; display:grid; grid-template-columns:1fr 1.2fr; gap:0.4rem; align-items:center;">
+          <div>
+            <div style="font-size:0.5rem; opacity:0.5;">Strategic Intelligence</div>
+            <div style="font-size:0.85rem; font-weight:700; line-height:1.1;">WISDOM</div>
+            <div style="font-size:0.48rem; opacity:0.7; line-height:1.4; margin:0.2rem 0;">Accelerated, reliable decision-making for complex environments.</div>
+            <div style="display:flex; gap:0.3rem;">
+              <div style="background:rgba(99,255,150,0.2); border-radius:3px; padding:0.15rem 0.35rem; font-size:0.45rem; font-weight:600;">Engage Us →</div>
+              <div style="background:rgba(255,255,255,0.08); border-radius:3px; padding:0.15rem 0.35rem; font-size:0.45rem;">All Products</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08); height:4rem; border-radius:4px;"></div>
+        </div>
+        <!-- What it does -->
+        <div style="background:rgba(255,255,255,0.06); border-radius:4px; padding:0.4rem; margin-bottom:0.35rem;">
+          <div style="font-size:0.55rem; font-weight:600; margin-bottom:0.15rem;">What is WISDOM?</div>
+          <div style="font-size:0.48rem; opacity:0.7; line-height:1.5;">Fuses fragmented data, GenAI and experienced analysts to deliver decision-ready foresight in secure, complex environments.</div>
+        </div>
+        <!-- 4-col benefits row -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.2rem; margin-bottom:0.35rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.3rem; text-align:center;">
+            <div style="font-size:0.6rem;">↗</div>
+            <div style="font-size:0.45rem; font-weight:600; margin-top:0.1rem;">Faster decisions</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.3rem; text-align:center;">
+            <div style="font-size:0.6rem;">🔒</div>
+            <div style="font-size:0.45rem; font-weight:600; margin-top:0.1rem;">Secure</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.3rem; text-align:center;">
+            <div style="font-size:0.6rem;">⚙</div>
+            <div style="font-size:0.45rem; font-weight:600; margin-top:0.1rem;">GenAI-enabled</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:3px; padding:0.3rem; text-align:center;">
+            <div style="font-size:0.6rem;">🇦🇺</div>
+            <div style="font-size:0.45rem; font-weight:600; margin-top:0.1rem;">Sovereign</div>
+          </div>
+        </div>
+        <!-- How it works full width flow -->
+        <div style="background:rgba(255,255,255,0.04); border-radius:4px; padding:0.4rem; margin-bottom:0.25rem;">
+          <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.2rem;">How It Works</div>
+          <div style="display:flex; align-items:center; gap:0.2rem;">
+            <div style="background:rgba(255,255,255,0.07); border-radius:3px; padding:0.25rem 0.3rem; flex:1; text-align:center; font-size:0.45rem; font-weight:600;">① Ingest</div>
+            <div style="opacity:0.4; font-size:0.5rem;">→</div>
+            <div style="background:rgba(255,255,255,0.07); border-radius:3px; padding:0.25rem 0.3rem; flex:1; text-align:center; font-size:0.45rem; font-weight:600;">② Analyse</div>
+            <div style="opacity:0.4; font-size:0.5rem;">→</div>
+            <div style="background:rgba(255,255,255,0.07); border-radius:3px; padding:0.25rem 0.3rem; flex:1; text-align:center; font-size:0.45rem; font-weight:600;">③ Deliver</div>
+          </div>
+        </div>
+        <!-- Features 3-col -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.2rem;">
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.48rem; font-weight:600;">Data fusion</div>
+            <div style="font-size:0.42rem; opacity:0.5; line-height:1.3;">Multi-source ingestion</div>
+          </div>
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.48rem; font-weight:600;">GenAI layer</div>
+            <div style="font-size:0.42rem; opacity:0.5; line-height:1.3;">LLM-assisted synthesis</div>
+          </div>
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.48rem; font-weight:600;">Secure hosting</div>
+            <div style="font-size:0.42rem; opacity:0.5; line-height:1.3;">Sovereign cloud deployment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Compact stacked with horizontal benefit strip</h3>
+      <p>Benefits collapse to a 4-column icon strip. How it Works stays full-width. Sections stack tighter with less padding. More information per scroll distance.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 1rem; background: rgba(255,255,255,0.03);">
+      <div style="font-size:0.7rem; font-family: monospace; line-height:1.6;">
+        <!-- Full-bleed dark hero with product image bg -->
+        <div style="background: linear-gradient(135deg, rgba(10,20,10,0.9), rgba(30,50,30,0.7)); border-radius:6px; padding:0.6rem; margin-bottom:0.35rem; border:1px solid rgba(99,255,150,0.12);">
+          <div style="font-size:0.5rem; opacity:0.5; margin-bottom:0.1rem; text-transform:uppercase; letter-spacing:0.05em;">Strategic Intelligence</div>
+          <div style="font-size:1rem; font-weight:700;">WISDOM</div>
+          <div style="font-size:0.48rem; opacity:0.7; max-width:60%; line-height:1.4; margin:0.2rem 0;">Decision-ready foresight for defence and government.</div>
+          <div style="display:flex; gap:0.3rem; margin-top:0.25rem;">
+            <div style="background:rgba(99,255,150,0.25); border-radius:3px; padding:0.15rem 0.4rem; font-size:0.45rem; font-weight:600;">Engage Us →</div>
+          </div>
+        </div>
+        <!-- What + benefits in 2 cols -->
+        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:0.3rem; margin-bottom:0.3rem;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.15rem;">What is WISDOM?</div>
+            <div style="font-size:0.45rem; opacity:0.7; line-height:1.5;">Fuses fragmented data, GenAI and experienced analysts to deliver decision-ready foresight in secure, complex environments.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.15rem;">Key Benefits</div>
+            <div style="display:flex; flex-direction:column; gap:0.15rem;">
+              <div style="font-size:0.44rem; opacity:0.8;">↗ Faster decisions</div>
+              <div style="font-size:0.44rem; opacity:0.8;">🔒 Secure by design</div>
+              <div style="font-size:0.44rem; opacity:0.8;">⚙ GenAI-enabled</div>
+              <div style="font-size:0.44rem; opacity:0.8;">🇦🇺 Sovereign</div>
+            </div>
+          </div>
+        </div>
+        <!-- How it works + use cases in 2 cols -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; margin-bottom:0.3rem;">
+          <div style="background:rgba(255,255,255,0.04); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.2rem;">How It Works</div>
+            <div style="display:flex; flex-direction:column; gap:0.15rem;">
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.15rem 0.3rem; font-size:0.44rem;">① Ingest data sources</div>
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.15rem 0.3rem; font-size:0.44rem;">② GenAI + analyst fusion</div>
+              <div style="background:rgba(255,255,255,0.06); border-radius:2px; padding:0.15rem 0.3rem; font-size:0.44rem;">③ Deliver foresight</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border-radius:4px; padding:0.4rem;">
+            <div style="font-size:0.52rem; font-weight:600; margin-bottom:0.2rem;">Use Cases</div>
+            <div style="display:flex; flex-direction:column; gap:0.15rem;">
+              <div style="font-size:0.44rem; opacity:0.7; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.25rem; line-height:1.3;">Defence procurement</div>
+              <div style="font-size:0.44rem; opacity:0.7; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.25rem; line-height:1.3;">Emergency services</div>
+              <div style="font-size:0.44rem; opacity:0.7; border-left:2px solid rgba(99,255,150,0.4); padding-left:0.25rem; line-height:1.3;">Government policy</div>
+            </div>
+          </div>
+        </div>
+        <!-- Features strip -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.2rem;">
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.46rem; font-weight:600;">Data fusion</div>
+            <div style="font-size:0.4rem; opacity:0.5;">Multi-source ingestion</div>
+          </div>
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.46rem; font-weight:600;">GenAI layer</div>
+            <div style="font-size:0.4rem; opacity:0.5;">LLM-assisted synthesis</div>
+          </div>
+          <div style="border-left:2px solid rgba(99,255,150,0.4); padding-left:0.3rem;">
+            <div style="font-size:0.46rem; font-weight:600;">Secure hosting</div>
+            <div style="font-size:0.4rem; opacity:0.5;">Sovereign cloud</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Two-column throughout</h3>
+      <p>Almost every section uses a 2-column layout. "What is it" sits beside "Key Benefits". "How it Works" sits beside "Use Cases". Much more content per screen — least stretched feel.</p>
+    </div>
+  </div>
+
+</div>

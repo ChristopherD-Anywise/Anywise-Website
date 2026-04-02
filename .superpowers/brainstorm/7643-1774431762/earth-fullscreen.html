@@ -1,0 +1,109 @@
+<h2>Updated Vision: Full-Screen Earth with Scroll Zoom</h2>
+<p class="subtitle">Earth fills the entire hero. Lightning overlays on top. Scrolling zooms toward the earth.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Scroll Sequence — 3 Stages</div>
+  <div class="mockup-body" style="background:#0a0d0a; padding:0; display:flex; gap:0; overflow:hidden;">
+
+    <!-- Stage 1: Initial view -->
+    <div style="flex:1; position:relative; min-height:300px; border-right:1px solid rgba(255,255,255,0.06);">
+      <!-- Earth background fills everything -->
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, #0d1f12 0%, #050a06 40%, #020303 80%); overflow:hidden;">
+        <!-- City light clusters -->
+        <div style="position:absolute; top:25%; left:40%; width:30px; height:15px; background:radial-gradient(ellipse, rgba(195,224,27,0.3) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:35%; left:55%; width:25px; height:12px; background:radial-gradient(ellipse, rgba(195,224,27,0.25) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:45%; left:30%; width:20px; height:10px; background:radial-gradient(ellipse, rgba(195,224,27,0.2) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:55%; left:65%; width:22px; height:11px; background:radial-gradient(ellipse, rgba(195,224,27,0.15) 0%, transparent 70%);"></div>
+        <!-- Atmosphere glow at edges -->
+        <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, transparent 35%, rgba(57,168,73,0.04) 50%, rgba(57,168,73,0.08) 65%, transparent 80%);"></div>
+      </div>
+      <!-- Lightning overlay -->
+      <div style="position:absolute; inset:0;">
+        <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:3px; height:100%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.4) 20%, rgba(195,224,27,0.25) 50%, rgba(57,168,73,0.35) 80%, transparent 100%); filter:blur(2px);"></div>
+        <div style="position:absolute; top:0; left:42%; width:1px; height:100%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.15) 30%, transparent 100%); filter:blur(5px);"></div>
+      </div>
+      <!-- Dark overlay for text -->
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.25) 100%);"></div>
+      <!-- Hero content -->
+      <div style="position:absolute; bottom:15%; left:8%; z-index:3; max-width:60%;">
+        <div style="font-family:monospace; font-size:0.45rem; color:rgba(57,168,73,0.7); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:5px;">Defence & Government Technology</div>
+        <div style="font-size:0.9rem; font-weight:800; color:#f2f1ee; line-height:1.1; margin-bottom:5px;">Decision augmentation,<br><span style="background:linear-gradient(135deg, #2d7f36, #39a849, #c3e01b); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">ethically engineered.</span></div>
+        <div style="font-size:0.4rem; color:rgba(255,255,255,0.4);">We mobilise high-performing teams...</div>
+      </div>
+      <!-- Stage label -->
+      <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); font-size:0.6rem; color:rgba(255,255,255,0.4); font-family:monospace; background:rgba(0,0,0,0.5); padding:2px 8px; border-radius:3px;">scroll: 0% — Initial View</div>
+    </div>
+
+    <!-- Stage 2: Mid-scroll zoom -->
+    <div style="flex:1; position:relative; min-height:300px; border-right:1px solid rgba(255,255,255,0.06);">
+      <!-- Earth zoomed in ~1.5x -->
+      <div style="position:absolute; inset:-25%; background:radial-gradient(circle at 50% 50%, #0d1f12 0%, #050a06 35%, #020303 70%); overflow:hidden;">
+        <div style="position:absolute; top:22%; left:38%; width:40px; height:20px; background:radial-gradient(ellipse, rgba(195,224,27,0.35) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:32%; left:55%; width:35px; height:16px; background:radial-gradient(ellipse, rgba(195,224,27,0.3) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:42%; left:28%; width:28px; height:14px; background:radial-gradient(ellipse, rgba(195,224,27,0.25) 0%, transparent 70%);"></div>
+        <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, transparent 30%, rgba(57,168,73,0.05) 50%, rgba(57,168,73,0.1) 70%, transparent 85%);"></div>
+      </div>
+      <!-- Lightning still visible but earth is larger -->
+      <div style="position:absolute; inset:0;">
+        <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:4px; height:100%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.35) 20%, rgba(195,224,27,0.2) 50%, rgba(57,168,73,0.3) 80%, transparent 100%); filter:blur(3px);"></div>
+      </div>
+      <!-- Content fading out -->
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 100%);"></div>
+      <div style="position:absolute; bottom:15%; left:8%; z-index:3; max-width:60%; opacity:0.3;">
+        <div style="font-size:0.9rem; font-weight:800; color:#f2f1ee; line-height:1.1;">Decision augmentation,<br><span style="background:linear-gradient(135deg, #2d7f36, #39a849, #c3e01b); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">ethically engineered.</span></div>
+      </div>
+      <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); font-size:0.6rem; color:rgba(255,255,255,0.4); font-family:monospace; background:rgba(0,0,0,0.5); padding:2px 8px; border-radius:3px;">scroll: 50% — Zooming In</div>
+    </div>
+
+    <!-- Stage 3: Fully zoomed, transition to next section -->
+    <div style="flex:1; position:relative; min-height:300px;">
+      <!-- Earth very zoomed - almost abstract surface -->
+      <div style="position:absolute; inset:-60%; background:radial-gradient(circle at 50% 45%, #0d1f12 0%, #050a06 30%, #020303 60%); overflow:hidden;">
+        <div style="position:absolute; top:20%; left:35%; width:60px; height:30px; background:radial-gradient(ellipse, rgba(195,224,27,0.4) 0%, transparent 70%);"></div>
+        <div style="position:absolute; top:30%; left:55%; width:50px; height:22px; background:radial-gradient(ellipse, rgba(195,224,27,0.35) 0%, transparent 70%);"></div>
+        <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, transparent 20%, rgba(57,168,73,0.06) 40%, rgba(57,168,73,0.12) 60%, transparent 80%);"></div>
+      </div>
+      <!-- Lightning fading -->
+      <div style="position:absolute; inset:0; opacity:0.3;">
+        <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:5px; height:100%; background:linear-gradient(to bottom, transparent 0%, rgba(57,168,73,0.3) 30%, rgba(57,168,73,0.2) 70%, transparent 100%); filter:blur(4px);"></div>
+      </div>
+      <!-- Dark transition to next section -->
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,13,10,0.95) 0%, rgba(10,13,10,0.5) 40%, transparent 100%);"></div>
+      <!-- Next section preview -->
+      <div style="position:absolute; bottom:10%; left:50%; transform:translateX(-50%); text-align:center; z-index:3;">
+        <div style="font-family:monospace; font-size:0.45rem; color:rgba(57,168,73,0.5); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:4px;">01 — Capability</div>
+        <div style="font-size:0.7rem; font-weight:600; color:rgba(255,255,255,0.6);">Ethical Decision Augmentation</div>
+      </div>
+      <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); font-size:0.6rem; color:rgba(255,255,255,0.4); font-family:monospace; background:rgba(0,0,0,0.5); padding:2px 8px; border-radius:3px;">scroll: 100% — Transition Out</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem;">
+  <h3>What Changed From Previous Design</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+    <div style="padding:1rem; border:1px solid rgba(231,76,60,0.2); border-radius:8px; background:rgba(231,76,60,0.04);">
+      <div class="label" style="color:#e74c3c;">Before (old spec)</div>
+      <ul style="font-size:0.8rem; color:rgba(255,255,255,0.5); padding-left:1rem; margin:0;">
+        <li>Earth was a ~500px floating sphere</li>
+        <li>Positioned at 55% from top</li>
+        <li>Lightning behind, earth in front</li>
+        <li>Parallax scroll at 0.3x rate</li>
+      </ul>
+    </div>
+    <div style="padding:1rem; border:1px solid rgba(57,168,73,0.2); border-radius:8px; background:rgba(57,168,73,0.04);">
+      <div class="label" style="color:#39a849;">Now (updated)</div>
+      <ul style="font-size:0.8rem; color:rgba(255,255,255,0.5); padding-left:1rem; margin:0;">
+        <li>Earth fills entire viewport as background</li>
+        <li>Full-bleed, like current Unsplash image</li>
+        <li>Lightning overlays on top of earth</li>
+        <li>Scroll-driven zoom: scale 1.0 -> ~2.5x</li>
+        <li>Content fades out, earth zooms, next section emerges</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:1.5rem; padding:1rem; border:1px solid rgba(57,168,73,0.2); border-radius:8px; background:rgba(57,168,73,0.04);">
+  <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin:0;"><strong>Implementation is simpler now:</strong> The earth is just a full-bleed background image (like the current design) with CSS transform:scale() driven by scroll position. No CSS sphere needed. The lightning WebGL canvas overlays on top. As you scroll, the earth scales up (zooming in), hero text fades out, and the dark gradient transitions you into the capabilities section below.</p>
+</div>

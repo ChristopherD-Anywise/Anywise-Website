@@ -1,0 +1,311 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - region "top of page"
+    - generic [ref=e10]:
+      - banner [ref=e11]:
+        - generic [ref=e17]:
+          - generic:
+            - generic:
+              - link "CONTACT US" [ref=e19] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e20]: CONTACT US
+              - link "CONTACT US" [ref=e22] [cursor=pointer]:
+                - /url: https://www.anywise.com.au
+                - generic [ref=e23]: CONTACT US
+              - generic [ref=e28]:
+                - link "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e34] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "Anywise ethical technology and consulting team delivering agile solutions for defence and government" [ref=e35]
+                - navigation "Site" [ref=e41]:
+                  - button "Menu" [ref=e43] [cursor=pointer]:
+                    - img [ref=e47]
+      - main [ref=e52]:
+        - generic [ref=e57]:
+          - generic:
+            - generic:
+              - img "Strip Overlay_right only.png" [ref=e71]
+              - heading "News & Media" [level=1] [ref=e81]:
+                - generic [ref=e83]: News &
+                - generic [ref=e85]: Media
+              - generic [ref=e95]:
+                - generic:
+                  - generic:
+                    - link "all posts" [ref=e100] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/newsmedia
+                      - generic [ref=e101]: all posts
+                    - link "insights" [ref=e103] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/insights
+                      - generic [ref=e104]: insights
+                    - link "podcasts" [ref=e106] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/podcasts
+                      - generic [ref=e107]: podcasts
+                    - link "news & media" [ref=e109] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/news-media
+                      - generic [ref=e110]: news & media
+              - article [ref=e124]:
+                - generic [ref=e125]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - heading "The DCSP Must Be More Than a New Acronym - It Must Be a Catalyst for Real Change" [level=1] [ref=e130]
+                      - generic [ref=e131]:
+                        - list [ref=e132]:
+                          - listitem [ref=e133]:
+                            - 'img "Writer: Anywise HQ" [ref=e136]'
+                            - link "Anywise HQ" [ref=e137] [cursor=pointer]:
+                              - /url: https://www.anywise.com.au/profile/8e7db752-c3f6-48b7-ae44-e2f9efad2eb814359/profile
+                          - listitem [ref=e138]: ·Jan 5
+                          - listitem [ref=e139]: ·4 min read
+                        - button "More actions" [ref=e141] [cursor=pointer]:
+                          - img [ref=e142]
+                    - paragraph [ref=e144]: "Updated: Feb 26"
+                  - generic [ref=e151]:
+                    - paragraph [ref=e156]:
+                      - generic [ref=e157]: "For more than a decade, Defence has wrestled with a structural challenge: how to access the capability, innovation, and speed it needs, when it needs it. The Defence Capability Support Panel (DCSP) is being positioned as the next major reform - a mechanism to streamline access to industry expertise and accelerate capability outcomes. In this article, our Co-Founder Adam Evans shares his thoughts on the promise and inherent obligations of the DCSP."
+                    - heading "DCSP is a Model Built for Today’s Tempo - Not Yesterday’s Contracts" [level=2] [ref=e168]:
+                      - generic [ref=e169]: DCSP is a Model Built for Today’s Tempo - Not Yesterday’s Contracts
+                    - paragraph [ref=e174]:
+                      - generic [ref=e175]: For the DCSP to succeed, it must do more than re‑badge the status quo. It must fundamentally reshape how Defence engages with industry, how it sources expertise, and how it unlocks the sovereign capability sitting right at its doorstep.
+                    - paragraph [ref=e180]:
+                      - generic [ref=e181]: "Because the truth is simple: innovation, agility, and user‑centred delivery are not coming from the MSP model nor exclusively from the Primes. They are coming from Australia’s sovereign SMEs."
+                    - paragraph [ref=e186]:
+                      - generic [ref=e187]: The operational environment is accelerating. Defence needs partners who can move at the speed of the user community - not at the pace of multi‑layered, long‑term time‑and‑materials contracts.
+                    - paragraph [ref=e189]:
+                      - generic [ref=e190]: "The MSP model has delivered pockets of success, but it has also revealed systemic constraints:"
+                    - list [ref=e195]:
+                      - listitem [level=1] [ref=e196]:
+                        - paragraph [ref=e197]:
+                          - generic [ref=e198]: Slow mobilisation
+                      - listitem [level=1] [ref=e199]:
+                        - paragraph [ref=e200]:
+                          - generic [ref=e201]: Limited surge capacity
+                      - listitem [level=1] [ref=e202]:
+                        - paragraph [ref=e203]:
+                          - generic [ref=e204]: Rigid commercial structures
+                      - listitem [level=1] [ref=e205]:
+                        - paragraph [ref=e206]:
+                          - generic [ref=e207]: Incentives that reward presence, not performance
+                    - figure [ref=e217]:
+                      - link "Expand image" [ref=e218] [cursor=pointer]:
+                        - /url: https://app.powerbi.com/view?r=eyJrIjoiZDk3MDEzYjAtMjk1Ny00NDc0LWFiZjItMDQ3ODNiMWFjMWRkIiwidCI6ImVkNWM3ZDIzLWYxNWYtNDY5YS04ZjE2LTczYzA5NjVhM2ZkOSJ9
+                        - generic [ref=e219]:
+                          - button "Expand image":
+                            - img
+                    - paragraph [ref=e226]:
+                      - link "The MSP model has faced sustained criticism. While it is coming to a close, many of the contracts within it continue for some years yet. Explore a sample of the tenders data for the MSP here" [ref=e228] [cursor=pointer]:
+                        - /url: https://app.powerbi.com/view?r=eyJrIjoiZDk3MDEzYjAtMjk1Ny00NDc0LWFiZjItMDQ3ODNiMWFjMWRkIiwidCI6ImVkNWM3ZDIzLWYxNWYtNDY5YS04ZjE2LTczYzA5NjVhM2ZkOSJ9
+                        - generic [ref=e229]: The MSP model has faced sustained criticism. While it is coming to a close, many of the contracts within it continue for some years yet. Explore a sample of the tenders data for the MSP here
+                    - paragraph [ref=e237]:
+                      - generic [ref=e238]: These issues aren’t about individual companies - they’re about a model designed for a different era.
+                    - paragraph [ref=e243]:
+                      - generic [ref=e244]: The DCSP cannot simply inherit these limitations. It must be built to overcome them. It was disappointing then, to respond to the DCSP tender that simply asked for Time and Materials pricing, against a model that has so much more potential.
+                    - paragraph [ref=e249]:
+                      - generic [ref=e250]: Notwithstanding that the proposal was required to be completed over the Christmas break. A response that required referees to be contacted and in some cases recalled from leave to support tenderer submissions.
+                    - paragraph [ref=e255]:
+                      - generic [ref=e256]: I also note here, the complex legal and ethical situation that arises from a respondent to the DCSP tender, requesting its customer (another company) that is also responding to the DCSP tender, to provide a reference. For some suppliers to the current MSP model, the MSP was their best and only referee option. Best case scenario was that all requests to MSP were satisfied in good faith.
+                    - paragraph [ref=e261]:
+                      - generic [ref=e262]: There is a risk that the real opportunity baked into this model will not be realised because it will never see the light of day. Meaningful outcomes and fixed price models can be delivered, and have been in the past by SME. Companies that are masters of their own decision making, not fettered by complex institutional boards abroad.
+                    - heading "SMEs Are Not the Gap - They Are the Solution" [level=2] [ref=e267]:
+                      - generic [ref=e268]: SMEs Are Not the Gap - They Are the Solution
+                    - paragraph [ref=e273]:
+                      - generic [ref=e274]: "Again and again we see across Defence the most innovative, responsive, and sovereign capability is being delivered by SMEs. These firms, Anywise among them, have repeatedly demonstrated:"
+                    - list [ref=e279]:
+                      - listitem [level=1] [ref=e280]:
+                        - paragraph [ref=e281]:
+                          - generic [ref=e282]:
+                            - strong [ref=e283]: Rapid mobilisation
+                            - text: in days, not months
+                      - listitem [level=1] [ref=e284]:
+                        - paragraph [ref=e285]:
+                          - generic [ref=e286]:
+                            - strong [ref=e287]: High‑skill, low‑overhead teams
+                            - text: that deliver value from day one
+                      - listitem [level=1] [ref=e288]:
+                        - paragraph [ref=e289]:
+                          - generic [ref=e290]:
+                            - strong [ref=e291]: Deep alignment with user needs
+                            - text: ", not contract structures"
+                      - listitem [level=1] [ref=e292]:
+                        - paragraph [ref=e293]:
+                          - generic [ref=e294]:
+                            - strong [ref=e295]: Sovereign ownership and governance
+                            - text: ", free from foreign influence"
+                      - listitem [level=1] [ref=e296]:
+                        - paragraph [ref=e297]:
+                          - generic [ref=e298]:
+                            - strong [ref=e299]: A track record of delivering complex capability
+                            - text: ", not just staffing bodies"
+                    - paragraph [ref=e304]:
+                      - generic [ref=e305]: SMEs already underpin Defence’s most successful programs. They design sovereign systems, deliver critical engineering, support emergency response, and fill the capability gaps others cannot or will not.
+                    - paragraph [ref=e310]:
+                      - generic [ref=e311]: The DCSP must recognise this reality and elevate SMEs from subcontracted labour to primary delivery partners.
+                    - heading "Innovation Thrives Where Agility Is Allowed to Flourish" [level=2] [ref=e316]:
+                      - generic [ref=e317]: Innovation Thrives Where Agility Is Allowed to Flourish
+                    - paragraph [ref=e322]:
+                      - generic [ref=e323]: "Companies like Anywise demonstrate what happens when Defence engages SMEs directly. Some examples from our own journey are below but our peers have contributed many many more, our examples are illustrative of the power of the SME community to infer its potential scale:"
+                    - list [ref=e328]:
+                      - listitem [level=1] [ref=e329]:
+                        - paragraph [ref=e330]:
+                          - generic [ref=e331]: FABHUMS and ENG|AIDE show that sovereign innovation can be delivered faster and more affordably when small, specialist teams lead.
+                      - listitem [level=1] [ref=e332]:
+                        - paragraph [ref=e333]:
+                          - generic [ref=e334]: Rapid support to Land 155, Land 8140, NEMA, and RAAF HQ Training proves that SMEs can scale up and down with operational tempo.
+                      - listitem [level=1] [ref=e335]:
+                        - paragraph [ref=e336]:
+                          - generic [ref=e337]: Support to primes and MSPs highlights that SMEs already carry much of the delivery burden, they simply lack direct access to the customer.
+                    - paragraph [ref=e342]:
+                      - generic [ref=e343]: The DCSP is an opportunity to tap into this ecosystem and scale it for National Support.
+                    - heading "A DCSP That Embraces SMEs Strengthens National Resilience" [level=2] [ref=e348]:
+                      - generic [ref=e349]: A DCSP That Embraces SMEs Strengthens National Resilience
+                    - paragraph [ref=e354]:
+                      - generic [ref=e355]: A modern Defence industrial base cannot rely on a handful of large intermediaries. It must be diverse, sovereign, and distributed. A network of high performing SMEs working directly with Defence to solve real problems.
+                    - paragraph [ref=e360]:
+                      - generic [ref=e361]: "A DCSP that embraces SMEs will:"
+                    - list [ref=e366]:
+                      - listitem [level=1] [ref=e367]:
+                        - paragraph [ref=e368]:
+                          - generic [ref=e369]: Increase speed to capability
+                      - listitem [level=1] [ref=e370]:
+                        - paragraph [ref=e371]:
+                          - generic [ref=e372]: Reduce cost and overhead
+                      - listitem [level=1] [ref=e373]:
+                        - paragraph [ref=e374]:
+                          - generic [ref=e375]: Strengthen sovereign resilience
+                      - listitem [level=1] [ref=e376]:
+                        - paragraph [ref=e377]:
+                          - generic [ref=e378]: Improve alignment with user needs
+                      - listitem [level=1] [ref=e379]:
+                        - paragraph [ref=e380]:
+                          - generic [ref=e381]: Unlock innovation currently trapped behind layers of contracting
+                    - paragraph [ref=e386]:
+                      - generic [ref=e387]: This is not theoretical. It is already happening wherever SMEs are empowered to lead.
+                    - heading "The Moment to Get This Right Is Now" [level=2] [ref=e392]:
+                      - generic [ref=e393]: The Moment to Get This Right Is Now
+                    - paragraph [ref=e398]:
+                      - generic [ref=e399]: The DCSP is a once in a generation opportunity. If it becomes another administrative panel dominated by slow‑moving incumbents, Defence will lose momentum it cannot afford to lose.
+                    - paragraph [ref=e401]:
+                      - generic [ref=e402]: But if it becomes a platform that unlocks the full power of Australia’s sovereign SME ecosystem, it will reshape capability delivery for the next decade.
+                    - paragraph [ref=e407]:
+                      - generic [ref=e408]: The choice is clear. The DCSP must be a catalyst - not a rebrand.
+                    - paragraph [ref=e413]:
+                      - generic [ref=e414]: And the partners best placed to deliver that future are already here.
+                    - figure [ref=e425]:
+                      - generic [ref=e426]:
+                        - button "Expand image":
+                          - img
+                    - paragraph [ref=e430]:
+                      - generic [ref=e431]: Adam Evans Co-Founded Anywise in 2014 with a vision to create an ethical, sustainable and high impact business. Since then, Anywise has delivered significant outcomes to Defence above the line and now develops products in its own right. Anywise favours fixed price outcomes, structured to be aligned with capability releases to the user community, rather than timesheets.
+                  - generic [ref=e437]:
+                    - button "Share via Facebook" [ref=e439] [cursor=pointer]:
+                      - img "Facebook" [ref=e440]
+                    - button "Share via X (Twitter)" [ref=e444] [cursor=pointer]:
+                      - img "X" [ref=e445]
+                    - button "Share via LinkedIn" [ref=e449] [cursor=pointer]:
+                      - img "LinkedIn" [ref=e450]
+                    - button "Share via link" [ref=e455] [cursor=pointer]:
+                      - img [ref=e456]
+      - contentinfo [ref=e459]:
+        - generic [ref=e470]:
+          - generic [ref=e471]:
+            - generic:
+              - generic:
+                - link "anywise logo" [ref=e476] [cursor=pointer]:
+                  - /url: https://www.anywise.com.au
+                  - img "anywise logo" [ref=e477]
+                - generic:
+                  - paragraph [ref=e478]:
+                    - generic [ref=e479]: Melbourne | Sydney | Brisbane | Perth | Canberra
+                  - paragraph [ref=e480]:
+                    - generic [ref=e481]: North Carolina USA
+                  - paragraph [ref=e482]:
+                    - generic [ref=e484]:
+                      - link "1800 861 893" [ref=e485] [cursor=pointer]:
+                        - /url: tel:+61 3 9078 6938
+                      - link "sales@anywise.com.au" [ref=e486] [cursor=pointer]:
+                        - /url: mailto:sales@anywise.com.au?subject=Website Enquiry
+                - link "facebook_white.png" [ref=e488] [cursor=pointer]:
+                  - /url: https://www.facebook.com/anywiseAUS
+                  - img "facebook_white.png" [ref=e489]
+                - link "twitter_white.png" [ref=e491] [cursor=pointer]:
+                  - /url: https://twitter.com/anywiseaus
+                  - img "twitter_white.png" [ref=e492]
+                - link "linkedin_white.png" [ref=e494] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/anywiseaus
+                  - img "linkedin_white.png" [ref=e495]
+                - paragraph [ref=e496]:
+                  - generic [ref=e497]:
+                    - generic [ref=e498]: ©2025 Anywise |
+                    - link "Privacy Policy" [ref=e502] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/privacy-policy
+                    - generic [ref=e503]: "|"
+                    - link "Contact" [ref=e507] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/contact
+                    - generic [ref=e508]: "|"
+                  - generic [ref=e511]: Careers
+                  - generic [ref=e512]:
+                    - generic [ref=e514]:
+                      - link "|" [ref=e516] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e517] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                      - link [ref=e519] [cursor=pointer]:
+                        - /url: https://www.anywise.com.au/careers
+                    - link "Defence Industry Disclosure" [ref=e520] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                      - generic [ref=e522]: Defence Industry Disclosure
+                    - link "|" [ref=e526] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                    - link [ref=e527] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/defence-industry-disclosure
+                  - link "Whistleblowing Policy" [ref=e529] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - generic [ref=e532]: Whistleblowing Policy
+                  - generic [ref=e535]:
+                    - link "|" [ref=e537] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                    - link [ref=e538] [cursor=pointer]:
+                      - /url: https://www.anywise.com.au/copy-of-grievance-policy
+                  - link "Grievance/Complaints Mechanism Policy" [ref=e539] [cursor=pointer]:
+                    - /url: https://www.anywise.com.au/copy-of-privacy-policy
+                    - generic [ref=e545]: Grievance/Complaints Mechanism Policy
+                - paragraph [ref=e546]:
+                  - generic [ref=e548]:
+                    - text: Design by
+                    - link "Bloke Design" [ref=e550] [cursor=pointer]:
+                      - /url: https://bloke.design
+          - generic [ref=e551]:
+            - generic:
+              - generic:
+                - link "Certified B Corp" [ref=e556] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/certification
+                  - img "Certified B Corp" [ref=e557]
+                - link "BFTW-2022-Governance-Badge.png" [ref=e559] [cursor=pointer]:
+                  - /url: https://www.bcorporation.net/en-us/best-for-the-world-2022-governance
+                  - img "BFTW-2022-Governance-Badge.png" [ref=e560]
+                - img "Defence Business of the year Finalist in 2018" [ref=e563]
+                - link "Australian Owned Business" [ref=e565] [cursor=pointer]:
+                  - /url: https://ausowned.com.au/about/
+                  - img "Australian Owned Business" [ref=e566]
+                - link "Australian Veteran Owned Business" [ref=e568] [cursor=pointer]:
+                  - /url: https://www.avob.org.au/
+                  - img "Australian Veteran Owned Business" [ref=e569]
+                - img "FACE.png" [ref=e572]
+                - link "Certified Scrum Master" [ref=e574] [cursor=pointer]:
+                  - /url: https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster
+                  - img "Certified Scrum Master" [ref=e575]
+                - img "WePayFairly.png" [ref=e578]
+                - generic "USFH+Logo+Transparent+Background.png" [ref=e579] [cursor=pointer]:
+                  - link [ref=e580]:
+                    - /url: https://www.anywise.com.au/post/anywise-accepts-the-generous-invitation-of-the-uluru-statement-from-the-heart
+                - generic "Certified System ISO 9001 RGB_1x.jpg" [ref=e581]:
+                  - img "Certified System ISO 9001 RGB_1x.jpg" [ref=e583]
+                - generic "Certified System ISO 45001 YELLOW RGB_2x" [ref=e584]
+                - generic "Certified System AS 9120 GREEN RGB_1x.jp" [ref=e586]
+                - generic:
+                  - paragraph [ref=e588]:
+                    - generic [ref=e589]: Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution. UluruStatement.org
+                  - paragraph [ref=e590]
+                  - paragraph [ref=e591]:
+                    - generic [ref=e592]: Anywise acknowledges the Traditional Owners of the land on which we operate. We also pay our respects to Elders past, present, and emerging.
+    - region "bottom of page"
+  - button [ref=e593] [cursor=pointer]:
+    - img [ref=e595]
