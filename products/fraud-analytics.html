@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraud Detection & Compliance Analytics — Anywise</title>
+<meta name="description" content="Protecting program integrity through intelligent data analysis. Custom fraud detection engines that integrate with your existing data pipeline.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0e110e">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* ─── Product Page Layout ───────────────────────────────────────────────── */
+.prod-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.prod-hero {
+  padding: 7rem 0 5rem;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.prod-hero-content .prod-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.prod-hero-content .prod-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.prod-hero-img {
+  aspect-ratio: 4/3;
+}
+
+/* ─── Two-column sections ───────────────────────────────────────────────── */
+.prod-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* Flip: image first, text second */
+.prod-two-col.flip .prod-text { order: 2; }
+.prod-two-col.flip .prod-visual { order: 1; }
+
+.prod-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.prod-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.prod-text p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prod-text p:last-child { margin-bottom: 0; }
+
+.prod-img-16-9 { aspect-ratio: 16/9; }
+.prod-img-4-3 { aspect-ratio: 4/3; }
+
+/* ─── Benefits Grid ─────────────────────────────────────────────────────── */
+.prod-benefits {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-benefits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.prod-benefits-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.75rem;
+}
+.prod-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+.benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.benefit-icon svg { width: 1.2rem; height: 1.2rem; }
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.benefit-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── How it Works + Use Cases ──────────────────────────────────────────── */
+.prod-how {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.prod-steps { list-style: none; }
+.prod-step {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.prod-step:last-child { margin-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--accent-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-top: 0.15rem;
+}
+.step-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.use-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.use-case {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.use-case h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.use-case p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Feature Breakdown ─────────────────────────────────────────────────── */
+.prod-features {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.prod-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  color: var(--accent);
+}
+.feature-check svg { width: 0.7rem; height: 0.7rem; }
+.feature-item-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.feature-item-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Product CTA ───────────────────────────────────────────────────────── */
+.prod-final-cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.prod-final-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.prod-final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.prod-final-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero-inner,
+  .prod-two-col,
+  .prod-how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .prod-two-col.flip .prod-text { order: unset; }
+  .prod-two-col.flip .prod-visual { order: unset; }
+  .prod-benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .prod-benefits-grid { grid-template-columns: 1fr; }
+  .prod-hero { padding: 5rem 0 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip to Content Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="../anywise-v5-redesign.html" class="nav-brand">any<span>wise</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../anywise-v5-redesign.html#capabilities">Capabilities</a></li>
+      <li><a href="../anywise-v5-redesign.html#approach">Approach</a></li>
+      <li><a href="../products/index.html" class="active">Products</a></li>
+      <li><a href="../anywise-v5-redesign.html#about">About</a></li>
+      <li><a href="../blog/index.html">Insights</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<!-- ═══ HERO ═══ -->
+<section class="prod-hero">
+  <div class="prod-page">
+    <div class="breadcrumb">
+      <a href="../anywise-v5-redesign.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Products &amp; Services</a>
+      <span>/</span>
+      <span>Fraud Detection & Compliance Analytics</span>
+    </div>
+    <div class="prod-hero-inner">
+      <div class="prod-hero-content reveal">
+        <div class="prod-tag">Compliance Intelligence</div>
+        <h1>Fraud Detection &amp; Compliance Analytics</h1>
+        <p class="prod-tagline">Protecting program integrity through intelligent data analysis. We build detection engines tailored to your data pipeline that surface fraud patterns manual review misses.</p>
+        <div class="prod-hero-actions">
+          <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+          <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
+        </div>
+      </div>
+      <div class="prod-hero-img reveal-scale">
+        <div class="img-placeholder" style="aspect-ratio:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <span>WISDOM Platform</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS WISDOM ═══ -->
+<section class="prod-section">
+  <div class="prod-page">
+    <div class="prod-two-col flip">
+      <div class="prod-visual reveal-scale">
+        <div class="img-placeholder" style="aspect-ratio:16/9">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+          <span>Product Diagram</span>
+        </div>
+      </div>
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Overview</div>
+        <h2>What is Fraud Detection & Compliance Analytics?</h2>
+        <p>Large government programs generate mountains of transaction data. Finding fraud manually means investigators spend weeks screening cases that go nowhere, while actual fraud slips through.</p>
+        <p>We don't just build dashboards. We embed with your team to understand how fraud actually happens in your program — the specific patterns, the edge cases, the things that look suspicious but aren't. Then we build a detection engine tailored to your data pipeline.</p>
+        <p>The system classifies risk hierarchically. At the top level, it flags program-wide patterns (like coordinated activity across multiple accounts). At the transaction level, it scores individual claims against your compliance rules. At the entity level, it tracks behavioural changes over time. All of this feeds into a single risk score that investigators can actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY BENEFITS ═══ -->
+<section class="prod-benefits">
+  <div class="prod-page">
+    <div class="prod-benefits-header reveal">
+      <span class="label">Why Fraud Detection</span>
+      <h2>Key Benefits</h2>
+    </div>
+    <div class="prod-benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Hierarchical Risk Classification</h3>
+        <p>Program-wide, transaction-level, and entity-level pattern detection feeding a single actionable risk score</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Embedded Engagement</h3>
+        <p>We work alongside your compliance and data teams to map fraud patterns specific to your program</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>80% Faster Screening</h3>
+        <p>Cut case screening time dramatically — in one program, from weeks of manual review to hours of targeted investigation</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1 .64-8.45"/>
+          </svg>
+        </div>
+        <h3>Continuous Refinement</h3>
+        <p>Detection engines evolve as fraud patterns change — not a set-and-forget tool</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS + USE CASES ═══ -->
+<section class="prod-how">
+  <div class="prod-page">
+    <div class="prod-how-inner">
+      <div class="reveal">
+        <div class="prod-section-label">Process</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">How It Works</h2>
+        <ol class="prod-steps">
+          <li class="prod-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Embed &amp; Discover</h4>
+              <p>We join your compliance team to understand how fraud actually happens in your program — the specific patterns, edge cases, and things that look suspicious but aren't</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Build Detection Engine</h4>
+              <p>Custom engine integrated with your data pipeline: entity-level tracking, transaction scoring, program-wide pattern detection</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Calibrate Risk Scoring</h4>
+              <p>Tune risk models to your regulatory context, ensuring investigators get actionable scores — not noise</p>
+            </div>
+          </li>
+          <li class="prod-step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h4>Refine &amp; Evolve</h4>
+              <p>Ongoing refinement as fraud patterns shift. The system learns from your program's data, not generic models</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="prod-section-label">Applications</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:2rem;">Use Cases</h2>
+        <div class="use-cases-list">
+          <div class="use-case">
+            <h4>State regulatory program fraud screening</h4>
+          </div>
+          <div class="use-case">
+            <h4>Coordinated entity scheme detection</h4>
+          </div>
+          <div class="use-case">
+            <h4>Government grant compliance monitoring</h4>
+          </div>
+          <div class="use-case">
+            <h4>Multi-account behavioural pattern analysis</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURE BREAKDOWN ═══ -->
+<section class="prod-features">
+  <div class="prod-page">
+    <div class="prod-two-col">
+      <div class="prod-text reveal">
+        <div class="prod-section-label">Capabilities</div>
+        <h2>Feature Breakdown</h2>
+        <div class="prod-feature-list" style="margin-top:1.5rem;">
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Embed with compliance and data teams to map program-specific fraud patterns</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Custom detection engines integrating with existing data pipelines</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Hierarchical classification across entity, transaction, and program levels</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Risk scoring models tuned to regulatory context</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Investigator-focused dashboards (not just pretty charts)</h4>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="feature-item-content">
+              <h4>Ongoing refinement as fraud patterns evolve</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-visual reveal-scale">
+        <div class="img-placeholder" style="aspect-ratio:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+          <span>Feature Screenshot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="prod-final-cta">
+  <div class="prod-page">
+    <span class="label">Get started</span>
+    <h2>Ready to protect program integrity?</h2>
+    <p>Tell us about your compliance challenge. We'll show you how tailored detection changes the game.</p>
+    <div class="prod-final-cta-actions">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+      <a href="index.html" class="btn btn-ghost">View All Products &amp; Services</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../anywise-v5-redesign.html" class="nav-brand" style="font-size:1.15rem;">any<span>wise</span></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 123 456 789 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="../anywise-v5-redesign.html#capabilities">Technology</a>
+        <a href="../anywise-v5-redesign.html#capabilities">Services</a>
+        <a href="../anywise-v5-redesign.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="wisdom.html">WISDOM</a>
+        <a href="engaide.html">ENG|AIDE</a>
+        <a href="fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="impact-framework.html">Impact Measurement</a>
+        <a href="fabhums.html">FABHUMS</a>
+        <a href="campaide.html">CAMP|AIDE</a>
+        <a href="ils.html">ILS</a>
+        <a href="aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../anywise-v5-redesign.html#about">About</a>
+        <a href="../blog/index.html">Insights</a>
+        <a href="#" data-engage>Engage Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anywise Pty Ltd. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>
