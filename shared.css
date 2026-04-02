@@ -358,6 +358,10 @@ footer {
   max-width: 240px;
   line-height: 1.6;
 }
+.footer-legal {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
 .footer-col h4 {
   font-size: 0.8rem;
   font-weight: 600;
@@ -391,6 +395,21 @@ footer {
   font-size: 0.8rem;
 }
 .footer-locations a:hover { color: var(--accent); }
+
+.acknowledgement {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.acknowledgement a {
+  color: var(--text-tertiary);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.acknowledgement a:hover { color: var(--accent); }
 
 @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 768px) {
