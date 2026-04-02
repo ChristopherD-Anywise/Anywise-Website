@@ -6,7 +6,7 @@
     "readTime": 3,
     "category": "Insights",
     "author": "Anywise Team",
-    "heroImage": "",
+    "heroImage": "../assets/images/blog/podcast-ep1.jpg",
     "intro": "Engineering environments in defence and government present a unique set of operational challenges — complexity, consequence, and constraint converge in ways that commercial tools simply weren't designed to handle. At Anywise, we've spent years working inside these environments, and what we've learned has shaped every product we build.",
     "sections": [
       {
@@ -70,7 +70,7 @@
     "readTime": 4,
     "category": "Policy",
     "author": "Anywise Team",
-    "heroImage": "",
+    "heroImage": "../assets/images/blog/podcast-ep1-alt.png",
     "intro": "Australia's Defence Capability Sustainment Program represents a significant commitment — in funding, intent, and political capital. But commitment alone does not deliver capability. The DCSP will only achieve its stated goals if it is designed and implemented as a genuine catalyst for industrial transformation, not a procurement round with better branding.",
     "sections": [
       {
@@ -134,7 +134,7 @@
     "readTime": 3,
     "category": "News",
     "author": "Anywise Team",
-    "heroImage": "",
+    "heroImage": "../assets/images/blog/blog-thumb-1.png",
     "intro": "Victoria's advanced manufacturing sector is at an inflection point. VICWORX — a collaborative initiative bringing together Victorian manufacturers, research institutions, and defence industry partners — is positioning the state to capture a meaningful share of the capability investment flowing through Australia's defence and advanced manufacturing programs.",
     "sections": [
       {
@@ -198,7 +198,7 @@
     "readTime": 2,
     "category": "Company",
     "author": "Anywise Team",
-    "heroImage": "",
+    "heroImage": "../assets/images/blog/blog-thumb-2.webp",
     "intro": "B Corp certification is not a marketing credential. It is a structured commitment to a specific standard of business conduct — one that requires ongoing verification, transparent reporting, and a genuine willingness to be held accountable for how your business impacts the people and communities it touches.",
     "sections": [
       {
