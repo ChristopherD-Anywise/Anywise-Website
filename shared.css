@@ -251,18 +251,18 @@ nav .container {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 a.nav-cta {
-  background: var(--accent);
-  color: var(--bg-deep) !important;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.78rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: none;
+  color: var(--text-secondary) !important;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: color 0.2s;
   cursor: pointer;
   text-decoration: none;
 }
-a.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
-a.nav-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+a.nav-cta:hover { color: var(--text-primary) !important; transform: none; box-shadow: none; }
+a.nav-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
