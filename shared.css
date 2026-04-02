@@ -353,17 +353,17 @@ footer {
 }
 .footer-brand p {
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   margin-top: 0.75rem;
   max-width: 240px;
   line-height: 1.6;
 }
 .footer-legal {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .footer-col h4 {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -374,7 +374,7 @@ footer {
   display: block;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   margin-bottom: 0.6rem;
   transition: color 0.2s;
 }
@@ -385,14 +385,14 @@ footer {
   align-items: center;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .footer-locations { display: flex; gap: 1.5rem; }
 .footer-locations a, .footer-locations span {
   color: var(--text-tertiary);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 .footer-locations a:hover { color: var(--accent); }
 
@@ -400,7 +400,7 @@ footer {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
