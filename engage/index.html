@@ -107,9 +107,6 @@
       <form
         class="engage-form"
         id="engageForm"
-        action="mailto:sales@anywise.com.au"
-        method="POST"
-        enctype="text/plain"
       >
         <div class="engage-form-row">
           <div class="engage-group">
@@ -241,6 +238,14 @@
     productGroup.hidden = !show;
     productSelect.required = show;
   });
+})();
+
+/* Attach form submission handler to standalone page form */
+(function() {
+  var form = document.getElementById('engageForm');
+  if (form && typeof handleEngageSubmit === 'function') {
+    form.addEventListener('submit', handleEngageSubmit);
+  }
 })();
 </script>
 </body>
