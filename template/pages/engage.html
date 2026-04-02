@@ -88,9 +88,6 @@
         <form
           class="engage-form"
           id="engageForm"
-          action="mailto:<!-- REPLACE: contact@yourdomain.com -->"
-          method="POST"
-          enctype="text/plain"
         >
           <div class="engage-form-row">
             <div class="engage-group">
@@ -197,6 +194,53 @@
     var show = enquirySelect.value === 'product';
     productGroup.hidden = !show;
     productSelect.required = show;
+  });
+})();
+
+/* Form submission handler for standalone engage page */
+(function() {
+  var form = document.getElementById('engageForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    var prevErr = form.querySelector('.engage-error');
+    if (prevErr) prevErr.remove();
+
+    var fd = new FormData(form);
+    var data = Object.fromEntries(fd.entries());
+
+    fetch('/api/engage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function(res) { return res.json(); })
+      .then(function(result) {
+        if (result.success) {
+          form.innerHTML = '<div class="engage-success"><h3>Thanks for reaching out!</h3><p>We\'ll be in touch shortly.</p></div>';
+        } else {
+          throw new Error(result.error || 'Something went wrong');
+        }
+      })
+      .catch(function(err) {
+        var errEl = document.createElement('p');
+        errEl.className = 'engage-error';
+        errEl.textContent = err.message || 'Failed to send. Please try again.';
+        errEl.style.color = '#e74c3c';
+        errEl.style.fontSize = '0.875rem';
+        errEl.style.marginBottom = '0.75rem';
+        var actionsDiv = form.querySelector('.engage-actions');
+        if (actionsDiv) {
+          actionsDiv.parentElement.insertBefore(errEl, actionsDiv);
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
   });
 })();
   </script>

@@ -491,8 +491,46 @@ footer {
   color: var(--text-tertiary);
   line-height: 1.4;
 }
+.engage-success {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.engage-success h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.engage-success p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.engage-error {
+  font-size: 0.875rem;
+  color: #e74c3c;
+  margin-bottom: 0.75rem;
+}
 @media (max-width: 768px) {
   .engage-form-row { grid-template-columns: 1fr; }
-  .engage-panel { padding: 1.75rem 1.25rem; border-radius: 16px 16px 0 0; }
-  .engage-overlay { align-items: flex-end; }
+  .engage-overlay { align-items: flex-end; padding-bottom: 0; }
+  .engage-panel {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px 16px 0 0;
+    max-height: 90dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 1rem));
+    width: 100%;
+  }
+  .engage-actions {
+    position: sticky;
+    bottom: 0;
+    background: var(--bg-card);
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    margin-bottom: -1.75rem;
+    padding: 1rem 1.25rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 1rem));
+  }
 }

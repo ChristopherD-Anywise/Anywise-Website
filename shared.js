@@ -173,9 +173,6 @@ function injectEngageModal() {
       <form
         class="engage-form"
         id="engageForm"
-        action="mailto:sales@anywise.com.au"
-        method="POST"
-        enctype="text/plain"
       >
         <div class="engage-form-row">
           <div class="engage-group">
@@ -270,6 +267,61 @@ function injectEngageModal() {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !modal.hidden) closeEngageModal();
   });
+
+  /* Form submission handler */
+  const form = document.getElementById('engageForm');
+  if (form) {
+    form.addEventListener('submit', handleEngageSubmit);
+  }
+}
+
+function handleEngageSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  /* Remove any previous error */
+  const prevErr = form.querySelector('.engage-error');
+  if (prevErr) prevErr.remove();
+
+  /* Collect form data */
+  const fd = new FormData(form);
+  const data = Object.fromEntries(fd.entries());
+
+  fetch('/api/engage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(function (res) { return res.json(); })
+    .then(function (result) {
+      if (result.success) {
+        /* Replace form with success message */
+        const panel = form.closest('.engage-panel');
+        if (panel) {
+          form.innerHTML = '<div class="engage-success"><h3>Thanks for reaching out!</h3><p>We\'ll be in touch shortly.</p></div>';
+        }
+      } else {
+        throw new Error(result.error || 'Something went wrong');
+      }
+    })
+    .catch(function (err) {
+      const errEl = document.createElement('p');
+      errEl.className = 'engage-error';
+      errEl.textContent = err.message || 'Failed to send. Please try again.';
+      errEl.style.color = '#e74c3c';
+      errEl.style.fontSize = '0.875rem';
+      errEl.style.marginBottom = '0.75rem';
+      const actionsDiv = form.querySelector('.engage-actions');
+      if (actionsDiv) {
+        actionsDiv.parentElement.insertBefore(errEl, actionsDiv);
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    });
 }
 
 /* ─── Wire Engage Triggers ────────────────────────────────────────────────── */
