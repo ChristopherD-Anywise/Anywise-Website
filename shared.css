@@ -76,8 +76,8 @@ html, body {
 .label.visible { opacity: 1; transform: none; }
 
 /* ── PRODUCT LOGOS (dark/light mode) ── */
-[data-logo] { filter: brightness(0) invert(1); }
-[data-theme="light"] [data-logo] { filter: none; }
+[data-logo] { filter: brightness(0) invert(1); background: transparent !important; }
+[data-theme="light"] [data-logo] { filter: brightness(0); background: transparent !important; }
 
 /* ── LAYOUT ── */
 .container {
