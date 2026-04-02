@@ -1386,25 +1386,26 @@ footer {
   margin-bottom: 2.5rem;
 }
 .footer-brand p {
-  color: var(--text-tertiary);
-  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
   line-height: 1.6;
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
+  max-width: 240px;
 }
 .footer-col h4 {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.8rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
 }
 .footer-col a {
   display: block;
-  color: var(--text-tertiary);
-  font-size: 0.78rem;
-  padding: 0.2rem 0;
-  transition: color 0.2s, transform 0.2s;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
 }
 .footer-col a:hover { color: var(--accent); transform: translateX(3px); }
 .footer-bottom {
@@ -1417,20 +1418,19 @@ footer {
   gap: 1rem;
 }
 .footer-bottom p, .footer-bottom a {
-  font-size: 0.68rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
-  font-family: var(--mono);
 }
 .footer-bottom a { transition: color 0.2s; }
 .footer-bottom a:hover { color: var(--accent); }
 .footer-locations { display: flex; gap: 1.5rem; }
 .acknowledgement {
-  margin-top: 1.2rem;
-  padding-top: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
-  font-size: 0.66rem;
-  color: var(--text-tertiary);
-  line-height: 1.7;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
   text-align: center;
 }
 
@@ -1894,7 +1894,7 @@ footer {
         <h2>Ready to tackle your most complex challenge?</h2>
         <p>Whether you're navigating a procurement decision, standing up a new capability, or exploring what ethical AI looks like in your context — let's talk.</p>
         <div class="cta-actions">
-          <a href="mailto:sales@anywise.com.au" class="btn btn-primary">Start a Conversation</a>
+          <a href="#" class="btn btn-primary" data-engage aria-haspopup="dialog">Start a Conversation</a>
           <a href="#capabilities" class="btn btn-accent"><span>View Capabilities</span></a>
         </div>
       </div>
