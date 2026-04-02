@@ -478,18 +478,26 @@ a.nav-cta:focus-visible {
   outline-offset: 4px;
   border-radius: 2px;
 }
-.mobile-toggle span {
+.mobile-toggle .bar {
   display: block; width: 100%; height: 1.5px;
   background: var(--text-secondary);
   transition: all 0.3s;
   position: absolute; left: 0;
 }
-.mobile-toggle span:nth-child(1) { top: 0; }
-.mobile-toggle span:nth-child(2) { top: 7px; }
-.mobile-toggle span:nth-child(3) { top: 14px; }
-.mobile-toggle.open span:nth-child(1) { top: 7px; transform: rotate(45deg); background: var(--accent); }
-.mobile-toggle.open span:nth-child(2) { opacity: 0; }
-.mobile-toggle.open span:nth-child(3) { top: -7px; transform: rotate(-45deg); background: var(--accent); }
+.mobile-toggle .bar:nth-child(1) { top: 0; }
+.mobile-toggle .bar:nth-child(2) { top: 7px; }
+.mobile-toggle .bar:nth-child(3) { top: 14px; }
+.mobile-toggle .close-x {
+  display: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mobile-toggle.open .bar { display: none; }
+.mobile-toggle.open .close-x { display: block; }
 
 /* ═══ HERO ═══ */
 .hero {
@@ -1560,7 +1568,8 @@ footer {
       <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
     </ul>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="close-x">&times;</span>
     </button>
   </div>
 </nav>
@@ -2040,22 +2049,7 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-// ── MOBILE MENU ──
-const toggle = document.getElementById('mobileToggle');
-const links = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  const isOpen = toggle.classList.contains('open');
-  toggle.classList.toggle('open');
-  links.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', !isOpen);
-});
-links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    toggle.classList.remove('open');
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-});
+// ── MOBILE MENU ── handled by shared.js (duplicate removed to prevent double-fire on tap)
 
 // Theme toggle — main page handles this (shared.js skips it via __themeHandled flag)
 window.__themeHandled = true;
