@@ -215,13 +215,16 @@ function injectEngageModal() {
         </div>
 
         <div class="engage-group" id="engProductGroup" hidden>
-          <label for="engProduct">Which product? <span aria-hidden="true">*</span></label>
+          <label for="engProduct">Which product or service? <span aria-hidden="true">*</span></label>
           <select class="engage-select" id="engProduct" name="product">
-            <option value="" disabled selected>Select a product…</option>
+            <option value="" disabled selected>Select a product or service…</option>
             <option value="WISDOM">WISDOM</option>
             <option value="ENG|AIDE">ENG|AIDE</option>
+            <option value="Fraud Analytics">Fraud Detection &amp; Compliance Analytics</option>
+            <option value="Impact Framework">Impact Measurement &amp; Reporting</option>
             <option value="FABHUMS">FABHUMS</option>
             <option value="CAMP|AIDE">CAMP|AIDE</option>
+            <option value="ILS">Integrated Logistics Support</option>
             <option value="AIDE">AIDE</option>
             <option value="other">Other</option>
           </select>
