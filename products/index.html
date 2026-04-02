@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products & Technology | Anywise</title>
-<meta name="description" content="Sovereign, Australian-designed intelligence platforms for defence and government. WISDOM, ENG|AIDE, FABHUMS, CAMP|AIDE, AIDE.">
+<title>Products & Services | Anywise</title>
+<meta name="description" content="Sovereign, Australian-designed intelligence platforms and services for defence and government. WISDOM, ENG|AIDE, Fraud & Analytics, Impact Measurement, FABHUMS, CAMP|AIDE, ILS, AIDE.">
 <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -46,7 +46,15 @@
   gap: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.prod-grid-mid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
 .prod-grid-bottom {
+  max-width: 66.666%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
@@ -149,9 +157,12 @@
 /* ─── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .prod-grid-top { grid-template-columns: repeat(2, 1fr); }
+  .prod-grid-mid { grid-template-columns: repeat(2, 1fr); }
+  .prod-grid-bottom { max-width: 100%; }
 }
 @media (max-width: 600px) {
   .prod-grid-top,
+  .prod-grid-mid,
   .prod-grid-bottom { grid-template-columns: 1fr; }
 }
 </style>
@@ -189,11 +200,11 @@
     <div class="breadcrumb">
       <a href="../anywise-v5-redesign.html">Home</a>
       <span>/</span>
-      <span>Products</span>
+      <span>Products &amp; Services</span>
     </div>
-    <span class="label">Products &amp; Technology</span>
-    <h1>Sovereign, Australian-designed<br>intelligence platforms.</h1>
-    <p>Five purpose-built platforms that transform operational complexity into actionable intelligence — for defence, government, and industry.</p>
+    <span class="label">Products &amp; Services</span>
+    <h1>Sovereign, Australian-designed<br>intelligence platforms and services.</h1>
+    <p>Eight purpose-built platforms and specialist services that transform operational complexity into actionable intelligence — for defence, government, and industry.</p>
   </div>
 </section>
 
@@ -207,9 +218,7 @@
       <!-- WISDOM -->
       <article class="prod-card reveal">
         <div class="prod-card-img">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
+          <img src="../assets/images/products%20%26%20services/WISDOM.png" alt="WISDOM platform interface" style="width:100%;height:auto;">
         </div>
         <div class="prod-card-body">
           <div class="prod-card-tag">Strategic Intelligence</div>
@@ -223,40 +232,66 @@
       <!-- ENG|AIDE -->
       <article class="prod-card reveal">
         <div class="prod-card-img">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"/>
-            <path d="M5 19L4 20M9.26 9.26L5 19l10-5"/>
-            <path d="M20 4l-6.5 6.5"/>
-          </svg>
+          <img src="../assets/images/products%20%26%20services/ENG_AIDE_Tablet.png" alt="ENG|AIDE platform interface" style="width:100%;height:auto;">
         </div>
         <div class="prod-card-body">
           <div class="prod-card-tag">Engineering Intelligence</div>
           <h3>ENG|AIDE</h3>
           <p>Reducing operational risk and improving reliability through intelligent engineering support. Real-time analysis of complex system interdependencies.</p>
-          <div class="prod-card-highlight">→ Operational risk reduction</div>
+          <div class="prod-card-highlight">→ Reducing operational risk</div>
           <a href="engaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- Fraud Detection & Compliance Analytics -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Compliance Intelligence</div>
+          <h3>Fraud &amp; Analytics</h3>
+          <p>Protecting program integrity through intelligent data analysis. Custom detection engines that integrate with your existing data pipeline.</p>
+          <div class="prod-card-highlight">→ 80% faster case screening</div>
+          <a href="fraud-analytics.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Middle row: 3 columns -->
+    <div class="prod-grid-mid">
+
+      <!-- Impact Measurement & Reporting -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zm-11 11h7v7H3v-7zm11 0h7v7h-7v-7z"/>
+          </svg>
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Program Intelligence</div>
+          <h3>Impact Measurement</h3>
+          <p>Turn fragmented program data into clear evidence of what works. Standardized data collection and automated reporting dashboards for multi-site programs.</p>
+          <div class="prod-card-highlight">→ Evidence of what works</div>
+          <a href="impact-framework.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
       <!-- FABHUMS -->
       <article class="prod-card reveal">
         <div class="prod-card-img">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
+          <img src="../assets/images/products%20%26%20services/FABHUMS-Lite.jpeg" alt="FABHUMS asset monitoring" style="width:100%;height:auto;">
         </div>
         <div class="prod-card-body">
           <div class="prod-card-tag">Health &amp; Usage Monitoring</div>
           <h3>FABHUMS</h3>
           <p>Enhancing safety and extending asset life through continuous health and usage monitoring. Predictive insights before failures occur.</p>
-          <div class="prod-card-highlight">→ Asset life extension</div>
+          <div class="prod-card-highlight">→ Enhancing safety, extending asset life</div>
           <a href="fabhums.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
         </div>
       </article>
-    </div>
-
-    <!-- Bottom row: 2 columns -->
-    <div class="prod-grid-bottom">
 
       <!-- CAMP|AIDE -->
       <article class="prod-card reveal">
@@ -270,8 +305,26 @@
           <div class="prod-card-tag">Facilities Intelligence</div>
           <h3>CAMP|AIDE</h3>
           <p>Faster planning and safer outcomes for facilities and estate management. Intelligent support for complex, multi-site operational environments.</p>
-          <div class="prod-card-highlight">→ Facilities planning intelligence</div>
+          <div class="prod-card-highlight">→ Faster planning, safer outcomes</div>
           <a href="campaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Bottom row: 2 columns (centered) -->
+    <div class="prod-grid-bottom">
+
+      <!-- Integrated Logistics Support -->
+      <article class="prod-card reveal">
+        <div class="prod-card-img">
+          <img src="../assets/images/products%20%26%20services/FABHUMS_Training.jpg" alt="Integrated Logistics Support training" style="width:100%;height:auto;">
+        </div>
+        <div class="prod-card-body">
+          <div class="prod-card-tag">Logistics Intelligence</div>
+          <h3>ILS</h3>
+          <p>Making complex systems supportable through life. We develop ILS frameworks and technical publications that keep capabilities operational long after initial delivery.</p>
+          <div class="prod-card-highlight">→ Supportable through life</div>
+          <a href="ils.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
@@ -287,7 +340,7 @@
           <div class="prod-card-tag">Enterprise Intelligence</div>
           <h3>AIDE</h3>
           <p>Unified foresight at decision speed. The enterprise intelligence layer that connects all Anywise platforms into a single coherent operational view.</p>
-          <div class="prod-card-highlight">→ Enterprise-wide foresight</div>
+          <div class="prod-card-highlight">→ Unified foresight at decision speed</div>
           <a href="aide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
         </div>
       </article>
