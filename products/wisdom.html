@@ -350,8 +350,8 @@
           <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
         </div>
       </div>
-      <div class="prod-hero-img reveal-scale">
-        <img src="../assets/images/products%20%26%20services/WISDOM.png" alt="WISDOM interface showing annotated technical document analysis" style="width:100%;height:auto;border-radius:var(--radius-lg);">
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <img src="../assets/images/products%20%26%20services/WISDOM%20Logo.png" alt="WISDOM logo" style="width:80%;height:auto;" data-logo>
       </div>
     </div>
   </div>
@@ -362,13 +362,7 @@
   <div class="prod-page">
     <div class="prod-two-col flip">
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:16/9">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18M9 21V9"/>
-          </svg>
-          <span>Product Diagram</span>
-        </div>
+        <img src="../assets/images/products%20%26%20services/WISDOM.png" alt="WISDOM interface showing annotated technical document analysis" style="width:100%;height:auto;border-radius:var(--radius-lg);">
       </div>
       <div class="prod-text reveal">
         <div class="prod-section-label">Overview</div>
@@ -561,12 +555,45 @@
         </div>
       </div>
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:4/3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WISDOM capability overview: multi-source data fusion, AI reasoning, and operator-ready outputs">
+            <!-- Data sources flowing into central engine -->
+            <rect x="10" y="20" width="90" height="32" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="55" y="40" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font)">Databases</text>
+            <rect x="10" y="64" width="90" height="32" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="55" y="84" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font)">Documents</text>
+            <rect x="10" y="108" width="90" height="32" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="55" y="128" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font)">Sensor Feeds</text>
+            <rect x="10" y="152" width="90" height="32" rx="6" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.4)" stroke-width="1"/>
+            <text x="55" y="172" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font)">Intel Reports</text>
+            <!-- Arrows -->
+            <path d="M100 36 L145 100" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M100 80 L145 100" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M100 124 L145 110" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M100 168 L145 120" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Central WISDOM engine -->
+            <rect x="145" y="70" width="120" height="70" rx="12" fill="rgba(57,168,73,0.18)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="205" y="100" text-anchor="middle" fill="#39a849" font-size="14" font-weight="700" font-family="var(--font)">WISDOM</text>
+            <text x="205" y="118" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">AI Fusion + Reasoning</text>
+            <!-- Output arrows -->
+            <path d="M265 90 L300 50" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M265 105 L300 105" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M265 120 L300 160" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Outputs -->
+            <rect x="300" y="30" width="90" height="36" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="345" y="46" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Dashboards</text>
+            <text x="345" y="58" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Operator-ready</text>
+            <rect x="300" y="82" width="90" height="36" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="345" y="98" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Briefings</text>
+            <text x="345" y="110" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Evidence chains</text>
+            <rect x="300" y="140" width="90" height="36" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="345" y="156" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">API Outputs</text>
+            <text x="345" y="168" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">C2 integration</text>
+            <!-- Labels -->
+            <text x="55" y="206" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" text-transform="uppercase" letter-spacing="0.08em">DATA SOURCES</text>
+            <text x="205" y="206" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" text-transform="uppercase" letter-spacing="0.08em">FUSION ENGINE</text>
+            <text x="345" y="206" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" text-transform="uppercase" letter-spacing="0.08em">DECISION OUTPUTS</text>
           </svg>
-          <span>Feature Screenshot</span>
         </div>
       </div>
     </div>

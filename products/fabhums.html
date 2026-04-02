@@ -350,8 +350,8 @@
           <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
         </div>
       </div>
-      <div class="prod-hero-img reveal-scale">
-        <img src="../assets/images/products%20%26%20services/FABHUMS-Lite.jpeg" alt="FABHUMS sensor unit for bridge health and usage monitoring" style="width:100%;height:auto;border-radius:var(--radius-lg);">
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <img src="../assets/images/products%20%26%20services/FABHUMS-Logo.png" alt="FABHUMS logo" style="width:80%;height:auto;" data-logo>
       </div>
     </div>
   </div>
@@ -362,13 +362,7 @@
   <div class="prod-page">
     <div class="prod-two-col flip">
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:16/9">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M3 3v18h18"/>
-            <path d="M7 16l4-8 4 4 4-6"/>
-          </svg>
-          <span>Product Diagram</span>
-        </div>
+        <img src="../assets/images/products%20%26%20services/FABHUMS-Lite.jpeg" alt="FABHUMS sensor unit for bridge health and usage monitoring" style="width:100%;height:auto;border-radius:var(--radius-lg);">
       </div>
       <div class="prod-text reveal">
         <div class="prod-section-label">Overview</div>
@@ -563,12 +557,49 @@
         </div>
       </div>
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:4/3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="FABHUMS capability overview: sensor data, fatigue analysis, and fleet-wide monitoring">
+            <!-- Bridge/Asset visual -->
+            <text x="200" y="18" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.08em">DEPLOYED ASSET MONITORING</text>
+            <!-- Sensor nodes -->
+            <circle cx="60" cy="55" r="16" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.5)" stroke-width="1"/>
+            <text x="60" y="59" text-anchor="middle" fill="#39a849" font-size="8" font-weight="600" font-family="var(--font)">S1</text>
+            <circle cx="140" cy="55" r="16" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.5)" stroke-width="1"/>
+            <text x="140" y="59" text-anchor="middle" fill="#39a849" font-size="8" font-weight="600" font-family="var(--font)">S2</text>
+            <circle cx="220" cy="55" r="16" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.5)" stroke-width="1"/>
+            <text x="220" y="59" text-anchor="middle" fill="#39a849" font-size="8" font-weight="600" font-family="var(--font)">S3</text>
+            <circle cx="300" cy="55" r="16" fill="rgba(57,168,73,0.12)" stroke="rgba(57,168,73,0.5)" stroke-width="1"/>
+            <text x="300" y="59" text-anchor="middle" fill="#39a849" font-size="8" font-weight="600" font-family="var(--font)">S4</text>
+            <text x="60" y="82" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Strain</text>
+            <text x="140" y="82" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Accel.</text>
+            <text x="220" y="82" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Temp.</text>
+            <text x="300" y="82" text-anchor="middle" fill="var(--text-tertiary)" font-size="7" font-family="var(--font)">Load</text>
+            <!-- Connection line -->
+            <line x1="60" y1="55" x2="300" y2="55" stroke="rgba(57,168,73,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+            <!-- Down arrows -->
+            <path d="M60 71 V96" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M140 71 V96" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M220 71 V96" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M300 71 V96" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- FABHUMS processing -->
+            <rect x="30" y="96" width="320" height="50" rx="10" fill="rgba(57,168,73,0.15)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="190" y="118" text-anchor="middle" fill="#39a849" font-size="13" font-weight="700" font-family="var(--font)">FABHUMS Engine</text>
+            <text x="190" y="134" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Physics-based fatigue modelling  |  Usage recording</text>
+            <!-- Output arrows -->
+            <path d="M120 146 V170" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M260 146 V170" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Output cards -->
+            <rect x="40" y="170" width="160" height="44" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="120" y="190" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Remaining Life Dashboard</text>
+            <text x="120" y="203" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Per-component, real-time</text>
+            <rect x="220" y="170" width="160" height="44" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="300" y="190" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Fleet-Wide Analysis</text>
+            <text x="300" y="203" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Cross-fleet pattern detection</text>
+            <!-- Bottom integration -->
+            <rect x="100" y="228" width="210" height="36" rx="6" fill="rgba(57,168,73,0.08)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="205" y="246" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">Usage Records → ENG|AIDE Integration</text>
+            <text x="205" y="258" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Tamper-evident  |  Airworthiness compliant</text>
           </svg>
-          <span>Feature Screenshot</span>
         </div>
       </div>
     </div>

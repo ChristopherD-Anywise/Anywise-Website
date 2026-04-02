@@ -75,9 +75,13 @@ html, body {
 }
 .label.visible { opacity: 1; transform: none; }
 
+/* ── PRODUCT LOGOS (dark/light mode) ── */
+[data-logo] { filter: brightness(0) invert(1); }
+[data-theme="light"] [data-logo] { filter: none; }
+
 /* ── LAYOUT ── */
 .container {
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 0 2rem;
 }

@@ -350,8 +350,8 @@
           <a href="index.html" class="btn btn-ghost">All Products &amp; Services</a>
         </div>
       </div>
-      <div class="prod-hero-img reveal-scale">
-        <img src="../assets/images/products%20%26%20services/ENG_AIDE_Tablet.png" alt="ENG|AIDE interface running on a Panasonic rugged tablet" style="width:100%;height:auto;border-radius:var(--radius-lg);">
+      <div class="prod-hero-img reveal-scale" style="display:flex;align-items:center;justify-content:center;">
+        <img src="../assets/images/products%20%26%20services/Eng-Aide%20Logo.png" alt="ENG|AIDE logo" style="width:80%;height:auto;" data-logo>
       </div>
     </div>
   </div>
@@ -362,13 +362,7 @@
   <div class="prod-page">
     <div class="prod-two-col flip">
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:16/9">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-          </svg>
-          <span>Product Diagram</span>
-        </div>
+        <img src="../assets/images/products%20%26%20services/ENG_AIDE_Tablet.png" alt="ENG|AIDE running on a Panasonic rugged tablet" style="width:100%;height:auto;border-radius:var(--radius-lg);">
       </div>
       <div class="prod-text reveal">
         <div class="prod-section-label">Overview</div>
@@ -565,12 +559,46 @@
         </div>
       </div>
       <div class="prod-visual reveal-scale">
-        <div class="img-placeholder" style="aspect-ratio:4/3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
+        <div style="aspect-ratio:4/3;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:flex;flex-direction:column;justify-content:center;">
+          <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ENG|AIDE capability overview: system monitoring, failure analysis, and predictive maintenance">
+            <!-- Asset layer -->
+            <text x="200" y="18" text-anchor="middle" fill="var(--text-tertiary)" font-size="9" font-family="var(--font)" letter-spacing="0.08em">MONITORED SYSTEMS</text>
+            <rect x="20" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="56" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">SCADA</text>
+            <text x="56" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Telemetry</text>
+            <rect x="108" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="144" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">CMMS</text>
+            <text x="144" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Work orders</text>
+            <rect x="196" y="28" width="72" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="232" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Sensors</text>
+            <text x="232" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Real-time</text>
+            <rect x="284" y="28" width="96" height="44" rx="6" fill="rgba(57,168,73,0.08)" stroke="var(--border)" stroke-width="1"/>
+            <text x="332" y="48" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Documentation</text>
+            <text x="332" y="62" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Tech pubs</text>
+            <!-- Down arrows -->
+            <path d="M56 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M144 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M232 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M332 72 V90" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- ENG|AIDE processing -->
+            <rect x="30" y="90" width="340" height="56" rx="10" fill="rgba(57,168,73,0.15)" stroke="#39a849" stroke-width="1.5"/>
+            <text x="200" y="114" text-anchor="middle" fill="#39a849" font-size="13" font-weight="700" font-family="var(--font)">ENG|AIDE Analysis Engine</text>
+            <text x="200" y="132" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font)">Failure mode analysis  |  Risk assessment  |  Predictive scheduling</text>
+            <!-- Down arrows to outputs -->
+            <path d="M110 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M200 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <path d="M290 146 V168" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <!-- Output cards -->
+            <rect x="50" y="168" width="120" height="48" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="110" y="188" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Safety Case Evidence</text>
+            <text x="110" y="202" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Regulatory compliance</text>
+            <rect x="190" y="168" width="120" height="48" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+            <text x="250" y="188" text-anchor="middle" fill="var(--text-primary)" font-size="9" font-weight="600" font-family="var(--font)">Maintenance Plans</text>
+            <text x="250" y="202" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Risk-weighted schedule</text>
+            <rect x="120" y="228" width="160" height="38" rx="6" fill="rgba(57,168,73,0.08)" stroke="rgba(57,168,73,0.3)" stroke-width="1"/>
+            <text x="200" y="248" text-anchor="middle" fill="#39a849" font-size="9" font-weight="600" font-family="var(--font)">Threshold Alerts → AIDE Platform</text>
+            <text x="200" y="260" text-anchor="middle" fill="var(--text-tertiary)" font-size="8" font-family="var(--font)">Enterprise operational awareness</text>
           </svg>
-          <span>Feature Screenshot</span>
         </div>
       </div>
     </div>
