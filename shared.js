@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileToggle.classList.remove('open');
       mobileToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      if (nav) {
+        nav.style.backdropFilter = '';
+        nav.style.webkitBackdropFilter = '';
+      }
       mobileToggle.focus();
     }
   }
@@ -59,6 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileToggle.classList.toggle('open', isOpen);
       mobileToggle.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
+
+      /* Disable nav backdrop-filter when menu is open to prevent stacking context issues */
+      if (nav) {
+        nav.style.backdropFilter = isOpen ? 'none' : '';
+        nav.style.webkitBackdropFilter = isOpen ? 'none' : '';
+      }
 
       /* Set focus to first menu item when opening */
       if (isOpen) {
