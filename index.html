@@ -457,7 +457,7 @@ a.nav-cta:hover::after { width: 100%; }
   display: none;
   background: none; border: none; cursor: pointer;
   width: 24px; height: 16px;
-  position: relative; z-index: 1001;
+  position: relative; z-index: 1002;
 }
 .mobile-toggle:focus-visible {
   outline: 2px solid var(--accent);
@@ -1460,7 +1460,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    z-index: 999;
+    z-index: 1001;
   }
   .nav-links.open a {
     font-size: 1.1rem;
@@ -2039,6 +2039,31 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ── MOBILE MENU ── handled by shared.js (duplicate removed to prevent double-fire on tap)
+// Custom backdrop-filter toggle for mobile menu on this page
+(function() {
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  const nav = document.getElementById('nav');
+
+  if (mobileToggle && navLinks && nav) {
+    const originalClickHandler = mobileToggle.onclick;
+    mobileToggle.addEventListener('click', function() {
+      // Use a small timeout to check state after shared.js handler runs
+      setTimeout(function() {
+        const isOpen = navLinks.classList.contains('open');
+        if (isOpen) {
+          // Menu is opening: disable backdrop-filter on nav
+          nav.style.backdropFilter = 'none';
+          nav.style.webkitBackdropFilter = 'none';
+        } else {
+          // Menu is closing: restore backdrop-filter
+          nav.style.backdropFilter = '';
+          nav.style.webkitBackdropFilter = '';
+        }
+      }, 10);
+    });
+  }
+})();
 
 // Theme toggle — main page handles this (shared.js skips it via __themeHandled flag)
 window.__themeHandled = true;
