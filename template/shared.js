@@ -236,9 +236,15 @@ function handleEngageSubmit(e) {
   const fd = new FormData(form);
   const data = Object.fromEntries(fd.entries());
 
-  fetch('/api/engage', {
+  /* Web3Forms payload */
+  data.access_key = 'f1275295-758d-4103-b3e7-055977430b13';
+  data.subject = 'Engage Us: ' + (data.enquiry || 'general') + ' enquiry from ' + data.name + ' (' + data.organisation + ')';
+  data.from_name = 'Anywise Website';
+  data.botcheck = '';
+
+  fetch('https://api.web3forms.com/submit', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(data)
   })
     .then(function (res) { return res.json(); })
