@@ -512,19 +512,16 @@ footer {
 }
 @media (max-width: 768px) {
   .engage-form-row { grid-template-columns: 1fr; }
-  .engage-overlay { align-items: stretch; padding: 0; }
+  .engage-overlay { align-items: flex-end; padding: 0; }
   .engage-panel {
     padding: 1.75rem 1.25rem;
-    border-radius: 0;
+    border-radius: 16px 16px 0 0;
     max-height: 100dvh;
-    height: 100dvh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0;
     padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 1rem));
-    padding-top: calc(1.75rem + env(safe-area-inset-top, 0px));
     width: 100%;
-    max-width: 100%;
   }
   .engage-actions {
     position: sticky;

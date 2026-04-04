@@ -372,6 +372,7 @@ function openEngageModal() {
   document.body.style.overflow = 'hidden';
 
   /* Reset scroll position so form starts at the top */
+  modal.scrollTop = 0;
   var panel = modal.querySelector('.engage-panel');
   if (panel) panel.scrollTop = 0;
 
