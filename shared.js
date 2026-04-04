@@ -371,6 +371,10 @@ function openEngageModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 
+  /* Reset scroll position so form starts at the top */
+  var panel = modal.querySelector('.engage-panel');
+  if (panel) panel.scrollTop = 0;
+
   /* Focus first input */
   setTimeout(function () {
     const first = modal.querySelector('input, select, textarea, button');
