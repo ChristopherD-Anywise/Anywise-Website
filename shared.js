@@ -50,8 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       if (nav) {
+        nav.style.transition = 'none';
         nav.style.backdropFilter = '';
         nav.style.webkitBackdropFilter = '';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            nav.style.transition = '';
+          });
+        });
       }
       mobileToggle.focus();
     }
@@ -64,10 +70,17 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileToggle.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
 
-      /* Disable nav backdrop-filter when menu is open to prevent stacking context issues */
+      /* Disable nav backdrop-filter instantly when menu opens to prevent stacking context issues */
       if (nav) {
+        nav.style.transition = 'none';
         nav.style.backdropFilter = isOpen ? 'none' : '';
         nav.style.webkitBackdropFilter = isOpen ? 'none' : '';
+        /* Restore transition after a frame so future scroll changes still animate */
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            nav.style.transition = '';
+          });
+        });
       }
 
       /* Set focus to first menu item when opening */
