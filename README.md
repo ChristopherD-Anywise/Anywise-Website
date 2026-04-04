@@ -96,10 +96,10 @@ The site supports dark and light modes:
 
 | Component | CSS Class | Notes |
 |-----------|-----------|-------|
-| Navigation | `.nav-*` | Fixed top, scroll shadow, mobile hamburger with focus trapping |
+| Navigation | `.nav-*` | Fixed top, scroll shadow, mobile hamburger with focus trapping. Hamburger uses `.bar` spans + `.close-x` for open/close animation |
 | Buttons | `.btn`, `.btn-primary`, `.btn-accent` | Three variants |
 | Cards | Product cards, capability cards, news cards | Grid-based, hover states |
-| Engage Modal | `.engage-overlay`, `.engage-panel` | Injected by shared.js on every page |
+| Engage Modal | `.engage-overlay`, `.engage-panel` | Injected by shared.js on every page. Full-viewport bottom sheet on mobile with fixed Send button |
 | Scroll Reveal | `.reveal`, `.reveal-scale` | IntersectionObserver at 10% threshold |
 | Section Divider | `.section-divider` | Animated sweep line between sections |
 | Footer | `.footer-grid`, `.footer-col` | 4-column grid, responsive |
@@ -107,6 +107,21 @@ The site supports dark and light modes:
 ## Important: index.html Has Inline Styles
 
 The homepage (`index.html`) contains its own `<style>` block that overrides `shared.css` for the hero, globe, navigation, and footer. If you update styles in `shared.css`, you **must also check and update** the inline styles in `index.html` or the homepage will look different from all other pages.
+
+## Mobile Navigation
+
+The hamburger menu (< 768px) uses this markup on **every page**:
+
+```html
+<button id="mobileToggle" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  <span class="close-x">&times;</span>
+</button>
+```
+
+The `.bar` spans are absolutely positioned within the button (top: 0, 7px, 14px). When `.open` is added, the bars hide and the `.close-x` appears as an X. All styling is in `shared.css` — do not rely on index.html inline styles for this.
+
+**Backdrop-filter and stacking contexts:** When the user scrolls, `nav.scrolled` gets `backdrop-filter: blur(24px)` which creates a CSS stacking context. When the mobile menu opens, `shared.js` disables `backdrop-filter` on nav instantly (with `transition: none` to avoid a visible animation) so the full-screen menu overlay renders correctly. It's restored when the menu closes.
 
 ## How the Blog Works
 
@@ -137,6 +152,16 @@ Blog posts are stored in `/blog/posts.json` as a JSON array. Each post object co
 The contact form is available as:
 1. **Modal** — injected on every page by `shared.js`, triggered by any element with `data-engage` attribute
 2. **Standalone page** — `/engage/index.html`
+
+### Mobile Behaviour
+
+On mobile (< 768px), the modal renders as a full-viewport bottom sheet:
+- `align-items: flex-end` with `max-height: 100dvh` fills the screen from the bottom
+- Rounded top corners (`border-radius: 16px 16px 0 0`)
+- The **Send button and privacy text** are `position: fixed` at the bottom of the screen so they're always visible regardless of scroll position
+- The panel has extra `padding-bottom: 5rem` to prevent the Message field from being hidden behind the fixed actions bar
+- `panel.scrollTop = 0` is set on open so the form always starts at the top
+- Safe area insets are respected for iOS notch and home indicator
 
 ### How Submission Works
 
