@@ -574,18 +574,20 @@ footer {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0;
-    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 1rem));
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 1rem));
     width: 100%;
+    position: relative;
   }
   .engage-actions {
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     background: var(--bg-card);
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-    margin-bottom: -1.75rem;
     padding: 1rem 1.25rem;
     padding-bottom: calc(1rem + env(safe-area-inset-bottom, 1rem));
+    border-top: 1px solid var(--border);
+    z-index: 2001;
   }
 }
 
