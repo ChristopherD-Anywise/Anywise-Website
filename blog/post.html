@@ -405,6 +405,15 @@
   }
 
   function renderPost(post, allPosts) {
+    /* Canonical URL — points to the static file, which is the authoritative URL */
+    var canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.rel = 'canonical';
+      document.head.appendChild(canonicalEl);
+    }
+    canonicalEl.href = 'https://anywise.com.au/blog/' + post.slug + '.html';
+
     /* Update page title */
     document.title = escapeHtml(post.title) + ' | Anywise';
 
