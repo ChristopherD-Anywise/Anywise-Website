@@ -88,18 +88,20 @@
 
 - [ ] **Step 3: Add dynamic canonical to `blog/post.html`**
 
-  The blog post page renders content dynamically from `posts.json`. The canonical must reflect the actual slug. Find the `renderPost` function in `blog/post.html` (around line 407). At the very start of `renderPost`, before updating `document.title`, add:
+  The blog post page renders content dynamically from `posts.json`. The canonical must point to the **static** blog post file (e.g. `blog/transforming-operational-challenges.html`) — not to the `?slug=` query string URL — because Task 3 creates the authoritative crawlable URLs at those paths.
+
+  Find the `renderPost` function in `blog/post.html` (around line 407). At the very start of `renderPost`, before updating `document.title`, add:
 
   ```javascript
   function renderPost(post, allPosts) {
-    /* Canonical URL — set dynamically to match the post slug */
+    /* Canonical URL — points to the static file, which is the authoritative URL */
     var canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
       canonicalEl.rel = 'canonical';
       document.head.appendChild(canonicalEl);
     }
-    canonicalEl.href = 'https://anywise.com.au/blog/post.html?slug=' + encodeURIComponent(post.slug);
+    canonicalEl.href = 'https://anywise.com.au/blog/' + post.slug + '.html';
 
     /* Update page title */
     document.title = escapeHtml(post.title) + ' | Anywise';
@@ -133,6 +135,7 @@
 
   Run in repo root:
   ```bash
+  # Note: '| grep -v " 2.html"' excludes stale duplicate files like 'products/index 2.html' — leave this filter in place
   grep -r 'rel="canonical"' . --include="*.html" | grep -v " 2.html"
   ```
   Expected output — 12 lines (index, blog/index, blog/post, products/index, 8 product pages):
@@ -336,6 +339,12 @@
 
 - [ ] **Step 1: Create the generator script**
 
+  First, create the `scripts/` directory (it does not exist in the repo):
+
+  ```bash
+  mkdir -p scripts
+  ```
+
   Create `scripts/generate-blog-static.js`:
 
   ```javascript
@@ -374,7 +383,8 @@
       return `<p>${escapeHtml(block.content)}</p>`;
     }
     if (block.type === 'pullquote') {
-      return `<blockquote class="post-pullquote"><p>${escapeHtml(block.content)}</p></blockquote>`;
+      // CSS class is 'pullquote' (not 'post-pullquote') — must match shared.css
+      return `<blockquote class="pullquote">${escapeHtml(block.content)}</blockquote>`;
     }
     if (block.type === 'list') {
       const items = block.items.map(i => `<li>${escapeHtml(i)}</li>`).join('\n      ');
@@ -633,7 +643,7 @@
       },
       "image": "https://anywise.com.au/og-image.png",
       "description": "Decision augmentation for defence and government. Anywise delivers intelligent technology and agile services. Wholly Australian-owned, B Corp certified.",
-      "foundingCountry": "AU",
+      "foundingLocation": { "@type": "Country", "name": "Australia" },
       "areaServed": "AU",
       "taxID": "86 169 092 960",
       "sameAs": [
@@ -954,6 +964,7 @@ For each file, insert the schema block directly before the closing `</head>` tag
 - [ ] **Step 9: Verify all 8 product pages have schema**
 
   ```bash
+  # Note: '| grep -v " 2.html"' excludes stale duplicate files like 'products/index 2.html' — leave this filter in place
   grep -l 'application/ld+json' products/*.html | grep -v " 2.html"
   ```
 
@@ -1015,12 +1026,14 @@ For each file, insert the schema block directly before the closing `</head>` tag
 
   ```javascript
     /* Inject BlogPosting schema into <head> */
+    // Canonical URL is the static file — this matches the static files from Task 3
+    var staticUrl = 'https://anywise.com.au/blog/' + post.slug + '.html';
     var schemaData = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.intro,
-      "url": 'https://anywise.com.au/blog/post.html?slug=' + encodeURIComponent(post.slug),
+      "url": staticUrl,
       "datePublished": post.date,
       "dateModified": post.date,
       "author": {
@@ -1043,7 +1056,7 @@ For each file, insert the schema block directly before the closing `</head>` tag
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": 'https://anywise.com.au/blog/post.html?slug=' + encodeURIComponent(post.slug)
+        "@id": staticUrl
       }
     };
     if (post.heroImage) {
@@ -1061,14 +1074,11 @@ For each file, insert the schema block directly before the closing `</head>` tag
 - [ ] **Step 2: Verify the injection is syntactically correct**
 
   ```bash
-  # Check no syntax errors in the JS
-  node --check blog/post.html 2>&1 || echo "Note: node --check on HTML is not valid — use browser DevTools or a JS linter"
-  
-  # Just check the schema block is present
+  # Check the schema injection is present (matches comment + @type line + at least one more)
   grep -c 'BlogPosting' blog/post.html
   ```
 
-  Expected: `1` (the schema injection block)
+  Expected: `2` or more (at minimum: the comment `/* Inject BlogPosting schema */` and the `"@type": "BlogPosting"` line inside the schema object)
 
 - [ ] **Step 3: Commit**
 
