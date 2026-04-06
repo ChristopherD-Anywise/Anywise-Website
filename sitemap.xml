@@ -55,5 +55,24 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- Blog post static URLs added in Task 3 after static files are generated -->
+  <url>
+    <loc>https://anywise.com.au/blog/transforming-operational-challenges.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anywise.com.au/blog/dcsp-catalyst-for-real-change.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anywise.com.au/blog/vicworx-preparing-for-lift-off.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anywise.com.au/blog/commitment-to-ethical-quality-business.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
