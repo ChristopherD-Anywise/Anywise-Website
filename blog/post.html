@@ -405,6 +405,15 @@
   }
 
   function renderPost(post, allPosts) {
+    /* Canonical URL — points to the static file, which is the authoritative URL */
+    var canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.rel = 'canonical';
+      document.head.appendChild(canonicalEl);
+    }
+    canonicalEl.href = 'https://anywise.com.au/blog/' + post.slug + '.html';
+
     /* Update page title */
     document.title = escapeHtml(post.title) + ' | Anywise';
 
@@ -488,6 +497,51 @@
       '</div>' +
 
       moreHtml;
+
+    /* Inject BlogPosting schema into <head> */
+    // Canonical URL is the static file — matches Task 3's generated files
+    var staticUrl = 'https://anywise.com.au/blog/' + post.slug + '.html';
+    var schemaData = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.intro,
+      "url": staticUrl,
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "author": {
+        "@type": "Organization",
+        "@id": "https://anywise.com.au/#organization",
+        "name": "Anywise"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://anywise.com.au/#organization",
+        "name": "Anywise",
+        "logo": { "@type": "ImageObject", "url": "https://anywise.com.au/assets/Anywise_Logo.png" }
+      },
+      "inLanguage": "en-AU",
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "any.news",
+        "url": "https://anywise.com.au/blog/",
+        "publisher": { "@id": "https://anywise.com.au/#organization" }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": staticUrl
+      }
+    };
+    if (post.heroImage) {
+      schemaData.image = {
+        "@type": "ImageObject",
+        "url": 'https://anywise.com.au/' + post.heroImage.replace('../', '')
+      };
+    }
+    var schemaEl = document.createElement('script');
+    schemaEl.type = 'application/ld+json';
+    schemaEl.textContent = JSON.stringify(schemaData);
+    document.head.appendChild(schemaEl);
 
     /* Wire up share buttons */
     var pageUrl = encodeURIComponent(window.location.href);

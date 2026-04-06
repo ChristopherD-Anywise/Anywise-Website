@@ -1,0 +1,44 @@
+# As a condition of accessing this website, you agree to abide by the following content signals:
+# Content-Signal: search=yes,ai-train=no
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no
+Allow: /
+
+# === TRAINING DATA CRAWLERS — blocked ===
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# === AI SEARCH CRAWLERS — allowed (answer live user queries) ===
+# These crawlers fetch pages in real-time to answer user questions.
+# They do NOT build training datasets. Blocking them makes Anywise
+# invisible in ChatGPT, Google AI Overviews, Perplexity, and Claude.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://anywise.com.au/sitemap.xml
