@@ -215,7 +215,7 @@ The site is deployed via Cloudflare Workers & Pages connected to the GitHub repo
 
 **Build command:**
 ```
-mkdir -p public && cp -r index.html shared.css shared.js favicon-96x96.png favicon-32.png favicon-16.png apple-touch-icon.png og-image.png sitemap.xml robots.txt assets products blog engage functions public/
+mkdir -p public && cp -r index.html shared.css shared.js favicon-96x96.png favicon-32.png favicon-16.png apple-touch-icon.png og-image.png sitemap.xml robots.txt privacy.html terms.html contact.html assets products blog engage functions public/
 ```
 
 **Deploy command:**
