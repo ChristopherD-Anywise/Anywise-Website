@@ -215,14 +215,14 @@ In `shared.css`, find:
 ```css
 .footer-grid {
   display: grid;
-  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
 ```
 
 Replace with:
 ```css
 .footer-grid {
   display: grid;
-  grid-template-columns: 2.2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
 ```
 
 Also find the tablet media query in `shared.css` (around `@media (max-width: 1024px)`) that has:
@@ -247,7 +247,7 @@ git commit -m "feat: add section-nav-link styles, update footer grid to 3 column
 
 - [ ] **Step 1: Replace the nav block**
 
-In `index.html`, find the entire `<nav id="nav">...</nav>` block (lines ~1581–1598). Replace it with the root-level nav from the **Nav HTML Reference** above. No `class="active"` on any link for the homepage.
+In `index.html`, find the entire `<nav id="nav">...</nav>` block (lines ~1581–1598). Replace it with the root-level nav from the **Nav HTML Reference** above, **except** keep `href="/"` on the nav-brand link (the homepage uses `/` not `index.html`). No `class="active"` on any link for the homepage.
 
 - [ ] **Step 2: Rename section id="about" to id="team"**
 
@@ -280,7 +280,7 @@ Replace with:
   // Active nav link — nav uses page links only, no anchor-based highlighting on homepage
 ```
 
-Also remove any variable declarations that are now unused. Find these lines (around line 2032) and remove them:
+Also remove the two variable declarations that are now unused. Both are confirmed safe to remove — they have no other references in the script. Find and delete these two lines (around line 2032):
 ```js
 const sections = document.querySelectorAll('section[id]');
 ```
@@ -288,7 +288,6 @@ and:
 ```js
 const navLinksAll = document.querySelectorAll('.nav-links a');
 ```
-(Search for these exact strings — remove only if they exist and are not used elsewhere in the script.)
 
 - [ ] **Step 4: Update the footer**
 
@@ -317,29 +316,58 @@ git commit -m "feat: update homepage nav, footer, section id rename, remove anch
 
 - [ ] **Step 1: Add section-nav-link to Products & Services section header**
 
-Find in `index.html`:
+The current `.products-head` CSS rule in `index.html`'s inline `<style>` block defines it as a 2-column grid. We are switching it to a flex row so the section-nav-link sits flush right. First update the CSS, then update the HTML.
+
+**1a. Update the `.products-head` CSS rule** in the inline `<style>` block in `<head>`:
+
+Find:
+```css
+.products-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: end;
+}
+```
+
+Replace with:
+```css
+.products-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+```
+
+**1b. Update the `.products-head` HTML** in the body. The current structure is:
+
 ```html
     <div class="products-head reveal">
       <div>
         <p class="label">Products &amp; Services</p>
         <h2>Sovereign, Australian-designed intelligence platforms.</h2>
       </div>
-      <p>Our products combine...
+      <p>Our products combine advanced data integration, GenAI-enabled analytics and human expertise to deliver augmented intelligence directly into the hands of user communities, from defence and emergency services to infrastructure and industry.</p>
+    </div>
 ```
 
 Replace with:
+
 ```html
-    <div class="products-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; gap:1rem;">
+    <div class="products-head reveal">
       <div>
         <p class="label">Products &amp; Services</p>
         <h2>Sovereign, Australian-designed intelligence platforms.</h2>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:1rem;max-width:55ch;">Our products combine advanced data integration, GenAI-enabled analytics and human expertise to deliver augmented intelligence directly into the hands of user communities, from defence and emergency services to infrastructure and industry.</p>
       </div>
       <a href="products/index.html" class="section-nav-link">View all Products &amp; Services &rarr;</a>
     </div>
-    <p style="margin-bottom:2rem;">Our products combine...
 ```
 
-Note: the `<p>` description paragraph that was inside the `.products-head` div gets moved outside it (still inside `.container`) so the flex row is clean. Check the actual closing structure carefully before editing.
+Note: The description paragraph moves inside the left `<div>` rather than being moved outside. This keeps the flex row clean (left text block + right link) without restructuring the surrounding markup.
 
 - [ ] **Step 2: Add section-nav-link to Anywise Team section header**
 
@@ -395,7 +423,17 @@ Replace with:
 
 - [ ] **Step 4: Add the Philanthropy homepage section**
 
-Find the comment line that marks the end of the products section and the start of the next section (look for `<!-- ═══` comment or the `<div class="section-divider">` between products and team). Insert the following block immediately after the Products & Services section closes and before the Team section:
+The homepage section order between Products and Team is: Products → Track Record → Team. Philanthropy inserts **between Track Record and Team** (per spec: after Products & Services, before Team).
+
+Find the exact insertion point — the `<!-- ═══ TEAM ═══ -->` comment with its preceding divider:
+
+```html
+<!-- ═══ TEAM ═══ -->
+<div class="section-divider"></div>
+<section class="team" id="team">
+```
+
+Insert the following block immediately **before** that comment:
 
 ```html
 <!-- ═══ PHILANTHROPY ═══ -->
@@ -1137,6 +1175,8 @@ For each:
 2. Set `class="active"` on the Insights `<a>` for all blog pages
 3. Find the `<footer>...</footer>` block and replace with the subdirectory footer reference
 
+Note: `blog/post.html` uses `<script src="../shared.js"></script>` (no `defer`) and has a static footer — the standard subdirectory replacement applies identically to all other blog pages.
+
 - [ ] **Step 3: Update products pages (subdirectory, `../` prefix)**
 
 Pages: `products/index.html`, `products/aide.html`, `products/campaide.html`, `products/engaide.html`, `products/fabhums.html`, `products/fraud-analytics.html`, `products/ils.html`, `products/impact-framework.html`, `products/wisdom.html`
@@ -1152,13 +1192,13 @@ Pages: `template/pages/home.html`, `template/pages/blog-index.html`, `template/p
 
 These are internal scaffolding templates. Update their nav to match the subdirectory nav reference. No active class. No footer changes required (templates may not have full footers).
 
-- [ ] **Step 6: Update engage/index.html (subdirectory, no active class)**
+- [ ] **Step 5: Update engage/index.html (subdirectory, no active class)**
 
 1. Find the `<nav id="nav">...</nav>` block and replace with the subdirectory nav reference
 2. No active class on any link
 3. Find the `<footer>...</footer>` block and replace with the subdirectory footer reference
 
-- [ ] **Step 7: Spot-check in browser**
+- [ ] **Step 6: Spot-check in browser**
 
 Open one page from each group (e.g. `contact.html`, `blog/index.html`, `products/aide.html`). Confirm:
 - New nav links appear
@@ -1166,7 +1206,7 @@ Open one page from each group (e.g. `contact.html`, `blog/index.html`, `products
 - Footer shows 3 columns (not 4)
 - No broken links to `#about`, `#capabilities`, `#approach`
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 git add contact.html privacy.html terms.html \
