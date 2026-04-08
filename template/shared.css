@@ -536,3 +536,38 @@ footer {
     z-index: 2001;
   }
 }
+
+/* ═══ SCROLL TO TOP ═══ */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg-deep);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 900;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+#scrollTopBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#scrollTopBtn:hover {
+  transform: translateY(-2px);
+  background: var(--accent-dim);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+#scrollTopBtn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}

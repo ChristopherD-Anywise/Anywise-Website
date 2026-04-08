@@ -394,3 +394,19 @@ function closeEngageModal() {
 /* Expose globally so inline onclick / product page CTAs can call these */
 window.openEngageModal = openEngageModal;
 window.closeEngageModal = closeEngageModal;
+
+/* ── Scroll to top ── */
+(function () {
+  var btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}());
