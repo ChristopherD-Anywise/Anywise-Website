@@ -2299,10 +2299,10 @@ const glowMesh = new THREE.Mesh(glowGeometry, makeGlowMaterial(isLight));
 scene.add(glowMesh);
 
 // Lighting — brighter to make earth visible
-const ambientLight = new THREE.AmbientLight(0xffffff, isLight ? 0.8 : 1.4);
+const ambientLight = new THREE.AmbientLight(0xffffff, isLight ? 0.8 : 1.8);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, isLight ? 3.5 : 5.0);
+const directionalLight = new THREE.DirectionalLight(0xffffff, isLight ? 3.5 : 6.0);
 directionalLight.position.set(isLight ? 5 : -5, 3, 5);
 scene.add(directionalLight);
 
@@ -2336,8 +2336,8 @@ function updateGlobeTheme(newIsLight) {
   oldGlowMat.dispose();
 
   // Update lighting
-  ambientLight.intensity = isLight ? 0.8 : 1.4;
-  directionalLight.intensity = isLight ? 3.5 : 5.0;
+  ambientLight.intensity = isLight ? 0.8 : 1.8;
+  directionalLight.intensity = isLight ? 3.5 : 6.0;
   directionalLight.position.set(isLight ? 5 : -5, 3, 5);
   greenLight.intensity = isLight ? 0.3 : 0.8;
 }
