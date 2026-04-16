@@ -603,6 +603,118 @@
   </div>
 </footer>
 
+<!-- APPLICATION WIZARD -->
+<div class="wizard-overlay" id="wizardOverlay" role="dialog" aria-modal="true" aria-labelledby="wizardTitle" hidden>
+  <div class="wizard-panel">
+    <button class="wizard-close" id="wizardClose" aria-label="Close">&times;</button>
+
+    <div class="wizard-role-title" id="wizardRoleTitle"></div>
+    <h2 id="wizardTitle">Apply Now</h2>
+    <p class="wizard-sub">Complete the steps below to submit your application.</p>
+
+    <!-- Progress bar -->
+    <div class="wizard-progress">
+      <div class="wizard-step-indicator active" data-step="1">Your Details</div>
+      <div class="wizard-step-indicator" data-step="2">Eligibility</div>
+      <div class="wizard-step-indicator" data-step="3">Experience</div>
+      <div class="wizard-step-indicator" data-step="4">Review &amp; Submit</div>
+    </div>
+
+    <form id="wizardForm" novalidate>
+      <!-- Step 1: Your Details -->
+      <div class="wizard-step active" data-step="1">
+        <div class="engage-form-row">
+          <div class="engage-group">
+            <label for="wizName">Full name <span aria-hidden="true">*</span></label>
+            <input id="wizName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="engage-group">
+            <label for="wizEmail">Email <span aria-hidden="true">*</span></label>
+            <input id="wizEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="engage-form-row">
+          <div class="engage-group">
+            <label for="wizPhone">Phone <span aria-hidden="true">*</span></label>
+            <input id="wizPhone" name="phone" type="tel" placeholder="0412 345 678" autocomplete="tel" required>
+          </div>
+          <div class="engage-group">
+            <label for="wizLinkedin">LinkedIn URL</label>
+            <input id="wizLinkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Eligibility -->
+      <div class="wizard-step" data-step="2">
+        <div class="engage-group">
+          <label for="wizCitizenship">Australian citizenship / work rights <span aria-hidden="true">*</span></label>
+          <select id="wizCitizenship" name="citizenship" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Australian Citizen">Australian Citizen</option>
+            <option value="Permanent Resident">Permanent Resident</option>
+            <option value="Visa Holder">Visa Holder</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="engage-group" id="wizCitizenshipDetailGroup" hidden>
+          <label for="wizCitizenshipDetail">Please provide details <span aria-hidden="true">*</span></label>
+          <input id="wizCitizenshipDetail" name="citizenshipDetail" type="text" placeholder="e.g. Visa subclass, expiry date">
+        </div>
+      </div>
+
+      <!-- Step 3: Experience -->
+      <div class="wizard-step" data-step="3">
+        <div class="engage-group">
+          <label for="wizCv">Upload your CV <span aria-hidden="true">*</span></label>
+          <div class="file-input-wrapper">
+            <input type="file" id="wizCv" name="cv" accept=".pdf,.doc,.docx" required>
+            <div class="file-input-label" id="wizCvLabel">
+              <span>Choose file… (.pdf, .doc, .docx)</span>
+            </div>
+          </div>
+        </div>
+        <div class="engage-group">
+          <label for="wizCover">Cover letter / message <span aria-hidden="true">*</span></label>
+          <textarea id="wizCover" name="coverLetter" placeholder="Tell us why you're interested in this role and what you'd bring to Anywise…" required></textarea>
+        </div>
+        <div class="engage-form-row">
+          <div class="engage-group">
+            <label for="wizNotice">Notice period <span aria-hidden="true">*</span></label>
+            <select id="wizNotice" name="noticePeriod" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="Available immediately">Available immediately</option>
+              <option value="2 weeks">2 weeks</option>
+              <option value="4 weeks">4 weeks</option>
+              <option value="3+ months">3+ months</option>
+            </select>
+          </div>
+          <div class="engage-group">
+            <label for="wizSalary">Salary expectations</label>
+            <input id="wizSalary" name="salaryExpectation" type="text" placeholder="e.g. $120k–$140k or negotiable">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Review -->
+      <div class="wizard-step" data-step="4">
+        <div id="wizardReview">
+          <!-- Populated by JS -->
+        </div>
+        <p class="wizard-privacy">By submitting this application you consent to Anywise storing your details for recruitment purposes. Your data is never shared with third parties.</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="wizard-actions">
+        <button type="button" class="wizard-btn-back" id="wizardBack" hidden>← Back</button>
+        <span></span>
+        <button type="button" class="wizard-btn-next" id="wizardNext">Next →</button>
+        <button type="submit" class="wizard-btn-submit" id="wizardSubmit" hidden>Submit Application →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- ═══ SCRIPTS ═══ -->
 <script src="shared.js"></script>
 <script>
@@ -749,6 +861,269 @@
         console.error('Failed to load jobs:', err);
         jobEmpty.hidden = false;
       });
+  })();
+
+  /* ═══ APPLICATION WIZARD ═══ */
+  (function () {
+    var overlay = document.getElementById('wizardOverlay');
+    var form = document.getElementById('wizardForm');
+    var steps = overlay.querySelectorAll('.wizard-step');
+    var indicators = overlay.querySelectorAll('.wizard-step-indicator');
+    var btnBack = document.getElementById('wizardBack');
+    var btnNext = document.getElementById('wizardNext');
+    var btnSubmit = document.getElementById('wizardSubmit');
+    var reviewContainer = document.getElementById('wizardReview');
+    var currentStep = 1;
+    var currentSlug = '';
+    var wizardHasData = false;
+
+    function showStep(step) {
+      currentStep = step;
+      steps.forEach(function (s) {
+        s.classList.toggle('active', parseInt(s.dataset.step) === step);
+      });
+      indicators.forEach(function (ind) {
+        var indStep = parseInt(ind.dataset.step);
+        ind.classList.toggle('active', indStep === step);
+        ind.classList.toggle('completed', indStep < step);
+      });
+      btnBack.hidden = step === 1;
+      btnNext.hidden = step === 4;
+      btnSubmit.hidden = step !== 4;
+
+      if (step === 4) buildReview();
+
+      var prevErr = form.querySelector('.wizard-error');
+      if (prevErr) prevErr.remove();
+    }
+
+    window.openApplicationWizard = function (slug) {
+      currentSlug = slug;
+      var job = (window.__jobs || []).find(function (j) { return j.slug === slug; });
+      var roleTitle = document.getElementById('wizardRoleTitle');
+      roleTitle.textContent = job ? 'Applying for: ' + job.title : '';
+
+      form.reset();
+      currentStep = 1;
+      wizardHasData = false;
+      updateFileLabels();
+      showStep(1);
+
+      overlay.hidden = false;
+      requestAnimationFrame(function () {
+        overlay.classList.add('open');
+      });
+      document.body.style.overflow = 'hidden';
+
+      var firstInput = steps[0].querySelector('input, select, textarea');
+      if (firstInput) setTimeout(function () { firstInput.focus(); }, 300);
+    };
+
+    function closeWizard() {
+      if (wizardHasData && !confirm('Are you sure? Your application data will be lost.')) return;
+      overlay.classList.remove('open');
+      setTimeout(function () { overlay.hidden = true; }, 300);
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('wizardClose').addEventListener('click', closeWizard);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeWizard();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !overlay.hidden) closeWizard();
+    });
+
+    form.addEventListener('input', function () { wizardHasData = true; });
+
+    btnBack.addEventListener('click', function () {
+      if (currentStep > 1) showStep(currentStep - 1);
+    });
+
+    btnNext.addEventListener('click', function () {
+      if (!validateStep(currentStep)) return;
+      if (currentStep < 4) showStep(currentStep + 1);
+    });
+
+    var citizenshipSelect = document.getElementById('wizCitizenship');
+    var citizenshipDetailGroup = document.getElementById('wizCitizenshipDetailGroup');
+    var citizenshipDetail = document.getElementById('wizCitizenshipDetail');
+
+    citizenshipSelect.addEventListener('change', function () {
+      var needsDetail = citizenshipSelect.value === 'Visa Holder' || citizenshipSelect.value === 'Other';
+      citizenshipDetailGroup.hidden = !needsDetail;
+      citizenshipDetail.required = needsDetail;
+    });
+
+    function updateFileLabels() {
+      ['wizCv'].forEach(function (id) {
+        var input = document.getElementById(id);
+        var label = document.getElementById(id + 'Label');
+        if (input && label) {
+          var span = label.querySelector('span');
+          if (input.files && input.files.length > 0) {
+            span.textContent = input.files[0].name;
+            label.classList.add('has-file');
+          } else {
+            span.textContent = 'Choose file… (.pdf, .doc, .docx)';
+            label.classList.remove('has-file');
+          }
+        }
+      });
+    }
+
+    document.getElementById('wizCv').addEventListener('change', updateFileLabels);
+
+    function validateStep(step) {
+      var stepEl = overlay.querySelector('.wizard-step[data-step="' + step + '"]');
+      var fields = stepEl.querySelectorAll('[required]');
+      var valid = true;
+
+      fields.forEach(function (field) {
+        if (field.closest('[hidden]')) return;
+        field.classList.remove('invalid');
+        if (!field.value || !field.value.trim()) {
+          field.classList.add('invalid');
+          valid = false;
+        }
+        if (field.type === 'email' && field.value) {
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(field.value)) {
+            field.classList.add('invalid');
+            valid = false;
+          }
+        }
+        if (field.type === 'file' && field.required) {
+          if (!field.files || field.files.length === 0) {
+            valid = false;
+          } else {
+            var file = field.files[0];
+            var allowed = ['.pdf', '.doc', '.docx'];
+            var ext = '.' + file.name.split('.').pop().toLowerCase();
+            if (allowed.indexOf(ext) === -1) {
+              valid = false;
+            }
+            if (file.size > 10 * 1024 * 1024) {
+              valid = false;
+            }
+          }
+        }
+      });
+
+      if (!valid) {
+        var errEl = document.createElement('p');
+        errEl.className = 'wizard-error';
+        errEl.textContent = 'Please complete all required fields.';
+        var prevErr = form.querySelector('.wizard-error');
+        if (prevErr) prevErr.remove();
+        var actions = overlay.querySelector('.wizard-actions');
+        actions.parentElement.insertBefore(errEl, actions);
+      }
+
+      return valid;
+    }
+
+    function buildReview() {
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function (value, key) { data[key] = value; });
+
+      var cvFile = document.getElementById('wizCv').files[0];
+      var cvName = cvFile ? cvFile.name : 'None';
+
+      reviewContainer.innerHTML = ''
+        + reviewSection('Your Details', 1, [
+            ['Full name', data.name || ''],
+            ['Email', data.email || ''],
+            ['Phone', data.phone || ''],
+            ['LinkedIn', data.linkedin || 'Not provided']
+          ])
+        + reviewSection('Eligibility', 2, [
+            ['Work rights', data.citizenship || ''],
+            data.citizenshipDetail ? ['Details', data.citizenshipDetail] : null
+          ].filter(Boolean))
+        + reviewSection('Experience', 3, [
+            ['CV', cvName],
+            ['Cover letter', (data.coverLetter || '').substring(0, 120) + (data.coverLetter && data.coverLetter.length > 120 ? '…' : '')],
+            ['Notice period', data.noticePeriod || ''],
+            ['Salary expectations', data.salaryExpectation || 'Not provided']
+          ]);
+
+      /* Wire up edit buttons with addEventListener */
+      reviewContainer.querySelectorAll('.wizard-review-edit').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          showStep(parseInt(this.dataset.editStep));
+        });
+      });
+    }
+
+    function reviewSection(title, step, rows) {
+      var rowsHtml = rows.map(function (r) {
+        return '<div class="wizard-review-row">'
+          + '<span class="wizard-review-label">' + r[0] + '</span>'
+          + '<span class="wizard-review-value">' + escapeHtml(r[1]) + '</span>'
+          + '</div>';
+      }).join('');
+
+      return '<div class="wizard-review-section">'
+        + '<div class="wizard-review-header">'
+        + '  <h4>' + title + '</h4>'
+        + '  <button type="button" class="wizard-review-edit" data-edit-step="' + step + '">Edit</button>'
+        + '</div>'
+        + rowsHtml
+        + '</div>';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateStep(4)) return;
+
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Submitting…';
+
+      var prevErr = form.querySelector('.wizard-error');
+      if (prevErr) prevErr.remove();
+
+      var fd = new FormData(form);
+      fd.append('role', currentSlug);
+
+      var job = (window.__jobs || []).find(function (j) { return j.slug === currentSlug; });
+      if (job) fd.append('roleTitle', job.title);
+
+      fetch(WORKER_URL + '/apply', {
+        method: 'POST',
+        body: fd
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (result.success) {
+            wizardHasData = false;
+            var panel = overlay.querySelector('.wizard-panel');
+            panel.innerHTML = ''
+              + '<button class="wizard-close" aria-label="Close">&times;</button>'
+              + '<div class="wizard-success">'
+              + '  <h3>Thanks for applying!</h3>'
+              + '  <p>We\'ve received your application' + (job ? ' for ' + escapeHtml(job.title) : '') + ' and will be in touch.</p>'
+              + '</div>';
+            panel.querySelector('.wizard-close').addEventListener('click', function () {
+              overlay.classList.remove('open');
+              setTimeout(function () { overlay.hidden = true; }, 300);
+              document.body.style.overflow = '';
+            });
+          } else {
+            throw new Error(result.message || 'Something went wrong');
+          }
+        })
+        .catch(function (err) {
+          var errEl = document.createElement('p');
+          errEl.className = 'wizard-error';
+          errEl.textContent = err.message || 'Failed to submit. Please try again.';
+          var actions = overlay.querySelector('.wizard-actions');
+          if (actions) actions.parentElement.insertBefore(errEl, actions);
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = 'Submit Application →';
+        });
+    });
   })();
 </script>
 
