@@ -1125,6 +1125,69 @@
         });
     });
   })();
+
+  /* ═══ EOI FORM HANDLER ═══ */
+  (function () {
+    var eoiForm = document.getElementById('eoiForm');
+    if (!eoiForm) return;
+
+    /* File input label for EOI CV */
+    var eoiCv = document.getElementById('eoiCv');
+    var eoiCvLabel = document.getElementById('eoiCvLabel');
+    if (eoiCv && eoiCvLabel) {
+      eoiCv.addEventListener('change', function () {
+        var span = eoiCvLabel.querySelector('span');
+        if (eoiCv.files && eoiCv.files.length > 0) {
+          span.textContent = eoiCv.files[0].name;
+          eoiCvLabel.classList.add('has-file');
+        } else {
+          span.textContent = 'Choose file… (.pdf, .doc, .docx)';
+          eoiCvLabel.classList.remove('has-file');
+        }
+      });
+    }
+
+    eoiForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitBtn = eoiForm.querySelector('button[type="submit"]');
+      var originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      var prevErr = eoiForm.querySelector('.engage-error');
+      if (prevErr) prevErr.remove();
+
+      var fd = new FormData(eoiForm);
+
+      fetch(WORKER_URL + '/eoi', {
+        method: 'POST',
+        body: fd
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (result.success) {
+            eoiForm.innerHTML = '<div class="engage-success">'
+              + '<h3>Thanks for your interest!</h3>'
+              + '<p>We\'ll keep your details on file and be in touch when a relevant opportunity arises.</p>'
+              + '</div>';
+          } else {
+            throw new Error(result.message || 'Something went wrong');
+          }
+        })
+        .catch(function (err) {
+          var errEl = document.createElement('p');
+          errEl.className = 'engage-error';
+          errEl.textContent = err.message || 'Failed to submit. Please try again.';
+          errEl.style.color = '#e74c3c';
+          errEl.style.fontSize = '0.875rem';
+          errEl.style.marginBottom = '0.75rem';
+          var actionsDiv = eoiForm.querySelector('.engage-actions');
+          if (actionsDiv) actionsDiv.parentElement.insertBefore(errEl, actionsDiv);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        });
+    });
+  })();
 </script>
 
 </body>
