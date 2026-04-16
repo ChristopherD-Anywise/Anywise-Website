@@ -1,0 +1,13 @@
+name = "anywise-careers-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["formdata_parser_supports_files"]
+
+[[r2_buckets]]
+binding = "CV_BUCKET"
+bucket_name = "anywise-careers-cv"
+
+[vars]
+ALLOWED_ORIGINS = "https://anywise.com.au,https://www.anywise.com.au"
+CLICKUP_LIST_ID = ""
+R2_PUBLIC_URL = "https://pub-xxxxxxxx.r2.dev"
