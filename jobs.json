@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "senior-data-engineer",
+    "title": "Senior Data Engineer",
+    "location": ["Melbourne"],
+    "type": "Full-time",
+    "closingDate": "2026-05-31",
+    "active": true,
+    "shortDescription": "Design and build sovereign data pipelines for defence and government platforms. Work with classified environments and real operational impact.",
+    "responsibilities": [
+      "Design and implement scalable data pipelines on sovereign infrastructure",
+      "Build ETL/ELT workflows for defence and government data sources",
+      "Work within classified environments and maintain security compliance",
+      "Collaborate with engineers, analysts, and product teams to deliver data solutions",
+      "Contribute to platform architecture decisions and technical documentation"
+    ],
+    "requirements": [
+      "5+ years of data engineering experience (Python, SQL, Spark, or equivalent)",
+      "Experience with cloud data platforms (AWS, Azure, or GCP)",
+      "Strong understanding of data modelling, warehousing, and pipeline orchestration",
+      "Australian citizenship (required for security clearance eligibility)",
+      "Experience in defence, government, or regulated environments (desirable)"
+    ]
+  }
+]
