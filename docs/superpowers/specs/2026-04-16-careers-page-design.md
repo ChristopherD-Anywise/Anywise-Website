@@ -172,20 +172,17 @@ Single Worker handling two endpoints.
 ```toml
 name = "anywise-careers-api"
 main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["formdata_parser_supports_files"]
 
 [[r2_buckets]]
 binding = "CV_BUCKET"
 bucket_name = "anywise-careers-cv"
 
-[[ratelimits]]
-name = "CAREERS_RATE_LIMITER"
-namespace_id = "1001"
-  [ratelimits.simple]
-  limit = 5
-  period = 60
-
 [vars]
-CORS_ORIGIN = "https://anywise.com.au"
+ALLOWED_ORIGINS = "https://anywise.com.au,https://www.anywise.com.au"
+CLICKUP_LIST_ID = ""
+R2_PUBLIC_URL = "https://pub-xxxxxxxx.r2.dev"
 ```
 
 ### Secrets (via `wrangler secret put`)
@@ -193,10 +190,11 @@ CORS_ORIGIN = "https://anywise.com.au"
 - `WEB3FORMS_ACCESS_KEY` (value: `f1275295-758d-4103-b3e7-055977430b13`)
 
 ### Security
-- **CORS:** Locked to `https://anywise.com.au` origin only
-- **Rate limiting:** Cloudflare native binding — 5 requests per 60 seconds per IP via `env.CAREERS_RATE_LIMITER.limit({ key: clientIP })`
-- **File validation:** Accept only .pdf, .doc, .docx; max size 10MB
+- **CORS:** Origin allowlist checked against request `Origin` header — supports `anywise.com.au` and `www.anywise.com.au`
+- **Rate limiting:** Cloudflare WAF rate limiting rule — 5 requests per minute per IP on `/apply` and `/eoi` routes
+- **File validation:** Accept only .pdf, .doc, .docx; max size 10MB; errors returned for invalid files on both `/apply` and `/eoi`
 - **Secrets:** API keys stored as Worker secrets, never exposed to client-side code
+- **R2 public access:** CV bucket has public read access; files accessible via public URL stored in ClickUp task descriptions
 
 ---
 

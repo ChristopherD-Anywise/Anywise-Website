@@ -23,10 +23,9 @@
 - `workers/careers-api/tsconfig.json` — TypeScript config
 
 **Modify:**
-- `shared.css` — Add careers-specific styles (job cards, wizard overlay, EOI section, progress bar)
-- `shared.js` — Add wizard logic, job card rendering, EOI form handler
-- `index.html` — Add Careers to nav + footer + 7th mobile nav animation delay
+- `index.html` — Add Careers to nav + footer + 8th mobile nav animation delay
 - All other HTML files — Add Careers to nav + footer (see full list in Task 8)
+- Note: Check for duplicate/backup files (`blog/post 2.html`, `blog/index 2.html`, etc.) — update or delete them
 
 ---
 
@@ -109,11 +108,15 @@ The hero uses `team-photo-alt.jpg` as a background image with a dark overlay for
   <title>Careers | Anywise — Sovereign Technology for Defence &amp; Government</title>
   <meta name="description" content="Join Anywise. Explore open roles in software engineering, data, cyber security, and defence advisory. Help build ethical, sovereign technology for Australia.">
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://anywise.com.au/careers.html">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Careers | Anywise">
   <meta property="og:description" content="Join Anywise. Explore open roles in software engineering, data, cyber security, and defence advisory.">
-  <meta property="og:image" content="assets/images/team/team-photo-alt.jpg">
+  <meta property="og:image" content="https://anywise.com.au/assets/images/team/team-photo-alt.jpg">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anywise.com.au/careers.html">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -533,6 +536,7 @@ The hero uses `team-photo-alt.jpg` as a background image with a dark overlay for
     </ul>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="close-x">&times;</span>
     </button>
   </div>
 </nav>
@@ -684,7 +688,16 @@ The hero uses `team-photo-alt.jpg` as a background image with a dark overlay for
 
 <script src="shared.js"></script>
 <script>
-  /* Job rendering and wizard JS added in Task 3 and Task 4 */
+  /* Shared utilities — used by job rendering, wizard, and EOI */
+  var WORKER_URL = 'https://careers-api.anywise.com.au';
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  /* Job rendering, wizard, and EOI JS added in Tasks 3, 4, and 5 */
 </script>
 </body>
 </html>
@@ -740,11 +753,7 @@ Replace the empty `<script>` block at the bottom of `careers.html` with:
     return new Date(closingDate + 'T23:59:59') < today;
   }
 
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
+  /* escapeHtml is defined in the shared scope above */
 
   function renderBadges(locations, type) {
     var badges = '';
@@ -1025,8 +1034,7 @@ Append this to the existing `<script>` block (after the job rendering IIFE):
   var currentSlug = '';
   var wizardHasData = false;
 
-  /* WORKER_URL will be set during deployment — use relative path or env */
-  var WORKER_URL = 'https://careers-api.anywise.com.au';
+  /* WORKER_URL is defined in the shared scope above */
 
   /* Open wizard */
   window.openApplicationWizard = function (slug) {
@@ -1231,11 +1239,7 @@ Append this to the existing `<script>` block (after the job rendering IIFE):
       + '</div>';
   }
 
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str || '';
-    return div.innerHTML;
-  }
+  /* escapeHtml is defined in the shared scope above */
 
   /* Expose showStep for review edit buttons */
   window.showStep = showStep;
@@ -1328,7 +1332,7 @@ Append to the inline `<script>` block in `careers.html`:
   var eoiForm = document.getElementById('eoiForm');
   if (!eoiForm) return;
 
-  var WORKER_URL = 'https://careers-api.anywise.com.au';
+  /* WORKER_URL is defined in the shared scope above */
 
   /* File input label for EOI CV */
   var eoiCv = document.getElementById('eoiCv');
@@ -1465,25 +1469,21 @@ mkdir -p workers/careers-api/src
 name = "anywise-careers-api"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
+compatibility_flags = ["formdata_parser_supports_files"]
 
 [[r2_buckets]]
 binding = "CV_BUCKET"
 bucket_name = "anywise-careers-cv"
 
-[[ratelimits]]
-name = "CAREERS_RATE_LIMITER"
-namespace_id = "1001"
-
-  [ratelimits.simple]
-  limit = 5
-  period = 60
-
 [vars]
-CORS_ORIGIN = "https://anywise.com.au"
+ALLOWED_ORIGINS = "https://anywise.com.au,https://www.anywise.com.au"
 CLICKUP_LIST_ID = ""
+R2_PUBLIC_URL = "https://pub-xxxxxxxx.r2.dev"
 ```
 
-Note: `CLICKUP_LIST_ID` will be set after creating the ClickUp list. Secrets (`CLICKUP_API_KEY`, `WEB3FORMS_ACCESS_KEY`) are added via `wrangler secret put`.
+Note: `CLICKUP_LIST_ID` and `R2_PUBLIC_URL` will be set after creating the ClickUp list and configuring R2 public access. Secrets (`CLICKUP_API_KEY`, `WEB3FORMS_ACCESS_KEY`) are added via `wrangler secret put`.
+
+Rate limiting is handled via Cloudflare WAF rules in the dashboard (not Worker code) — configure a rate limiting rule targeting the Worker's route with 5 requests per minute per IP.
 
 - [ ] **Step 2: Install dependencies**
 
@@ -1511,29 +1511,29 @@ git commit -m "feat(careers): scaffold Cloudflare Worker project with wrangler c
 ```typescript
 interface Env {
   CV_BUCKET: R2Bucket;
-  CAREERS_RATE_LIMITER: RateLimit;
-  CORS_ORIGIN: string;
+  ALLOWED_ORIGINS: string;
   CLICKUP_API_KEY: string;
   CLICKUP_LIST_ID: string;
   WEB3FORMS_ACCESS_KEY: string;
+  R2_PUBLIC_URL: string;
 }
 
-interface RateLimit {
-  limit(options: { key: string }): Promise<{ success: boolean }>;
-}
-
-function corsHeaders(origin: string): Record<string, string> {
+function getCorsHeaders(request: Request, env: Env): Record<string, string> {
+  const origin = request.headers.get('Origin') || '';
+  const allowed = env.ALLOWED_ORIGINS.split(',').map(s => s.trim());
+  const allowedOrigin = allowed.includes(origin) ? origin : allowed[0];
   return {
-    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin',
   };
 }
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    const headers = corsHeaders(env.CORS_ORIGIN);
+    const headers = getCorsHeaders(request, env);
 
     /* CORS preflight */
     if (request.method === 'OPTIONS') {
@@ -1545,15 +1545,7 @@ export default {
       return Response.json({ success: false, message: 'Method not allowed' }, { status: 405, headers });
     }
 
-    /* Rate limiting */
-    const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
-    const rateLimitResult = await env.CAREERS_RATE_LIMITER.limit({ key: clientIP });
-    if (!rateLimitResult.success) {
-      return Response.json(
-        { success: false, message: 'Too many requests. Please try again later.' },
-        { status: 429, headers }
-      );
-    }
+    /* Rate limiting handled by Cloudflare WAF rules — no Worker-level check needed */
 
     try {
       if (url.pathname === '/apply') {
@@ -1612,7 +1604,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
       httpMetadata: { contentType: cvFile.type },
       customMetadata: { applicantName: name, role: role },
     });
-    cvUrl = key;
+    cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
   /* Create ClickUp task */
@@ -1632,7 +1624,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     '### Experience',
     `- **Notice Period:** ${noticePeriod}`,
     salaryExpectation ? `- **Salary Expectations:** ${salaryExpectation}` : '',
-    cvUrl ? `- **CV:** Uploaded to R2 (key: ${cvUrl})` : '- **CV:** Not uploaded',
+    cvUrl ? `- **CV:** [Download CV](${cvUrl})` : '- **CV:** Not uploaded',
     '',
     '### Cover Letter',
     coverLetter,
@@ -1670,16 +1662,21 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
   if (cvFile && cvFile.size > 0) {
     const ext = cvFile.name.split('.').pop()?.toLowerCase();
     const allowed = ['pdf', 'doc', 'docx'];
-    if (ext && allowed.includes(ext) && cvFile.size <= 10 * 1024 * 1024) {
-      const timestamp = Date.now();
-      const safeName = name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-      const key = `cv/eoi-${timestamp}-${safeName}.${ext}`;
-      await env.CV_BUCKET.put(key, cvFile.stream(), {
-        httpMetadata: { contentType: cvFile.type },
-        customMetadata: { applicantName: name, type: 'eoi' },
-      });
-      cvUrl = key;
+    if (!ext || !allowed.includes(ext)) {
+      return Response.json({ success: false, message: 'Invalid file type. Accepted: .pdf, .doc, .docx' }, { status: 400, headers });
     }
+    if (cvFile.size > 10 * 1024 * 1024) {
+      return Response.json({ success: false, message: 'File too large. Maximum 10MB.' }, { status: 400, headers });
+    }
+
+    const timestamp = Date.now();
+    const safeName = name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+    const key = `cv/eoi-${timestamp}-${safeName}.${ext}`;
+    await env.CV_BUCKET.put(key, cvFile.stream(), {
+      httpMetadata: { contentType: cvFile.type },
+      customMetadata: { applicantName: name, type: 'eoi' },
+    });
+    cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
   const taskDescription = [
@@ -1688,7 +1685,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     `- **Name:** ${name}`,
     `- **Email:** ${email}`,
     `- **Area of Interest:** ${discipline}`,
-    cvUrl ? `- **CV:** Uploaded to R2 (key: ${cvUrl})` : '',
+    cvUrl ? `- **CV:** [Download CV](${cvUrl})` : '',
     '',
     '### Message',
     message,
@@ -1849,7 +1846,7 @@ For `index.html` specifically, also add the 7th mobile animation delay to the `<
 .nav-links.open li:nth-child(8) a { animation-delay: 0.4s; }
 ```
 
-(7 = Careers, 8 = Engage Us CTA, which shifts from 6th to 8th with the theme toggle)
+Nav `li` order after adding Careers: 1=Capabilities, 2=Approach, 3=Products, 4=About, 5=Insights, 6=Careers(new), 7=Engage Us, 8=Theme Toggle. `shared.css` already has rules up to `nth-child(7)`, so `index.html` only needs `nth-child(8)`.
 
 - [ ] **Step 2: Nav update — subdirectory pages**
 
@@ -1900,12 +1897,17 @@ git commit -m "feat(careers): add Careers link to nav and footer across all page
 
 This task covers the deployment steps. Some steps require access to Cloudflare dashboard and ClickUp.
 
-- [ ] **Step 1: Create R2 bucket**
+- [ ] **Step 1: Create R2 bucket with public access**
 
 ```bash
 cd workers/careers-api
 npx wrangler r2 bucket create anywise-careers-cv
 ```
+
+Then enable public access in Cloudflare dashboard:
+1. Go to R2 → `anywise-careers-cv` → Settings → Public Access
+2. Enable "Allow public access" (or connect a custom domain)
+3. Copy the public URL (e.g. `https://pub-xxxxxxxx.r2.dev`) and update `R2_PUBLIC_URL` in `wrangler.toml`
 
 - [ ] **Step 2: Create ClickUp list for applications**
 
@@ -1934,6 +1936,17 @@ npx wrangler deploy
 
 Record the deployed Worker URL (e.g. `https://anywise-careers-api.<your-subdomain>.workers.dev`).
 
+- [ ] **Step 4b: Configure WAF rate limiting rule**
+
+In Cloudflare dashboard:
+1. Go to Security → WAF → Rate limiting rules
+2. Create a new rule:
+   - Name: "Careers API rate limit"
+   - If incoming requests match: URI Path contains `/apply` OR URI Path contains `/eoi`
+   - Rate: 5 requests per 1 minute
+   - With the same: IP address
+   - Action: Block for 60 seconds
+
 - [ ] **Step 5: Configure custom domain (optional)**
 
 If using a custom domain like `careers-api.anywise.com.au`, configure the route in Cloudflare dashboard or `wrangler.toml`:
@@ -1945,7 +1958,7 @@ pattern = "careers-api.anywise.com.au/*"
 
 - [ ] **Step 6: Update WORKER_URL in careers.html**
 
-Find both `WORKER_URL` variables in the inline script (application wizard and EOI handler) and update to the production URL:
+Find the single `WORKER_URL` variable at the top of the inline script block (shared scope) and update to the production URL:
 
 ```javascript
 var WORKER_URL = 'https://careers-api.anywise.com.au';
@@ -1994,8 +2007,8 @@ Verify:
 - All form fields have labels
 - Wizard overlay has `role="dialog"` and `aria-modal="true"`
 - Close buttons have `aria-label`
-- Focus trapped in wizard overlay when open
 - Keyboard navigation works (Tab through fields, Escape to close)
+- Note: Focus trapping not implemented (consistent with existing Engage Us modal pattern) — can be added as a follow-up
 
 - [ ] **Step 3: SEO check**
 
