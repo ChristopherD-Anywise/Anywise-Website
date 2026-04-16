@@ -632,6 +632,7 @@
     }
 
     function renderBadges(locations, type) {
+      if (!Array.isArray(locations)) locations = locations ? [locations] : [];
       var badges = '';
       locations.forEach(function (loc) {
         badges += '<span class="job-badge">' + escapeHtml(loc) + '</span>';
@@ -643,6 +644,7 @@
     }
 
     function renderList(items) {
+      if (!Array.isArray(items)) return '';
       return '<ul>' + items.map(function (item) {
         return '<li>' + escapeHtml(item) + '</li>';
       }).join('') + '</ul>';
@@ -692,10 +694,10 @@
             + '    <div class="job-card-badges">' + renderBadges(job.location, job.type) + '</div>'
             + '  </div>'
             + '  <div class="job-card-actions">'
-            + '    <button class="job-btn-details" onclick="toggleJobDetails(this)">'
+            + '    <button class="job-btn-details">'
             + '      <span class="job-btn-details-text">View Details</span>'
             + '    </button>'
-            + '    <button class="job-btn-apply" onclick="openApplicationWizard(\'' + job.slug + '\')">'
+            + '    <button class="job-btn-apply">'
             + '      Apply Now →'
             + '    </button>'
             + '  </div>'
@@ -719,6 +721,15 @@
             + '</div>';
 
           jobList.appendChild(card);
+
+          card.querySelector('.job-btn-details').addEventListener('click', function () {
+            var c = this.closest('.job-card');
+            c.classList.toggle('expanded');
+            this.querySelector('.job-btn-details-text').textContent = c.classList.contains('expanded') ? 'Hide Details' : 'View Details';
+          });
+          card.querySelector('.job-btn-apply').addEventListener('click', function () {
+            openApplicationWizard(job.slug);
+          });
         });
 
         if ('IntersectionObserver' in window) {
@@ -734,16 +745,10 @@
 
         window.__jobs = active;
       })
-      .catch(function () {
+      .catch(function (err) {
+        console.error('Failed to load jobs:', err);
         jobEmpty.hidden = false;
       });
-
-    window.toggleJobDetails = function (btn) {
-      var card = btn.closest('.job-card');
-      card.classList.toggle('expanded');
-      var isExpanded = card.classList.contains('expanded');
-      btn.querySelector('.job-btn-details-text').textContent = isExpanded ? 'Hide Details' : 'View Details';
-    };
   })();
 </script>
 
