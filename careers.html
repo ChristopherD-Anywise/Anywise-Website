@@ -615,7 +615,136 @@
     return div.innerHTML;
   }
 
-  /* Job rendering, wizard, and EOI JS added in Tasks 3, 4, and 5 */
+  (function () {
+    var jobList = document.getElementById('jobList');
+    var jobEmpty = document.getElementById('jobEmpty');
+
+    function formatDate(iso) {
+      var d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function isExpired(closingDate) {
+      if (!closingDate) return false;
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return new Date(closingDate + 'T23:59:59') < today;
+    }
+
+    function renderBadges(locations, type) {
+      var badges = '';
+      locations.forEach(function (loc) {
+        badges += '<span class="job-badge">' + escapeHtml(loc) + '</span>';
+      });
+      if (type) {
+        badges += '<span class="job-badge">' + escapeHtml(type) + '</span>';
+      }
+      return badges;
+    }
+
+    function renderList(items) {
+      return '<ul>' + items.map(function (item) {
+        return '<li>' + escapeHtml(item) + '</li>';
+      }).join('') + '</ul>';
+    }
+
+    var whyAnywiseHTML = ''
+      + '<div class="why-anywise">'
+      + '  <h3>Why Anywise</h3>'
+      + '  <p>Anywise is a certified B Corp and wholly Australian-owned technology company. '
+      + 'We build sovereign, ethical solutions for defence and government — work that matters, '
+      + 'delivered with integrity. We pay fairly, invest in our people, and hold ourselves '
+      + 'accountable to the highest standards of governance and social responsibility.</p>'
+      + '  <div class="why-badges">'
+      + '    <img src="assets/images/certifications/bCorp.png" alt="B Corp Certified" loading="lazy">'
+      + '    <img src="assets/images/certifications/australianOwned.png" alt="Australian Owned" loading="lazy">'
+      + '    <img src="assets/images/certifications/WePayFairly.png" alt="We Pay Fairly" loading="lazy">'
+      + '    <img src="assets/images/certifications/FACE.png" alt="FACE" loading="lazy">'
+      + '    <img src="assets/images/certifications/ISO9001.jpg" alt="ISO 9001" loading="lazy">'
+      + '    <img src="assets/images/certifications/BFTW-2022-Governance-Badge.png" alt="Best for the World — Governance" loading="lazy">'
+      + '  </div>'
+      + '</div>';
+
+    fetch('jobs.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('Failed to load');
+        return r.json();
+      })
+      .then(function (jobs) {
+        var active = jobs.filter(function (j) {
+          return j.active && !isExpired(j.closingDate);
+        });
+
+        if (!active.length) {
+          jobEmpty.hidden = false;
+          return;
+        }
+
+        active.forEach(function (job) {
+          var card = document.createElement('div');
+          card.className = 'job-card reveal';
+          card.setAttribute('data-slug', job.slug);
+
+          card.innerHTML = ''
+            + '<div class="job-card-header">'
+            + '  <div>'
+            + '    <div class="job-card-title">' + escapeHtml(job.title) + '</div>'
+            + '    <div class="job-card-badges">' + renderBadges(job.location, job.type) + '</div>'
+            + '  </div>'
+            + '  <div class="job-card-actions">'
+            + '    <button class="job-btn-details" onclick="toggleJobDetails(this)">'
+            + '      <span class="job-btn-details-text">View Details</span>'
+            + '    </button>'
+            + '    <button class="job-btn-apply" onclick="openApplicationWizard(\'' + job.slug + '\')">'
+            + '      Apply Now →'
+            + '    </button>'
+            + '  </div>'
+            + '</div>'
+            + '<div class="job-card-desc">' + escapeHtml(job.shortDescription) + '</div>'
+            + (job.closingDate
+              ? '<div class="job-card-closing">Applications close ' + formatDate(job.closingDate) + '</div>'
+              : '')
+            + '<div class="job-card-details">'
+            + '  <div class="job-detail-grid">'
+            + '    <div class="job-detail-col">'
+            + '      <h3>Responsibilities</h3>'
+            + '      ' + renderList(job.responsibilities)
+            + '    </div>'
+            + '    <div class="job-detail-col">'
+            + '      <h3>Requirements</h3>'
+            + '      ' + renderList(job.requirements)
+            + '    </div>'
+            + '  </div>'
+            + '  ' + whyAnywiseHTML
+            + '</div>';
+
+          jobList.appendChild(card);
+        });
+
+        if ('IntersectionObserver' in window) {
+          var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+            });
+          }, { threshold: 0.05 });
+          jobList.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+        } else {
+          jobList.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+        }
+
+        window.__jobs = active;
+      })
+      .catch(function () {
+        jobEmpty.hidden = false;
+      });
+
+    window.toggleJobDetails = function (btn) {
+      var card = btn.closest('.job-card');
+      card.classList.toggle('expanded');
+      var isExpanded = card.classList.contains('expanded');
+      btn.querySelector('.job-btn-details-text').textContent = isExpanded ? 'Hide Details' : 'View Details';
+    };
+  })();
 </script>
 
 </body>
