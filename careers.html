@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers | Anywise</title>
+<meta name="description" content="Join Anywise — sovereign, ethical technology careers in defence and government. View open roles or register your interest.">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#39a849">
+<link rel="canonical" href="https://anywise.com.au/careers.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Careers | Anywise">
+<meta property="og:description" content="Join Anywise — sovereign, ethical technology careers in defence and government. View open roles or register your interest.">
+<meta property="og:image" content="https://anywise.com.au/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://anywise.com.au/careers.html">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Careers | Anywise">
+<meta name="twitter:description" content="Join Anywise — sovereign, ethical technology careers in defence and government. View open roles or register your interest.">
+<meta name="twitter:image" content="https://anywise.com.au/og-image.png">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══ PAGE LAYOUT ═══ */
+.page-wrap { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ═══ HERO ═══ */
+.careers-hero {
+  position: relative;
+  padding: 7rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+.careers-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('assets/images/team/team-photo-alt.jpg') center/cover no-repeat;
+  opacity: 0.15;
+  filter: blur(2px);
+  z-index: 0;
+}
+.careers-hero-content { position: relative; z-index: 1; }
+.careers-hero .breadcrumb {
+  display: flex; gap: 0.5rem; align-items: center;
+  margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-tertiary);
+}
+.careers-hero .breadcrumb a { color: var(--text-tertiary); transition: color 0.2s; }
+.careers-hero .breadcrumb a:hover { color: var(--accent); }
+.careers-hero .label {
+  font-family: var(--mono);
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.careers-hero .label::before {
+  content: ''; width: 0; height: 1px;
+  background: var(--gradient-al);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.careers-hero .label.visible::before { width: 2rem; }
+.careers-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
+  line-height: 1.15; color: var(--text-primary); margin-bottom: 1rem;
+}
+.careers-hero p {
+  font-size: 1.1rem; color: var(--text-secondary); max-width: 600px;
+}
+
+/* ═══ JOB LISTINGS ═══ */
+.careers-section {
+  margin-bottom: 3rem;
+}
+.careers-section h2 {
+  font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem;
+}
+.careers-section .section-sub {
+  font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+
+.job-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.job-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+.job-card:hover { border-color: var(--border-accent); }
+
+.job-card-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 0.75rem;
+}
+.job-card-title { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+.job-card-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.job-badge {
+  font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 20px;
+  background: rgba(57, 168, 73, 0.12); color: var(--accent); font-weight: 500;
+}
+.job-card-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.job-btn-details, .job-btn-apply {
+  font-size: 0.78rem; padding: 0.4rem 0.85rem; border-radius: 8px;
+  cursor: pointer; font-family: var(--font); font-weight: 500;
+  transition: all 0.2s; border: none;
+}
+.job-btn-details {
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.job-btn-details:hover { border-color: var(--border-accent); color: var(--text-primary); }
+.job-btn-apply {
+  background: var(--accent); color: var(--bg-deep); font-weight: 600;
+}
+.job-btn-apply:hover { box-shadow: 0 0 16px rgba(57, 168, 73, 0.3); }
+
+.job-card-desc {
+  font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; line-height: 1.6;
+}
+.job-card-closing {
+  font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.5rem;
+}
+
+/* Expanded details — animated expand/collapse */
+.job-card-details {
+  margin-top: 0; padding-top: 0;
+  border-top: 1px solid transparent;
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease,
+              margin-top 0.3s ease,
+              padding-top 0.3s ease,
+              border-color 0.3s ease;
+}
+.job-card.expanded .job-card-details {
+  max-height: 1200px; opacity: 1;
+  margin-top: 1.25rem; padding-top: 1.25rem;
+  border-top-color: var(--border);
+}
+.job-card.expanded .job-btn-details-text::after { content: ' ↑'; }
+.job-card:not(.expanded) .job-btn-details-text::after { content: ' ↓'; }
+
+.job-detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.job-detail-col h3 {
+  font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
+  margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.job-detail-col ul {
+  list-style: none; padding: 0; margin: 0;
+}
+.job-detail-col li {
+  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;
+  padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
+}
+.job-detail-col li::before {
+  content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem;
+}
+
+/* Empty state */
+.job-empty {
+  text-align: center; padding: 3rem 1rem;
+  border: 1px dashed var(--border); border-radius: 12px;
+}
+.job-empty p { color: var(--text-secondary); font-size: 0.95rem; }
+.job-empty a { color: var(--accent); font-weight: 500; }
+
+/* ═══ WHY ANYWISE ═══ */
+.why-anywise {
+  margin-top: 1.5rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.why-anywise h3 {
+  font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
+  margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.why-anywise p {
+  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem;
+}
+.why-badges {
+  display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;
+}
+.why-badges img {
+  height: 40px; opacity: 0; transform: scale(0.85);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.job-card.expanded .why-badges img {
+  opacity: 0.85; transform: scale(1);
+}
+.why-badges img:nth-child(1) { transition-delay: 0.1s; }
+.why-badges img:nth-child(2) { transition-delay: 0.15s; }
+.why-badges img:nth-child(3) { transition-delay: 0.2s; }
+.why-badges img:nth-child(4) { transition-delay: 0.25s; }
+.why-badges img:nth-child(5) { transition-delay: 0.3s; }
+.why-badges img:nth-child(6) { transition-delay: 0.35s; }
+.job-card.expanded .why-badges img:hover { opacity: 1; }
+
+/* ═══ EOI SECTION ═══ */
+.eoi-section {
+  position: relative; padding: 3rem 0; margin-bottom: 3rem;
+  border-top: 1px solid var(--border);
+}
+.eoi-bg {
+  position: absolute; inset: 0;
+  background: url('assets/images/engagement/bridge.jpg') center/cover no-repeat;
+  opacity: 0.08; filter: blur(3px); z-index: 0;
+}
+.eoi-content { position: relative; z-index: 1; }
+.eoi-section h2 {
+  font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem;
+}
+.eoi-section .section-sub {
+  font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+
+/* ═══ APPLICATION WIZARD OVERLAY ═══ */
+.wizard-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 13, 10, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.wizard-overlay.open { opacity: 1; pointer-events: all; }
+
+.wizard-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 20px;
+  width: 100%; max-width: 640px;
+  padding: 2.5rem;
+  position: relative;
+  transform: translateY(24px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90vh; overflow-y: auto;
+}
+.wizard-overlay.open .wizard-panel { transform: translateY(0); }
+
+.wizard-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  width: 2rem; height: 2rem;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 50%; cursor: pointer;
+  color: var(--text-secondary); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: var(--font);
+}
+.wizard-close:hover { border-color: var(--border-accent); color: var(--text-primary); }
+
+.wizard-role-title {
+  font-size: 0.78rem; font-weight: 500; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;
+}
+.wizard-panel h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+.wizard-sub {
+  font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+
+/* Progress bar */
+.wizard-progress {
+  display: flex; gap: 0.5rem; margin-bottom: 2rem;
+}
+.wizard-step-indicator {
+  flex: 1; text-align: center; font-size: 0.7rem; font-weight: 500;
+  color: var(--text-tertiary); position: relative; padding-top: 0.75rem;
+}
+.wizard-step-indicator::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; border-radius: 2px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+.wizard-step-indicator.active::before,
+.wizard-step-indicator.completed::before {
+  background: var(--accent);
+}
+.wizard-step-indicator.active { color: var(--accent); }
+.wizard-step-indicator.completed { color: var(--text-secondary); }
+
+/* Wizard form elements reuse engage-group styles from shared.css */
+.wizard-step {
+  display: none;
+  opacity: 0; transform: translateX(12px);
+}
+.wizard-step.active {
+  display: block;
+  animation: wizardStepIn 0.3s ease forwards;
+}
+@keyframes wizardStepIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.wizard-actions {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; gap: 1rem;
+}
+.wizard-btn-back {
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-secondary); padding: 0.55rem 1.2rem;
+  border-radius: 8px; cursor: pointer; font-family: var(--font);
+  font-size: 0.85rem; font-weight: 500; transition: all 0.2s;
+}
+.wizard-btn-back:hover { border-color: var(--border-accent); color: var(--text-primary); }
+.wizard-btn-next, .wizard-btn-submit {
+  background: var(--accent); color: var(--bg-deep);
+  padding: 0.55rem 1.5rem; border-radius: 8px; border: none;
+  cursor: pointer; font-family: var(--font);
+  font-size: 0.85rem; font-weight: 600; transition: all 0.2s;
+}
+.wizard-btn-next:hover, .wizard-btn-submit:hover {
+  box-shadow: 0 0 16px rgba(57, 168, 73, 0.3);
+}
+
+/* Review step */
+.wizard-review-section {
+  margin-bottom: 1.25rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.wizard-review-section:last-child { border-bottom: none; }
+.wizard-review-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+}
+.wizard-review-header h4 {
+  font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--accent);
+}
+.wizard-review-edit {
+  font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer;
+  background: none; border: none; font-family: var(--font);
+  transition: color 0.2s;
+}
+.wizard-review-edit:hover { color: var(--accent); }
+.wizard-review-row {
+  display: flex; justify-content: space-between; padding: 0.25rem 0;
+  font-size: 0.82rem;
+}
+.wizard-review-label { color: var(--text-tertiary); }
+.wizard-review-value { color: var(--text-primary); font-weight: 500; text-align: right; }
+
+.wizard-success {
+  text-align: center; padding: 3rem 1rem;
+}
+.wizard-success h3 {
+  font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.wizard-success p {
+  font-size: 0.95rem; color: var(--text-secondary);
+}
+
+.wizard-error {
+  font-size: 0.875rem; color: #e74c3c; margin-bottom: 0.75rem;
+}
+
+.wizard-privacy {
+  font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.4;
+}
+
+/* File input styling */
+.file-input-wrapper {
+  position: relative;
+}
+.file-input-wrapper input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.file-input-label {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--bg-elevated); border: 1px dashed var(--border);
+  border-radius: var(--radius); padding: 0.75rem;
+  font-size: 0.85rem; color: var(--text-tertiary);
+  transition: border-color 0.2s;
+}
+.file-input-wrapper:hover .file-input-label { border-color: var(--border-accent); }
+.file-input-label.has-file { color: var(--text-primary); border-style: solid; border-color: var(--accent); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .job-card-header { flex-direction: column; }
+  .job-card-actions { width: 100%; }
+  .job-btn-details, .job-btn-apply { flex: 1; text-align: center; }
+  .job-detail-grid { grid-template-columns: 1fr; }
+
+  .wizard-overlay { align-items: flex-end; padding: 0; }
+  .wizard-panel {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px 16px 0 0;
+    max-height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 1rem));
+  }
+  .wizard-actions {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--bg-card);
+    padding: 1rem 1.25rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 1rem));
+    border-top: 1px solid var(--border); z-index: 2001;
+  }
+
+  .engage-form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .why-badges img { height: 30px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="products/index.html">Products &amp; Services</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="blog/index.html">Insights</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="close-x">&times;</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<div class="page-wrap">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="careers-hero">
+    <div class="careers-hero-bg" aria-hidden="true"></div>
+    <div class="careers-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Careers</span>
+      </nav>
+      <p class="label reveal">Join Anywise</p>
+      <h1 class="reveal">Build technology that matters</h1>
+      <p class="reveal">We're a B&nbsp;Corp-certified, wholly Australian-owned firm solving hard problems for defence and government. If you care about ethics, sovereignty, and impact — we'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- ═══ JOB LISTINGS ═══ -->
+  <section class="careers-section" id="open-roles">
+    <h2 class="reveal">Open roles</h2>
+    <p class="section-sub reveal">Current opportunities across our Melbourne, Canberra, and Brisbane offices.</p>
+
+    <div class="job-list" id="jobList"></div>
+
+    <div class="job-empty" id="jobEmpty">
+      <p>No open roles right now — but we're always interested in great people.<br>
+        <a href="#eoi-section">Register your interest below</a>.</p>
+    </div>
+  </section>
+
+  <!-- ═══ EOI SECTION ═══ -->
+  <section class="eoi-section" id="eoi-section">
+    <div class="eoi-bg" aria-hidden="true"></div>
+    <div class="eoi-content">
+      <h2 class="reveal">Don't see the right role?</h2>
+      <p class="section-sub reveal">Register your interest and we'll be in touch when something relevant comes up.</p>
+
+      <form class="engage-form reveal" id="eoiForm">
+        <div class="engage-form-row">
+          <div class="engage-group">
+            <label for="eoiName">Full name <span aria-hidden="true">*</span></label>
+            <input id="eoiName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="engage-group">
+            <label for="eoiEmail">Email <span aria-hidden="true">*</span></label>
+            <input id="eoiEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="engage-group">
+          <label for="eoiDiscipline">Area of interest <span aria-hidden="true">*</span></label>
+          <select id="eoiDiscipline" name="discipline" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Data Engineering / Analytics">Data Engineering / Analytics</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Project / Programme Management">Project / Programme Management</option>
+            <option value="Business Analysis">Business Analysis</option>
+            <option value="Defence / Government Advisory">Defence / Government Advisory</option>
+            <option value="Design / UX">Design / UX</option>
+            <option value="Operations / Corporate">Operations / Corporate</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="engage-group">
+          <label for="eoiMessage">Tell us about yourself <span aria-hidden="true">*</span></label>
+          <textarea id="eoiMessage" name="message" placeholder="What experience do you bring and what kind of work excites you?" required></textarea>
+        </div>
+
+        <div class="engage-group">
+          <label for="eoiCv">Upload your CV <span style="color:var(--text-tertiary);">(optional)</span></label>
+          <div class="file-input-wrapper">
+            <input type="file" id="eoiCv" name="cv" accept=".pdf,.doc,.docx">
+            <div class="file-input-label" id="eoiCvLabel">
+              <span>Choose file… (.pdf, .doc, .docx)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="engage-actions">
+          <p class="engage-privacy">Your details are never shared with third parties.</p>
+          <button type="submit" class="btn btn-primary">Submit &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</div><!-- .page-wrap -->
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="section-divider"></div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 86 169 092 960 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="index.html#capabilities">Technology</a>
+        <a href="index.html#capabilities">Services</a>
+        <a href="index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="products/wisdom.html">WISDOM</a>
+        <a href="products/engaide.html">ENG|AIDE</a>
+        <a href="products/fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="products/impact-framework.html">Impact Measurement</a>
+        <a href="products/fabhums.html">FABHUMS</a>
+        <a href="products/campaide.html">CAMP|AIDE</a>
+        <a href="products/ils.html">ILS</a>
+        <a href="products/aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About</a>
+        <a href="blog/index.html">Insights</a>
+        <a href="careers.html">Careers</a>
+        <a href="grievance-policy.html">Grievance Policy</a>
+        <a href="whistleblower-policy.html">Whistleblower Policy</a>
+        <a href="weapons-exclusion.html">Defence Disclosure</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="copyrightYear">2026</span> Anywise Pty Ltd. All rights reserved. ABN 86 169 092 960.</p>
+      <div class="footer-locations">
+        <span>Melbourne</span>
+        <span>Canberra</span>
+        <span>Brisbane</span>
+      </div>
+    </div>
+    <div class="acknowledgement">
+      Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution.
+      <a href="https://ulurustatement.org" style="color: var(--text-tertiary); text-decoration: underline;">UluruStatement.org</a><br>
+      Anywise acknowledges the Traditional Owners of the land on which we operate. We pay our respects to Elders past, present, and emerging.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="shared.js"></script>
+<script>
+  /* Shared utilities — used by job rendering, wizard, and EOI */
+  var WORKER_URL = 'https://careers-api.anywise.com.au';
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  /* Job rendering, wizard, and EOI JS added in Tasks 3, 4, and 5 */
+</script>
+
+</body>
+</html>
