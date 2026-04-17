@@ -121,7 +121,7 @@
               border-color 0.3s ease;
 }
 .job-card.expanded .job-card-details {
-  max-height: 1200px; opacity: 1;
+  max-height: 4000px; opacity: 1;
   margin-top: 1.25rem; padding-top: 1.25rem;
   border-top-color: var(--border);
 }
@@ -708,8 +708,8 @@
             </select>
           </div>
           <div class="engage-group">
-            <label for="wizSalary">Salary expectations</label>
-            <input id="wizSalary" name="salaryExpectation" type="text" placeholder="e.g. $120k–$140k or negotiable">
+            <label for="wizSalary">Salary expectations (per year, AUD)</label>
+            <input id="wizSalary" name="salaryExpectation" type="number" min="0" step="1000" placeholder="e.g. 130000">
           </div>
         </div>
       </div>
@@ -737,7 +737,7 @@
 <script src="shared.js"></script>
 <script>
   /* Shared utilities — used by job rendering, wizard, and EOI */
-  var WORKER_URL = 'https://careers-api.anywise.com.au';
+  var WORKER_URL = 'https://anywise-careers-api.christopher-dennis.workers.dev';
 
   function escapeHtml(str) {
     var div = document.createElement('div');
@@ -1037,6 +1037,17 @@
           var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(field.value)) {
             field.classList.add('invalid');
+            field.setAttribute('data-error', 'Please enter a valid email address');
+            valid = false;
+          }
+        }
+        if (field.type === 'tel' && field.value) {
+          var digits = field.value.replace(/[\s\-\(\)\.+]/g, '');
+          /* Accept Australian numbers: 04xx (10 digits), +614xx (11 digits), or landline 0x (10 digits) */
+          var phoneValid = /^(\+?61|0)\d{8,9}$/.test(digits);
+          if (!phoneValid) {
+            field.classList.add('invalid');
+            field.setAttribute('data-error', 'Please enter a valid Australian phone number');
             valid = false;
           }
         }
@@ -1058,9 +1069,12 @@
       });
 
       if (!valid) {
+        var invalidField = stepEl.querySelector('.invalid');
+        var errMsg = (invalidField && invalidField.getAttribute('data-error'))
+          || 'Please complete all required fields.';
         var errEl = document.createElement('p');
         errEl.className = 'wizard-error';
-        errEl.textContent = 'Please complete all required fields.';
+        errEl.textContent = errMsg;
         var prevErr = form.querySelector('.wizard-error');
         if (prevErr) prevErr.remove();
         var actions = overlay.querySelector('.wizard-actions');
@@ -1095,7 +1109,7 @@
             ['CV', cvName],
             ['Cover letter', (data.coverLetter || '').substring(0, 120) + (data.coverLetter && data.coverLetter.length > 120 ? '…' : '')],
             ['Notice period', data.noticePeriod || ''],
-            ['Salary expectations', data.salaryExpectation || 'Not provided']
+            ['Salary expectations', data.salaryExpectation ? '$' + Number(data.salaryExpectation).toLocaleString() + ' per year' : 'Not provided']
           ]);
 
       /* Wire up edit buttons with addEventListener */
