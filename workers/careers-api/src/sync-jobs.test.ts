@@ -167,6 +167,45 @@ describe('handleSyncJobs', () => {
     expect(body.jobCount).toBe(0);
   });
 
+  it('skips commit when content is unchanged', async () => {
+    /* Pre-compute what the committed content would be for an empty array */
+    const emptyJson = JSON.stringify([], null, 2) + '\n';
+    const bytes = new TextEncoder().encode(emptyJson);
+    let binary = '';
+    for (const byte of bytes) binary += String.fromCharCode(byte);
+    const encoded = btoa(binary);
+
+    mockFetch.mockImplementation((url: string, init?: RequestInit) => {
+      if (url.includes('api.clickup.com')) {
+        return Promise.resolve(
+          new Response(JSON.stringify({ tasks: [] }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        );
+      }
+      /* GitHub GET returns content matching what we'd commit */
+      return Promise.resolve(
+        new Response(JSON.stringify({ sha: 'abc123sha', content: encoded }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+    });
+
+    const resp = await handleSyncJobs(makeRequest('test-secret'), env as any);
+    const body = await resp.json();
+    expect(body.success).toBe(true);
+    expect(body.committed).toBe(false);
+    expect(body.jobCount).toBe(0);
+
+    /* Verify no PUT was made */
+    const putCalls = mockFetch.mock.calls.filter(
+      (c: [string, RequestInit?]) => c[1]?.method === 'PUT'
+    );
+    expect(putCalls).toHaveLength(0);
+  });
+
   it('returns 502 when ClickUp API fails', async () => {
     mockFetch.mockImplementation((url: string) => {
       if (url.includes('api.clickup.com')) {

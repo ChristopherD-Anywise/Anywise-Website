@@ -40,10 +40,13 @@ export async function commitJobsJson(
   /* 404 means file doesn't exist yet — that's fine, we'll create it */
 
   const newContent = JSON.stringify(jobs, null, 2) + '\n';
-  const newEncoded = btoa(String.fromCharCode(...new TextEncoder().encode(newContent)));
+  const bytes = new TextEncoder().encode(newContent);
+  let binary = '';
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  const newEncoded = btoa(binary);
 
   /* Skip commit if content is unchanged */
-  if (currentContent && currentContent.replace(/\s/g, '') === newEncoded.replace(/\s/g, '')) {
+  if (currentContent && currentContent.replace(/\n/g, '') === newEncoded) {
     return { committed: false, jobCount: jobs.length };
   }
 
