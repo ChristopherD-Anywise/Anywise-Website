@@ -258,6 +258,156 @@ When making DNS changes, **do not delete** these records:
 | TXT | Google site verification, Microsoft verification, Brave verification |
 | TXT (DMARC) | `_dmarc` — email authentication policy |
 
+## Careers System
+
+The careers platform has two sides: **job listings** (ClickUp → website) and **applications** (website → ClickUp). Both are handled by the `careers-api` Cloudflare Worker in `workers/careers-api/`.
+
+### Architecture
+
+```
+ClickUp (Roles list)                    ClickUp (Talent Community list)
+   │ "published" tasks                      ▲ applicant/EOI tasks
+   │                                        │
+   ▼ /sync-jobs webhook                     │ /apply or /eoi POST
+careers-api Worker ──────────────────── careers-api Worker
+   │                                        │
+   ▼ GitHub Contents API                    ├── CV → R2 staging → ClickUp attachment → R2 cleanup
+jobs.json committed to repo                 ├── Task linked to matching role (applications only)
+   │                                        └── "EOI" tag added (expressions of interest only)
+   ▼
+careers.html reads jobs.json
+```
+
+### Two ClickUp Lists
+
+| List | ID | Purpose |
+|------|----|---------|
+| **Roles** | `901614527130` | Job ads — tasks with status "published" are synced to the website |
+| **Talent Community** | `162603016` | Where applicant and EOI tasks are created |
+
+### Job Listings Pipeline (ClickUp → Website)
+
+1. Someone creates/edits a task in the **Roles** list and sets its status to **published**
+2. A webhook triggers `POST /sync-jobs` on the Worker (authenticated via `X-Webhook-Secret` header)
+3. The Worker fetches all published tasks from the Roles list via the ClickUp API
+4. Each task's description is parsed into structured sections (see [Writing a Job Ad](#writing-a-new-job-ad))
+5. Custom fields are read: **Type** (Full-time, etc.), **Location** (labels field), **Closing Date**
+6. The Worker commits the resulting `jobs.json` to GitHub via the Contents API
+7. Cloudflare rebuilds the site, and `careers.html` renders listings from `jobs.json`
+
+**To remove a job:** Change its status to anything other than "published" (e.g. "closed") and trigger the sync. It will be excluded from the next `jobs.json` commit.
+
+### Application Pipeline (Website → ClickUp)
+
+1. User fills out the multi-step application wizard on `careers.html` and submits
+2. `POST /apply` receives multipart form data (name, email, phone, CV file, etc.)
+3. CV is uploaded to R2 as a staging file
+4. A ClickUp task is created in the **Talent Community** list with all form data as custom fields and a markdown description
+5. The task is linked to the matching role task in the Roles list (by slugifying the role name)
+6. The CV is fetched from R2 and attached directly to the ClickUp task via the attachment API
+7. On successful attachment, the R2 staging file is deleted
+8. Success response returned to the browser
+
+**Expression of Interest (EOI):** `POST /eoi` follows the same flow but creates a task tagged "EOI" without role linking.
+
+### Worker Configuration
+
+**`wrangler.toml` variables:**
+
+| Variable | Value | Purpose |
+|----------|-------|---------|
+| `ALLOWED_ORIGINS` | `https://anywise.com.au,https://www.anywise.com.au` | CORS |
+| `CLICKUP_LIST_ID` | `162603016` | Talent Community list for applications |
+| `CLICKUP_ROLES_LIST_ID` | `901614527130` | Roles list for job sync |
+| `R2_PUBLIC_URL` | `https://pub-9ca69b476984498ea82bd6e6b2cffe0f.r2.dev` | R2 bucket public URL |
+| `GITHUB_REPO` | `ChristopherD-Anywise/Anywise-Website` | Target repo for jobs.json commits |
+
+**Secrets** (set via `npx wrangler secret put <NAME>`):
+
+| Secret | Purpose |
+|--------|---------|
+| `CLICKUP_API_KEY` | ClickUp API personal token |
+| `WEBHOOK_SECRET` | Authenticates `/sync-jobs` webhook calls |
+| `GITHUB_TOKEN` | GitHub personal access token for committing jobs.json |
+
+**R2 bucket:** `anywise-careers-cv` — used for temporary CV staging during the attachment flow.
+
+### Worker Source Files
+
+| File | Responsibility |
+|------|---------------|
+| `src/index.ts` | Route handlers (`/apply`, `/eoi`, `/sync-jobs`), ClickUp task creation, custom field mapping |
+| `src/sync-jobs.ts` | Fetches published roles from ClickUp, parses descriptions, triggers GitHub commit |
+| `src/parse-description.ts` | Parses markdown job descriptions into structured sections |
+| `src/github.ts` | Commits `jobs.json` to GitHub via the Contents API |
+| `src/clickup-attachment.ts` | Attaches CV files to ClickUp tasks, cleans up R2 staging files |
+| `src/clickup-link.ts` | Links applicant tasks to role tasks by slug matching |
+
+### Custom Fields in ClickUp
+
+The Worker maps form data to ClickUp custom fields using hardcoded UUIDs. If fields are added or changed in ClickUp, the UUIDs in `src/index.ts` must be updated. Use the ClickUp API (`GET /list/{list_id}/field`) or the ClickUp MCP to find field and option UUIDs.
+
+**Important:** Dropdown option UUIDs must be the **full UUID** (e.g. `7510c0cb-1671-4d26-8b01-737e3750ab26`), not truncated.
+
+### Deploying the Worker
+
+```bash
+cd workers/careers-api
+npm install
+npx wrangler deploy
+```
+
+To set secrets:
+```bash
+npx wrangler secret put CLICKUP_API_KEY
+npx wrangler secret put WEBHOOK_SECRET
+npx wrangler secret put GITHUB_TOKEN
+```
+
+### Writing a New Job Ad
+
+Create a task in the **Roles** list in ClickUp. The task description should use this markdown structure:
+
+```markdown
+A short summary paragraph describing the role. This becomes the card preview text on the website.
+
+## The Opportunity
+
+Detailed description of what this role involves and why it's exciting.
+
+## What You'll Be Doing
+
+- Responsibility one
+- Responsibility two
+- Responsibility three
+
+## What We're Looking For
+
+- Requirement one
+- Requirement two
+- Requirement three
+
+## Bonus Points
+
+- Nice-to-have one
+- Nice-to-have two
+
+## Security Clearance
+
+Details about security clearance requirements, if any.
+```
+
+**Section names are flexible** — the parser recognises `##` headings, `**bold**` headings, and bare text matching known names. Legacy names like "Responsibilities" and "Requirements" also work.
+
+**Custom fields to set on the task:**
+- **Type** — dropdown: Full-time, Part-time, Contract, etc.
+- **Location** — labels field: select one or more cities (Melbourne, Sydney, Perth, Canberra, Brisbane, Adelaide)
+- **Closing Date** — date field (optional)
+
+**To publish:** Set the task status to **published**, then trigger the sync webhook or wait for the next scheduled sync.
+
+**To unpublish:** Change the status to anything else (e.g. "closed", "draft") and trigger the sync.
+
 ## Development
 
 ### Local Development
