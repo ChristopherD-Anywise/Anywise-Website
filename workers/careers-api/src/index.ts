@@ -11,6 +11,8 @@ export interface Env {
 }
 
 import { handleSyncJobs } from './sync-jobs';
+import { attachFileToTask, cleanupR2 } from './clickup-attachment';
+import { linkToRole } from './clickup-link';
 
 function getCorsHeaders(request: Request, env: Env): Record<string, string> {
   const origin = request.headers.get('Origin') || '';
@@ -83,8 +85,9 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     return Response.json({ success: false, message: 'Missing required fields' }, { status: 400, headers });
   }
 
-  /* Upload CV to R2 */
+  /* Upload CV to R2 (staging — will be attached to ClickUp task and deleted) */
   let cvUrl = '';
+  let r2Key = '';
   if (cvFile && cvFile.size > 0) {
     const ext = cvFile.name.split('.').pop()?.toLowerCase();
     const allowed = ['pdf', 'doc', 'docx'];
@@ -102,6 +105,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
       httpMetadata: { contentType: cvFile.type },
       customMetadata: { applicantName: name, role: role },
     });
+    r2Key = key;
     cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
@@ -128,7 +132,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     coverLetter,
   ].filter(Boolean).join('\n');
 
-  await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, {
+  const taskId = await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, {
     email,
     phone,
     linkedin,
@@ -137,6 +141,19 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     noticePeriod,
     source: 'Application',
   });
+
+  /* Best-effort: link to role and attach CV */
+  if (taskId) {
+    await linkToRole(taskId, role, env);
+
+    if (cvFile && r2Key) {
+      const arrayBuffer = await cvFile.arrayBuffer();
+      const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+      if (attached) {
+        await cleanupR2(r2Key, env);
+      }
+    }
+  }
 
   return Response.json({ success: true, message: 'Application submitted' }, { headers });
 }
