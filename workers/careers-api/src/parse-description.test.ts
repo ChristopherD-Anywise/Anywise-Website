@@ -2,87 +2,91 @@ import { describe, it, expect } from 'vitest';
 import { parseDescription } from './parse-description';
 
 describe('parseDescription', () => {
-  it('parses a full description with all sections', () => {
+  it('parses a full job ad with all sections', () => {
     const md = [
-      'Design and build sovereign data pipelines for defence and government platforms.',
+      'We are looking for a Software Engineer to join our team.',
       '',
-      '## Responsibilities',
-      '- Design and implement scalable data pipelines',
-      '- Build ETL/ELT workflows for defence data sources',
+      '## The Opportunity',
+      'This is a hybrid role based in Melbourne.',
       '',
-      '## Requirements',
-      '- 5+ years of data engineering experience',
-      '- Australian citizenship',
+      '## What You\'ll Be Doing',
+      'You\'ll contribute to the design and delivery of software solutions.',
+      '',
+      '## What We\'re Looking For',
+      '- Server-side development using .NET and C#',
+      '- Database development skills',
+      '- API development and integration',
+      '',
+      '## Bonus Points',
+      '- Python development',
+      '- Working with LLMs',
+      '',
+      '## Security Clearance',
+      'Australian citizenship is required.',
     ].join('\n');
 
     const result = parseDescription(md);
 
     expect(result.shortDescription).toBe(
-      'Design and build sovereign data pipelines for defence and government platforms.'
+      'We are looking for a Software Engineer to join our team.'
     );
-    expect(result.responsibilities).toEqual([
-      'Design and implement scalable data pipelines',
-      'Build ETL/ELT workflows for defence data sources',
+    expect(result.opportunity).toBe('This is a hybrid role based in Melbourne.');
+    expect(result.whatYoullBeDoing).toBe(
+      "You'll contribute to the design and delivery of software solutions."
+    );
+    expect(result.whatWereLookingFor).toEqual([
+      'Server-side development using .NET and C#',
+      'Database development skills',
+      'API development and integration',
     ]);
-    expect(result.requirements).toEqual([
-      '5+ years of data engineering experience',
-      'Australian citizenship',
+    expect(result.bonusPoints).toEqual([
+      'Python development',
+      'Working with LLMs',
     ]);
+    expect(result.securityClearance).toBe('Australian citizenship is required.');
   });
 
-  it('handles missing Responsibilities section', () => {
+  it('handles missing optional sections', () => {
     const md = [
       'Short description here.',
       '',
-      '## Requirements',
+      '## What We\'re Looking For',
       '- Must have clearance',
     ].join('\n');
 
     const result = parseDescription(md);
 
     expect(result.shortDescription).toBe('Short description here.');
-    expect(result.responsibilities).toEqual([]);
-    expect(result.requirements).toEqual(['Must have clearance']);
-  });
-
-  it('handles missing Requirements section', () => {
-    const md = [
-      'Short description here.',
-      '',
-      '## Responsibilities',
-      '- Build things',
-    ].join('\n');
-
-    const result = parseDescription(md);
-
-    expect(result.shortDescription).toBe('Short description here.');
-    expect(result.responsibilities).toEqual(['Build things']);
-    expect(result.requirements).toEqual([]);
+    expect(result.opportunity).toBe('');
+    expect(result.whatYoullBeDoing).toBe('');
+    expect(result.whatWereLookingFor).toEqual(['Must have clearance']);
+    expect(result.bonusPoints).toEqual([]);
+    expect(result.securityClearance).toBe('');
   });
 
   it('handles empty description', () => {
     const result = parseDescription('');
 
     expect(result.shortDescription).toBe('');
-    expect(result.responsibilities).toEqual([]);
-    expect(result.requirements).toEqual([]);
+    expect(result.whatWereLookingFor).toEqual([]);
+    expect(result.bonusPoints).toEqual([]);
   });
 
   it('handles description with only short description, no sections', () => {
     const result = parseDescription('Just a simple role description.');
 
     expect(result.shortDescription).toBe('Just a simple role description.');
-    expect(result.responsibilities).toEqual([]);
-    expect(result.requirements).toEqual([]);
+    expect(result.opportunity).toBe('');
+    expect(result.whatWereLookingFor).toEqual([]);
   });
 
-  it('handles multi-line short description (takes first paragraph)', () => {
+  it('handles multi-line short description', () => {
     const md = [
       'First line of description.',
       'Second line of description.',
       '',
-      '## Responsibilities',
-      '- Do stuff',
+      '## The Opportunity',
+      'A great role.',
     ].join('\n');
 
     const result = parseDescription(md);
@@ -90,17 +94,14 @@ describe('parseDescription', () => {
     expect(result.shortDescription).toBe(
       'First line of description. Second line of description.'
     );
-    expect(result.responsibilities).toEqual(['Do stuff']);
+    expect(result.opportunity).toBe('A great role.');
   });
 
-  it('ignores extra sections beyond Responsibilities and Requirements', () => {
+  it('ignores unknown sections', () => {
     const md = [
       'Short desc.',
       '',
-      '## Responsibilities',
-      '- Build pipelines',
-      '',
-      '## Requirements',
+      '## What We\'re Looking For',
       '- 5 years exp',
       '',
       '## Nice to Have',
@@ -109,22 +110,80 @@ describe('parseDescription', () => {
 
     const result = parseDescription(md);
 
-    expect(result.responsibilities).toEqual(['Build pipelines']);
-    expect(result.requirements).toEqual(['5 years exp']);
+    expect(result.whatWereLookingFor).toEqual(['5 years exp']);
+  });
+
+  it('parses ClickUp plain-text format (no ## or - prefixes)', () => {
+    const plain = [
+      'We need a data engineer.',
+      '',
+      'The Opportunity',
+      '',
+      'This is a great role in Melbourne.',
+      '',
+      'What We\'re Looking For',
+      '',
+      '5+ years experience',
+      'Australian citizenship',
+    ].join('\n');
+
+    const result = parseDescription(plain);
+
+    expect(result.shortDescription).toBe('We need a data engineer.');
+    expect(result.opportunity).toBe('This is a great role in Melbourne.');
+    expect(result.whatWereLookingFor).toEqual([
+      '5+ years experience',
+      'Australian citizenship',
+    ]);
+  });
+
+  it('handles legacy section names (Responsibilities/Requirements)', () => {
+    const md = [
+      'Old format job.',
+      '',
+      '## Responsibilities',
+      '- Build things',
+      '',
+      '## Requirements',
+      '- 5 years exp',
+    ].join('\n');
+
+    const result = parseDescription(md);
+
+    expect(result.whatYoullBeDoing).toBe('Build things');
+    expect(result.whatWereLookingFor).toEqual(['5 years exp']);
+  });
+
+  it('joins multi-line paragraphs in paragraph sections', () => {
+    const md = [
+      'Short.',
+      '',
+      '## The Opportunity',
+      'First paragraph line.',
+      'Second paragraph line.',
+      '',
+      'Third line after blank.',
+    ].join('\n');
+
+    const result = parseDescription(md);
+
+    expect(result.opportunity).toBe(
+      'First paragraph line. Second paragraph line. Third line after blank.'
+    );
   });
 
   it('trims whitespace from bullet items', () => {
     const md = [
       'Desc.',
       '',
-      '## Responsibilities',
+      '## What We\'re Looking For',
       '-   Padded item  ',
       '- Normal item',
     ].join('\n');
 
     const result = parseDescription(md);
 
-    expect(result.responsibilities).toEqual([
+    expect(result.whatWereLookingFor).toEqual([
       'Padded item',
       'Normal item',
     ]);

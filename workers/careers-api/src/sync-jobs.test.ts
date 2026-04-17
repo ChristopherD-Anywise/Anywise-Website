@@ -15,9 +15,9 @@ const env = {
   GITHUB_REPO: 'Anywise-au/Anywise-Website',
 };
 
-function makeRequest(secret?: string): Request {
+function makeRequest(secret?: string, headerName = 'X-Webhook-Secret'): Request {
   const headers: Record<string, string> = {};
-  if (secret) headers['X-Webhook-Secret'] = secret;
+  if (secret) headers[headerName] = secret;
   return new Request('https://careers-api.anywise.com.au/sync-jobs', {
     method: 'POST',
     headers,
@@ -90,6 +90,38 @@ describe('handleSyncJobs', () => {
     expect(resp.status).toBe(401);
   });
 
+  it('accepts Authorization header as fallback', async () => {
+    mockFetch.mockImplementation((url: string, init?: RequestInit) => {
+      if (url.includes('api.clickup.com')) {
+        return Promise.resolve(
+          new Response(JSON.stringify({ tasks: [] }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        );
+      }
+      if (url.includes('api.github.com') && init?.method === 'PUT') {
+        return Promise.resolve(
+          new Response(JSON.stringify({ content: { sha: 'newsha' } }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        );
+      }
+      return Promise.resolve(
+        new Response(JSON.stringify({ sha: 'abc123sha', content: '' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+    });
+
+    const resp = await handleSyncJobs(makeRequest('test-secret', 'Authorization'), env as any);
+    expect(resp.status).toBe(200);
+    const body = await resp.json();
+    expect(body.success).toBe(true);
+  });
+
   it('fetches published tasks and commits to GitHub', async () => {
     mockFetch.mockImplementation((url: string, init?: RequestInit) => {
       if (url.includes('api.clickup.com')) {
@@ -129,7 +161,7 @@ describe('handleSyncJobs', () => {
       (c: [string]) => c[0].includes('api.clickup.com')
     );
     expect(clickupCall).toBeDefined();
-    expect(clickupCall![0]).toContain('statuses[]=Published');
+    expect(clickupCall![0]).toContain('statuses[]=published');
     expect(clickupCall![0]).toContain('901614524275');
   });
 

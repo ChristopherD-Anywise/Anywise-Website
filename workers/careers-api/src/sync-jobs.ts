@@ -14,7 +14,7 @@ interface ClickUpTask {
     type: string;
     value?: unknown;
     type_config?: {
-      options?: Array<{ id: string; name: string; orderindex: number }>;
+      options?: Array<{ id: string; name?: string; label?: string; orderindex: number }>;
     };
   }>;
 }
@@ -49,17 +49,18 @@ function getCustomFieldValue(task: ClickUpTask, fieldName: string): string {
     return (field.value as number[])
       .map((idx) => {
         const option = field.type_config!.options!.find((o) => o.orderindex === idx);
-        return option?.name || '';
+        return option?.label || option?.name || '';
       })
       .filter(Boolean)
       .join(',');
   }
 
-  /* Date fields store a unix timestamp in milliseconds as a string */
+  /* Date fields store a unix timestamp in ms — ClickUp uses the user's local midnight,
+     so we add 12h before extracting the UTC date to avoid off-by-one across timezones */
   if (field.type === 'date' && field.value) {
     const ts = Number(field.value);
     if (!isNaN(ts)) {
-      const d = new Date(ts);
+      const d = new Date(ts + 12 * 60 * 60 * 1000);
       return d.toISOString().split('T')[0]; /* YYYY-MM-DD */
     }
   }
@@ -68,6 +69,22 @@ function getCustomFieldValue(task: ClickUpTask, fieldName: string): string {
 }
 
 function getLocationArray(task: ClickUpTask): string[] {
+  /* Prefer the labels-type Location field (there are multiple fields named "Location") */
+  const labelsField = task.custom_fields.find(
+    (f) => f.name.toLowerCase() === 'location' && f.type === 'labels'
+  );
+  if (labelsField && Array.isArray(labelsField.value) && labelsField.type_config?.options) {
+    return (labelsField.value as (string | number)[])
+      .map((val) => {
+        /* ClickUp labels value can be option IDs (strings) or orderindex (numbers) */
+        const opt = typeof val === 'string'
+          ? labelsField.type_config!.options!.find((o) => o.id === val)
+          : labelsField.type_config!.options!.find((o) => o.orderindex === val);
+        return opt?.label || opt?.name || '';
+      })
+      .filter(Boolean);
+  }
+  /* Fallback to generic resolver */
   const raw = getCustomFieldValue(task, 'Location');
   if (!raw) return [];
   return raw.split(',').map((s) => s.trim()).filter(Boolean);
@@ -84,8 +101,11 @@ function taskToJob(task: ClickUpTask): JobEntry {
     closingDate: getCustomFieldValue(task, 'Closing Date') || '',
     active: true,
     shortDescription: parsed.shortDescription || task.name,
-    responsibilities: parsed.responsibilities,
-    requirements: parsed.requirements,
+    opportunity: parsed.opportunity,
+    whatYoullBeDoing: parsed.whatYoullBeDoing,
+    whatWereLookingFor: parsed.whatWereLookingFor,
+    bonusPoints: parsed.bonusPoints,
+    securityClearance: parsed.securityClearance,
   };
 }
 
@@ -94,7 +114,9 @@ export async function handleSyncJobs(
   env: Env
 ): Promise<Response> {
   /* Authenticate webhook */
-  const secret = request.headers.get('X-Webhook-Secret');
+  const secret =
+    request.headers.get('X-Webhook-Secret') ||
+    request.headers.get('Authorization');
   if (!secret || secret !== env.WEBHOOK_SECRET) {
     return Response.json(
       { success: false, message: 'Unauthorized' },
@@ -105,7 +127,7 @@ export async function handleSyncJobs(
   /* Fetch all Published tasks from Roles list */
   const clickupUrl =
     `https://api.clickup.com/api/v2/list/${env.CLICKUP_ROLES_LIST_ID}/task` +
-    `?statuses[]=Published&include_closed=false&subtasks=false&include_custom_fields=true`;
+    `?statuses[]=published&include_closed=false&subtasks=false&include_custom_fields=true`;
 
   const clickupResp = await fetch(clickupUrl, {
     headers: {

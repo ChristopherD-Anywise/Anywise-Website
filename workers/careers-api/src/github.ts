@@ -6,8 +6,11 @@ export interface JobEntry {
   closingDate: string;
   active: boolean;
   shortDescription: string;
-  responsibilities: string[];
-  requirements: string[];
+  opportunity: string;
+  whatYoullBeDoing: string;
+  whatWereLookingFor: string[];
+  bonusPoints: string[];
+  securityClearance: string;
 }
 
 interface GitHubFileResponse {

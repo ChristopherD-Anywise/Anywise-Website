@@ -34,51 +34,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══ PAGE LAYOUT ═══ */
-.page-wrap { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
-
 /* ═══ HERO ═══ */
 .careers-hero {
-  position: relative;
-  padding: 7rem 0 3rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 3rem;
-  overflow: hidden;
+  padding: 7rem 0 4rem;
 }
-.careers-hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url('assets/images/team/team-photo-alt.jpg') center/cover no-repeat;
-  opacity: 0.15;
-  filter: blur(2px);
-  z-index: 0;
-}
-.careers-hero-content { position: relative; z-index: 1; }
-.careers-hero .breadcrumb {
-  display: flex; gap: 0.5rem; align-items: center;
-  margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-tertiary);
-}
-.careers-hero .breadcrumb a { color: var(--text-tertiary); transition: color 0.2s; }
-.careers-hero .breadcrumb a:hover { color: var(--accent); }
-.careers-hero .label {
-  font-family: var(--mono);
-  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--accent);
-  margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.careers-hero .label::before {
-  content: ''; width: 0; height: 1px;
-  background: var(--gradient-al);
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.careers-hero .label.visible::before { width: 2rem; }
 .careers-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
-  line-height: 1.15; color: var(--text-primary); margin-bottom: 1rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 3.6rem 0 1rem;
+}
+.careers-hero h1 span {
+  color: var(--accent);
 }
 .careers-hero p {
-  font-size: 1.1rem; color: var(--text-secondary); max-width: 600px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 520px;
 }
 
 /* ═══ JOB LISTINGS ═══ */
@@ -155,21 +128,24 @@
 .job-card.expanded .job-btn-details-text::after { content: ' ↑'; }
 .job-card:not(.expanded) .job-btn-details-text::after { content: ' ↓'; }
 
-.job-detail-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+.job-detail-section {
+  margin-bottom: 1.5rem;
 }
-.job-detail-col h3 {
+.job-detail-section h3 {
   font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
   margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;
 }
-.job-detail-col ul {
+.job-detail-section p {
+  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.5rem;
+}
+.job-detail-section ul {
   list-style: none; padding: 0; margin: 0;
 }
-.job-detail-col li {
+.job-detail-section li {
   font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;
   padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
 }
-.job-detail-col li::before {
+.job-detail-section li::before {
   content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem;
 }
 
@@ -213,15 +189,9 @@
 
 /* ═══ EOI SECTION ═══ */
 .eoi-section {
-  position: relative; padding: 3rem 0; margin-bottom: 3rem;
+  padding: 3rem 0; margin-bottom: 3rem;
   border-top: 1px solid var(--border);
 }
-.eoi-bg {
-  position: absolute; inset: 0;
-  background: url('assets/images/engagement/bridge.jpg') center/cover no-repeat;
-  opacity: 0.08; filter: blur(3px); z-index: 0;
-}
-.eoi-content { position: relative; z-index: 1; }
 .eoi-section h2 {
   font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem;
 }
@@ -400,7 +370,6 @@
   .job-card-header { flex-direction: column; }
   .job-card-actions { width: 100%; }
   .job-btn-details, .job-btn-apply { flex: 1; text-align: center; }
-  .job-detail-grid { grid-template-columns: 1fr; }
 
   .wizard-overlay { align-items: flex-end; padding: 0; }
   .wizard-panel {
@@ -457,22 +426,20 @@
 <!-- ═══ MAIN CONTENT ═══ -->
 <main id="main-content">
 
-<div class="page-wrap">
-
-  <!-- ═══ HERO ═══ -->
-  <section class="careers-hero">
-    <div class="careers-hero-bg" aria-hidden="true"></div>
-    <div class="careers-hero-content">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span aria-hidden="true">/</span>
-        <span>Careers</span>
-      </nav>
-      <span class="label reveal">Careers</span>
-      <h1 class="reveal">Join Anywise</h1>
-      <p class="reveal">Help build sovereign, ethical technology for the organisations that protect and serve Australia. We're looking for people who care about the work as much as the craft.</p>
+<!-- ═══ HERO ═══ -->
+<section class="careers-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span>Careers</span>
     </div>
-  </section>
+    <h1>any<span>.</span>careers</h1>
+    <p>Help build sovereign, ethical technology for the organisations that protect and serve Australia. We're looking for people who care about the work as much as the craft.</p>
+  </div>
+</section>
+
+<div class="container">
 
   <!-- ═══ JOB LISTINGS ═══ -->
   <section class="careers-section" id="open-roles">
@@ -488,8 +455,6 @@
 
   <!-- ═══ EOI SECTION ═══ -->
   <section class="eoi-section" id="eoi-section">
-    <div class="eoi-bg" aria-hidden="true"></div>
-    <div class="eoi-content">
       <h2 class="reveal">Don't see the right role?</h2>
       <p class="section-sub reveal">Register your interest and we'll be in touch when something relevant comes up.</p>
 
@@ -506,17 +471,36 @@
         </div>
 
         <div class="engage-group">
-          <label for="eoiDiscipline">Area of interest <span aria-hidden="true">*</span></label>
+          <label for="eoiDiscipline">Specialist field <span aria-hidden="true">*</span></label>
           <select id="eoiDiscipline" name="discipline" required>
             <option value="" disabled selected>Select one…</option>
-            <option value="Software Engineering">Software Engineering</option>
-            <option value="Data Engineering / Analytics">Data Engineering / Analytics</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Software Development">Software Development</option>
+            <option value="Data Science">Data Science</option>
+            <option value="ICT & Comms">ICT &amp; Comms</option>
+            <option value="Project Management">Project Management</option>
+            <option value="Business Analyst">Business Analyst</option>
+            <option value="Business Support">Business Support</option>
+            <option value="Business Development & Strategy">Business Development &amp; Strategy</option>
+            <option value="ILS">ILS</option>
             <option value="Cyber Security">Cyber Security</option>
-            <option value="Project / Programme Management">Project / Programme Management</option>
-            <option value="Business Analysis">Business Analysis</option>
-            <option value="Defence / Government Advisory">Defence / Government Advisory</option>
             <option value="Design / UX">Design / UX</option>
-            <option value="Operations / Corporate">Operations / Corporate</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="engage-group">
+          <label for="eoiLocation">Location <span aria-hidden="true">*</span></label>
+          <select id="eoiLocation" name="location" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Melbourne">Melbourne</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Canberra">Canberra</option>
+            <option value="Brisbane">Brisbane</option>
+            <option value="Perth">Perth</option>
+            <option value="Adelaide">Adelaide</option>
+            <option value="Australia - Other">Australia - Other</option>
+            <option value="Will commute or relocate">Will commute or relocate</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -541,10 +525,9 @@
           <button type="submit" class="btn btn-primary">Submit &rarr;</button>
         </div>
       </form>
-    </div>
   </section>
 
-</div><!-- .page-wrap -->
+</div><!-- .container -->
 
 </main>
 
@@ -641,6 +624,41 @@
           <div class="engage-group">
             <label for="wizLinkedin">LinkedIn URL</label>
             <input id="wizLinkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
+          </div>
+        </div>
+        <div class="engage-form-row">
+          <div class="engage-group">
+            <label for="wizSpecialist">Specialist field <span aria-hidden="true">*</span></label>
+            <select id="wizSpecialist" name="specialistField" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Software Development">Software Development</option>
+              <option value="Data Science">Data Science</option>
+              <option value="ICT & Comms">ICT &amp; Comms</option>
+              <option value="Project Management">Project Management</option>
+              <option value="Business Analyst">Business Analyst</option>
+              <option value="Business Support">Business Support</option>
+              <option value="Business Development & Strategy">Business Development &amp; Strategy</option>
+              <option value="ILS">ILS</option>
+              <option value="Cyber Security">Cyber Security</option>
+              <option value="Design / UX">Design / UX</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="engage-group">
+            <label for="wizLocation">Location <span aria-hidden="true">*</span></label>
+            <select id="wizLocation" name="location" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="Melbourne">Melbourne</option>
+              <option value="Sydney">Sydney</option>
+              <option value="Canberra">Canberra</option>
+              <option value="Brisbane">Brisbane</option>
+              <option value="Perth">Perth</option>
+              <option value="Adelaide">Adelaide</option>
+              <option value="Australia - Other">Australia - Other</option>
+              <option value="Will commute or relocate">Will commute or relocate</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </div>
       </div>
@@ -762,13 +780,36 @@
       }).join('') + '</ul>';
     }
 
+    var aboutAnywiseHTML = ''
+      + '<div class="job-detail-section">'
+      + '  <h3>About Anywise</h3>'
+      + '  <p>Anywise is a sovereign, wholly Australian-owned technology and services company working at '
+      + 'the intersection of defence, government, and emerging technology. Founded by veterans with a '
+      + 'mission to do things differently, we mobilise high-performing teams to solve complex capability, '
+      + 'technology, and strategic challenges — with ethics at the centre of everything we build.</p>'
+      + '  <p>Our purpose — empowering people and organisations to create a positive impact in the world '
+      + 'by enabling better decisions — shapes every product we design and every engagement we take on. '
+      + 'Across defence, emergency services, energy, logistics, and infrastructure, we build human-centred '
+      + 'solutions that put better decisions in the hands of the people who need them most.</p>'
+      + '  <p>B Corp certified and purpose-driven, we\'re a diverse team of deep specialists who '
+      + 'collaborate broadly — and we\'re growing.</p>'
+      + '</div>';
+
     var whyAnywiseHTML = ''
-      + '<div class="why-anywise">'
-      + '  <h3>Why Anywise</h3>'
-      + '  <p>Anywise is a certified B Corp and wholly Australian-owned technology company. '
-      + 'We build sovereign, ethical solutions for defence and government — work that matters, '
-      + 'delivered with integrity. We pay fairly, invest in our people, and hold ourselves '
-      + 'accountable to the highest standards of governance and social responsibility.</p>'
+      + '<div class="job-detail-section why-anywise">'
+      + '  <h3>Why Anywise?</h3>'
+      + '  <ul>'
+      + '    <li><strong>Hybrid flexibility</strong> — structure your week around what works for you, '
+      + 'with the freedom to work remotely when needed while still coming together in the office when it counts.</li>'
+      + '    <li><strong>Innovation with purpose</strong> — We build new thinking and architectures for '
+      + 'measurable impact, not novelty — including hackathons where your ideas take shape.</li>'
+      + '    <li><strong>Grow across the stack</strong> — We give people room to develop across the full '
+      + 'stack and into emerging technology areas, including AI.</li>'
+      + '    <li><strong>A great place to work</strong> — stocked pantry, team offsites, industry events, '
+      + 'and a genuine commitment to making every day enjoyable. Good people, good work, good fun.</li>'
+      + '    <li><strong>Fair pay, real inclusion</strong> — We\'re committed to paying fairly and building '
+      + 'a culture where everyone belongs.</li>'
+      + '  </ul>'
       + '  <div class="why-badges">'
       + '    <img src="assets/images/certifications/bCorp.png" alt="B Corp Certified" loading="lazy">'
       + '    <img src="assets/images/certifications/australianOwned.png" alt="Australian Owned" loading="lazy">'
@@ -819,17 +860,23 @@
               ? '<div class="job-card-closing">Applications close ' + formatDate(job.closingDate) + '</div>'
               : '')
             + '<div class="job-card-details">'
-            + '  <div class="job-detail-grid">'
-            + '    <div class="job-detail-col">'
-            + '      <h3>Responsibilities</h3>'
-            + '      ' + renderList(job.responsibilities)
-            + '    </div>'
-            + '    <div class="job-detail-col">'
-            + '      <h3>Requirements</h3>'
-            + '      ' + renderList(job.requirements)
-            + '    </div>'
-            + '  </div>'
-            + '  ' + whyAnywiseHTML
+            + aboutAnywiseHTML
+            + (job.opportunity
+              ? '<div class="job-detail-section"><h3>The Opportunity</h3><p>' + escapeHtml(job.opportunity) + '</p></div>'
+              : '')
+            + (job.whatYoullBeDoing
+              ? '<div class="job-detail-section"><h3>What You\'ll Be Doing</h3><p>' + escapeHtml(job.whatYoullBeDoing) + '</p></div>'
+              : '')
+            + (job.whatWereLookingFor && job.whatWereLookingFor.length
+              ? '<div class="job-detail-section"><h3>What We\'re Looking For</h3>' + renderList(job.whatWereLookingFor) + '</div>'
+              : '')
+            + (job.bonusPoints && job.bonusPoints.length
+              ? '<div class="job-detail-section"><h3>Bonus Points</h3>' + renderList(job.bonusPoints) + '</div>'
+              : '')
+            + (job.securityClearance
+              ? '<div class="job-detail-section"><h3>Security Clearance</h3><p>' + escapeHtml(job.securityClearance) + '</p></div>'
+              : '')
+            + whyAnywiseHTML
             + '</div>';
 
           jobList.appendChild(card);
@@ -1036,7 +1083,9 @@
             ['Full name', data.name || ''],
             ['Email', data.email || ''],
             ['Phone', data.phone || ''],
-            ['LinkedIn', data.linkedin || 'Not provided']
+            ['LinkedIn', data.linkedin || 'Not provided'],
+            ['Specialist field', data.specialistField || ''],
+            ['Location', data.location || '']
           ])
         + reviewSection('Eligibility', 2, [
             ['Work rights', data.citizenship || ''],
