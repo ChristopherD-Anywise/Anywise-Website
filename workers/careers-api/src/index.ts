@@ -1,11 +1,16 @@
-interface Env {
+export interface Env {
   CV_BUCKET: R2Bucket;
   ALLOWED_ORIGINS: string;
   CLICKUP_API_KEY: string;
   CLICKUP_LIST_ID: string;
-  WEB3FORMS_ACCESS_KEY: string;
+  CLICKUP_ROLES_LIST_ID: string;
   R2_PUBLIC_URL: string;
+  WEBHOOK_SECRET: string;
+  GITHUB_TOKEN: string;
+  GITHUB_REPO: string;
 }
+
+import { handleSyncJobs } from './sync-jobs';
 
 function getCorsHeaders(request: Request, env: Env): Record<string, string> {
   const origin = request.headers.get('Origin') || '';
@@ -41,6 +46,8 @@ export default {
         return await handleApply(request, env, headers);
       } else if (url.pathname === '/eoi') {
         return await handleEOI(request, env, headers);
+      } else if (url.pathname === '/sync-jobs') {
+        return await handleSyncJobs(request, env);
       } else {
         return Response.json({ success: false, message: 'Not found' }, { status: 404, headers });
       }
@@ -67,6 +74,8 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
   const salaryExpectation = formData.get('salaryExpectation') as string || '';
   const role = formData.get('role') as string;
   const roleTitle = formData.get('roleTitle') as string || role;
+  const specialistField = formData.get('specialistField') as string || '';
+  const location = formData.get('location') as string || '';
   const cvFile = formData.get('cv') as File | null;
 
   /* Validate required fields */
@@ -119,13 +128,16 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     coverLetter,
   ].filter(Boolean).join('\n');
 
-  await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, ['application']);
-
-  /* Send email via Web3Forms */
-  await sendEmail(env, {
-    subject: `New Application: ${roleTitle} — ${name}`,
-    message: `New application received for ${roleTitle}.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nWork Rights: ${citizenship}\nNotice Period: ${noticePeriod}\n\nCheck ClickUp for full details.`,
-    from_name: 'Anywise Careers',
+  await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, {
+    email,
+    phone,
+    linkedin,
+    specialistField,
+    location,
+    roleTitle,
+    noticePeriod,
+    cvUrl,
+    source: 'Application',
   });
 
   return Response.json({ success: true, message: 'Application submitted' }, { headers });
@@ -139,6 +151,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const discipline = formData.get('discipline') as string;
+  const location = formData.get('location') as string || '';
   const message = formData.get('message') as string;
   const cvFile = formData.get('cv') as File | null;
 
@@ -180,12 +193,12 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     message,
   ].filter(Boolean).join('\n');
 
-  await createClickUpTask(env, `EOI — ${name} (${discipline})`, taskDescription, ['eoi']);
-
-  await sendEmail(env, {
-    subject: `New EOI: ${name} — ${discipline}`,
-    message: `New expression of interest received.\n\nName: ${name}\nEmail: ${email}\nArea: ${discipline}\n\nMessage:\n${message}`,
-    from_name: 'Anywise Careers',
+  await createClickUpTask(env, `EOI — ${name} (${discipline})`, taskDescription, {
+    email,
+    specialistField: discipline,
+    location,
+    cvUrl,
+    source: 'EOI',
   });
 
   return Response.json({ success: true, message: 'Expression of interest submitted' }, { headers });
@@ -193,12 +206,89 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
 
 /* ── Helpers ── */
 
+interface CustomFieldData {
+  email?: string;
+  phone?: string;
+  linkedin?: string;
+  specialistField?: string;
+  location?: string;
+  roleTitle?: string;
+  noticePeriod?: string;
+  cvUrl?: string;
+  source?: string;
+}
+
+/* ClickUp custom field IDs */
+const CF = {
+  EMAIL: '24de3348-c5a4-44be-97d2-bf11ce077af6',
+  PHONE: '2a42c8f9-e979-40a6-b339-6916b90a445a',
+  CONTACT_LINK: 'bc454465-0896-4815-aae9-ad62f956de4d',
+  SPECIALIST_FIELD: 'cf3bfbe7-50ea-4327-b3d0-08fd9940092d',
+  LOCATION: 'df130be4-92f8-4534-b386-d3364e01aafe',
+  ROLE_VACANCY: '73f748dd-3363-4b9f-a41f-4bd596b2ee9c',
+  AVAILABILITY: '25a5459a-1b6e-479b-9999-26f17865af07',
+  RECEIVED_RESUME: '7d48995c-502c-4c76-bc2f-e63842592036',
+  SUBMITTED_AT: 'f4411d87-55d3-47d5-9c06-b30e514d382c',
+  SOURCE: 'ddd1e5d1-9bd6-4cc5-bcb3-7a4882f3f043',
+} as const;
+
+/* Specialist Field dropdown option UUIDs */
+const SPECIALIST_OPTIONS: Record<string, string> = {
+  'Engineering': '7510c0cb',
+  'ILS': '4bbc3a0f',
+  'Project Management': '86a96e27',
+  'Software Development': 'a1413237',
+  'Business Support': '96a96ead',
+  'Business Development & Strategy': '0537d6aa',
+  'ICT & Comms': '9ebf5e82',
+  'Data Science': '675a1d4d',
+  'Business Analyst': '3b905627',
+};
+
+/* Location dropdown option UUIDs */
+const LOCATION_OPTIONS: Record<string, string> = {
+  'Melbourne': '7fdb3bf2',
+  'Perth': '0decee74',
+  'Sydney': '4d472759',
+  'Canberra': 'b25295ca',
+  'Brisbane': '9b195a20',
+  'Adelaide': '0f37a8c8',
+  'Australia - Other': 'bf1dc92b',
+  'Will commute or relocate': '5dfbb4ce',
+  'Other': '1b354cb7',
+};
+
+function buildCustomFields(data: CustomFieldData): Array<Record<string, unknown>> {
+  const fields: Array<Record<string, unknown>> = [];
+  const now = new Date().toISOString();
+
+  if (data.email) fields.push({ id: CF.EMAIL, value: data.email });
+  if (data.phone) fields.push({ id: CF.PHONE, value: data.phone });
+  if (data.linkedin) fields.push({ id: CF.CONTACT_LINK, value: data.linkedin });
+  if (data.roleTitle) fields.push({ id: CF.ROLE_VACANCY, value: data.roleTitle });
+  if (data.noticePeriod) fields.push({ id: CF.AVAILABILITY, value: data.noticePeriod });
+  if (data.cvUrl) fields.push({ id: CF.RECEIVED_RESUME, value: data.cvUrl });
+  if (data.source) fields.push({ id: CF.SOURCE, value: data.source });
+  fields.push({ id: CF.SUBMITTED_AT, value: now });
+
+  if (data.specialistField && SPECIALIST_OPTIONS[data.specialistField]) {
+    fields.push({ id: CF.SPECIALIST_FIELD, value: SPECIALIST_OPTIONS[data.specialistField] });
+  }
+  if (data.location && LOCATION_OPTIONS[data.location]) {
+    fields.push({ id: CF.LOCATION, value: LOCATION_OPTIONS[data.location] });
+  }
+
+  return fields;
+}
+
 async function createClickUpTask(
   env: Env,
   name: string,
   description: string,
-  tags: string[]
+  fieldData: CustomFieldData = {}
 ): Promise<void> {
+  const custom_fields = buildCustomFields(fieldData);
+
   const response = await fetch(
     `https://api.clickup.com/api/v2/list/${env.CLICKUP_LIST_ID}/task`,
     {
@@ -209,9 +299,8 @@ async function createClickUpTask(
       },
       body: JSON.stringify({
         name,
-        description,
-        tags,
-        status: 'to do',
+        markdown_description: description,
+        custom_fields,
       }),
     }
   );
@@ -220,26 +309,5 @@ async function createClickUpTask(
     const err = await response.text();
     console.error('ClickUp error:', err);
     /* Don't throw — application was received even if ClickUp fails */
-  }
-}
-
-async function sendEmail(
-  env: Env,
-  opts: { subject: string; message: string; from_name: string }
-): Promise<void> {
-  const response = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      access_key: env.WEB3FORMS_ACCESS_KEY,
-      subject: opts.subject,
-      message: opts.message,
-      from_name: opts.from_name,
-      botcheck: '',
-    }),
-  });
-
-  if (!response.ok) {
-    console.error('Web3Forms error:', await response.text());
   }
 }
