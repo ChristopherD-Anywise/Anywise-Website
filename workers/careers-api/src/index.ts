@@ -142,16 +142,18 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     source: 'Application',
   });
 
-  /* Best-effort: link to role and attach CV */
-  if (taskId) {
-    await linkToRole(taskId, role, env);
+  if (!taskId) {
+    return Response.json({ success: false, message: 'Failed to create application. Please try again.' }, { status: 502, headers });
+  }
 
-    if (cvFile && r2Key) {
-      const arrayBuffer = await cvFile.arrayBuffer();
-      const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
-      if (attached) {
-        await cleanupR2(r2Key, env);
-      }
+  /* Best-effort: link to role and attach CV */
+  await linkToRole(taskId, role, env);
+
+  if (cvFile && r2Key) {
+    const arrayBuffer = await cvFile.arrayBuffer();
+    const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+    if (attached) {
+      await cleanupR2(r2Key, env);
     }
   }
 
@@ -223,8 +225,12 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     ['EOI']
   );
 
+  if (!taskId) {
+    return Response.json({ success: false, message: 'Failed to submit expression of interest. Please try again.' }, { status: 502, headers });
+  }
+
   /* Best-effort: attach CV if provided */
-  if (taskId && cvFile && r2Key) {
+  if (cvFile && r2Key) {
     const arrayBuffer = await cvFile.arrayBuffer();
     const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
     if (attached) {
@@ -261,28 +267,28 @@ const CF = {
 
 /* Specialist Field dropdown option UUIDs */
 const SPECIALIST_OPTIONS: Record<string, string> = {
-  'Engineering': '7510c0cb',
-  'ILS': '4bbc3a0f',
-  'Project Management': '86a96e27',
-  'Software Development': 'a1413237',
-  'Business Support': '96a96ead',
-  'Business Development & Strategy': '0537d6aa',
-  'ICT & Comms': '9ebf5e82',
-  'Data Science': '675a1d4d',
-  'Business Analyst': '3b905627',
+  'Engineering': '7510c0cb-1671-4d26-8b01-737e3750ab26',
+  'ILS': '4bbc3a0f-c8f4-495f-99f3-7b609dadb948',
+  'Project Management': '86a96e27-9b1c-4230-bd54-034517acebca',
+  'Software Development': 'a1413237-fec7-48a5-8c70-c24c5abe37db',
+  'Business Support': '96a96ead-3210-4139-94f4-155969e80a58',
+  'Business Development & Strategy': '0537d6aa-0095-4fe9-90c9-162e45b2f168',
+  'ICT & Comms': '9ebf5e82-db36-4b82-8e5d-26f4de9b6679',
+  'Data Science': '675a1d4d-e900-45d3-90aa-c91711a426c7',
+  'Business Analyst': '3b905627-8c96-4ab1-94d7-66af08666b8e',
 };
 
 /* Location dropdown option UUIDs */
 const LOCATION_OPTIONS: Record<string, string> = {
-  'Melbourne': '7fdb3bf2',
-  'Perth': '0decee74',
-  'Sydney': '4d472759',
-  'Canberra': 'b25295ca',
-  'Brisbane': '9b195a20',
-  'Adelaide': '0f37a8c8',
-  'Australia - Other': 'bf1dc92b',
-  'Will commute or relocate': '5dfbb4ce',
-  'Other': '1b354cb7',
+  'Melbourne': '7fdb3bf2-5545-4542-afaf-c920a4f97e6d',
+  'Perth': '0decee74-ad9c-4449-87da-64d3ed2d15f8',
+  'Sydney': '4d472759-3496-46e3-9ec1-43b14cb8628e',
+  'Canberra': 'b25295ca-b0f1-4889-addb-c6c48645f424',
+  'Brisbane': '9b195a20-eb4e-4cb8-9255-5bf093cc8dc7',
+  'Adelaide': '0f37a8c8-331d-4505-9b76-3203217a4251',
+  'Australia - Other': 'bf1dc92b-10f9-4528-b5f6-aebe7620c9dc',
+  'Will commute or relocate': '5dfbb4ce-3e48-49e1-a286-28d4da326b28',
+  'Other': '1b354cb7-2ec1-46ac-aa9a-59cb83ef2a08',
 };
 
 function buildCustomFields(data: CustomFieldData): Array<Record<string, unknown>> {
