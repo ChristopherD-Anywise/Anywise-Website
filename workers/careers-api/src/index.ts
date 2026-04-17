@@ -174,8 +174,9 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     return Response.json({ success: false, message: 'Missing required fields' }, { status: 400, headers });
   }
 
-  /* Optional CV upload */
+  /* Optional CV upload to R2 (staging) */
   let cvUrl = '';
+  let r2Key = '';
   if (cvFile && cvFile.size > 0) {
     const ext = cvFile.name.split('.').pop()?.toLowerCase();
     const allowed = ['pdf', 'doc', 'docx'];
@@ -193,6 +194,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
       httpMetadata: { contentType: cvFile.type },
       customMetadata: { applicantName: name, type: 'eoi' },
     });
+    r2Key = key;
     cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
@@ -208,12 +210,27 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     message,
   ].filter(Boolean).join('\n');
 
-  await createClickUpTask(env, `EOI — ${name} (${discipline})`, taskDescription, {
-    email,
-    specialistField: discipline,
-    location,
-    source: 'EOI',
-  });
+  const taskId = await createClickUpTask(
+    env,
+    `EOI — ${name} (${discipline})`,
+    taskDescription,
+    {
+      email,
+      specialistField: discipline,
+      location,
+      source: 'EOI',
+    },
+    ['EOI']
+  );
+
+  /* Best-effort: attach CV if provided */
+  if (taskId && cvFile && r2Key) {
+    const arrayBuffer = await cvFile.arrayBuffer();
+    const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+    if (attached) {
+      await cleanupR2(r2Key, env);
+    }
+  }
 
   return Response.json({ success: true, message: 'Expression of interest submitted' }, { headers });
 }
