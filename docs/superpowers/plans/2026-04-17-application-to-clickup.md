@@ -618,19 +618,18 @@ Replace the section from the `/* Create ClickUp task */` comment through the ret
     await linkToRole(taskId, role, env);
 
     if (cvFile && r2Key) {
-      const fileBuffer = await env.CV_BUCKET.get(r2Key);
-      if (fileBuffer) {
-        const arrayBuffer = await fileBuffer.arrayBuffer();
-        const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
-        if (attached) {
-          await cleanupR2(r2Key, env);
-        }
+      const arrayBuffer = await cvFile.arrayBuffer();
+      const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+      if (attached) {
+        await cleanupR2(r2Key, env);
       }
     }
   }
 
   return Response.json({ success: true, message: 'Application submitted' }, { headers });
 ```
+
+> **Note:** We read the CV directly from `cvFile.arrayBuffer()` (still in memory from the form submission) rather than round-tripping through R2. The R2 copy is only there as a safety net if the ClickUp attachment fails.
 
 - [ ] **Step 3: Track the R2 key for later cleanup**
 
@@ -705,6 +704,8 @@ git commit -m "feat: handleApply attaches CV to ClickUp task and links to role"
 
 ### Task 5: Update `handleEOI` for Tagging and Attachment
 
+> **Prerequisite:** The "EOI" tag must exist in the ClickUp Space. ClickUp typically auto-creates tags on first use, but if the tag does not appear after E2E testing, create it manually in ClickUp first.
+
 **Files:**
 - Modify: `workers/careers-api/src/index.ts:148-205`
 
@@ -764,13 +765,10 @@ Replace lines 162–204 (from `/* Optional CV upload */` through the return) wit
 
   /* Best-effort: attach CV if provided */
   if (taskId && cvFile && r2Key) {
-    const fileBuffer = await env.CV_BUCKET.get(r2Key);
-    if (fileBuffer) {
-      const arrayBuffer = await fileBuffer.arrayBuffer();
-      const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
-      if (attached) {
-        await cleanupR2(r2Key, env);
-      }
+    const arrayBuffer = await cvFile.arrayBuffer();
+    const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+    if (attached) {
+      await cleanupR2(r2Key, env);
     }
   }
 
