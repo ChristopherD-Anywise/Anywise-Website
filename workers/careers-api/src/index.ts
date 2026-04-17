@@ -134,9 +134,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     linkedin,
     specialistField,
     location,
-    roleTitle,
     noticePeriod,
-    cvUrl,
     source: 'Application',
   });
 
@@ -197,7 +195,6 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     email,
     specialistField: discipline,
     location,
-    cvUrl,
     source: 'EOI',
   });
 
@@ -212,9 +209,7 @@ interface CustomFieldData {
   linkedin?: string;
   specialistField?: string;
   location?: string;
-  roleTitle?: string;
   noticePeriod?: string;
-  cvUrl?: string;
   source?: string;
 }
 
@@ -225,9 +220,7 @@ const CF = {
   CONTACT_LINK: 'bc454465-0896-4815-aae9-ad62f956de4d',
   SPECIALIST_FIELD: 'cf3bfbe7-50ea-4327-b3d0-08fd9940092d',
   LOCATION: 'df130be4-92f8-4534-b386-d3364e01aafe',
-  ROLE_VACANCY: '73f748dd-3363-4b9f-a41f-4bd596b2ee9c',
   AVAILABILITY: '25a5459a-1b6e-479b-9999-26f17865af07',
-  RECEIVED_RESUME: '7d48995c-502c-4c76-bc2f-e63842592036',
   SUBMITTED_AT: 'f4411d87-55d3-47d5-9c06-b30e514d382c',
   SOURCE: 'ddd1e5d1-9bd6-4cc5-bcb3-7a4882f3f043',
 } as const;
@@ -265,9 +258,7 @@ function buildCustomFields(data: CustomFieldData): Array<Record<string, unknown>
   if (data.email) fields.push({ id: CF.EMAIL, value: data.email });
   if (data.phone) fields.push({ id: CF.PHONE, value: data.phone });
   if (data.linkedin) fields.push({ id: CF.CONTACT_LINK, value: data.linkedin });
-  if (data.roleTitle) fields.push({ id: CF.ROLE_VACANCY, value: data.roleTitle });
   if (data.noticePeriod) fields.push({ id: CF.AVAILABILITY, value: data.noticePeriod });
-  if (data.cvUrl) fields.push({ id: CF.RECEIVED_RESUME, value: data.cvUrl });
   if (data.source) fields.push({ id: CF.SOURCE, value: data.source });
   fields.push({ id: CF.SUBMITTED_AT, value: now });
 
@@ -285,9 +276,19 @@ async function createClickUpTask(
   env: Env,
   name: string,
   description: string,
-  fieldData: CustomFieldData = {}
-): Promise<void> {
+  fieldData: CustomFieldData = {},
+  tags: string[] = []
+): Promise<string | null> {
   const custom_fields = buildCustomFields(fieldData);
+
+  const body: Record<string, unknown> = {
+    name,
+    markdown_description: description,
+    custom_fields,
+  };
+  if (tags.length > 0) {
+    body.tags = tags;
+  }
 
   const response = await fetch(
     `https://api.clickup.com/api/v2/list/${env.CLICKUP_LIST_ID}/task`,
@@ -297,17 +298,16 @@ async function createClickUpTask(
         'Content-Type': 'application/json',
         'Authorization': env.CLICKUP_API_KEY,
       },
-      body: JSON.stringify({
-        name,
-        markdown_description: description,
-        custom_fields,
-      }),
+      body: JSON.stringify(body),
     }
   );
 
   if (!response.ok) {
     const err = await response.text();
     console.error('ClickUp error:', err);
-    /* Don't throw — application was received even if ClickUp fails */
+    return null;
   }
+
+  const data = (await response.json()) as { id: string };
+  return data.id;
 }
