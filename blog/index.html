@@ -318,11 +318,15 @@
       }
 
       /* Sort newest first */
-      posts.sort(function(a, b) { return b.date.localeCompare(a.date); });
+      posts.sort(function(a, b) { return b.publishDate.localeCompare(a.publishDate); });
+
+      /* Hide future-dated posts */
+      var today = new Date().toISOString().split('T')[0];
+      posts = posts.filter(function(p) { return p.publishDate <= today; });
 
       posts.forEach(function(post) {
-        const excerpt = truncate(post.intro, 160);
-        const dateStr = formatDate(post.date);
+        const excerpt = truncate(post.excerpt, 160);
+        const dateStr = formatDate(post.publishDate);
         const thumb = post.heroImage
           ? `<img src="${post.heroImage}" alt="${post.title}" loading="lazy">`
           : thumbSVG();
