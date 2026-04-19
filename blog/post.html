@@ -338,6 +338,11 @@
         <a href="../index.html#about">About</a>
         <a href="../blog/index.html">Insights</a>
         <a href="../careers.html">Careers</a>
+        <a href="../grievance-policy.html">Grievance Policy</a>
+        <a href="../whistleblower-policy.html">Whistleblower Policy</a>
+        <a href="../weapons-exclusion.html">Defence Disclosure</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms of Use</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -360,9 +365,21 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 <script src="../shared.js"></script>
+<script src="lib/marked.min.js" integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+" crossorigin="anonymous"></script>
+<script src="lib/purify.min.js" integrity="sha384-lExbHoPFNjOW+xMze1tJWzpODN3bi/yx3zhbwRoZWaIYxjl89HxJcI2BxPTNa9M7" crossorigin="anonymous"></script>
 <script>
 (function() {
   const container = document.getElementById('postContent');
+
+  /* Configure marked with custom renderer */
+  var renderer = new marked.Renderer();
+  renderer.blockquote = function(token) {
+    return '<blockquote class="pullquote">' + token.text + '</blockquote>';
+  };
+  renderer.image = function(token) {
+    return '<img src="' + token.href + '" alt="' + (token.text || '') + '" class="post-block-img" loading="lazy">';
+  };
+  marked.setOptions({ renderer: renderer, breaks: false, gfm: true });
 
   function formatDate(iso) {
     const d = new Date(iso + 'T00:00:00');
@@ -377,30 +394,12 @@
       .replace(/"/g, '&quot;');
   }
 
-  function renderBlock(block) {
-    switch (block.type) {
-      case 'paragraph':
-        return '<p>' + escapeHtml(block.content) + '</p>';
-      case 'pullquote':
-        return '<blockquote class="pullquote">' + escapeHtml(block.content) + '</blockquote>';
-      case 'list':
-        return '<ul>' + block.items.map(function(item) {
-          return '<li>' + escapeHtml(item) + '</li>';
-        }).join('') + '</ul>';
-      case 'image':
-        var cap = block.caption ? '<p class="post-block-img-caption">' + escapeHtml(block.caption) + '</p>' : '';
-        return '<img src="' + escapeHtml(block.src) + '" alt="' + escapeHtml(block.caption || '') + '" class="post-block-img" loading="lazy">' + cap;
-      default:
-        return '';
-    }
-  }
-
   function renderMoreCard(post) {
     return '<a href="post.html?slug=' + encodeURIComponent(post.slug) + '" class="more-card">' +
       '<div class="more-card-meta">' +
         '<span class="post-cat">' + escapeHtml(post.category) + '</span>' +
         '<span>·</span>' +
-        '<span>' + formatDate(post.date) + '</span>' +
+        '<span>' + formatDate(post.publishDate) + '</span>' +
       '</div>' +
       '<h4>' + escapeHtml(post.title) + '</h4>' +
     '</a>';
@@ -432,16 +431,13 @@
         '</svg></div>';
     }
 
-    /* Sections */
-    var sectionsHtml = post.sections.map(function(section) {
-      var blocksHtml = section.blocks.map(renderBlock).join('');
-      return '<h2 class="post-section-heading">' + escapeHtml(section.heading) + '</h2>' + blocksHtml;
-    }).join('');
+    /* Render markdown content */
+    var sectionsHtml = DOMPurify.sanitize(marked.parse(post.content || ''));
 
     /* More posts: 2 most recent excluding current */
     var morePosts = allPosts
       .filter(function(p) { return p.slug !== post.slug; })
-      .sort(function(a, b) { return b.date.localeCompare(a.date); })
+      .sort(function(a, b) { return b.publishDate.localeCompare(a.publishDate); })
       .slice(0, 2);
 
     var moreHtml = '';
@@ -467,14 +463,14 @@
         '<div class="post-meta-bar">' +
           '<span class="post-cat">' + escapeHtml(post.category) + '</span>' +
           '<span class="post-meta-sep">·</span>' +
-          '<span class="post-date">' + formatDate(post.date) + '</span>' +
+          '<span class="post-date">' + formatDate(post.publishDate) + '</span>' +
           '<span class="post-meta-sep">·</span>' +
           '<span class="post-author">' + escapeHtml(post.author) + '</span>' +
           '<span class="post-meta-sep">·</span>' +
           '<span class="post-read">' + post.readTime + ' min read</span>' +
         '</div>' +
         '<h1>' + escapeHtml(post.title) + '</h1>' +
-        '<p style="color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin-top:0.5rem">' + escapeHtml(post.intro) + '</p>' +
+        '<p style="color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin-top:0.5rem">' + escapeHtml(post.excerpt) + '</p>' +
       '</header>' +
 
       /* Body */
@@ -507,10 +503,10 @@
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": post.title,
-      "description": post.intro,
+      "description": post.excerpt,
       "url": staticUrl,
-      "datePublished": post.date,
-      "dateModified": post.date,
+      "datePublished": post.publishDate,
+      "dateModified": post.publishDate,
       "author": {
         "@type": "Organization",
         "@id": "https://anywise.com.au/#organization",
