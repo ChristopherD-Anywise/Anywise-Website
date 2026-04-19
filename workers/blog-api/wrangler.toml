@@ -1,0 +1,8 @@
+name = "anywise-blog-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://anywise.com.au,https://www.anywise.com.au"
+CLICKUP_BLOG_LIST_ID = "__SET_AFTER_LIST_CREATION__"
+GITHUB_REPO = "ChristopherD-Anywise/Anywise-Website"
