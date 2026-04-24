@@ -387,15 +387,20 @@ footer {
   text-decoration: none;
 }
 .footer-phone a:hover,
-.footer-email a:hover {
+.footer-email a:hover,
+.footer-social a:hover {
   color: var(--accent);
 }
 .footer-email {
   font-size: 0.95rem;
 }
-.footer-email a {
+.footer-email a,
+.footer-social a {
   color: var(--text-secondary);
   text-decoration: none;
+}
+.footer-social {
+  font-size: 0.95rem;
 }
 .footer-legal {
   font-size: 0.85rem;
