@@ -379,6 +379,24 @@ footer {
   max-width: 240px;
   line-height: 1.6;
 }
+.footer-phone {
+  font-size: 0.95rem;
+}
+.footer-phone a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.footer-phone a:hover,
+.footer-email a:hover {
+  color: var(--accent);
+}
+.footer-email {
+  font-size: 0.95rem;
+}
+.footer-email a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
 .footer-legal {
   font-size: 0.85rem;
   color: var(--text-tertiary);
