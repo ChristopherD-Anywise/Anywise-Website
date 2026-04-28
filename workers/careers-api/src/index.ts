@@ -4,7 +4,6 @@ export interface Env {
   CLICKUP_API_KEY: string;
   CLICKUP_LIST_ID: string;
   CLICKUP_ROLES_LIST_ID: string;
-  R2_PUBLIC_URL: string;
   WEBHOOK_SECRET: string;
   GITHUB_TOKEN: string;
   GITHUB_REPO: string;
@@ -86,8 +85,8 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
   }
 
   /* Upload CV to R2 (staging — will be attached to ClickUp task and deleted) */
-  let cvUrl = '';
   let r2Key = '';
+  let cvBuffer: ArrayBuffer | null = null;
   if (cvFile && cvFile.size > 0) {
     const ext = cvFile.name.split('.').pop()?.toLowerCase();
     const allowed = ['pdf', 'doc', 'docx'];
@@ -98,15 +97,12 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
       return Response.json({ success: false, message: 'File too large. Maximum 10MB.' }, { status: 400, headers });
     }
 
-    const timestamp = Date.now();
-    const safeName = name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-    const key = `cv/${timestamp}-${safeName}.${ext}`;
-    await env.CV_BUCKET.put(key, cvFile.stream(), {
+    r2Key = `cv/${crypto.randomUUID()}.${ext}`;
+    cvBuffer = await cvFile.arrayBuffer();
+    await env.CV_BUCKET.put(r2Key, cvBuffer, {
       httpMetadata: { contentType: cvFile.type },
       customMetadata: { applicantName: name, role: role },
     });
-    r2Key = key;
-    cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
   /* Create ClickUp task */
@@ -126,7 +122,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     '### Experience',
     `- **Notice Period:** ${noticePeriod}`,
     salaryExpectation ? `- **Salary Expectations:** ${salaryExpectation}` : '',
-    cvUrl ? `- **CV:** [Download CV](${cvUrl})` : '- **CV:** Not uploaded',
+    '- **CV:** See attachment',
     '',
     '### Cover Letter',
     coverLetter,
@@ -149,9 +145,8 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
   /* Best-effort: link to role and attach CV */
   await linkToRole(taskId, role, env);
 
-  if (cvFile && r2Key) {
-    const arrayBuffer = await cvFile.arrayBuffer();
-    const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+  if (cvFile && r2Key && cvBuffer) {
+    const attached = await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
     if (attached) {
       await cleanupR2(r2Key, env);
     }
@@ -177,8 +172,8 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
   }
 
   /* Optional CV upload to R2 (staging) */
-  let cvUrl = '';
   let r2Key = '';
+  let cvBuffer: ArrayBuffer | null = null;
   if (cvFile && cvFile.size > 0) {
     const ext = cvFile.name.split('.').pop()?.toLowerCase();
     const allowed = ['pdf', 'doc', 'docx'];
@@ -189,15 +184,12 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
       return Response.json({ success: false, message: 'File too large. Maximum 10MB.' }, { status: 400, headers });
     }
 
-    const timestamp = Date.now();
-    const safeName = name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-    const key = `cv/eoi-${timestamp}-${safeName}.${ext}`;
-    await env.CV_BUCKET.put(key, cvFile.stream(), {
+    r2Key = `cv/eoi-${crypto.randomUUID()}.${ext}`;
+    cvBuffer = await cvFile.arrayBuffer();
+    await env.CV_BUCKET.put(r2Key, cvBuffer, {
       httpMetadata: { contentType: cvFile.type },
       customMetadata: { applicantName: name, type: 'eoi' },
     });
-    r2Key = key;
-    cvUrl = `${env.R2_PUBLIC_URL}/${key}`;
   }
 
   const taskDescription = [
@@ -206,7 +198,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     `- **Name:** ${name}`,
     `- **Email:** ${email}`,
     `- **Area of Interest:** ${discipline}`,
-    cvUrl ? `- **CV:** [Download CV](${cvUrl})` : '',
+    cvFile && r2Key ? '- **CV:** See attachment' : '',
     '',
     '### Message',
     message,
@@ -230,9 +222,8 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
   }
 
   /* Best-effort: attach CV if provided */
-  if (cvFile && r2Key) {
-    const arrayBuffer = await cvFile.arrayBuffer();
-    const attached = await attachFileToTask(taskId, arrayBuffer, cvFile.name, cvFile.type, env);
+  if (cvFile && r2Key && cvBuffer) {
+    const attached = await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
     if (attached) {
       await cleanupR2(r2Key, env);
     }
