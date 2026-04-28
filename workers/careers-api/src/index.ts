@@ -128,31 +128,35 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     coverLetter,
   ].filter(Boolean).join('\n');
 
-  const taskId = await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, {
-    email,
-    phone,
-    linkedin,
-    specialistField,
-    location,
-    noticePeriod,
-    source: 'Application',
-  });
+  let taskId: string | null = null;
+  try {
+    taskId = await createClickUpTask(env, `${roleTitle} — ${name}`, taskDescription, {
+      email,
+      phone,
+      linkedin,
+      specialistField,
+      location,
+      noticePeriod,
+      source: 'Application',
+    });
 
-  if (!taskId) {
-    return Response.json({ success: false, message: 'Failed to create application. Please try again.' }, { status: 502, headers });
-  }
+    if (!taskId) {
+      return Response.json({ success: false, message: 'Failed to create application. Please try again.' }, { status: 502, headers });
+    }
 
-  /* Best-effort: link to role and attach CV */
-  await linkToRole(taskId, role, env);
+    /* Best-effort: link to role and attach CV */
+    await linkToRole(taskId, role, env);
 
-  if (cvFile && r2Key && cvBuffer) {
-    const attached = await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
-    if (attached) {
+    if (cvFile && r2Key && cvBuffer) {
+      await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
+    }
+
+    return Response.json({ success: true, message: 'Application submitted' }, { headers });
+  } finally {
+    if (r2Key) {
       await cleanupR2(r2Key, env);
     }
   }
-
-  return Response.json({ success: true, message: 'Application submitted' }, { headers });
 }
 
 /* ── EOI handler ── */
@@ -204,32 +208,36 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     message,
   ].filter(Boolean).join('\n');
 
-  const taskId = await createClickUpTask(
-    env,
-    `EOI — ${name} (${discipline})`,
-    taskDescription,
-    {
-      email,
-      specialistField: discipline,
-      location,
-      source: 'EOI',
-    },
-    ['EOI']
-  );
+  let taskId: string | null = null;
+  try {
+    taskId = await createClickUpTask(
+      env,
+      `EOI — ${name} (${discipline})`,
+      taskDescription,
+      {
+        email,
+        specialistField: discipline,
+        location,
+        source: 'EOI',
+      },
+      ['EOI']
+    );
 
-  if (!taskId) {
-    return Response.json({ success: false, message: 'Failed to submit expression of interest. Please try again.' }, { status: 502, headers });
-  }
+    if (!taskId) {
+      return Response.json({ success: false, message: 'Failed to submit expression of interest. Please try again.' }, { status: 502, headers });
+    }
 
-  /* Best-effort: attach CV if provided */
-  if (cvFile && r2Key && cvBuffer) {
-    const attached = await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
-    if (attached) {
+    /* Best-effort: attach CV if provided */
+    if (cvFile && r2Key && cvBuffer) {
+      await attachFileToTask(taskId, cvBuffer, cvFile.name, cvFile.type, env);
+    }
+
+    return Response.json({ success: true, message: 'Expression of interest submitted' }, { headers });
+  } finally {
+    if (r2Key) {
       await cleanupR2(r2Key, env);
     }
   }
-
-  return Response.json({ success: true, message: 'Expression of interest submitted' }, { headers });
 }
 
 /* ── Helpers ── */
