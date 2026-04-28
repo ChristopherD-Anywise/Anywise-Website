@@ -309,6 +309,14 @@
     </div>`;
   }
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   fetch('posts.json')
     .then(function(r) {
       if (!r.ok) throw new Error('Failed to load');
@@ -331,7 +339,7 @@
         const excerpt = truncate(post.excerpt, 160);
         const dateStr = formatDate(post.publishDate);
         const thumb = post.heroImage
-          ? `<img src="${post.heroImage}" alt="${post.title}" loading="lazy">`
+          ? `<img src="${escapeHtml(post.heroImage)}" alt="${escapeHtml(post.title)}" loading="lazy">`
           : thumbSVG();
 
         const item = document.createElement('a');
@@ -344,12 +352,12 @@
             <div class="post-meta">
               <span class="post-date">${dateStr}</span>
               <span class="post-sep">·</span>
-              <span class="post-cat">${post.category}</span>
+              <span class="post-cat">${escapeHtml(post.category)}</span>
               <span class="post-sep">·</span>
-              <span class="post-read-time">${post.readTime} min read</span>
+              <span class="post-read-time">${escapeHtml(String(post.readTime))} min read</span>
             </div>
-            <div class="post-title">${post.title}</div>
-            <p class="post-excerpt">${excerpt}</p>
+            <div class="post-title">${escapeHtml(post.title)}</div>
+            <p class="post-excerpt">${escapeHtml(excerpt)}</p>
           </div>
         `;
         list.appendChild(item);
