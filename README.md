@@ -319,7 +319,6 @@ careers.html reads jobs.json
 | `ALLOWED_ORIGINS` | `https://anywise.com.au,https://www.anywise.com.au` | CORS |
 | `CLICKUP_LIST_ID` | `162603016` | Talent Community list for applications |
 | `CLICKUP_ROLES_LIST_ID` | `901614527130` | Roles list for job sync |
-| `R2_PUBLIC_URL` | `https://pub-9ca69b476984498ea82bd6e6b2cffe0f.r2.dev` | R2 bucket public URL |
 | `GITHUB_REPO` | `ChristopherD-Anywise/Anywise-Website` | Target repo for jobs.json commits |
 
 **Secrets** (set via `npx wrangler secret put <NAME>`):
