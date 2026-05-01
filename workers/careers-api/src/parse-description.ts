@@ -4,6 +4,7 @@ export interface ParsedDescription {
   whatYoullBeDoing: string;
   whatWereLookingFor: string[];
   bonusPoints: string[];
+  whatMattersMoreThanYourCV: string[];
   securityClearance: string;
 }
 
@@ -14,6 +15,7 @@ const SECTION_KEYS: Record<string, keyof Omit<ParsedDescription, 'shortDescripti
   'what we\'re looking for': 'whatWereLookingFor',
   'what were looking for': 'whatWereLookingFor',
   'bonus points': 'bonusPoints',
+  'what matters more than your cv': 'whatMattersMoreThanYourCV',
   'security clearance': 'securityClearance',
   /* Legacy names for backwards compat */
   'responsibilities': 'whatYoullBeDoing',
@@ -79,6 +81,7 @@ export function parseDescription(markdown: string): ParsedDescription {
     whatYoullBeDoing: (sections['whatYoullBeDoing'] || []).join(' '),
     whatWereLookingFor: sections['whatWereLookingFor'] || [],
     bonusPoints: sections['bonusPoints'] || [],
+    whatMattersMoreThanYourCV: sections['whatMattersMoreThanYourCV'] || [],
     securityClearance: (sections['securityClearance'] || []).join(' '),
   };
 }

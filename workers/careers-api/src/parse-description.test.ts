@@ -21,6 +21,10 @@ describe('parseDescription', () => {
       '- Python development',
       '- Working with LLMs',
       '',
+      '## What Matters More Than Your CV',
+      '- Curiosity and a growth mindset',
+      '- A collaborative approach to problem-solving',
+      '',
       '## Security Clearance',
       'Australian citizenship is required.',
     ].join('\n');
@@ -43,6 +47,10 @@ describe('parseDescription', () => {
       'Python development',
       'Working with LLMs',
     ]);
+    expect(result.whatMattersMoreThanYourCV).toEqual([
+      'Curiosity and a growth mindset',
+      'A collaborative approach to problem-solving',
+    ]);
     expect(result.securityClearance).toBe('Australian citizenship is required.');
   });
 
@@ -61,6 +69,7 @@ describe('parseDescription', () => {
     expect(result.whatYoullBeDoing).toBe('');
     expect(result.whatWereLookingFor).toEqual(['Must have clearance']);
     expect(result.bonusPoints).toEqual([]);
+    expect(result.whatMattersMoreThanYourCV).toEqual([]);
     expect(result.securityClearance).toBe('');
   });
 

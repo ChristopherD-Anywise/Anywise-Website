@@ -105,6 +105,7 @@ function taskToJob(task: ClickUpTask): JobEntry {
     whatYoullBeDoing: parsed.whatYoullBeDoing,
     whatWereLookingFor: parsed.whatWereLookingFor,
     bonusPoints: parsed.bonusPoints,
+    whatMattersMoreThanYourCV: parsed.whatMattersMoreThanYourCV,
     securityClearance: parsed.securityClearance,
   };
 }

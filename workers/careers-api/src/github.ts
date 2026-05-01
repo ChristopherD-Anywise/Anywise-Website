@@ -10,6 +10,7 @@ export interface JobEntry {
   whatYoullBeDoing: string;
   whatWereLookingFor: string[];
   bonusPoints: string[];
+  whatMattersMoreThanYourCV: string[];
   securityClearance: string;
 }
 
