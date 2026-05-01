@@ -894,6 +894,215 @@
       + '  </div>'
       + '</div>';
 
+    function renderJobDetail(job) {
+      return ''
+        + aboutAnywiseHTML
+        + (job.opportunity
+          ? '<div class="job-detail-section"><h3>The Opportunity</h3><p>' + escapeHtml(job.opportunity) + '</p></div>'
+          : '')
+        + (job.whatYoullBeDoing
+          ? '<div class="job-detail-section"><h3>What You\'ll Be Doing</h3><p>' + escapeHtml(job.whatYoullBeDoing) + '</p></div>'
+          : '')
+        + (job.whatWereLookingFor && job.whatWereLookingFor.length
+          ? '<div class="job-detail-section"><h3>What We\'re Looking For</h3>' + renderList(job.whatWereLookingFor) + '</div>'
+          : '')
+        + (job.bonusPoints && job.bonusPoints.length
+          ? '<div class="job-detail-section"><h3>Bonus Points</h3>' + renderList(job.bonusPoints) + '</div>'
+          : '')
+        + (job.whatMattersMoreThanYourCV && job.whatMattersMoreThanYourCV.length
+          ? '<div class="job-detail-section"><h3>What Matters More Than Your CV</h3>' + renderList(job.whatMattersMoreThanYourCV) + '</div>'
+          : '')
+        + (job.securityClearance
+          ? '<div class="job-detail-section"><h3>Security Clearance</h3><p>' + escapeHtml(job.securityClearance) + '</p></div>'
+          : '')
+        + whyAnywiseHTML;
+    }
+
+    /* ═══ JOB DETAIL MODAL CONTROLLER ═══ */
+    var modalOverlay = document.getElementById('jobModalOverlay');
+    var modalContent = document.getElementById('jobModalContent');
+    var modalClose = document.getElementById('jobModalClose');
+    var modalLive = document.getElementById('jobModalLive');
+    var lastFocusedEl = null;
+
+    var ORIG_TITLE = document.title;
+    var ORIG_DESC = document.querySelector('meta[name="description"]').getAttribute('content');
+    var ORIG_OG_TITLE = document.querySelector('meta[property="og:title"]').getAttribute('content');
+    var ORIG_OG_DESC = document.querySelector('meta[property="og:description"]').getAttribute('content');
+    var ORIG_OG_URL = document.querySelector('meta[property="og:url"]').getAttribute('content');
+    var ORIG_TW_TITLE = document.querySelector('meta[name="twitter:title"]').getAttribute('content');
+    var ORIG_TW_DESC = document.querySelector('meta[name="twitter:description"]').getAttribute('content');
+    var ORIG_CANONICAL = document.querySelector('link[rel="canonical"]').getAttribute('href');
+
+    function setMeta(job) {
+      var title = job.title + ' | Careers | Anywise';
+      var url = 'https://anywise.com.au/careers.html?job=' + encodeURIComponent(job.slug);
+      document.title = title;
+      document.querySelector('meta[name="description"]').setAttribute('content', job.shortDescription);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', job.shortDescription);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', job.shortDescription);
+      document.querySelector('link[rel="canonical"]').setAttribute('href', url);
+    }
+
+    function resetMeta() {
+      document.title = ORIG_TITLE;
+      document.querySelector('meta[name="description"]').setAttribute('content', ORIG_DESC);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', ORIG_OG_TITLE);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', ORIG_OG_DESC);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', ORIG_OG_URL);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', ORIG_TW_TITLE);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', ORIG_TW_DESC);
+      document.querySelector('link[rel="canonical"]').setAttribute('href', ORIG_CANONICAL);
+    }
+
+    function openJobModal(job) {
+      modalContent.innerHTML = ''
+        + '<div class="job-modal-header">'
+        + '  <h2 class="job-modal-title" id="jobModalTitle">' + escapeHtml(job.title) + '</h2>'
+        + '  <div class="job-modal-badges">' + renderBadges(job.location, job.type) + '</div>'
+        + (job.closingDate
+          ? '<div class="job-modal-closing">Applications close ' + formatDate(job.closingDate) + '</div>'
+          : '')
+        + '</div>'
+        + renderJobDetail(job)
+        + '<div class="job-modal-actions">'
+        + '  <button class="job-modal-apply">Apply Now →</button>'
+        + '  <button class="job-modal-share">Share Link</button>'
+        + '</div>';
+
+      modalContent.querySelector('.job-modal-apply').addEventListener('click', function () {
+        closeJobModal(true);
+        openApplicationWizard(job.slug);
+      });
+
+      modalContent.querySelector('.job-modal-share').addEventListener('click', function () {
+        var url = window.location.origin + '/careers.html?job=' + encodeURIComponent(job.slug);
+        var btn = this;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () {
+            btn.textContent = 'Link copied!';
+            modalLive.textContent = 'Link copied to clipboard';
+            setTimeout(function () { btn.textContent = 'Share Link'; modalLive.textContent = ''; }, 2000);
+          });
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = url;
+          ta.style.cssText = 'position:fixed;opacity:0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.textContent = 'Link copied!';
+          modalLive.textContent = 'Link copied to clipboard';
+          setTimeout(function () { btn.textContent = 'Share Link'; modalLive.textContent = ''; }, 2000);
+        }
+      });
+
+      setMeta(job);
+
+      var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = scrollbarW + 'px';
+
+      modalOverlay.hidden = false;
+      void modalOverlay.offsetHeight;
+      modalOverlay.classList.add('open');
+
+      modalClose.focus();
+      trapFocus(modalOverlay);
+    }
+
+    function closeJobModal(skipPush) {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      resetMeta();
+
+      setTimeout(function () {
+        modalOverlay.hidden = true;
+        modalContent.innerHTML = '<div class="job-modal-loading">Loading…</div>';
+      }, 300);
+
+      if (!skipPush) {
+        history.pushState({ jobModal: false }, '', 'careers.html');
+      }
+
+      releaseFocus();
+      if (lastFocusedEl) {
+        lastFocusedEl.focus();
+        lastFocusedEl = null;
+      }
+    }
+
+    function showUnavailable() {
+      modalContent.innerHTML = ''
+        + '<div class="job-modal-unavailable">'
+        + '  <p>This role is no longer available.</p>'
+        + '  <a href="careers.html">← View all open roles</a>'
+        + '</div>';
+
+      var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = scrollbarW + 'px';
+
+      modalOverlay.hidden = false;
+      void modalOverlay.offsetHeight;
+      modalOverlay.classList.add('open');
+      modalClose.focus();
+      trapFocus(modalOverlay);
+    }
+
+    var _focusHandler = null;
+
+    function trapFocus(el) {
+      _focusHandler = function (e) {
+        if (e.key !== 'Tab') return;
+        var focusable = el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      };
+      document.addEventListener('keydown', _focusHandler);
+    }
+
+    function releaseFocus() {
+      if (_focusHandler) {
+        document.removeEventListener('keydown', _focusHandler);
+        _focusHandler = null;
+      }
+    }
+
+    modalClose.addEventListener('click', function () { closeJobModal(); });
+
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) closeJobModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+        closeJobModal();
+      }
+    });
+
+    /* Show modal loading state immediately if ?job= param present */
+    var initialJobSlug = new URLSearchParams(window.location.search).get('job');
+    if (initialJobSlug) {
+      modalOverlay.hidden = false;
+      void modalOverlay.offsetHeight;
+      modalOverlay.classList.add('open');
+      var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = scrollbarW + 'px';
+    }
+
     fetch('jobs.json')
       .then(function (r) {
         if (!r.ok) throw new Error('Failed to load');
@@ -932,33 +1141,14 @@
             + '<div class="job-card-desc">' + escapeHtml(job.shortDescription) + '</div>'
             + (job.closingDate
               ? '<div class="job-card-closing">Applications close ' + formatDate(job.closingDate) + '</div>'
-              : '')
-            + '<div class="job-card-details">'
-            + aboutAnywiseHTML
-            + (job.opportunity
-              ? '<div class="job-detail-section"><h3>The Opportunity</h3><p>' + escapeHtml(job.opportunity) + '</p></div>'
-              : '')
-            + (job.whatYoullBeDoing
-              ? '<div class="job-detail-section"><h3>What You\'ll Be Doing</h3><p>' + escapeHtml(job.whatYoullBeDoing) + '</p></div>'
-              : '')
-            + (job.whatWereLookingFor && job.whatWereLookingFor.length
-              ? '<div class="job-detail-section"><h3>What We\'re Looking For</h3>' + renderList(job.whatWereLookingFor) + '</div>'
-              : '')
-            + (job.bonusPoints && job.bonusPoints.length
-              ? '<div class="job-detail-section"><h3>Bonus Points</h3>' + renderList(job.bonusPoints) + '</div>'
-              : '')
-            + (job.securityClearance
-              ? '<div class="job-detail-section"><h3>Security Clearance</h3><p>' + escapeHtml(job.securityClearance) + '</p></div>'
-              : '')
-            + whyAnywiseHTML
-            + '</div>';
+              : '');
 
           jobList.appendChild(card);
 
           card.querySelector('.job-btn-details').addEventListener('click', function () {
-            var c = this.closest('.job-card');
-            c.classList.toggle('expanded');
-            this.querySelector('.job-btn-details-text').textContent = c.classList.contains('expanded') ? 'Hide Details' : 'View Details';
+            lastFocusedEl = this;
+            history.pushState({ jobModal: true, slug: job.slug }, '', 'careers.html?job=' + encodeURIComponent(job.slug));
+            openJobModal(job);
           });
           card.querySelector('.job-btn-apply').addEventListener('click', function () {
             openApplicationWizard(job.slug);
@@ -977,6 +1167,89 @@
         }
 
         window.__jobs = active;
+
+        /* ═══ URL ROUTING ═══ */
+        window.addEventListener('popstate', function () {
+          var params = new URLSearchParams(window.location.search);
+          var slug = params.get('job');
+          if (slug && modalOverlay.classList.contains('open') === false) {
+            var found = active.find(function (j) { return j.slug === slug; });
+            if (found) { openJobModal(found); } else { showUnavailable(); }
+          } else if (!slug && modalOverlay.classList.contains('open')) {
+            closeJobModal(true);
+          }
+        });
+
+        /* Check for ?job= on initial page load */
+        (function () {
+          var params = new URLSearchParams(window.location.search);
+          var slug = params.get('job');
+          if (slug) {
+            var found = active.find(function (j) { return j.slug === slug; });
+            if (found) {
+              history.replaceState({ jobModal: true, slug: slug }, '', window.location.href);
+              openJobModal(found);
+            } else {
+              showUnavailable();
+            }
+          }
+        })();
+
+        /* ═══ JOBPOSTING SCHEMA.ORG JSON-LD ═══ */
+        var EMPLOYMENT_TYPE_MAP = {
+          'Full-time': 'FULL_TIME',
+          'Part-time': 'PART_TIME',
+          'Contract': 'CONTRACTOR',
+          'Casual': 'TEMPORARY'
+        };
+
+        function buildJobDescription(j) {
+          var html = '<p>' + escapeHtml(j.shortDescription) + '</p>';
+          if (j.opportunity) html += '<h3>The Opportunity</h3><p>' + escapeHtml(j.opportunity) + '</p>';
+          if (j.whatYoullBeDoing) html += '<h3>What You\'ll Be Doing</h3><p>' + escapeHtml(j.whatYoullBeDoing) + '</p>';
+          if (j.whatWereLookingFor && j.whatWereLookingFor.length) {
+            html += '<h3>What We\'re Looking For</h3><ul>' + j.whatWereLookingFor.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+          }
+          if (j.bonusPoints && j.bonusPoints.length) {
+            html += '<h3>Bonus Points</h3><ul>' + j.bonusPoints.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+          }
+          if (j.whatMattersMoreThanYourCV && j.whatMattersMoreThanYourCV.length) {
+            html += '<h3>What Matters More Than Your CV</h3><ul>' + j.whatMattersMoreThanYourCV.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+          }
+          if (j.securityClearance) html += '<h3>Security Clearance</h3><p>' + escapeHtml(j.securityClearance) + '</p>';
+          return html;
+        }
+
+        active.forEach(function (job) {
+          var locations = Array.isArray(job.location) ? job.location : (job.location ? [job.location] : []);
+          var jobLocations = locations.map(function (loc) {
+            return { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: loc, addressCountry: 'AU' } };
+          });
+
+          var schema = {
+            '@context': 'https://schema.org',
+            '@type': 'JobPosting',
+            title: job.title,
+            description: buildJobDescription(job),
+            employmentType: EMPLOYMENT_TYPE_MAP[job.type] || 'FULL_TIME',
+            hiringOrganization: {
+              '@type': 'Organization',
+              name: 'Anywise',
+              sameAs: 'https://anywise.com.au',
+              logo: 'https://anywise.com.au/assets/images/logos/anywise-logo.png'
+            },
+            jobLocation: jobLocations.length === 1 ? jobLocations[0] : jobLocations,
+            url: 'https://anywise.com.au/careers.html?job=' + encodeURIComponent(job.slug)
+          };
+
+          if (job.datePosted) schema.datePosted = job.datePosted;
+          if (job.closingDate) schema.validThrough = job.closingDate + 'T23:59:59+10:00';
+
+          var script = document.createElement('script');
+          script.type = 'application/ld+json';
+          script.textContent = JSON.stringify(schema);
+          document.head.appendChild(script);
+        });
       })
       .catch(function (err) {
         console.error('Failed to load jobs:', err);
