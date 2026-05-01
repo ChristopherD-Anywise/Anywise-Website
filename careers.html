@@ -176,12 +176,15 @@
   background: var(--bg-card);
   border: 1px solid var(--border-accent);
   border-radius: 20px;
-  width: 100%; max-width: 720px;
+  width: 60%; max-width: none;
   padding: 2.5rem;
   position: relative;
   transform: translateY(24px);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   max-height: 90vh; overflow-y: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.job-modal-panel::-webkit-scrollbar { display: none;
 }
 .job-modal-overlay.open .job-modal-panel { transform: translateY(0); }
 
@@ -425,6 +428,7 @@
 
   .job-modal-overlay { align-items: flex-end; padding: 0; }
   .job-modal-panel {
+    width: 100%;
     padding: 1.75rem 1.25rem;
     border-radius: 16px 16px 0 0;
     max-height: 100dvh;
@@ -509,7 +513,7 @@
     <div class="job-list" id="jobList"></div>
 
     <div class="job-empty" id="jobEmpty" hidden>
-      <p>No open roles right now — <a href="#eoi-section">register your interest</a> below.</p>
+      <p>No open roles right now - <a href="#eoi-section">register your interest</a> below.</p>
     </div>
   </section>
 
@@ -810,7 +814,7 @@
 <!-- ═══ SCRIPTS ═══ -->
 <script src="shared.js"></script>
 <script>
-  /* Shared utilities — used by job rendering, wizard, and EOI */
+  /* Shared utilities - used by job rendering, wizard, and EOI */
   var WORKER_URL = 'https://anywise-careers-api.christopher-dennis.workers.dev';
 
   function escapeHtml(str) {
@@ -860,28 +864,28 @@
       + '  <p>Anywise is a sovereign, wholly Australian-owned technology and services company working at '
       + 'the intersection of defence, government, and emerging technology. Founded by veterans with a '
       + 'mission to do things differently, we mobilise high-performing teams to solve complex capability, '
-      + 'technology, and strategic challenges — with ethics at the centre of everything we build.</p>'
-      + '  <p>Our purpose — empowering people and organisations to create a positive impact in the world '
-      + 'by enabling better decisions — shapes every product we design and every engagement we take on. '
+      + 'technology, and strategic challenges - with ethics at the centre of everything we build.</p>'
+      + '  <p>Our purpose - empowering people and organisations to create a positive impact in the world '
+      + 'by enabling better decisions - shapes every product we design and every engagement we take on. '
       + 'Across defence, emergency services, energy, logistics, and infrastructure, we build human-centred '
       + 'solutions that put better decisions in the hands of the people who need them most.</p>'
       + '  <p>B Corp certified and purpose-driven, we\'re a diverse team of deep specialists who '
-      + 'collaborate broadly — and we\'re growing.</p>'
+      + 'collaborate broadly - and we\'re growing.</p>'
       + '</div>';
 
     var whyAnywiseHTML = ''
       + '<div class="job-detail-section why-anywise">'
       + '  <h3>Why Anywise?</h3>'
       + '  <ul>'
-      + '    <li><strong>Hybrid flexibility</strong> — structure your week around what works for you, '
+      + '    <li><strong>Hybrid flexibility</strong> - structure your week around what works for you, '
       + 'with the freedom to work remotely when needed while still coming together in the office when it counts.</li>'
-      + '    <li><strong>Innovation with purpose</strong> — We build new thinking and architectures for '
-      + 'measurable impact, not novelty — including hackathons where your ideas take shape.</li>'
-      + '    <li><strong>Grow across the stack</strong> — We give people room to develop across the full '
+      + '    <li><strong>Innovation with purpose</strong> - We build new thinking and architectures for '
+      + 'measurable impact, not novelty - including hackathons where your ideas take shape.</li>'
+      + '    <li><strong>Grow across the stack</strong> - We give people room to develop across the full '
       + 'stack and into emerging technology areas, including AI.</li>'
-      + '    <li><strong>A great place to work</strong> — stocked pantry, team offsites, industry events, '
+      + '    <li><strong>A great place to work</strong> - stocked pantry, team offsites, industry events, '
       + 'and a genuine commitment to making every day enjoyable. Good people, good work, good fun.</li>'
-      + '    <li><strong>Fair pay, real inclusion</strong> — We\'re committed to paying fairly and building '
+      + '    <li><strong>Fair pay, real inclusion</strong> - We\'re committed to paying fairly and building '
       + 'a culture where everyone belongs.</li>'
       + '  </ul>'
       + '  <div class="why-badges">'
@@ -890,7 +894,7 @@
       + '    <img src="assets/images/certifications/WePayFairly.png" alt="We Pay Fairly" loading="lazy">'
       + '    <img src="assets/images/certifications/FACE.png" alt="FACE" loading="lazy">'
       + '    <img src="assets/images/certifications/ISO9001.jpg" alt="ISO 9001" loading="lazy">'
-      + '    <img src="assets/images/certifications/BFTW-2022-Governance-Badge.png" alt="Best for the World — Governance" loading="lazy">'
+      + '    <img src="assets/images/certifications/BFTW-2022-Governance-Badge.png" alt="Best for the World - Governance" loading="lazy">'
       + '  </div>'
       + '</div>';
 
