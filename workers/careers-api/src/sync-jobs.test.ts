@@ -27,6 +27,7 @@ function makeRequest(secret?: string, headerName = 'X-Webhook-Secret'): Request 
 const sampleClickUpTask = {
   id: 'abc123',
   name: 'Senior Data Engineer',
+  date_created: '1713139200000', // 2024-04-15T00:00:00Z
   description: [
     'Design and build sovereign data pipelines.',
     '',
@@ -163,6 +164,17 @@ describe('handleSyncJobs', () => {
     expect(clickupCall).toBeDefined();
     expect(clickupCall![0]).toContain('statuses[]=published');
     expect(clickupCall![0]).toContain('901614524275');
+
+    /* Verify committed JSON includes datePosted */
+    const putCall = mockFetch.mock.calls.find(
+      (c: [string, RequestInit?]) => c[1]?.method === 'PUT'
+    );
+    expect(putCall).toBeDefined();
+    const putBody = JSON.parse(putCall![1]!.body as string);
+    const committed = JSON.parse(
+      Buffer.from(putBody.content, 'base64').toString('utf-8')
+    );
+    expect(committed[0].datePosted).toBe('2024-04-15');
   });
 
   it('returns empty jobs array when no published tasks', async () => {

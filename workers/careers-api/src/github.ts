@@ -12,6 +12,7 @@ export interface JobEntry {
   bonusPoints: string[];
   whatMattersMoreThanYourCV: string[];
   securityClearance: string;
+  datePosted: string;
 }
 
 interface GitHubFileResponse {

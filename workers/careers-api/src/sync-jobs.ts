@@ -8,6 +8,7 @@ interface ClickUpTask {
   id: string;
   name: string;
   description: string;
+  date_created: string;
   custom_fields: Array<{
     id: string;
     name: string;
@@ -107,6 +108,9 @@ function taskToJob(task: ClickUpTask): JobEntry {
     bonusPoints: parsed.bonusPoints,
     whatMattersMoreThanYourCV: parsed.whatMattersMoreThanYourCV,
     securityClearance: parsed.securityClearance,
+    datePosted: task.date_created
+      ? new Date(Number(task.date_created)).toISOString().slice(0, 10)
+      : '',
   };
 }
 
