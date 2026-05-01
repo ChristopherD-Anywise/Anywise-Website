@@ -27,5 +27,39 @@
       "Exposure to AI tooling or building AI-integrated features"
     ],
     "securityClearance": "Given the nature of our work in defence and government, candidates must be eligible to apply for an Australian Defence Security Clearance. Australian citizenship is required to meet this eligibility."
+  },
+  {
+    "slug": "technology-engineer",
+    "title": "Technology Engineer",
+    "location": [
+      "Melbourne"
+    ],
+    "type": "Full-time",
+    "closingDate": "2026-05-14",
+    "active": true,
+    "shortDescription": "A hands-on technical generalist who works across data pipelines, automation, AI, backend and frontend systems, scripting, and hardware prototyping to build and ship real solutions.",
+    "opportunity": "We need someone who is genuinely curious about how things work and not afraid to figure out the rest along the way. You'll work across data pipelines, automation, AI, backend and frontend systems, scripting, and yes, even sensors and microcontrollers. Not all at once. Not as an expert in every one. But as someone who sees a problem, picks up the right tool, and gets it done. This is a hybrid role based in our Collingwood office in Melbourne, with flexibility to work from home alongside time spent collaborating with the team in person.",
+    "whatYoullBeDoing": "Working across our product and project teams, you'll build, test, and ship technology that solves real problems. In any given week that could look like: Writing backend logic for a data pipeline and wiring up a React dashboard in the same sprint Scripting automation workflows that save the team hours of manual effort Prototyping sensor integrations or microcontroller interfaces for field deployable products Working with AI and ML tools to build features that augment human decision making Troubleshooting, debugging, and improving things that already exist Picking up a technology you haven't used before and learning it fast enough to deliver You won't be siloed. You'll own your tasks, communicate clearly about progress and blockers, and ask good questions when you need to.",
+    "whatWereLookingFor": [
+      "You'll bring experience across some of the following - and a willingness to grow in the areas you haven't touched yet:",
+      "Intermediate experience across personal projects, side builds, or professional work. You've built things before and you can talk about what you learned.",
+      "Backend development in one or more languages (Python, C#, Node.js, or similar)",
+      "Frontend development with a modern framework (React, Vue, Angular, or similar)",
+      "Data work: pipelines, databases, scripting, ETL, or analytics tooling",
+      "Automation and scripting to solve repetitive problems",
+      "Exposure to AI/ML tooling, LLMs, or building AI integrated features",
+      "Hardware prototyping, sensors, microcontrollers (Arduino, Raspberry Pi, ESP32, or similar)",
+      "CI/CD pipelines and version control with Git",
+      "You won't need to tick every box. We care more about how you think and how you approach problems than whether you've used every tool in our stack.",
+      "What Matters More Than Your CV",
+      "Curiosity. You pull things apart to understand them. You google things at midnight because something grabbed your attention.",
+      "A can-do attitude. You don't wait for a detailed spec. You figure it out, propose an approach, and move.",
+      "Breadth over narrow depth. You've touched several domains and you're keen to learn the ones you haven't.",
+      "Strong communication. You can explain what you're doing and why to people who aren't engineers.",
+      "Comfort with ambiguity. You know how to find things out when nobody has the answer ready.",
+      "It's not just about what you know. It's about what you find out."
+    ],
+    "bonusPoints": [],
+    "securityClearance": "Given the nature of our work in defence and government, candidates must be eligible to apply for an Australian Defence Security Clearance. Australian citizenship is required to meet this eligibility."
   }
 ]
