@@ -171,6 +171,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
   const email = formData.get('email') as string;
   const discipline = formData.get('discipline') as string;
   const location = formData.get('location') as string || '';
+  const securityClearance = formData.get('securityClearance') as string || '';
   const message = formData.get('message') as string;
   const cvFile = formData.get('cv') as File | null;
 
@@ -205,6 +206,7 @@ async function handleEOI(request: Request, env: Env, headers: Record<string, str
     `- **Name:** ${name}`,
     `- **Email:** ${email}`,
     `- **Area of Interest:** ${discipline}`,
+    securityClearance ? `- **Security Clearance:** ${securityClearance}` : '',
     cvFile && r2Key ? '- **CV:** See attachment' : '',
     '',
     '### Message',

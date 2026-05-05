@@ -598,6 +598,17 @@
         </div>
 
         <div class="engage-group">
+          <label for="eoiClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span></label>
+          <select id="eoiClearance" name="securityClearance" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Already hold a clearance">Already hold a clearance</option>
+            <option value="Unsure">Unsure</option>
+          </select>
+        </div>
+
+        <div class="engage-group">
           <label for="eoiMessage">Tell us about yourself <span aria-hidden="true">*</span></label>
           <textarea id="eoiMessage" name="message" placeholder="What experience do you bring and what kind of work excites you?" required></textarea>
         </div>
