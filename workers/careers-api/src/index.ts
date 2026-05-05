@@ -77,6 +77,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
   const roleTitle = formData.get('roleTitle') as string || role;
   const specialistField = formData.get('specialistField') as string || '';
   const location = formData.get('location') as string || '';
+  const securityClearance = formData.get('securityClearance') as string || '';
   const cvFile = formData.get('cv') as File | null;
 
   /* Validate required fields */
@@ -118,6 +119,7 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
     '### Eligibility',
     `- **Work Rights:** ${citizenship}`,
     citizenshipDetail ? `- **Details:** ${citizenshipDetail}` : '',
+    securityClearance ? `- **Security Clearance:** ${securityClearance}` : '',
     '',
     '### Experience',
     `- **Notice Period:** ${noticePeriod}`,
@@ -137,8 +139,9 @@ async function handleApply(request: Request, env: Env, headers: Record<string, s
       specialistField,
       location,
       noticePeriod,
+      securityClearance,
       source: 'Application',
-    });
+    }, [roleTitle]);
 
     if (!taskId) {
       return Response.json({ success: false, message: 'Failed to create application. Please try again.' }, { status: 502, headers });
@@ -249,6 +252,7 @@ interface CustomFieldData {
   specialistField?: string;
   location?: string;
   noticePeriod?: string;
+  securityClearance?: string;
   source?: string;
 }
 

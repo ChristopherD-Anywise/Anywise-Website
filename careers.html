@@ -272,7 +272,7 @@
   border: 1px solid var(--border-accent);
   border-radius: 20px;
   width: 100%; max-width: 640px;
-  padding: 2.5rem;
+  padding: 2rem 2.5rem;
   position: relative;
   transform: translateY(24px);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -298,12 +298,12 @@
 }
 .wizard-panel h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
 .wizard-sub {
-  font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+  font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;
 }
 
 /* Progress bar */
 .wizard-progress {
-  display: flex; gap: 0.5rem; margin-bottom: 2rem;
+  display: flex; gap: 0.5rem; margin-bottom: 1.25rem;
 }
 .wizard-step-indicator {
   flex: 1; text-align: center; font-size: 0.7rem; font-weight: 500;
@@ -359,30 +359,30 @@
 
 /* Review step */
 .wizard-review-section {
-  margin-bottom: 1.25rem; padding-bottom: 1rem;
+  margin-bottom: 0.6rem; padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
-.wizard-review-section:last-child { border-bottom: none; }
+.wizard-review-section:last-child { border-bottom: none; margin-bottom: 0; }
 .wizard-review-header {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 .wizard-review-header h4 {
-  font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--accent);
 }
 .wizard-review-edit {
-  font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer;
+  font-size: 0.7rem; color: var(--text-tertiary); cursor: pointer;
   background: none; border: none; font-family: var(--font);
   transition: color 0.2s;
 }
 .wizard-review-edit:hover { color: var(--accent); }
 .wizard-review-row {
-  display: flex; justify-content: space-between; padding: 0.25rem 0;
-  font-size: 0.82rem;
+  display: flex; justify-content: space-between; padding: 0.15rem 0;
+  font-size: 0.78rem;
 }
-.wizard-review-label { color: var(--text-tertiary); }
-.wizard-review-value { color: var(--text-primary); font-weight: 500; text-align: right; }
+.wizard-review-label { color: var(--text-tertiary); white-space: nowrap; margin-right: 1rem; }
+.wizard-review-value { color: var(--text-primary); font-weight: 500; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60%; }
 
 .wizard-success {
   text-align: center; padding: 3rem 1rem;
@@ -400,7 +400,35 @@
 }
 
 .wizard-privacy {
-  font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.4;
+  font-size: 0.72rem; color: var(--text-tertiary); line-height: 1.3;
+  margin-top: 0.5rem;
+}
+
+/* Tooltip */
+.wizard-tooltip {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 1rem; height: 1rem; border-radius: 50%;
+  background: var(--border); color: var(--text-secondary);
+  font-size: 0.65rem; font-weight: 700; cursor: help;
+  margin-left: 0.35rem; vertical-align: middle;
+  line-height: 1;
+}
+.wizard-tooltip::after {
+  content: attr(data-tip);
+  position: absolute; bottom: calc(100% + 6px); left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated); border: 1px solid var(--border-accent);
+  border-radius: 8px; padding: 0.6rem 0.75rem;
+  font-size: 0.72rem; font-weight: 400; line-height: 1.4;
+  color: var(--text-secondary);
+  white-space: normal; width: 240px; text-align: left;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+.wizard-tooltip:hover::after,
+.wizard-tooltip:focus::after {
+  opacity: 1;
 }
 
 /* File input styling */
@@ -745,6 +773,16 @@
         <div class="engage-group" id="wizCitizenshipDetailGroup" hidden>
           <label for="wizCitizenshipDetail">Please provide details <span aria-hidden="true">*</span></label>
           <input id="wizCitizenshipDetail" name="citizenshipDetail" type="text" placeholder="e.g. Visa subclass, expiry date">
+        </div>
+        <div class="engage-group">
+          <label for="wizClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span></label>
+          <select id="wizClearance" name="securityClearance" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Already hold a clearance">Already hold a clearance</option>
+            <option value="Unsure">Unsure</option>
+          </select>
         </div>
       </div>
 
@@ -1454,11 +1492,12 @@
           ])
         + reviewSection('Eligibility', 2, [
             ['Work rights', data.citizenship || ''],
-            data.citizenshipDetail ? ['Details', data.citizenshipDetail] : null
+            data.citizenshipDetail ? ['Details', data.citizenshipDetail] : null,
+            ['Security clearance', data.securityClearance || '']
           ].filter(Boolean))
         + reviewSection('Experience', 3, [
             ['CV', cvName],
-            ['Cover letter', (data.coverLetter || '').substring(0, 120) + (data.coverLetter && data.coverLetter.length > 120 ? '…' : '')],
+            ['Cover letter', (data.coverLetter || '').substring(0, 60) + (data.coverLetter && data.coverLetter.length > 60 ? '…' : '')],
             ['Notice period', data.noticePeriod || ''],
             ['Salary expectations', data.salaryExpectation ? '$' + Number(data.salaryExpectation).toLocaleString() + ' per year' : 'Not provided']
           ]);
