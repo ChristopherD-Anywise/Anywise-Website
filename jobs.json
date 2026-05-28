@@ -1,5 +1,38 @@
 [
   {
+    "slug": "learning-development-and-training-delivery-specialists",
+    "title": "Learning, Development and Training Delivery Specialists",
+    "location": [
+      "Canberra",
+      "Remote"
+    ],
+    "type": "All Employment Options",
+    "closingDate": "2026-06-05",
+    "active": true,
+    "shortDescription": "Expression of Interest. 12-month engagement supporting ADELE, the Defence training content delivery platform, designing and delivering Signals and Radio Frequency training. Canberra or remote. Mid to Senior level, multiple roles.",
+    "opportunity": "We're building a small bench of training specialists for ADELE, the Defence training content delivery platform, and we want to hear from people who know what good Signals and Radio Frequency training actually looks like. This is a 12-month engagement with the option to extend. The work is anchored in Canberra, but we're open to remote delivery for the right people. You'll join a multidisciplinary team designing, redesigning, and delivering training products that take learners through the foundations of military communications, including waveforms, information formatting, channel coding, and multiplexing, so they come out the other side with real, applied understanding. If you've built training that holds up under scrutiny, instructed in classrooms or in the field, or rebuilt a course because the old one wasn't landing the learning outcomes it needed to, we'd like to hear from you.",
+    "whatYoullBeDoing": "Working across ADELE's training portfolio, you'll take Signals and RF content from concept through to delivery. In any given week that could look like: Designing new courses from learning outcomes up, or redesigning courses that aren't getting the results they should Mapping and rationalising existing training products so the right content reaches the right audience without duplication or gaps Prototyping course structures, learning sequences, and assessment approaches before they hit the platform Translating dense technical content (waveforms, channel coding, multiplexing, information formatting) into accessible, instructionally sound learning material Delivering training directly, whether in person, through ADELE, or in blended formats Working alongside subject matter experts, instructional designers, and platform engineers to keep content current, accurate, and tied to capability needs Capturing learner feedback and iterating on materials so courses keep improving You won't be siloed. You'll own your courses, communicate clearly about progress and blockers, and ask good questions when you need to.",
+    "whatWereLookingFor": [
+      "You'll bring experience across some of the following, and a willingness to grow in the areas you haven't touched yet:",
+      "Military Signals or Radio Frequency background, with hands-on exposure to tactical communications, waveforms, or radio systems",
+      "Training delivery experience, ideally in a Defence or structured instructional setting",
+      "Course design or redesign, including writing learning outcomes, building assessments, and structuring lesson plans",
+      "ADF instructor qualifications or equivalent adult learning credentials (Cert IV TAE, Workplace Trainer and Assessor, or similar)",
+      "Comfort with the technical subject matter including communications fundamentals, information theory basics, channel coding, and multiplexing",
+      "Experience working with digital training platforms or learning management systems",
+      "You won't need to tick every box. We care more about how you think about training and what you've actually built or delivered than the length of your certification list.",
+      "What Matters More Than Your CV",
+      "Instructional honesty. You design for learning outcomes, not for filling time slots. If a module isn't working, you change it.",
+      "Subject matter respect. You take the time to get the Signals content right. You won't ship a slide you don't understand yourself.",
+      "A practitioner's mindset. You've delivered training, not just designed it. You know what fails in the room.",
+      "Clear communication. You can explain a complex waveform concept to a brand-new learner without dumbing it down.",
+      "Pragmatism over polish. You'd rather ship a course that works and iterate than chase a perfect storyboard for six months.",
+      "Good training isn't about what you put in front of learners. It's about what they walk out knowing how to do."
+    ],
+    "bonusPoints": [],
+    "securityClearance": "Given the nature of our work in defence and government, candidates must be eligible to apply for an Australian Defence Security Clearance. Australian citizenship is required to meet this eligibility."
+  },
+  {
     "slug": "software-engineer",
     "title": "Software Engineer",
     "location": [
