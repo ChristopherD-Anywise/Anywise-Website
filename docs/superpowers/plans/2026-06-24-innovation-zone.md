@@ -150,7 +150,7 @@ git commit -m "feat(innovation): add homepage Innovation section styles"
       </div>
     </div>
 
-    <div class="section-view-all reveal" style="margin-top:2.5rem;">
+    <div class="section-view-all reveal">
       <a href="innovation.html" class="btn btn-accent"><span>See what we've built &rarr;</span></a>
     </div>
   </div>
