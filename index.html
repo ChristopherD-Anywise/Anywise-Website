@@ -1128,6 +1128,41 @@ a.nav-cta:hover::after { width: 100%; }
   opacity: 0.75;
 }
 
+/* ── INNOVATION ── */
+.innovation { padding: 7rem 0; }
+.innovation-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.innovation-head h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800; color: var(--text-primary);
+  line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+}
+.innovation-head h2 em { font-style: normal; color: var(--accent); }
+.innovation-head p { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
+
+.innovation-pathway { display: flex; align-items: stretch; gap: 0.75rem; margin: 2.5rem 0; }
+.innovation-step { flex: 1; min-width: 0; }
+.innovation-step .step-n { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--text-tertiary); }
+.innovation-step .step-t { color: var(--text-primary); font-size: 0.95rem; font-weight: 500; margin: 0.4rem 0 0.2rem; }
+.innovation-step .step-d { font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0; }
+.innovation-arrow { color: var(--accent-dim); font-size: 1.1rem; align-self: flex-start; margin-top: 1.4rem; }
+
+.innovation-preview-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); margin: 2rem 0 1rem; }
+.innovation-preview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.innovation-prev-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.1rem 1.2rem; transition: var(--transition);
+}
+.innovation-prev-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); border-color: var(--border-accent); }
+.innovation-prev-card h3 { color: var(--text-primary); font-size: 1rem; font-weight: 500; margin: 0 0 0.35rem; }
+.innovation-prev-card p { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+
+@media (max-width: 900px) { .innovation-preview { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .innovation-pathway { flex-direction: column; gap: 1rem; }
+  .innovation-arrow { display: none; }
+}
+@media (max-width: 560px) { .innovation-preview { grid-template-columns: 1fr; } }
+
 /* ═══ TRACK RECORD ═══ */
 .track {
   padding: 7rem 0;
