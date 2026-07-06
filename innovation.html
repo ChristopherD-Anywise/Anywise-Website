@@ -78,6 +78,43 @@
   .innov-media-logo img { object-fit: contain; padding: 2rem; }
   [data-theme="light"] .innov-media-logo { background: #1a1a1a; }
 
+  /* SENTIA inline SVG: fill the tile, theme-aware colours */
+  .innov-media-svg { aspect-ratio: auto; display: flex; align-items: center; background: transparent; border: none; border-radius: 0; overflow: visible; }
+  .sentia-svg { width: 100%; height: auto; display: block; }
+  /* Dark (default) palette */
+  .sentia-svg .s-bg1 { stop-color: #04211a; }
+  .sentia-svg .s-bg2 { stop-color: #02120d; }
+  .sentia-svg .s-hairline { stroke: #1c3f31; }
+  .sentia-svg .s-flow { font-weight: 700; fill: #7fa892; letter-spacing: 2px; }
+  .sentia-svg .s-flowline { stroke: #2c5a45; }
+  .sentia-svg .s-ribbonT { font-weight: 700; fill: #04211a; letter-spacing: 1px; }
+  .sentia-svg .s-ribbonB { font-family: 'Roboto',Arial,sans-serif; fill: #0c3a24; }
+  .sentia-svg .s-letter { font-weight: 800; fill: #ffffff; }
+  .sentia-svg .s-name { font-weight: 700; fill: #eafff0; letter-spacing: 1px; }
+  .sentia-svg .s-desc { font-family: 'Roboto',Arial,sans-serif; fill: #d3f2da; }
+  .sentia-svg .s-eyebrow { font-weight: 700; fill: #c3e01b; letter-spacing: 3px; }
+  .sentia-svg .s-sub { font-family: 'Roboto',Arial,sans-serif; fill: #a9c9b6; }
+  .sentia-svg .s-chip-bg { fill: #0c3325; }
+  .sentia-svg .s-chip { font-weight: 700; fill: #eafff0; }
+  .sentia-svg .s-callout { fill: #0a2c21; stroke: #1c4c39; }
+  .sentia-svg .s-bandT { font-weight: 700; fill: #c3e01b; letter-spacing: 1px; }
+  .sentia-svg .s-bandB { font-family: 'Roboto',Arial,sans-serif; fill: #c8e6d1; }
+  /* Light palette: flip backgrounds light, text dark; keep greens */
+  [data-theme="light"] .sentia-svg .s-bg1 { stop-color: #eef5ee; }
+  [data-theme="light"] .sentia-svg .s-bg2 { stop-color: #dfeadf; }
+  [data-theme="light"] .sentia-svg .s-hairline { stroke: #c2d4c6; }
+  [data-theme="light"] .sentia-svg .s-flow { fill: #4a5f52; }
+  [data-theme="light"] .sentia-svg .s-flowline { stroke: #9dbfa8; }
+  [data-theme="light"] .sentia-svg .s-ribbonT { fill: #04211a; }
+  [data-theme="light"] .sentia-svg .s-ribbonB { fill: #0c3a24; }
+  [data-theme="light"] .sentia-svg .s-eyebrow { fill: #2d7f36; }
+  [data-theme="light"] .sentia-svg .s-sub { fill: #4a5f52; }
+  [data-theme="light"] .sentia-svg .s-chip-bg { fill: #ffffff; }
+  [data-theme="light"] .sentia-svg .s-chip { fill: #1a3d1e; }
+  [data-theme="light"] .sentia-svg .s-callout { fill: #f0f6f0; stroke: #cfe0d3; }
+  [data-theme="light"] .sentia-svg .s-bandT { fill: #2d7f36; }
+  [data-theme="light"] .sentia-svg .s-bandB { fill: #33473a; }
+
   .innov-cta { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 0.5rem; }
   .innov-cta-line { font-size: 1.05rem; color: var(--text-primary); margin: 0 0 1.25rem; max-width: 34rem; }
   .innov-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -156,7 +193,49 @@
         </div>
         <p class="innov-for"><b>For:</b> commanders and practitioners who have to make a defensible call, fast, and stand behind it.</p>
       </div>
-      <div class="innov-media"><img src="assets/images/innovation/sentia.jpg" alt="The SENTIA ecosystem, from sensor to commander" loading="lazy" width="600" height="450"></div>
+      <div class="innov-media innov-media-svg" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
+        <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sentiaBg" x1="0" y1="0" x2="866" y2="866" gradientTransform="matrix(1.1547,0,0,0.52176,0,122.766)" gradientUnits="userSpaceOnUse">
+              <stop offset="0" class="s-bg1"/><stop offset="1" class="s-bg2"/>
+            </linearGradient>
+            <linearGradient id="sentiaCard" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#39a849"/><stop offset="1" stop-color="#1f6e30"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="122.766" width="1000" height="451.853" fill="url(#sentiaBg)"/>
+          <line x1="40" y1="126" x2="960" y2="126" class="s-hairline" stroke-width="1.5"/>
+          <text x="70" y="162" class="s-flow" font-size="11">SENSORS &amp; DATA</text>
+          <text x="930" y="162" text-anchor="end" class="s-flow" font-size="11">COMMANDER'S DECISION</text>
+          <line x1="250" y1="158" x2="688" y2="158" class="s-flowline" stroke-width="2"/>
+          <polygon points="688,153 700,158 688,163" fill="#c3e01b"/>
+          <rect x="70" y="176" width="860" height="30" rx="6" fill="#c3e01b"/>
+          <circle cx="92" cy="191" r="3.5" fill="#04211a"/>
+          <text x="104" y="195" class="s-ribbonT" font-size="12">PROVENANCE &amp; TRUST</text>
+          <text x="300" y="195" class="s-ribbonB" font-size="12">every output is traceable and confidence-scored at each stage</text>
+          <g class="s-card"><rect x="70" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="135" y="272" text-anchor="middle" class="s-letter" font-size="42">S</text><text x="135" y="298" text-anchor="middle" class="s-name" font-size="14">SENSE</text><line x1="90" y1="310" x2="180" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="135" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Capture data from</text><text x="135" y="344" text-anchor="middle" class="s-desc" font-size="10.5">sensors and sources</text></g>
+          <g class="s-card"><rect x="216" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="281" y="272" text-anchor="middle" class="s-letter" font-size="42">E</text><text x="281" y="298" text-anchor="middle" class="s-name" font-size="14">ENRICH</text><line x1="236" y1="310" x2="326" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="281" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Structure raw inputs</text><text x="281" y="344" text-anchor="middle" class="s-desc" font-size="10.5">into intelligence</text></g>
+          <g class="s-card"><rect x="362" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="427" y="272" text-anchor="middle" class="s-letter" font-size="42">N</text><text x="427" y="298" text-anchor="middle" class="s-name" font-size="14">NEXUS</text><line x1="382" y1="310" x2="472" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="427" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Link and correlate</text><text x="427" y="344" text-anchor="middle" class="s-desc" font-size="10.5">across sources</text></g>
+          <g class="s-card"><rect x="508" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="573" y="272" text-anchor="middle" class="s-letter" font-size="42">T</text><text x="573" y="298" text-anchor="middle" class="s-name" font-size="14">THINK</text><line x1="528" y1="310" x2="618" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="573" y="330" text-anchor="middle" class="s-desc" font-size="10.5">AI interprets patterns,</text><text x="573" y="344" text-anchor="middle" class="s-desc" font-size="10.5">recommends options</text></g>
+          <g class="s-card"><rect x="654" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="719" y="272" text-anchor="middle" class="s-letter" font-size="42">I</text><text x="719" y="298" text-anchor="middle" class="s-name" font-size="14">INFORM</text><line x1="674" y1="310" x2="764" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="719" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Deliver decision-</text><text x="719" y="344" text-anchor="middle" class="s-desc" font-size="10.5">ready outputs</text></g>
+          <g class="s-card"><rect x="800" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="865" y="272" text-anchor="middle" class="s-letter" font-size="42">A</text><text x="865" y="298" text-anchor="middle" class="s-name" font-size="14">ASSURE</text><line x1="820" y1="310" x2="910" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="865" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Traceable, confidence-</text><text x="865" y="344" text-anchor="middle" class="s-desc" font-size="10.5">scored results</text></g>
+          <g fill="#c3e01b"><polygon points="204,290 214,297 204,304"/><polygon points="350,290 360,297 350,304"/><polygon points="496,290 506,297 496,304"/><polygon points="642,290 652,297 642,304"/><polygon points="788,290 798,297 788,304"/></g>
+          <text x="71" y="408.8" class="s-eyebrow" font-size="11">MODULAR SPECIALIST APPS</text>
+          <text x="327" y="408.8" class="s-sub" font-size="12">plug in at Think and Inform, so the ecosystem extends without rebuilding</text>
+          <g font-size="12.5" transform="translate(1.35,-43.17)">
+            <rect x="70" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="145" y="486" text-anchor="middle" class="s-chip">Engineering</text>
+            <rect x="234" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="309" y="486" text-anchor="middle" class="s-chip">Logistics</text>
+            <rect x="398" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="473" y="486" text-anchor="middle" class="s-chip">Medical &amp; Health</text>
+            <rect x="562" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="637" y="486" text-anchor="middle" class="s-chip">Deployable Camp</text>
+            <rect x="726" y="464" width="150" height="34" rx="17" fill="none" stroke="#c3e01b" stroke-width="1.5" stroke-dasharray="4, 3"/><text x="801" y="486" text-anchor="middle" class="s-chip" fill="#c3e01b">+ any specialisation</text>
+          </g>
+          <rect x="71.35" y="480.8" width="860" height="72" rx="10" class="s-callout" stroke-width="1"/>
+          <rect x="71.35" y="480.8" width="6" height="72" rx="3" fill="#c3e01b"/>
+          <text x="97.35" y="508.8" class="s-bandT" font-size="14">HUMAN OVERSIGHT</text>
+          <text x="97.35" y="530.8" class="s-bandB" font-size="13">The commander sets the level of automation. AI does what humans cannot at scale, then makes its reasoning visible.</text>
+          <text x="97.35" y="546.8" class="s-bandB" font-size="13">High-risk decisions always stay with people.</text>
+        </svg>
+      </div>
     </div>
 
     <div class="innov-block reveal">
