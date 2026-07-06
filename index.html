@@ -216,16 +216,6 @@ html, body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(57,168,73,0.06);
 }
 
-[data-theme="light"] .innovation-prev-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-left: 3px solid var(--accent);
-}
-[data-theme="light"] .innovation-prev-card:hover {
-  background: var(--bg-card-hover);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(57,168,73,0.06);
-}
-
 /* ═══ LIGHT MODE — PRODUCT & NEWS CARDS ═══ */
 [data-theme="light"] .product-card:hover {
   box-shadow: 0 12px 40px rgba(0,0,0,0.1);
@@ -1198,35 +1188,10 @@ a.nav-cta:hover::after { width: 100%; }
 .innovation-step .step-d { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 
 .innovation-preview-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); margin: 2rem 0 1rem; }
-.innovation-preview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-.innovation-prev-card {
-  padding: 1.4rem 1.4rem;
-  border: 1px solid rgba(45,127,54,0.3);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, #1a3d1e 0%, #1b5e2a 50%, #163d1f 100%);
-  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s, background 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-.innovation-prev-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gradient-al);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.innovation-prev-card:hover::before { transform: scaleX(1); }
-.innovation-prev-card:hover {
-  border-color: rgba(57,168,73,0.5);
-  background: linear-gradient(145deg, #224a27 0%, #247035 50%, #1e4a28 100%);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 50px rgba(57,168,73,0.15);
-}
-.innovation-prev-card h3 { color: var(--text-primary); font-size: 1rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
-.innovation-prev-card p { font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+.innovation-preview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.innovation-preview .product-card-img { height: 150px; }
+.innovation-preview .swift-tile { background: #1a1a1a; }
+.innovation-preview .swift-tile .product-card-img { object-fit: contain; padding: 1.4rem; }
 
 @media (max-width: 900px) { .innovation-preview { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
@@ -1730,7 +1695,7 @@ footer {
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="products/index.html">Products &amp; Services</a></li>
-      <li><a href="#innovation">Innovation</a></li>
+      <li><a href="innovation.html">Innovation</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="blog/index.html">Insights</a></li>
       <li><a href="careers.html">Careers</a></li>
@@ -1982,7 +1947,7 @@ footer {
     <div class="innovation-head reveal">
       <p class="label">Innovation</p>
       <h2>Sovereign capability that <em>holds up where it's needed most.</em></h2>
-      <p>We take the problems others treat as too hard — denied networks, no power, data no one can act on in time — and engineer them into working, sovereign capability. Melbourne-based, with Australian RD&amp;I in house and Agile speed to delivery. Some is fielded today. Some is close behind.</p>
+      <p>We take on the problems others treat as too hard: denied networks, no power, and data no one can act on in time. Then we engineer them into working, sovereign capability. We are Melbourne-based, with Australian research and development in house and Agile delivery. Some of what you see below is already in the field; the rest is close behind.</p>
     </div>
 
     <ol class="innovation-pathway reveal" aria-label="How Anywise takes an innovation from concept to the field">
@@ -2004,27 +1969,55 @@ footer {
     </ol>
 
     <p class="innovation-preview-label reveal">What we've built</p>
-    <div class="innovation-preview reveal">
-      <div class="innovation-prev-card">
-        <h3>Sensing &amp; vision</h3>
-        <p>Fielded eyes and ears where power and comms run out.</p>
-      </div>
-      <div class="innovation-prev-card">
-        <h3>SENTIA</h3>
-        <p>The ecosystem that turns sensor data into a decision.</p>
-      </div>
-      <div class="innovation-prev-card">
-        <h3>SWIFT</h3>
-        <p>Getting the message through when the network is denied.</p>
-      </div>
-      <div class="innovation-prev-card">
-        <h3>Assured Connectivity</h3>
-        <p>Data that reaches where nothing else can.</p>
-      </div>
+    <div class="innovation-preview">
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/sentia.jpg" alt="SENTIA" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">The Ecosystem</p>
+          <h3>SENTIA</h3>
+          <p>The ecosystem our systems plug into, turning sensor data into a decision a commander can trust.</p>
+          <p class="product-card-highlight">From sensor to commander.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/sensing-vision.jpg" alt="Sensing and vision" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Fielded</p>
+          <h3>Sensing &amp; vision</h3>
+          <p>Small, low-cost sensors you can deploy in numbers where there is no reliable power and no network.</p>
+          <p class="product-card-highlight">Eyes and ears at the edge.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap swift-tile">
+          <img class="product-card-img" src="assets/images/innovation/swift.png" alt="SWIFT">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Validated</p>
+          <h3>SWIFT</h3>
+          <p>Disaggregated communications that get the message through when the network is jammed or denied.</p>
+          <p class="product-card-highlight">No single point of failure.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/alt-comms.jpg" alt="Assured Connectivity" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Active R&amp;D</p>
+          <h3>Assured Connectivity</h3>
+          <p>Self-healing networks that use all available spectrum to push data where nothing else can reach.</p>
+          <p class="product-card-highlight">Data that always arrives.</p>
+        </div>
+      </a>
     </div>
 
     <div class="section-view-all reveal">
-      <a href="innovation.html" class="btn btn-accent"><span>See what we've built &rarr;</span></a>
+      <a href="innovation.html" class="view-all-link">Explore all our innovations &rarr;</a>
     </div>
   </div>
 </section>
