@@ -1149,12 +1149,53 @@ a.nav-cta:hover::after { width: 100%; }
 .innovation-head h2 em { font-style: normal; color: var(--accent); }
 .innovation-head p { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
 
-.innovation-pathway { display: flex; align-items: stretch; gap: 0.75rem; margin: 2.5rem 0; }
-.innovation-step { flex: 1; min-width: 0; }
-.innovation-step .step-n { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--text-tertiary); }
-.innovation-step .step-t { color: var(--text-primary); font-size: 0.95rem; font-weight: 500; margin: 0.4rem 0 0.2rem; }
-.innovation-step .step-d { font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0; }
-.innovation-arrow { color: var(--accent-dim); font-size: 1.1rem; align-self: flex-start; margin-top: 1.4rem; }
+.innovation-pathway {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 3rem 0;
+  padding: 0;
+  position: relative;
+}
+.innovation-step { position: relative; padding-right: 0.5rem; }
+/* Connector segment: drawn from each node's centre to the next node's centre */
+.innovation-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 1.35rem;
+  left: 1.35rem;
+  width: calc(100% + 0.75rem);
+  height: 2px;
+  background: var(--gradient-al);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+.innovation-pathway.visible .innovation-step:not(:last-child)::before { transform: scaleX(1); }
+.innovation-pathway.visible .innovation-step:nth-child(2)::before { transition-delay: 0.5s; }
+.step-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #06210b;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border-accent);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
+}
+.innovation-step:hover .step-node { transform: scale(1.08); box-shadow: 0 0 0 6px var(--accent-glow); }
+.innovation-step .step-t { color: var(--text-primary); font-size: 1rem; font-weight: 600; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+.innovation-step .step-d { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 
 .innovation-preview-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); margin: 2rem 0 1rem; }
 .innovation-preview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
@@ -1189,8 +1230,26 @@ a.nav-cta:hover::after { width: 100%; }
 
 @media (max-width: 900px) { .innovation-preview { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
-  .innovation-pathway { flex-direction: column; gap: 1rem; }
-  .innovation-arrow { display: none; }
+  /* Vertical timeline: nodes stacked, connector runs down the left */
+  .innovation-pathway { grid-template-columns: 1fr; gap: 1.75rem; }
+  .innovation-step {
+    display: grid;
+    grid-template-columns: 2.7rem 1fr;
+    column-gap: 1rem;
+    align-items: start;
+    padding-right: 0;
+  }
+  /* Vertical connector segment from each node down to the next */
+  .innovation-step:not(:last-child)::before {
+    top: 2.7rem;
+    left: 1.35rem;
+    width: 2px;
+    height: calc(100% + 1.75rem - 2.7rem);
+    transform: scaleY(0); transform-origin: top;
+  }
+  .innovation-pathway.visible .innovation-step:not(:last-child)::before { transform: scaleY(1); }
+  .step-node { margin-bottom: 0; grid-row: 1 / span 2; }
+  .innovation-step .step-t { align-self: center; }
 }
 @media (max-width: 560px) { .innovation-preview { grid-template-columns: 1fr; } }
 
@@ -1926,19 +1985,23 @@ footer {
       <p>We take the problems others treat as too hard — denied networks, no power, data no one can act on in time — and engineer them into working, sovereign capability. Melbourne-based, with Australian RD&amp;I in house and Agile speed to delivery. Some is fielded today. Some is close behind.</p>
     </div>
 
-    <div class="innovation-pathway reveal">
-      <div class="innovation-step">
-        <p class="step-n">01</p><p class="step-t">Prove the hard part</p><p class="step-d">Solve what others can't.</p>
-      </div>
-      <span class="innovation-arrow">&rarr;</span>
-      <div class="innovation-step">
-        <p class="step-n">02</p><p class="step-t">Validate</p><p class="step-d">Stand it up against the real environment.</p>
-      </div>
-      <span class="innovation-arrow">&rarr;</span>
-      <div class="innovation-step">
-        <p class="step-n">03</p><p class="step-t">Field it</p><p class="step-d">Hardened, trialled, in operators' hands.</p>
-      </div>
-    </div>
+    <ol class="innovation-pathway reveal" aria-label="How Anywise takes an innovation from concept to the field">
+      <li class="innovation-step">
+        <span class="step-node">01</span>
+        <p class="step-t">Prove the hard part</p>
+        <p class="step-d">Solve what others can't.</p>
+      </li>
+      <li class="innovation-step">
+        <span class="step-node">02</span>
+        <p class="step-t">Validate</p>
+        <p class="step-d">Stand it up against the real environment.</p>
+      </li>
+      <li class="innovation-step">
+        <span class="step-node">03</span>
+        <p class="step-t">Field it</p>
+        <p class="step-d">Hardened, trialled, in operators' hands.</p>
+      </li>
+    </ol>
 
     <p class="innovation-preview-label reveal">What we've built</p>
     <div class="innovation-preview reveal">
