@@ -1128,6 +1128,96 @@ a.nav-cta:hover::after { width: 100%; }
   opacity: 0.75;
 }
 
+/* ── INNOVATION ── */
+.innovation { padding: 7rem 0; }
+.innovation-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.innovation-head h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800; color: var(--text-primary);
+  line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+}
+.innovation-head h2 em { font-style: normal; color: var(--accent); }
+.innovation-head p { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
+
+.innovation-pathway {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 3rem 0;
+  padding: 0;
+  position: relative;
+}
+.innovation-step { position: relative; padding-right: 0.5rem; }
+/* Connector segment: drawn from each node's centre to the next node's centre */
+.innovation-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 1.35rem;
+  left: 1.35rem;
+  width: calc(100% + 0.75rem);
+  height: 2px;
+  background: var(--gradient-al);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+.innovation-pathway.visible .innovation-step:not(:last-child)::before { transform: scaleX(1); }
+.innovation-pathway.visible .innovation-step:nth-child(2)::before { transition-delay: 0.5s; }
+.step-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #06210b;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border-accent);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
+}
+.innovation-step:hover .step-node { transform: scale(1.08); box-shadow: 0 0 0 6px var(--accent-glow); }
+.innovation-step .step-t { color: var(--text-primary); font-size: 1rem; font-weight: 600; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+.innovation-step .step-d { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+
+.innovation-preview-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); margin: 2rem 0 1rem; }
+.innovation-preview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.innovation-preview .product-card-img { height: 150px; }
+.innovation-preview .swift-tile { background: #1a1a1a; }
+.innovation-preview .swift-tile .product-card-img { object-fit: contain; padding: 1.4rem; }
+
+@media (max-width: 900px) { .innovation-preview { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  /* Vertical timeline: nodes stacked, connector runs down the left */
+  .innovation-pathway { grid-template-columns: 1fr; gap: 1.75rem; }
+  .innovation-step {
+    display: grid;
+    grid-template-columns: 2.7rem 1fr;
+    column-gap: 1rem;
+    align-items: start;
+    padding-right: 0;
+  }
+  /* Vertical connector segment from each node down to the next */
+  .innovation-step:not(:last-child)::before {
+    top: 2.7rem;
+    left: 1.35rem;
+    width: 2px;
+    height: calc(100% + 1.75rem - 2.7rem);
+    transform: scaleY(0); transform-origin: top;
+  }
+  .innovation-pathway.visible .innovation-step:not(:last-child)::before { transform: scaleY(1); }
+  .step-node { margin-bottom: 0; grid-row: 1 / span 2; }
+  .innovation-step .step-t { align-self: center; }
+}
+@media (max-width: 560px) { .innovation-preview { grid-template-columns: 1fr; } }
+
 /* ═══ TRACK RECORD ═══ */
 .track {
   padding: 7rem 0;
@@ -1605,6 +1695,7 @@ footer {
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="products/index.html">Products &amp; Services</a></li>
+      <li><a href="innovation.html">Innovation</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="blog/index.html">Insights</a></li>
       <li><a href="careers.html">Careers</a></li>
@@ -1845,6 +1936,88 @@ footer {
     </div>
     <div class="section-view-all reveal">
       <a href="products/index.html" class="view-all-link">View all products &amp; services &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INNOVATION ═══ -->
+<div class="section-divider"></div>
+<section class="innovation" id="innovation">
+  <div class="container">
+    <div class="innovation-head reveal">
+      <p class="label">Innovation</p>
+      <h2>Sovereign capability that <em>holds up where it's needed most.</em></h2>
+      <p>We take on the problems others treat as too hard: denied networks, no power, and data no one can act on in time. Then we engineer them into working, sovereign capability. We are Melbourne-based, with Australian research and development in house and Agile delivery. Some of what you see below is already in the field; the rest is close behind.</p>
+    </div>
+
+    <ol class="innovation-pathway reveal" aria-label="How Anywise takes an innovation from concept to the field">
+      <li class="innovation-step">
+        <span class="step-node">01</span>
+        <p class="step-t">Prove the hard part</p>
+        <p class="step-d">Solve what others can't.</p>
+      </li>
+      <li class="innovation-step">
+        <span class="step-node">02</span>
+        <p class="step-t">Validate</p>
+        <p class="step-d">Stand it up against the real environment.</p>
+      </li>
+      <li class="innovation-step">
+        <span class="step-node">03</span>
+        <p class="step-t">Field it</p>
+        <p class="step-d">Hardened, trialled, in operators' hands.</p>
+      </li>
+    </ol>
+
+    <p class="innovation-preview-label reveal">What we've built</p>
+    <div class="innovation-preview">
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/sentia-ecosystem-dark.svg" alt="SENTIA ecosystem" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">The Ecosystem</p>
+          <h3>SENTIA</h3>
+          <p>The ecosystem our systems plug into, turning sensor data into a decision a commander can trust.</p>
+          <p class="product-card-highlight">From sensor to commander.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/sensing-vision.png" alt="Sensing and vision" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Fielded</p>
+          <h3>Sensing &amp; vision</h3>
+          <p>Small, low-cost sensors you can deploy in numbers where there is no reliable power and no network.</p>
+          <p class="product-card-highlight">Eyes and ears at the edge.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap swift-tile">
+          <img class="product-card-img" src="assets/images/innovation/swift.png" alt="SWIFT">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Validated</p>
+          <h3>SWIFT</h3>
+          <p>Disaggregated communications that get the message through when the network is jammed or denied.</p>
+          <p class="product-card-highlight">No single point of failure.</p>
+        </div>
+      </a>
+      <a href="innovation.html" class="product-card reveal">
+        <div class="product-card-img-wrap">
+          <img class="product-card-img" src="assets/images/innovation/alt-comms.png" alt="Assured Connectivity" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <p class="product-card-tag">Active R&amp;D</p>
+          <h3>Assured Connectivity</h3>
+          <p>Self-healing networks that use all available spectrum to push data where nothing else can reach.</p>
+          <p class="product-card-highlight">Data that always arrives.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-view-all reveal">
+      <a href="innovation.html" class="view-all-link">Explore all our innovations &rarr;</a>
     </div>
   </div>
 </section>

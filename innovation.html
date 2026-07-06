@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovation | Anywise — Sovereign Technology for Defence &amp; Government</title>
+<meta name="description" content="The innovations behind Anywise: SENTIA, SWIFT resilient comms, low-SWaP sensing and vision, and next-generation communications. Solving hard problems for defence, emergency services and government.">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#39a849">
+<link rel="canonical" href="https://anywise.com.au/innovation.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Innovation | Anywise">
+<meta property="og:description" content="The innovations behind Anywise: SENTIA, SWIFT resilient comms, low-SWaP sensing and vision, and next-generation communications. Solving hard problems for defence, emergency services and government.">
+<meta property="og:image" content="https://anywise.com.au/assets/images/team/team-photo-alt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:url" content="https://anywise.com.au/innovation.html">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Innovation | Anywise">
+<meta name="twitter:description" content="The innovations behind Anywise: SENTIA, SWIFT resilient comms, low-SWaP sensing and vision, and next-generation communications. Solving hard problems for defence, emergency services and government.">
+<meta name="twitter:image" content="https://anywise.com.au/assets/images/team/team-photo-alt.jpg">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://anywise.com.au/innovation.html#innovation",
+  "url": "https://anywise.com.au/innovation.html",
+  "name": "Innovation | Anywise",
+  "headline": "Hard problems, engineered into capability",
+  "description": "The innovations behind Anywise: SENTIA, SWIFT, low-SWaP sensing and vision, and Assured Connectivity. Sovereign defence and government technology, engineered in Australia.",
+  "isPartOf": { "@type": "WebSite", "@id": "https://anywise.com.au/#website" },
+  "about": [
+    { "@type": "Thing", "name": "SENTIA", "description": "The Anywise ecosystem our solutions sit within. It senses, links and interprets data from sensor to commander, delivering AI-assisted, provenance-tracked decision support with human oversight." },
+    { "@type": "Thing", "name": "SWIFT", "description": "Resilient, disaggregated tactical communications for defence, emergency services and low-bandwidth environments. Splits each message across multiple bearers so it gets through when the network is jammed or denied. TRL 3, advancing to TRL 4." },
+    { "@type": "Thing", "name": "Low-SWaP Sensing and Vision", "description": "Small, low-cost, fielded sensing suites that operate where there is no reliable power and no network, for vehicle detection and classification, wildlife and animal detection, and event-of-significance detection. TRL 5, fielded." },
+    { "@type": "Thing", "name": "Assured Connectivity", "description": "Active R&D into self-healing communications networks that use all available spectrum to push data through contested and obstructed environments where conventional networks fail." }
+  ],
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Anywise innovations",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "SENTIA", "url": "https://anywise.com.au/innovation.html" },
+      { "@type": "ListItem", "position": 2, "name": "Low-SWaP Sensing and Vision", "url": "https://anywise.com.au/innovation.html" },
+      { "@type": "ListItem", "position": 3, "name": "SWIFT", "url": "https://anywise.com.au/innovation.html" },
+      { "@type": "ListItem", "position": 4, "name": "Assured Connectivity", "url": "https://anywise.com.au/innovation.html" }
+    ]
+  },
+  "publisher": { "@type": "Organization", "@id": "https://anywise.com.au/#organization" }
+}
+</script>
+<link rel="stylesheet" href="shared.css">
+<style>
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .page-hero { padding: 9rem 0 1rem; }
+  .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.08; letter-spacing: -0.03em; margin: 1rem 0; }
+  .page-hero h1 em { font-style: normal; color: var(--accent); }
+  .page-hero-sub { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; }
+  .page-hero-lead { font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); max-width: 46rem; margin: 1.75rem 0 0; }
+  .page-hero-lead strong { color: var(--text-primary); font-weight: 500; }
+
+  .innovation-detail { padding: 1rem 0 7rem; }
+  .innov-block {
+    display: grid; grid-template-columns: 1fr 0.72fr; gap: 2.5rem; align-items: start;
+    border-top: 1px solid var(--border); padding: 3rem 0;
+  }
+  .innov-name { font-size: 1.6rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin: 0 0 0.4rem; line-height: 1.2; }
+  .innov-tag { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--accent); margin: 0 0 1rem; }
+  .innov-desc { font-size: 0.98rem; line-height: 1.7; color: var(--text-secondary); margin: 0 0 1.25rem; }
+
+  .innov-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.65rem; border-radius: 30px; vertical-align: middle; margin-left: 0.5rem; font-weight: 500; }
+  .badge-eco { background: rgba(57,168,73,0.14); color: #7bd189; border: 1px solid rgba(57,168,73,0.35); }
+  .badge-val { background: rgba(195,224,27,0.10); color: var(--lime); border: 1px solid rgba(195,224,27,0.30); }
+  .badge-rd { background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border); }
+  [data-theme="light"] .badge-eco { color: var(--accent); }
+  [data-theme="light"] .badge-val { color: var(--mint); background: rgba(45,127,54,0.10); border-color: rgba(45,127,54,0.30); }
+  [data-theme="light"] .badge-rd { background: rgba(0,0,0,0.03); }
+
+  .innov-pipe { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin: 0 0 1.25rem; }
+  .innov-pipe span { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: #06210b; background: var(--accent); padding: 0.5rem 0.7rem; border-radius: 6px; }
+  [data-theme="light"] .innov-pipe span { background: #39a849; }
+  .innov-pipe em { font-style: normal; color: var(--text-tertiary); }
+
+  .innov-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .feat-x { border-left: 2px solid var(--border-accent); padding: 0.2rem 0 0.2rem 0.9rem; }
+  .feat-x b { display: block; color: var(--text-primary); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .feat-x p { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+
+  .innov-usecase { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+  .innov-usecase span { font-size: 0.82rem; color: var(--text-secondary); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.45rem 0.8rem; border-radius: 30px; }
+  [data-theme="light"] .innov-usecase span { background: rgba(0,0,0,0.03); }
+
+  .innov-for { font-size: 0.85rem; line-height: 1.5; color: var(--accent); margin: 1rem 0 0; }
+  .innov-for b { color: var(--text-secondary); font-weight: 400; }
+  [data-theme="light"] .innov-for { color: var(--mint); }
+
+  .innov-media { aspect-ratio: 4/3; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .innov-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .innov-media-logo { background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+  .innov-media-logo img { object-fit: contain; padding: 2rem; }
+  [data-theme="light"] .innov-media-logo { background: #1a1a1a; }
+  /* Product photo on a white background: contain on a clean light tile */
+  .innov-media-photo { background: #ffffff; }
+  .innov-media-photo img { object-fit: contain; padding: 1rem; }
+
+  /* SENTIA secondary hero: full-width feature band, centred */
+  .sentia-hero { padding: 2.5rem 0 4rem; }
+  .sentia-hero-head { max-width: 46rem; margin: 0 auto 2rem; text-align: center; }
+  .sentia-hero-head .label { justify-content: center; }
+  .sentia-hero-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.12; letter-spacing: -0.02em; margin: 0.8rem 0; }
+  .sentia-hero-head h2 em { font-style: normal; color: var(--accent); }
+  .sentia-hero-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0; }
+  .sentia-figure { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+  .sentia-svg { width: 100%; height: auto; display: block; }
+  /* Dark (default) palette */
+  .sentia-svg .s-bg1 { stop-color: #04211a; }
+  .sentia-svg .s-bg2 { stop-color: #02120d; }
+  .sentia-svg .s-hairline { stroke: #1c3f31; }
+  .sentia-svg .s-flow { font-weight: 700; fill: #7fa892; letter-spacing: 2px; }
+  .sentia-svg .s-flowline { stroke: #2c5a45; }
+  .sentia-svg .s-ribbonT { font-weight: 700; fill: #04211a; letter-spacing: 1px; }
+  .sentia-svg .s-ribbonB { font-family: 'Roboto',Arial,sans-serif; fill: #0c3a24; }
+  .sentia-svg .s-letter { font-weight: 800; fill: #ffffff; }
+  .sentia-svg .s-name { font-weight: 700; fill: #eafff0; letter-spacing: 1px; }
+  .sentia-svg .s-desc { font-family: 'Roboto',Arial,sans-serif; fill: #d3f2da; }
+  .sentia-svg .s-eyebrow { font-weight: 700; fill: #c3e01b; letter-spacing: 3px; }
+  .sentia-svg .s-sub { font-family: 'Roboto',Arial,sans-serif; fill: #a9c9b6; }
+  .sentia-svg .s-chip-bg { fill: #0c3325; }
+  .sentia-svg .s-chip { font-weight: 700; fill: #eafff0; }
+  .sentia-svg .s-callout { fill: #0a2c21; stroke: #1c4c39; }
+  .sentia-svg .s-bandT { font-weight: 700; fill: #c3e01b; letter-spacing: 1px; }
+  .sentia-svg .s-bandB { font-family: 'Roboto',Arial,sans-serif; fill: #c8e6d1; }
+  /* Light palette: flip backgrounds light, text dark; keep greens */
+  [data-theme="light"] .sentia-svg .s-bg1 { stop-color: #eef5ee; }
+  [data-theme="light"] .sentia-svg .s-bg2 { stop-color: #dfeadf; }
+  [data-theme="light"] .sentia-svg .s-hairline { stroke: #c2d4c6; }
+  [data-theme="light"] .sentia-svg .s-flow { fill: #4a5f52; }
+  [data-theme="light"] .sentia-svg .s-flowline { stroke: #9dbfa8; }
+  [data-theme="light"] .sentia-svg .s-ribbonT { fill: #04211a; }
+  [data-theme="light"] .sentia-svg .s-ribbonB { fill: #0c3a24; }
+  [data-theme="light"] .sentia-svg .s-eyebrow { fill: #2d7f36; }
+  [data-theme="light"] .sentia-svg .s-sub { fill: #4a5f52; }
+  [data-theme="light"] .sentia-svg .s-chip-bg { fill: #ffffff; }
+  [data-theme="light"] .sentia-svg .s-chip { fill: #1a3d1e; }
+  [data-theme="light"] .sentia-svg .s-callout { fill: #f0f6f0; stroke: #cfe0d3; }
+  [data-theme="light"] .sentia-svg .s-bandT { fill: #2d7f36; }
+  [data-theme="light"] .sentia-svg .s-bandB { fill: #33473a; }
+
+  .innov-cta { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 0.5rem; }
+  .innov-cta-line { font-size: 1.05rem; color: var(--text-primary); margin: 0 0 1.25rem; max-width: 34rem; }
+  .innov-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  @media (max-width: 860px) {
+    .innov-block { grid-template-columns: 1fr; gap: 1.5rem; }
+    .innov-media { order: -1; aspect-ratio: 16/9; }
+    .innov-feat { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) { .page-hero { padding: 7rem 0 2rem; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="products/index.html">Products &amp; Services</a></li>
+      <li><a href="innovation.html" class="active">Innovation</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="blog/index.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="close-x">&times;</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Innovation</span>
+    </div>
+    <p class="label">Innovation</p>
+    <h1>Hard problems, <em>engineered into capability.</em></h1>
+    <p class="page-hero-sub">From fielded systems to active research, here's what we've built, what it does for the people who use it, and how far it's come.</p>
+    <p class="page-hero-lead">Most capability today is disaggregated. Sensors, radios and analytics each do their job and produce an output, but on their own those outputs sit in silos. A feed no one can act on in time, a report that never reaches the decision-maker, a data point with no context. Output is not the same as insight, and insight is not the same as a decision someone can stand behind. That gap is where we build.</p>
+  </div>
+</section>
+
+<section class="sentia-hero">
+  <div class="container">
+    <div class="sentia-hero-head reveal">
+      <p class="label">The ecosystem</p>
+      <h2>SENTIA is the ecosystem our <em>solutions sit within.</em></h2>
+      <p class="sentia-hero-sub">It is the connective tissue that turns those separate outputs into one trusted picture. SENTIA senses, links and interprets across sources, then hands the decision-maker a clear recommendation with the reasoning and evidence behind it, so they can trust it or overrule it. Sensing, SWIFT and the rest all plug in here.</p>
+    </div>
+    <div class="sentia-figure reveal" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
+      <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sentiaBg" x1="0" y1="0" x2="866" y2="866" gradientTransform="matrix(1.1547,0,0,0.52176,0,122.766)" gradientUnits="userSpaceOnUse">
+              <stop offset="0" class="s-bg1"/><stop offset="1" class="s-bg2"/>
+            </linearGradient>
+            <linearGradient id="sentiaCard" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#39a849"/><stop offset="1" stop-color="#1f6e30"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="122.766" width="1000" height="451.853" fill="url(#sentiaBg)"/>
+          <line x1="40" y1="126" x2="960" y2="126" class="s-hairline" stroke-width="1.5"/>
+          <text x="70" y="162" class="s-flow" font-size="11">SENSORS &amp; DATA</text>
+          <text x="930" y="162" text-anchor="end" class="s-flow" font-size="11">COMMANDER'S DECISION</text>
+          <line x1="250" y1="158" x2="688" y2="158" class="s-flowline" stroke-width="2"/>
+          <polygon points="688,153 700,158 688,163" fill="#c3e01b"/>
+          <rect x="70" y="176" width="860" height="30" rx="6" fill="#c3e01b"/>
+          <circle cx="92" cy="191" r="3.5" fill="#04211a"/>
+          <text x="104" y="195" class="s-ribbonT" font-size="12">PROVENANCE &amp; TRUST</text>
+          <text x="300" y="195" class="s-ribbonB" font-size="12">every output is traceable and confidence-scored at each stage</text>
+          <g class="s-card"><rect x="70" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="135" y="272" text-anchor="middle" class="s-letter" font-size="42">S</text><text x="135" y="298" text-anchor="middle" class="s-name" font-size="14">SENSE</text><line x1="90" y1="310" x2="180" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="135" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Capture data from</text><text x="135" y="344" text-anchor="middle" class="s-desc" font-size="10.5">sensors and sources</text></g>
+          <g class="s-card"><rect x="216" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="281" y="272" text-anchor="middle" class="s-letter" font-size="42">E</text><text x="281" y="298" text-anchor="middle" class="s-name" font-size="14">ENRICH</text><line x1="236" y1="310" x2="326" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="281" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Structure raw inputs</text><text x="281" y="344" text-anchor="middle" class="s-desc" font-size="10.5">into intelligence</text></g>
+          <g class="s-card"><rect x="362" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="427" y="272" text-anchor="middle" class="s-letter" font-size="42">N</text><text x="427" y="298" text-anchor="middle" class="s-name" font-size="14">NEXUS</text><line x1="382" y1="310" x2="472" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="427" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Link and correlate</text><text x="427" y="344" text-anchor="middle" class="s-desc" font-size="10.5">across sources</text></g>
+          <g class="s-card"><rect x="508" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="573" y="272" text-anchor="middle" class="s-letter" font-size="42">T</text><text x="573" y="298" text-anchor="middle" class="s-name" font-size="14">THINK</text><line x1="528" y1="310" x2="618" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="573" y="330" text-anchor="middle" class="s-desc" font-size="10.5">AI interprets patterns,</text><text x="573" y="344" text-anchor="middle" class="s-desc" font-size="10.5">recommends options</text></g>
+          <g class="s-card"><rect x="654" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="719" y="272" text-anchor="middle" class="s-letter" font-size="42">I</text><text x="719" y="298" text-anchor="middle" class="s-name" font-size="14">INFORM</text><line x1="674" y1="310" x2="764" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="719" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Deliver decision-</text><text x="719" y="344" text-anchor="middle" class="s-desc" font-size="10.5">ready outputs</text></g>
+          <g class="s-card"><rect x="800" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="865" y="272" text-anchor="middle" class="s-letter" font-size="42">A</text><text x="865" y="298" text-anchor="middle" class="s-name" font-size="14">ASSURE</text><line x1="820" y1="310" x2="910" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="865" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Traceable, confidence-</text><text x="865" y="344" text-anchor="middle" class="s-desc" font-size="10.5">scored results</text></g>
+          <g fill="#c3e01b"><polygon points="204,290 214,297 204,304"/><polygon points="350,290 360,297 350,304"/><polygon points="496,290 506,297 496,304"/><polygon points="642,290 652,297 642,304"/><polygon points="788,290 798,297 788,304"/></g>
+          <text x="71" y="408.8" class="s-eyebrow" font-size="11">MODULAR SPECIALIST APPS</text>
+          <text x="327" y="408.8" class="s-sub" font-size="12">plug in at Think and Inform, so the ecosystem extends without rebuilding</text>
+          <g font-size="12.5" transform="translate(1.35,-43.17)">
+            <rect x="70" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="145" y="486" text-anchor="middle" class="s-chip">Engineering</text>
+            <rect x="234" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="309" y="486" text-anchor="middle" class="s-chip">Logistics</text>
+            <rect x="398" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="473" y="486" text-anchor="middle" class="s-chip">Medical &amp; Health</text>
+            <rect x="562" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="637" y="486" text-anchor="middle" class="s-chip">Deployable Camp</text>
+            <rect x="726" y="464" width="150" height="34" rx="17" fill="none" stroke="#c3e01b" stroke-width="1.5" stroke-dasharray="4, 3"/><text x="801" y="486" text-anchor="middle" class="s-chip" fill="#c3e01b">+ any specialisation</text>
+          </g>
+          <rect x="71.35" y="480.8" width="860" height="72" rx="10" class="s-callout" stroke-width="1"/>
+          <rect x="71.35" y="480.8" width="6" height="72" rx="3" fill="#c3e01b"/>
+          <text x="97.35" y="508.8" class="s-bandT" font-size="14">HUMAN OVERSIGHT</text>
+          <text x="97.35" y="530.8" class="s-bandB" font-size="13">The commander sets the level of automation. AI does what humans cannot at scale, then makes its reasoning visible.</text>
+          <text x="97.35" y="546.8" class="s-bandB" font-size="13">High-risk decisions always stay with people.</text>
+        </svg>
+    </div>
+  </div>
+</section>
+
+<section class="innovation-detail" aria-labelledby="innovations-heading">
+  <div class="container">
+    <h2 id="innovations-heading" class="sr-only">Our other innovations</h2>
+
+    <div class="innov-block reveal">
+      <div class="innov-content">
+        <h3 class="innov-name">Sensing &amp; vision <span class="innov-badge badge-eco">Fielded &middot; TRL 5</span></h3>
+        <p class="innov-tag">Eyes and ears where power and comms run out</p>
+        <p class="innov-desc">The places that matter most are often the ones you can't watch: no power, no network, no easy access. We field small, low-cost sensors you can deploy in numbers and leave in place, turning those blind spots into a live picture you can act on. Each configuration is built around the problem, not the other way round.</p>
+        <div class="innov-usecase">
+          <span>Vehicle detection &amp; classification, Defence</span>
+          <span>Wildlife &amp; animal detection, Aviation</span>
+          <span>Events of significance, custom</span>
+        </div>
+        <p class="innov-for"><b>For:</b> anyone who needs to know what's happening somewhere they can't reach, power, or connect.</p>
+      </div>
+      <div class="innov-media innov-media-photo"><img src="assets/images/innovation/sensing-vision.png" alt="A ruggedised multicam sensor unit with dual cameras" loading="lazy" width="1061" height="671"></div>
+    </div>
+
+    <div class="innov-block reveal">
+      <div class="innov-content">
+        <h3 class="innov-name">SWIFT <span class="innov-badge badge-val">Validated &middot; TRL 3, advancing to 4</span></h3>
+        <p class="innov-tag">Getting the message through when the network is denied</p>
+        <p class="innov-desc">When bearers are jammed, intercepted or degraded, the message still has to arrive. SWIFT splits each message across several bearers at once, so no single one carries the whole thing, and reassembles it at the far end. Lose a bearer and the message still completes. Intercept one and an adversary gets a meaningless fragment. And it runs on the radios you already operate.</p>
+        <div class="innov-feat">
+          <div class="feat-x"><b>No single point of failure</b><p>Split across bearers, not duplicated. Lose one, it still gets through.</p></div>
+          <div class="feat-x"><b>Hard to intercept or jam</b><p>Short bursts, fragmented traffic, reroutes before a bearer fails.</p></div>
+          <div class="feat-x"><b>No new hardware</b><p>Sits on your existing tactical radios.</p></div>
+          <div class="feat-x"><b>Part of SENTIA</b><p>Delivery you can prove: did it arrive, and intact?</p></div>
+        </div>
+        <p class="innov-for"><b>For:</b> defence and emergency teams who can't assume the network will be there.</p>
+      </div>
+      <div class="innov-media innov-media-logo"><img src="assets/images/innovation/swift.png" alt="SWIFT" loading="lazy" width="1188" height="659"></div>
+    </div>
+
+    <div class="innov-block reveal">
+      <div class="innov-content">
+        <h3 class="innov-name">Assured Connectivity <span class="innov-badge badge-rd">Active R&amp;D</span></h3>
+        <p class="innov-tag">Data that reaches where nothing else can</p>
+        <p class="innov-desc">Some environments defeat conventional communications entirely: too contested, too remote, too much in the way. We're engineering prototypes that use every available slice of spectrum and heal their own networks around lost nodes, pushing data through obstacles and keeping it moving when everything else drops out. This is where we're pushing the edge next.</p>
+        <div class="innov-feat">
+          <div class="feat-x"><b>Uses all available spectrum</b><p>Not tied to one bearer or band. Whatever gets the data through.</p></div>
+          <div class="feat-x"><b>Self-healing networks</b><p>Reroute around lost nodes automatically. No single point of failure.</p></div>
+        </div>
+        <p class="innov-for"><b>For:</b> operations in places where "no signal" isn't an acceptable answer.</p>
+      </div>
+      <div class="innov-media"><img src="assets/images/innovation/alt-comms.png" alt="A field communications unit deployed in bushland" loading="lazy" width="621" height="603"></div>
+    </div>
+
+    <div class="innov-cta reveal">
+      <p class="innov-cta-line">Have a problem that looks too hard? That's usually where we start.</p>
+      <div class="innov-cta-btns">
+        <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Bring us your problem &rarr;</span></a>
+        <a href="index.html" class="btn btn-ghost">Back to home</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="section-divider"></div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 86 169 092 960 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+        <p class="footer-phone"><a href="tel:1800861893">1800 861 893</a></p>
+        <p class="footer-email"><a href="mailto:sales@anywise.com.au">sales@anywise.com.au</a></p>
+        <p class="footer-social"><a href="https://www.linkedin.com/company/anywiseaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="index.html#capabilities">Technology</a>
+        <a href="index.html#capabilities">Services</a>
+        <a href="index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="products/wisdom.html">WISDOM</a>
+        <a href="products/engaide.html">ENG|AIDE</a>
+        <a href="products/fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="products/impact-framework.html">Impact Measurement</a>
+        <a href="products/fabhums.html">FABHUMS</a>
+        <a href="products/campaide.html">CAMP|AIDE</a>
+        <a href="products/ils.html">ILS</a>
+        <a href="products/aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="innovation.html">Innovation</a>
+        <a href="index.html#about">About</a>
+        <a href="blog/index.html">Insights</a>
+        <a href="careers.html">Careers</a>
+        <a href="grievance-policy.html">Grievance Policy</a>
+        <a href="whistleblower-policy.html">Whistleblower Policy</a>
+        <a href="weapons-exclusion.html">Defence Disclosure</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="copyrightYear">2026</span> Anywise Pty Ltd. All rights reserved. ABN 86 169 092 960.</p>
+      <div class="footer-locations">
+        <span>Melbourne</span>
+        <span>Canberra</span>
+        <span>Brisbane</span>
+      </div>
+    </div>
+    <div class="acknowledgement">
+      Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution.
+      <a href="https://ulurustatement.org" style="color: var(--text-tertiary); text-decoration: underline;">UluruStatement.org</a><br>
+      Anywise acknowledges the Traditional Owners of the land on which we operate. We pay our respects to Elders past, present, and emerging.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="shared.js"></script>
+
+</body>
+</html>
