@@ -78,8 +78,13 @@
   .innov-media-logo img { object-fit: contain; padding: 2rem; }
   [data-theme="light"] .innov-media-logo { background: #1a1a1a; }
 
-  /* SENTIA inline SVG: fill the tile, theme-aware colours */
-  .innov-media-svg { aspect-ratio: auto; display: flex; align-items: center; background: transparent; border: none; border-radius: 0; overflow: visible; }
+  /* SENTIA secondary hero: full-width feature band */
+  .sentia-hero { padding: 3rem 0 4rem; border-bottom: 1px solid var(--border); }
+  .sentia-hero-head { max-width: 46rem; margin-bottom: 2rem; }
+  .sentia-hero-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.12; letter-spacing: -0.02em; margin: 0.8rem 0; }
+  .sentia-hero-head h2 em { font-style: normal; color: var(--accent); }
+  .sentia-hero-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0; }
+  .sentia-figure { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
   .sentia-svg { width: 100%; height: auto; display: block; }
   /* Dark (default) palette */
   .sentia-svg .s-bg1 { stop-color: #04211a; }
@@ -175,26 +180,15 @@
   </div>
 </section>
 
-<section class="innovation-detail" aria-labelledby="innovations-heading">
+<section class="sentia-hero">
   <div class="container">
-    <h2 id="innovations-heading" class="sr-only">Our innovations</h2>
-
-    <div class="innov-block reveal">
-      <div class="innov-content">
-        <h3 class="innov-name">SENTIA <span class="innov-badge badge-eco">The ecosystem</span></h3>
-        <p class="innov-tag">From sensor to commander, with the reasoning shown</p>
-        <p class="innov-desc">There is more data reaching decision-makers than any person can weigh in the time they have. SENTIA is the ecosystem our systems plug into: it senses, links and interprets that data, then hands the decision-maker a clear recommendation, and shows the reasoning and the sources behind it, so they can trust it or overrule it.</p>
-        <div class="innov-pipe">
-          <span>Sense</span><em>&rsaquo;</em><span>Enrich</span><em>&rsaquo;</em><span>Nexus</span><em>&rsaquo;</em><span>Think</span><em>&rsaquo;</em><span>Inform</span><em>&rsaquo;</em><span>Assure</span>
-        </div>
-        <div class="innov-feat">
-          <div class="feat-x"><b>You set the level of automation</b><p>From advisory to hands-on. High-stakes calls always stay with a person.</p></div>
-          <div class="feat-x"><b>Built on proven systems</b><p>Underpinned by Anywise capability in use, demonstrated, or under contract with the ADF.</p></div>
-        </div>
-        <p class="innov-for"><b>For:</b> commanders and practitioners who have to make a defensible call, fast, and stand behind it.</p>
-      </div>
-      <div class="innov-media innov-media-svg" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
-        <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
+    <div class="sentia-hero-head reveal">
+      <p class="label">The ecosystem</p>
+      <h2>SENTIA is the ecosystem our <em>solutions sit within.</em></h2>
+      <p class="sentia-hero-sub">From sensor to commander, with the reasoning shown. It senses, links and interprets data, then hands the decision-maker a clear recommendation and the evidence behind it, so they can trust it or overrule it.</p>
+    </div>
+    <div class="sentia-figure reveal" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
+      <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="sentiaBg" x1="0" y1="0" x2="866" y2="866" gradientTransform="matrix(1.1547,0,0,0.52176,0,122.766)" gradientUnits="userSpaceOnUse">
               <stop offset="0" class="s-bg1"/><stop offset="1" class="s-bg2"/>
@@ -235,8 +229,13 @@
           <text x="97.35" y="530.8" class="s-bandB" font-size="13">The commander sets the level of automation. AI does what humans cannot at scale, then makes its reasoning visible.</text>
           <text x="97.35" y="546.8" class="s-bandB" font-size="13">High-risk decisions always stay with people.</text>
         </svg>
-      </div>
     </div>
+  </div>
+</section>
+
+<section class="innovation-detail" aria-labelledby="innovations-heading">
+  <div class="container">
+    <h2 id="innovations-heading" class="sr-only">Our other innovations</h2>
 
     <div class="innov-block reveal">
       <div class="innov-content">
