@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="theme-color" content="#39a849">
+<meta name="theme-color" content="#0e110e">
 <link rel="canonical" href="https://anywise.com.au/careers.html">
 
 <!-- Open Graph -->
@@ -89,6 +89,7 @@
 .job-card-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
 .job-btn-details, .job-btn-apply {
   font-size: 0.78rem; padding: 0.4rem 0.85rem; border-radius: 8px;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
   cursor: pointer; font-family: var(--font); font-weight: 500;
   transition: all 0.2s; border: none;
 }
@@ -190,7 +191,7 @@
 
 .job-modal-close {
   position: absolute; top: 1.25rem; right: 1.25rem;
-  width: 2rem; height: 2rem;
+  width: 44px; height: 44px;
   background: var(--bg-elevated); border: 1px solid var(--border);
   border-radius: 50%; cursor: pointer;
   color: var(--text-secondary); font-size: 1rem;
@@ -288,7 +289,7 @@
 
 .wizard-close {
   position: absolute; top: 1.25rem; right: 1.25rem;
-  width: 2rem; height: 2rem;
+  width: 44px; height: 44px;
   background: var(--bg-elevated); border: 1px solid var(--border);
   border-radius: 50%; cursor: pointer;
   color: var(--text-secondary); font-size: 1rem;
@@ -349,6 +350,7 @@
 .wizard-btn-back {
   background: transparent; border: 1px solid var(--border);
   color: var(--text-secondary); padding: 0.55rem 1.2rem;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
   border-radius: 8px; cursor: pointer; font-family: var(--font);
   font-size: 0.85rem; font-weight: 500; transition: all 0.2s;
 }
@@ -356,6 +358,7 @@
 .wizard-btn-next, .wizard-btn-submit {
   background: var(--accent); color: var(--bg-deep);
   padding: 0.55rem 1.5rem; border-radius: 8px; border: none;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
   cursor: pointer; font-family: var(--font);
   font-size: 0.85rem; font-weight: 600; transition: all 0.2s;
 }
@@ -437,6 +440,20 @@
   opacity: 1;
 }
 
+/* Visually-hidden content for assistive technology */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Touch targets: ensure form controls meet 44px minimum tap height */
+.engage-group input,
+.engage-group select,
+.engage-group textarea {
+  min-height: 44px;
+}
+.engage-group textarea { min-height: 88px; }
+
 /* File input styling */
 .file-input-wrapper {
   position: relative;
@@ -453,6 +470,7 @@
 }
 .file-input-wrapper:hover .file-input-label { border-color: var(--border-accent); }
 .file-input-label.has-file { color: var(--text-primary); border-style: solid; border-color: var(--accent); }
+.file-input-wrapper:has(input.invalid) .file-input-label { border-color: var(--danger); }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
@@ -561,17 +579,17 @@
         <div class="engage-form-row">
           <div class="engage-group">
             <label for="eoiName">Full name <span aria-hidden="true">*</span></label>
-            <input id="eoiName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required>
+            <input id="eoiName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required aria-required="true">
           </div>
           <div class="engage-group">
             <label for="eoiEmail">Email <span aria-hidden="true">*</span></label>
-            <input id="eoiEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required>
+            <input id="eoiEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required aria-required="true">
           </div>
         </div>
 
         <div class="engage-group">
           <label for="eoiDiscipline">Specialist field <span aria-hidden="true">*</span></label>
-          <select id="eoiDiscipline" name="discipline" required>
+          <select id="eoiDiscipline" name="discipline" required aria-required="true">
             <option value="" disabled selected>Select one…</option>
             <option value="Engineering">Engineering</option>
             <option value="Software Development">Software Development</option>
@@ -590,7 +608,7 @@
 
         <div class="engage-group">
           <label for="eoiLocation">Location <span aria-hidden="true">*</span></label>
-          <select id="eoiLocation" name="location" required>
+          <select id="eoiLocation" name="location" required aria-required="true">
             <option value="" disabled selected>Select one…</option>
             <option value="Melbourne">Melbourne</option>
             <option value="Sydney">Sydney</option>
@@ -605,8 +623,8 @@
         </div>
 
         <div class="engage-group">
-          <label for="eoiClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span></label>
-          <select id="eoiClearance" name="securityClearance" required>
+          <label for="eoiClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" role="button" aria-label="What is a security clearance?" aria-describedby="eoiClearanceTip" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span><span id="eoiClearanceTip" class="sr-only">Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).</span></label>
+          <select id="eoiClearance" name="securityClearance" required aria-required="true">
             <option value="" disabled selected>Select one…</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -617,7 +635,7 @@
 
         <div class="engage-group">
           <label for="eoiMessage">Tell us about yourself <span aria-hidden="true">*</span></label>
-          <textarea id="eoiMessage" name="message" placeholder="What experience do you bring and what kind of work excites you?" required></textarea>
+          <textarea id="eoiMessage" name="message" placeholder="What experience do you bring and what kind of work excites you?" required aria-required="true"></textarea>
         </div>
 
         <div class="engage-group">
@@ -722,17 +740,17 @@
         <div class="engage-form-row">
           <div class="engage-group">
             <label for="wizName">Full name <span aria-hidden="true">*</span></label>
-            <input id="wizName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required>
+            <input id="wizName" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required aria-required="true">
           </div>
           <div class="engage-group">
             <label for="wizEmail">Email <span aria-hidden="true">*</span></label>
-            <input id="wizEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required>
+            <input id="wizEmail" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required aria-required="true">
           </div>
         </div>
         <div class="engage-form-row">
           <div class="engage-group">
             <label for="wizPhone">Phone <span aria-hidden="true">*</span></label>
-            <input id="wizPhone" name="phone" type="tel" placeholder="0412 345 678" autocomplete="tel" required>
+            <input id="wizPhone" name="phone" type="tel" placeholder="0412 345 678" autocomplete="tel" required aria-required="true">
           </div>
           <div class="engage-group">
             <label for="wizLinkedin">LinkedIn URL</label>
@@ -742,7 +760,7 @@
         <div class="engage-form-row">
           <div class="engage-group">
             <label for="wizSpecialist">Specialist field <span aria-hidden="true">*</span></label>
-            <select id="wizSpecialist" name="specialistField" required>
+            <select id="wizSpecialist" name="specialistField" required aria-required="true">
               <option value="" disabled selected>Select one…</option>
               <option value="Engineering">Engineering</option>
               <option value="Software Development">Software Development</option>
@@ -760,7 +778,7 @@
           </div>
           <div class="engage-group">
             <label for="wizLocation">Location <span aria-hidden="true">*</span></label>
-            <select id="wizLocation" name="location" required>
+            <select id="wizLocation" name="location" required aria-required="true">
               <option value="" disabled selected>Select one…</option>
               <option value="Melbourne">Melbourne</option>
               <option value="Sydney">Sydney</option>
@@ -780,7 +798,7 @@
       <div class="wizard-step" data-step="2">
         <div class="engage-group">
           <label for="wizCitizenship">Australian citizenship / work rights <span aria-hidden="true">*</span></label>
-          <select id="wizCitizenship" name="citizenship" required>
+          <select id="wizCitizenship" name="citizenship" required aria-required="true">
             <option value="" disabled selected>Select one…</option>
             <option value="Australian Citizen">Australian Citizen</option>
             <option value="Permanent Resident">Permanent Resident</option>
@@ -793,8 +811,8 @@
           <input id="wizCitizenshipDetail" name="citizenshipDetail" type="text" placeholder="e.g. Visa subclass, expiry date">
         </div>
         <div class="engage-group">
-          <label for="wizClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span></label>
-          <select id="wizClearance" name="securityClearance" required>
+          <label for="wizClearance">Ability to obtain an Australian Security Clearance <span class="wizard-tooltip" tabindex="0" role="button" aria-label="What is a security clearance?" aria-describedby="wizClearanceTip" data-tip="Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).">?</span><span id="wizClearanceTip" class="sr-only">Eligibility typically requires Australian Citizenship and a checkable background (usually 5–10 years residing in Australia).</span></label>
+          <select id="wizClearance" name="securityClearance" required aria-required="true">
             <option value="" disabled selected>Select one…</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -809,7 +827,7 @@
         <div class="engage-group">
           <label for="wizCv">Upload your CV <span aria-hidden="true">*</span></label>
           <div class="file-input-wrapper">
-            <input type="file" id="wizCv" name="cv" accept=".pdf,.doc,.docx" required>
+            <input type="file" id="wizCv" name="cv" accept=".pdf,.doc,.docx" required aria-required="true">
             <div class="file-input-label" id="wizCvLabel">
               <span>Choose file… (.pdf, .doc, .docx)</span>
             </div>
@@ -817,12 +835,12 @@
         </div>
         <div class="engage-group">
           <label for="wizCover">Cover letter / message <span aria-hidden="true">*</span></label>
-          <textarea id="wizCover" name="coverLetter" placeholder="Tell us why you're interested in this role and what you'd bring to Anywise…" required></textarea>
+          <textarea id="wizCover" name="coverLetter" placeholder="Tell us why you're interested in this role and what you'd bring to Anywise…" required aria-required="true"></textarea>
         </div>
         <div class="engage-form-row">
           <div class="engage-group">
             <label for="wizNotice">Notice period <span aria-hidden="true">*</span></label>
-            <select id="wizNotice" name="noticePeriod" required>
+            <select id="wizNotice" name="noticePeriod" required aria-required="true">
               <option value="" disabled selected>Select one…</option>
               <option value="Available immediately">Available immediately</option>
               <option value="2 weeks">2 weeks</option>
@@ -1407,6 +1425,13 @@
       var needsDetail = citizenshipSelect.value === 'Visa Holder' || citizenshipSelect.value === 'Other';
       citizenshipDetailGroup.hidden = !needsDetail;
       citizenshipDetail.required = needsDetail;
+      if (needsDetail) {
+        citizenshipDetail.setAttribute('aria-required', 'true');
+      } else {
+        citizenshipDetail.removeAttribute('aria-required');
+        citizenshipDetail.removeAttribute('aria-invalid');
+        citizenshipDetail.classList.remove('invalid');
+      }
     });
 
     function updateFileLabels() {
@@ -1436,16 +1461,17 @@
       fields.forEach(function (field) {
         if (field.closest('[hidden]')) return;
         field.classList.remove('invalid');
+        var fieldValid = true;
         if (!field.value || !field.value.trim()) {
           field.classList.add('invalid');
-          valid = false;
+          fieldValid = false;
         }
         if (field.type === 'email' && field.value) {
           var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(field.value)) {
             field.classList.add('invalid');
             field.setAttribute('data-error', 'Please enter a valid email address');
-            valid = false;
+            fieldValid = false;
           }
         }
         if (field.type === 'tel' && field.value) {
@@ -1455,23 +1481,32 @@
           if (!phoneValid) {
             field.classList.add('invalid');
             field.setAttribute('data-error', 'Please enter a valid Australian phone number');
-            valid = false;
+            fieldValid = false;
           }
         }
         if (field.type === 'file' && field.required) {
           if (!field.files || field.files.length === 0) {
-            valid = false;
+            field.classList.add('invalid');
+            fieldValid = false;
           } else {
             var file = field.files[0];
             var allowed = ['.pdf', '.doc', '.docx'];
             var ext = '.' + file.name.split('.').pop().toLowerCase();
             if (allowed.indexOf(ext) === -1) {
-              valid = false;
+              field.classList.add('invalid');
+              fieldValid = false;
             }
             if (file.size > 10 * 1024 * 1024) {
-              valid = false;
+              field.classList.add('invalid');
+              fieldValid = false;
             }
           }
+        }
+        if (fieldValid) {
+          field.setAttribute('aria-invalid', 'false');
+        } else {
+          field.setAttribute('aria-invalid', 'true');
+          valid = false;
         }
       });
 
@@ -1481,6 +1516,7 @@
           || 'Please complete all required fields.';
         var errEl = document.createElement('p');
         errEl.className = 'wizard-error';
+        errEl.setAttribute('role', 'alert');
         errEl.textContent = errMsg;
         var prevErr = form.querySelector('.wizard-error');
         if (prevErr) prevErr.remove();
@@ -1648,6 +1684,7 @@
         .catch(function (err) {
           var errEl = document.createElement('p');
           errEl.className = 'engage-error';
+          errEl.setAttribute('role', 'alert');
           errEl.textContent = err.message || 'Failed to submit. Please try again.';
           errEl.style.color = '#e74c3c';
           errEl.style.fontSize = '0.875rem';

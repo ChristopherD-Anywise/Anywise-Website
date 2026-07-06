@@ -34,6 +34,7 @@ html, body {
   --accent-dim: #2d7f36;
   --accent-muted: rgba(57,168,73,0.06);
   --accent-glow: rgba(57,168,73,0.1);
+  --danger: #e5686c;
 
   --white: #ffffff;
   --font: 'General Sans', -apple-system, sans-serif;
@@ -60,6 +61,7 @@ html, body {
   --accent-dim:     #39a849;
   --accent-muted:   rgba(57,168,73,0.04);
   --accent-glow:    rgba(57,168,73,0.06);
+  --danger:         #c0272d;
 }
 
 /* ── TYPOGRAPHY ── */
@@ -285,6 +287,21 @@ a.nav-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset
   transition: border-color 0.2s, color 0.2s;
 }
 .theme-toggle:hover { border-color: var(--border-accent); color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ── GLOBAL FOCUS-VISIBLE (keyboard) ── */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.btn-accent:focus-visible,
+.btn-ghost:focus-visible,
+.product-card:focus-visible,
+.view-all-link:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 /* Mobile nav */
 .mobile-toggle {
@@ -584,8 +601,15 @@ footer {
 }
 .engage-error {
   font-size: 0.875rem;
-  color: #e74c3c;
+  color: var(--danger);
   margin-bottom: 0.75rem;
+}
+/* Invalid form field state (shared by engage + careers forms) */
+.invalid,
+input.invalid,
+select.invalid,
+textarea.invalid {
+  border: 1px solid var(--danger) !important;
 }
 @media (max-width: 768px) {
   .engage-form-row { grid-template-columns: 1fr; }
@@ -620,7 +644,7 @@ footer {
   top: -100%;
   left: 1rem;
   background: var(--accent);
-  color: #fff;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 0 0 4px 4px;
   font-weight: 600;
