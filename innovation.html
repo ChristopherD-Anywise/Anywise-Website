@@ -32,10 +32,12 @@
 <link rel="stylesheet" href="shared.css">
 <style>
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  .page-hero { padding: 9rem 0 3rem; }
+  .page-hero { padding: 9rem 0 1rem; }
   .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.08; letter-spacing: -0.03em; margin: 1rem 0; }
   .page-hero h1 em { font-style: normal; color: var(--accent); }
   .page-hero-sub { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; }
+  .page-hero-lead { font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); max-width: 46rem; margin: 1.75rem 0 0; }
+  .page-hero-lead strong { color: var(--text-primary); font-weight: 500; }
 
   .innovation-detail { padding: 1rem 0 7rem; }
   .innov-block {
@@ -82,7 +84,7 @@
   .innov-media-photo img { object-fit: contain; padding: 1rem; }
 
   /* SENTIA secondary hero: full-width feature band */
-  .sentia-hero { padding: 3rem 0 4rem; border-bottom: 1px solid var(--border); }
+  .sentia-hero { padding: 2.5rem 0 4rem; }
   .sentia-hero-head { max-width: 46rem; margin-bottom: 2rem; }
   .sentia-hero-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.12; letter-spacing: -0.02em; margin: 0.8rem 0; }
   .sentia-hero-head h2 em { font-style: normal; color: var(--accent); }
@@ -180,6 +182,7 @@
     <p class="label">Innovation</p>
     <h1>Hard problems, <em>engineered into capability.</em></h1>
     <p class="page-hero-sub">From fielded systems to active research, here's what we've built, what it does for the people who use it, and how far it's come.</p>
+    <p class="page-hero-lead">Most capability today is disaggregated. Sensors, radios and analytics each do their job and produce an output, but on their own those outputs sit in silos. A feed no one can act on in time, a report that never reaches the decision-maker, a data point with no context. Output is not the same as insight, and insight is not the same as a decision someone can stand behind. That gap is where we build.</p>
   </div>
 </section>
 
@@ -188,7 +191,7 @@
     <div class="sentia-hero-head reveal">
       <p class="label">The ecosystem</p>
       <h2>SENTIA is the ecosystem our <em>solutions sit within.</em></h2>
-      <p class="sentia-hero-sub">From sensor to commander, with the reasoning shown. It senses, links and interprets data, then hands the decision-maker a clear recommendation and the evidence behind it, so they can trust it or overrule it.</p>
+      <p class="sentia-hero-sub">It is the connective tissue that turns those separate outputs into one trusted picture. SENTIA senses, links and interprets across sources, then hands the decision-maker a clear recommendation with the reasoning and evidence behind it, so they can trust it or overrule it. Sensing, SWIFT and the rest all plug in here.</p>
     </div>
     <div class="sentia-figure reveal" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
       <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
