@@ -1,7 +1,7 @@
 # Innovation Zone — Design Spec
 
 **Date:** 2026-06-24
-**Status:** Approved (direction locked via v3 mockup)
+**Status:** Approved (copy locked via v4 mockup; customer-lens rewrite applied)
 **Author:** Chris Dennis / Claude
 **Supersedes:** 2026-06-24-innovation-zone-em-design.md (EM-only concept)
 
@@ -9,48 +9,68 @@
 
 Add an "Innovation" area to the Anywise website with two parts:
 
-1. **Homepage section** (`#innovation` on `index.html`) — an abridged section that conveys *how Anywise innovates* (innovation is core to who we are: take a hard real-world problem → prove concept → harden into the field, built on sovereign IP and proven ADF technology), a three-step maturity pathway, a compact preview of the four innovations, and a link to the full page.
-2. **Dedicated Innovations page** (`/innovation.html`) — a detailed, full-width section per innovation, each framed problem-first, with a maturity badge and a visual.
+1. **Homepage section** (`#innovation` on `index.html`) — an abridged, outward-facing section that positions Anywise as taking on hard problems others treat as too hard and engineering them into sovereign capability. Includes a three-step pathway (Prove the hard part → Validate → Field it), a compact preview of the four innovations (ordered fielded-first), and a link to the full page.
+2. **Dedicated Innovations page** (`/innovation.html`) — a detailed, full-width section per innovation, each framed problem-first with a "For:" line naming the buyer, a maturity badge, and a visual.
 
 A nav link ("Innovation") is added to the header. The build reuses existing site patterns (markup, CSS variables, `.reveal` scroll animation, `.btn` classes, footer, Engage modal) so it is native to the site.
 
-## The four innovations (all past proof of concept)
+## Copy principles (customer lens)
 
-Content is framed **problem-first** ("what does this solve for the customer"), and is **public-safe**: no classified detail, no named hardware/boards/sensors, no named comms protocols.
+The copy was reviewed and rewritten from the perspective of a mixed audience: operational buyers (defence capability leads, emergency-services CTOs, government programme owners) AND innovation/R&D partners. Governing principles:
 
-### 1. SENTIA — the ecosystem
-- **Badge:** "The ecosystem" (no TRL — SENTIA is not a single maturity level; it is the ecosystem that holds the underlying products/solutions).
-- **Tagline:** Trustworthy decision advantage, sensor to commander.
-- **Problem/solution:** The volume and velocity of data now exceeds what people can process in time. SENTIA is the six-stage ecosystem our solutions live within: it turns fragmented data into trusted, AI-assisted outputs a practitioner can act on, with provenance tracked at every step.
-- **Pipeline chips:** Sense › Enrich › Nexus › Think › Inform › Assure.
-- **Feature points:** Trusted autonomy (human-oversight slider; high-risk calls stay with people); Built on proven work (underpinned by Anywise systems already in use, demonstrated, or under contract with the ADF).
+- **Outward-facing, benefit-led.** Headlines speak to the customer's problem and outcome, not Anywise's self-image.
+- **Trust first, pipeline second.** Lead with fielded/proven capability; present R&D as momentum ("what we're pushing next"), never as the opening impression. Innovations are ordered fielded-first.
+- **Concrete over abstract.** Each innovation says what the user actually gets. Avoid generic "AI-assisted decision advantage" filler.
+- **Honest maturity.** Accurate per-innovation maturity badges — a credibility signal, not something to hide or inflate.
+- **Sovereignty as a differentiator**, expressed concretely: based in Melbourne, in-house Australian RD&I capability, and speed to delivery through Agile methodology (not just "Australian-owned").
+- **Public-safe.** No classified detail, no named hardware/boards/sensors, no named comms protocols.
 
-### 2. SWIFT — resilient comms
-- **Badge:** "TRL 3 · advancing to TRL 4".
-- **Tagline:** Getting the message through when the network is denied.
-- **Problem/solution:** Critical messages must arrive even when bearers are jammed, intercepted or degraded. SWIFT delivers disaggregated communications for defence, emergency services and low-bandwidth environments — splitting a message across multiple bearers at once so no single one carries the whole thing, and reassembling at the far end.
-- **Feature points:** No single point of failure (split not duplicated); Hard to intercept or jam (short bursts, fragmented traffic, adaptive rerouting); Works on what you already have (sits on existing tactical radios); Part of SENTIA (feeds assured, traceable delivery).
+## The four innovations (all past proof of concept), ordered fielded-first
 
-### 3. Low-SWaP sensing & vision — fielded
-- **Badge:** "TRL 5 · fielded".
+Order on the page: **1. Sensing & vision (fielded) → 2. SENTIA (ecosystem) → 3. SWIFT (validated) → 4. Assured Connectivity (R&D).** Trust-first, pipeline-last.
+
+### 1. Sensing & vision — fielded
+- **Badge:** "Fielded · TRL 5".
 - **Tagline:** Eyes and ears where power and comms run out.
-- **Problem/solution:** Many environments that matter have no reliable power and no network, so they go unwatched. We field small, low-cost, abundant sensing suites that run in those power- and comms-denied conditions, collecting the sensing information that turns a blind spot into an intelligence-based decision. Configurations are tailored to the problem.
-- **Use-case tags:** Vehicle detection & classification — Defence; Wildlife conservation & animal detection — Aviation; Event-of-significance detection — custom.
-- **Constraint:** NO named boards/microcontrollers/sensor types in copy. Value-and-outcome framing only.
+- **Problem/solution:** The places that matter most are often the ones you can't watch: no power, no network, no easy access. We field small, low-cost sensors you can deploy in numbers and leave in place, turning those blind spots into a live picture you can act on. Each configuration is built around the problem, not the other way round.
+- **Use-case tags:** Vehicle detection & classification — Defence; Wildlife & animal detection — Aviation; Events of significance — custom.
+- **For:** anyone who needs to know what's happening somewhere they can't reach, power, or connect.
+- **Constraint:** NO named boards/microcontrollers/sensor types in copy. "Deploy in numbers and leave in place" replaces the earlier word "abundant". Value-and-outcome framing only.
 
-### 4. Alternative communications — R&D
-- **Badge:** "R&D capability".
-- **Tagline:** Pushing data further through contested environments.
-- **Problem/solution:** When it matters most, data still has to get where it needs to go. We're pushing traditional communications past their limits in contested, high-stakes environments, using all of the available spectrum. Our prototypes combine every available transmission method with self-healing mesh networks to penetrate obstacles and keep information moving when conventional networks fail.
-- **Feature points:** Uses all available spectrum (not tied to one bearer/band); Self-healing mesh (reroutes around lost nodes, no single point of failure).
+### 2. SENTIA — the ecosystem
+- **Badge:** "The ecosystem" (no TRL — SENTIA is not a single maturity level; it is the ecosystem that holds the underlying products/solutions).
+- **Tagline:** From sensor to commander, with the reasoning shown.
+- **Problem/solution:** There is more data reaching decision-makers than any person can weigh in the time they have. SENTIA is the ecosystem our systems plug into: it senses, links and interprets that data, then hands the decision-maker a clear recommendation, and shows the reasoning and the sources behind it, so they can trust it or overrule it.
+- **Pipeline chips:** Sense › Enrich › Nexus › Think › Inform › Assure.
+- **Feature points:** You set the level of automation (from advisory to hands-on; high-stakes calls always stay with a person); Built on proven systems (underpinned by Anywise capability in use, demonstrated, or under contract with the ADF).
+- **For:** commanders and practitioners who have to make a defensible call, fast, and stand behind it.
+- **Note:** the earlier line "Not a black box. A second brain that shows its working." was cut (removed per Chris — off-tone).
+
+### 3. SWIFT — resilient comms
+- **Badge:** "Validated · TRL 3, advancing to 4".
+- **Tagline:** Getting the message through when the network is denied.
+- **Problem/solution:** When bearers are jammed, intercepted or degraded, the message still has to arrive. SWIFT splits each message across several bearers at once, so no single one carries the whole thing, and reassembles it at the far end. Lose a bearer and the message still completes. Intercept one and an adversary gets a meaningless fragment. And it runs on the radios you already operate.
+- **Feature points:** No single point of failure (split across bearers, not duplicated); Hard to intercept or jam (short bursts, fragmented traffic, reroutes before a bearer fails); No new hardware (sits on your existing tactical radios); Part of SENTIA (delivery you can prove — did it arrive, and intact?).
+- **For:** defence and emergency teams who can't assume the network will be there.
+- **Imagery:** uses the real SWIFT logo (low-poly bird) supplied by Chris — NOT a generated image. See Imagery section for treatment.
+
+### 4. Assured Connectivity — R&D
+- **Badge:** "Active R&D".
+- **Tagline:** Data that reaches where nothing else can.
+- **Problem/solution:** Some environments defeat conventional communications entirely — too contested, too remote, too much in the way. We're engineering prototypes that use every available slice of spectrum and heal their own networks around lost nodes, pushing data through obstacles and keeping it moving when everything else drops out. This is where we're pushing the edge next.
+- **Feature points:** Uses all available spectrum (not tied to one bearer/band); Self-healing networks (reroute around lost nodes automatically, no single point of failure).
+- **For:** operations in places where "no signal" isn't an acceptable answer.
+- **Naming:** renamed from "Alternative communications" (weak/backup connotation) to **Assured Connectivity** (outcome-led).
 - **Constraint:** NO named protocols/products (HaLow WiFi, LoRa, ESP-NOW, ESP-MESH) anywhere on the page.
 
 ## Goals
 
-- Position innovation as central to the Anywise identity.
-- Show a credible, honest maturity story (PoC → validated → fielded), with accurate per-innovation maturity.
-- Frame every innovation by the customer problem it solves.
-- Provide a clean path: homepage teaser → full Innovations page → Engage Us.
+- Position Anywise as the team that takes on hard problems and engineers them into sovereign, working capability.
+- Earn trust by leading with fielded/proven capability; show R&D as forward momentum.
+- Frame every innovation by the customer problem it solves, and name who it's for.
+- Show a credible, honest maturity story with accurate per-innovation maturity.
+- Express sovereignty concretely: Melbourne-based, in-house Australian RD&I, Agile speed-to-delivery.
+- Provide a clean path: homepage teaser → full Innovations page → "Bring us your problem" CTA.
 - Match the established Anywise visual language and motion exactly.
 
 ## Non-goals (YAGNI)
@@ -74,22 +94,28 @@ Reuses section-header pattern (`.label` + `<h2>` with `<em>` accent + intro `<p>
 
 ```
 label:   "Innovation"
-h2:      "Innovation is what makes <em>Anywise, Anywise.</em>"
-intro:   "It's in how we work: take a hard, real-world problem, prove the concept,
-          then harden it into something that holds up in the field. We build on
-          sovereign IP and technology already proven, demonstrated, or under
-          contract with the ADF."
+h2:      "Sovereign capability that <em>holds up where it's needed most.</em>"
+intro:   "We take the problems others treat as too hard — denied networks, no power,
+          data no one can act on in time — and engineer them into working, sovereign
+          capability. Melbourne-based, with Australian RD&I in house and Agile speed
+          to delivery. Some is fielded today. Some is close behind."
 
-[ pathway strip:  01 Proof of concept → 02 Validated → 03 Fielded ]
+[ pathway strip:  01 Prove the hard part → 02 Validate → 03 Field it ]
+  01 "Solve what others can't."
+  02 "Stand it up against the real environment."
+  03 "Hardened, trialled, in operators' hands."
 
-label:   "Past proof of concept — 4 innovations"
-[ 4-up preview grid: SENTIA | SWIFT | Sensing & vision | Alt comms ]
-  each: name + one-line problem framing
+label:   "What we've built"
+[ 4-up preview grid, fielded-first: Sensing & vision | SENTIA | SWIFT | Assured Connectivity ]
+  Sensing & vision      — "Fielded eyes and ears where power and comms run out."
+  SENTIA                — "The ecosystem that turns sensor data into a decision."
+  SWIFT                 — "Getting the message through when the network is denied."
+  Assured Connectivity  — "Data that reaches where nothing else can."
 
-[ btn-accent ]  "Explore our innovations →"  → innovation.html
+[ btn-accent ]  "See what we've built →"  → innovation.html
 ```
 
-- Pathway strip: three steps with mono numerals + arrows, stacks on mobile.
+- Pathway strip: three steps with mono numerals + arrows, stacks on mobile (arrows hidden).
 - Preview grid: 4 columns desktop → 2 → 1 on mobile; cards hover-lift (matching existing card hover).
 - `.reveal` with staggered `transition-delay` on the header, pathway, label, grid, and CTA.
 
@@ -100,37 +126,40 @@ New `innovation.html`, cloned from `careers.html` (inherits `<head>`, nav, foote
 ```
 breadcrumb: Home / Innovation
 label:   "Innovation"
-h1:      "The problems we're <em>solving next.</em>"
-sub:     "Each of these has passed proof of concept. Here's the problem it solves,
-          and how far it has come."
+h1:      "Hard problems, <em>engineered into capability.</em>"
+sub:     "From fielded systems to active research, here's what we've built, what it
+          does for the people who use it, and how far it's come."
 
-[ detailed section per innovation — full width, hairline divider between ]
+[ detailed section per innovation — full width, hairline divider between; order:
+  Sensing & vision → SENTIA → SWIFT → Assured Connectivity ]
   For each: 2-col grid (content left, visual right, stacks on mobile)
     h3: name + maturity badge
     tagline (mono, accent)
     problem/solution paragraph
     (SENTIA) pipeline chips
-    feature points (2-col .feat) OR use-case tags
+    feature points (2-col .feat) OR use-case tags (Sensing)
+    "For:" line (accent-tinted) naming the buyer
     image slot
 
-[ CTA row ]  Engage us (btn-accent, data-engage) · Back to home (btn-ghost)
+[ closing CTA block ]
+  line:  "Have a problem that looks too hard? That's usually where we start."
+  [ btn-accent ] "Bring us your problem →" (data-engage)   [ btn-ghost ] "Back to home"
 ```
 
 **Maturity badge styles (three variants):**
-- In-use / ecosystem — green-tinted (SENTIA "The ecosystem", Low-SWaP "TRL 5 · fielded").
-- Validated — lime-tinted (SWIFT "TRL 3 · advancing to TRL 4").
-- R&D / neutral — grey (Alternative communications "R&D capability").
+- Fielded / ecosystem — green-tinted (Sensing "Fielded · TRL 5", SENTIA "The ecosystem").
+- Validated — lime-tinted (SWIFT "Validated · TRL 3, advancing to 4").
+- R&D / neutral — grey (Assured Connectivity "Active R&D").
 
 ## Imagery
 
-Generated via `anthropic-skills:anywise-visual-generator` (Nano Banana / Gemini), Anywise palette (Apple green #39a849, Lime #c3e01b, Mint #2d7f36). Chris will later swap in real images where available.
+Generated via `anthropic-skills:anywise-visual-generator` (Nano Banana / Gemini), Anywise palette (Apple green #39a849, Lime #c3e01b, Mint #2d7f36), abstract and public-safe (no identifiable hardware). Chris will later swap in real photography where available.
 
-Assets needed (stored under `assets/images/innovation/`):
-- `innovation-hero.jpg` (optional homepage/hero band or per-section visuals)
-- `sentia.jpg` — abstract sensor→commander ecosystem/pipeline visual
-- `swift.jpg` — multipath / disaggregated message visual (abstract, no equipment specifics)
-- `sensing-vision.jpg` — distributed small-sensor field visual (no identifiable hardware)
-- `alt-comms.jpg` — self-healing mesh / spectrum visual
+Assets (stored under `assets/images/innovation/`):
+- `sensing-vision.jpg` — distributed small-sensor field / edge sensing (no identifiable devices).
+- `sentia.jpg` — abstract sensor→commander ecosystem / six-stage pipeline.
+- `swift.jpg` — **REAL SWIFT logo supplied by Chris** (low-poly blue/white bird on dark), NOT generated. Treatment TBD at build: options are (a) logo centred on a branded tile (dark bg + subtle accent), or (b) a SWIFT capability visual with the logo as a small lockup. Because the other three tiles are conceptual/photographic, a bare logo in an identical tile risks looking inconsistent — decide treatment when wiring the image.
+- `alt-comms.jpg` — abstract self-healing mesh / spectrum motif (Assured Connectivity).
 
 All must be public-safe and non-specific about actual hardware. Styled placeholder containers (bg + border) degrade gracefully until real images land.
 

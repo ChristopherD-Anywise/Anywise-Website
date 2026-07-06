@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add an "Innovation" area — an abridged homepage section (how Anywise innovates + a 4-innovation preview) plus a dedicated `innovation.html` page with a detailed, problem-first, public-safe section per innovation (SENTIA, SWIFT, Low-SWaP sensing & vision, Alternative communications) — matching Anywise's existing dark brand, markup patterns, and scroll-reveal motion.
+**Goal:** Add an "Innovation" area — an abridged, outward-facing homepage section (how Anywise takes on hard problems + a 4-innovation preview, fielded-first) plus a dedicated `innovation.html` page with a detailed, problem-first, public-safe section per innovation (Sensing & vision, SENTIA, SWIFT, Assured Connectivity) — matching Anywise's existing dark brand, markup patterns, and scroll-reveal motion.
 
 **Architecture:** `index.html` carries its own inline `<style>`, so the homepage section CSS is added inline there. Standalone `innovation.html` is cloned from `careers.html`, which uses `shared.css` / `shared.js` (these already provide `.label`, `.reveal`, `.section-divider`, `.container`, `.btn*`, `.breadcrumb`, nav, footer, theme toggle, Engage modal, and the reveal IntersectionObserver). The page needs a page-specific `<style>` block for innovation-detail layout. No new JS.
 
@@ -112,46 +112,46 @@ git commit -m "feat(innovation): add homepage Innovation section styles"
   <div class="container">
     <div class="innovation-head reveal">
       <p class="label">Innovation</p>
-      <h2>Innovation is what makes <em>Anywise, Anywise.</em></h2>
-      <p>It's in how we work: take a hard, real-world problem, prove the concept, then harden it into something that holds up in the field. We build on sovereign IP and technology already proven, demonstrated, or under contract with the ADF.</p>
+      <h2>Sovereign capability that <em>holds up where it's needed most.</em></h2>
+      <p>We take the problems others treat as too hard — denied networks, no power, data no one can act on in time — and engineer them into working, sovereign capability. Melbourne-based, with Australian RD&amp;I in house and Agile speed to delivery. Some is fielded today. Some is close behind.</p>
     </div>
 
     <div class="innovation-pathway reveal">
       <div class="innovation-step">
-        <p class="step-n">01</p><p class="step-t">Proof of concept</p><p class="step-d">Prove the hard part works.</p>
+        <p class="step-n">01</p><p class="step-t">Prove the hard part</p><p class="step-d">Solve what others can't.</p>
       </div>
       <span class="innovation-arrow">&rarr;</span>
       <div class="innovation-step">
-        <p class="step-n">02</p><p class="step-t">Validated</p><p class="step-d">Architecture and components stand up.</p>
+        <p class="step-n">02</p><p class="step-t">Validate</p><p class="step-d">Stand it up against the real environment.</p>
       </div>
       <span class="innovation-arrow">&rarr;</span>
       <div class="innovation-step">
-        <p class="step-n">03</p><p class="step-t">Fielded</p><p class="step-d">Hardened, trialled, in operators' hands.</p>
+        <p class="step-n">03</p><p class="step-t">Field it</p><p class="step-d">Hardened, trialled, in operators' hands.</p>
       </div>
     </div>
 
-    <p class="innovation-preview-label reveal">Past proof of concept — four innovations</p>
+    <p class="innovation-preview-label reveal">What we've built</p>
     <div class="innovation-preview reveal">
       <div class="innovation-prev-card">
+        <h3>Sensing &amp; vision</h3>
+        <p>Fielded eyes and ears where power and comms run out.</p>
+      </div>
+      <div class="innovation-prev-card">
         <h3>SENTIA</h3>
-        <p>The ecosystem our solutions live within. Sensor to commander.</p>
+        <p>The ecosystem that turns sensor data into a decision.</p>
       </div>
       <div class="innovation-prev-card">
         <h3>SWIFT</h3>
-        <p>Getting critical messages through when the network is denied.</p>
+        <p>Getting the message through when the network is denied.</p>
       </div>
       <div class="innovation-prev-card">
-        <h3>Sensing &amp; vision</h3>
-        <p>Small, abundant sensing where power and comms run out.</p>
-      </div>
-      <div class="innovation-prev-card">
-        <h3>Alternative comms</h3>
-        <p>Pushing data further through contested environments.</p>
+        <h3>Assured Connectivity</h3>
+        <p>Data that reaches where nothing else can.</p>
       </div>
     </div>
 
     <div class="section-view-all reveal" style="margin-top:2.5rem;">
-      <a href="innovation.html" class="btn btn-accent"><span>Explore our innovations &rarr;</span></a>
+      <a href="innovation.html" class="btn btn-accent"><span>See what we've built &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -239,8 +239,8 @@ git commit -m "feat(innovation): scaffold innovation.html from careers template"
       <span>Innovation</span>
     </div>
     <p class="label">Innovation</p>
-    <h1>The problems we're <em>solving next.</em></h1>
-    <p class="page-hero-sub">Each of these has passed proof of concept. Here's the problem it solves, and how far it has come.</p>
+    <h1>Hard problems, <em>engineered into capability.</em></h1>
+    <p class="page-hero-sub">From fielded systems to active research, here's what we've built, what it does for the people who use it, and how far it's come.</p>
   </div>
 </section>
 ```
@@ -253,65 +253,72 @@ git commit -m "feat(innovation): scaffold innovation.html from careers template"
 
     <div class="innov-block reveal">
       <div class="innov-content">
-        <h2 class="innov-name">SENTIA <span class="innov-badge badge-eco">The ecosystem</span></h2>
-        <p class="innov-tag">Trustworthy decision advantage, sensor to commander</p>
-        <p class="innov-desc">The volume and velocity of data now exceeds what people can process in time. SENTIA is the six-stage ecosystem our solutions live within: it turns fragmented data into trusted, AI-assisted outputs a practitioner can act on, with provenance tracked at every step.</p>
-        <div class="innov-pipe">
-          <span>Sense</span><em>&rsaquo;</em><span>Enrich</span><em>&rsaquo;</em><span>Nexus</span><em>&rsaquo;</em><span>Think</span><em>&rsaquo;</em><span>Inform</span><em>&rsaquo;</em><span>Assure</span>
-        </div>
-        <div class="innov-feat">
-          <div class="feat-x"><b>Trusted autonomy</b><p>A human-oversight slider sets how much the system does. High-risk calls stay with people.</p></div>
-          <div class="feat-x"><b>Built on proven work</b><p>Underpinned by Anywise systems already in use, demonstrated, or under contract with the ADF.</p></div>
-        </div>
-      </div>
-      <div class="innov-media"><img src="assets/images/innovation/sentia.jpg" alt="The SENTIA ecosystem, from sensor to commander" loading="lazy" width="600" height="450"></div>
-    </div>
-
-    <div class="innov-block reveal">
-      <div class="innov-content">
-        <h2 class="innov-name">SWIFT <span class="innov-badge badge-val">TRL 3 &middot; advancing to TRL 4</span></h2>
-        <p class="innov-tag">Getting the message through when the network is denied</p>
-        <p class="innov-desc">Critical messages must arrive even when bearers are jammed, intercepted or degraded. SWIFT delivers disaggregated communications for defence, emergency services and low-bandwidth environments, splitting a message across multiple bearers at once so no single one carries the whole thing, and reassembling it at the far end.</p>
-        <div class="innov-feat">
-          <div class="feat-x"><b>No single point of failure</b><p>Split across bearers, not duplicated. Lose one, the message still completes.</p></div>
-          <div class="feat-x"><b>Hard to intercept or jam</b><p>Short bursts, fragmented traffic, and adaptive rerouting before bearers fail.</p></div>
-          <div class="feat-x"><b>Works on what you already have</b><p>Sits on existing tactical radios. No new hardware to field.</p></div>
-          <div class="feat-x"><b>Part of SENTIA</b><p>Feeds assured, traceable delivery into the wider ecosystem.</p></div>
-        </div>
-      </div>
-      <div class="innov-media"><img src="assets/images/innovation/swift.jpg" alt="SWIFT resilient multipath communications" loading="lazy" width="600" height="450"></div>
-    </div>
-
-    <div class="innov-block reveal">
-      <div class="innov-content">
-        <h2 class="innov-name">Low-SWaP sensing &amp; vision <span class="innov-badge badge-eco">TRL 5 &middot; fielded</span></h2>
+        <h2 class="innov-name">Sensing &amp; vision <span class="innov-badge badge-eco">Fielded &middot; TRL 5</span></h2>
         <p class="innov-tag">Eyes and ears where power and comms run out</p>
-        <p class="innov-desc">Many environments that matter have no reliable power and no network, so they go unwatched. We field small, low-cost, abundant sensing suites that run in those power- and comms-denied conditions, collecting the sensing information that turns a blind spot into an intelligence-based decision. Configurations are tailored to the problem.</p>
+        <p class="innov-desc">The places that matter most are often the ones you can't watch: no power, no network, no easy access. We field small, low-cost sensors you can deploy in numbers and leave in place, turning those blind spots into a live picture you can act on. Each configuration is built around the problem, not the other way round.</p>
         <div class="innov-usecase">
           <span>Vehicle detection &amp; classification — Defence</span>
-          <span>Wildlife conservation &amp; animal detection — Aviation</span>
-          <span>Event-of-significance detection — custom</span>
+          <span>Wildlife &amp; animal detection — Aviation</span>
+          <span>Events of significance — custom</span>
         </div>
+        <p class="innov-for"><b>For:</b> anyone who needs to know what's happening somewhere they can't reach, power, or connect.</p>
       </div>
       <div class="innov-media"><img src="assets/images/innovation/sensing-vision.jpg" alt="Distributed low-power sensing in the field" loading="lazy" width="600" height="450"></div>
     </div>
 
     <div class="innov-block reveal">
       <div class="innov-content">
-        <h2 class="innov-name">Alternative communications <span class="innov-badge badge-rd">R&amp;D capability</span></h2>
-        <p class="innov-tag">Pushing data further through contested environments</p>
-        <p class="innov-desc">When it matters most, data still has to get where it needs to go. We're pushing traditional communications past their limits in contested, high-stakes environments, using all of the available spectrum. Our prototypes combine every available transmission method with self-healing mesh networks to penetrate obstacles and keep information moving when conventional networks fail.</p>
+        <h2 class="innov-name">SENTIA <span class="innov-badge badge-eco">The ecosystem</span></h2>
+        <p class="innov-tag">From sensor to commander, with the reasoning shown</p>
+        <p class="innov-desc">There is more data reaching decision-makers than any person can weigh in the time they have. SENTIA is the ecosystem our systems plug into: it senses, links and interprets that data, then hands the decision-maker a clear recommendation, and shows the reasoning and the sources behind it, so they can trust it or overrule it.</p>
+        <div class="innov-pipe">
+          <span>Sense</span><em>&rsaquo;</em><span>Enrich</span><em>&rsaquo;</em><span>Nexus</span><em>&rsaquo;</em><span>Think</span><em>&rsaquo;</em><span>Inform</span><em>&rsaquo;</em><span>Assure</span>
+        </div>
+        <div class="innov-feat">
+          <div class="feat-x"><b>You set the level of automation</b><p>From advisory to hands-on. High-stakes calls always stay with a person.</p></div>
+          <div class="feat-x"><b>Built on proven systems</b><p>Underpinned by Anywise capability in use, demonstrated, or under contract with the ADF.</p></div>
+        </div>
+        <p class="innov-for"><b>For:</b> commanders and practitioners who have to make a defensible call, fast, and stand behind it.</p>
+      </div>
+      <div class="innov-media"><img src="assets/images/innovation/sentia.jpg" alt="The SENTIA ecosystem, from sensor to commander" loading="lazy" width="600" height="450"></div>
+    </div>
+
+    <div class="innov-block reveal">
+      <div class="innov-content">
+        <h2 class="innov-name">SWIFT <span class="innov-badge badge-val">Validated &middot; TRL 3, advancing to 4</span></h2>
+        <p class="innov-tag">Getting the message through when the network is denied</p>
+        <p class="innov-desc">When bearers are jammed, intercepted or degraded, the message still has to arrive. SWIFT splits each message across several bearers at once, so no single one carries the whole thing, and reassembles it at the far end. Lose a bearer and the message still completes. Intercept one and an adversary gets a meaningless fragment. And it runs on the radios you already operate.</p>
+        <div class="innov-feat">
+          <div class="feat-x"><b>No single point of failure</b><p>Split across bearers, not duplicated. Lose one, it still gets through.</p></div>
+          <div class="feat-x"><b>Hard to intercept or jam</b><p>Short bursts, fragmented traffic, reroutes before a bearer fails.</p></div>
+          <div class="feat-x"><b>No new hardware</b><p>Sits on your existing tactical radios.</p></div>
+          <div class="feat-x"><b>Part of SENTIA</b><p>Delivery you can prove: did it arrive, and intact?</p></div>
+        </div>
+        <p class="innov-for"><b>For:</b> defence and emergency teams who can't assume the network will be there.</p>
+      </div>
+      <div class="innov-media"><img src="assets/images/innovation/swift.jpg" alt="SWIFT resilient communications" loading="lazy" width="600" height="450"></div>
+    </div>
+
+    <div class="innov-block reveal">
+      <div class="innov-content">
+        <h2 class="innov-name">Assured Connectivity <span class="innov-badge badge-rd">Active R&amp;D</span></h2>
+        <p class="innov-tag">Data that reaches where nothing else can</p>
+        <p class="innov-desc">Some environments defeat conventional communications entirely — too contested, too remote, too much in the way. We're engineering prototypes that use every available slice of spectrum and heal their own networks around lost nodes, pushing data through obstacles and keeping it moving when everything else drops out. This is where we're pushing the edge next.</p>
         <div class="innov-feat">
           <div class="feat-x"><b>Uses all available spectrum</b><p>Not tied to one bearer or band. Whatever gets the data through.</p></div>
-          <div class="feat-x"><b>Self-healing mesh</b><p>Reroutes around lost nodes. No single point of failure.</p></div>
+          <div class="feat-x"><b>Self-healing networks</b><p>Reroute around lost nodes automatically. No single point of failure.</p></div>
         </div>
+        <p class="innov-for"><b>For:</b> operations in places where "no signal" isn't an acceptable answer.</p>
       </div>
       <div class="innov-media"><img src="assets/images/innovation/alt-comms.jpg" alt="Self-healing mesh communications" loading="lazy" width="600" height="450"></div>
     </div>
 
     <div class="innov-cta reveal">
-      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage us &rarr;</span></a>
-      <a href="index.html" class="btn btn-ghost">Back to home</a>
+      <p class="innov-cta-line">Have a problem that looks too hard? That's usually where we start.</p>
+      <div class="innov-cta-btns">
+        <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Bring us your problem &rarr;</span></a>
+        <a href="index.html" class="btn btn-ghost">Back to home</a>
+      </div>
     </div>
 
   </div>
@@ -375,14 +382,20 @@ git commit -m "feat(innovation): add four detailed innovation sections"
   .feat-x b { display: block; color: var(--text-primary); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem; }
   .feat-x p { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 
-  .innov-usecase { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .innov-usecase { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
   .innov-usecase span { font-size: 0.82rem; color: var(--text-secondary); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.45rem 0.8rem; border-radius: 30px; }
   [data-theme="light"] .innov-usecase span { background: rgba(0,0,0,0.03); }
+
+  .innov-for { font-size: 0.85rem; line-height: 1.5; color: var(--accent); margin: 1rem 0 0; }
+  .innov-for b { color: var(--text-secondary); font-weight: 400; }
+  [data-theme="light"] .innov-for { color: var(--mint); }
 
   .innov-media { aspect-ratio: 4/3; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .innov-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  .innov-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+  .innov-cta { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 0.5rem; }
+  .innov-cta-line { font-size: 1.05rem; color: var(--text-primary); margin: 0 0 1.25rem; max-width: 34rem; }
+  .innov-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
 
   @media (max-width: 860px) {
     .innov-block { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -421,20 +434,23 @@ git commit -m "feat(innovation): add innovations page styles"
 
 Run: `mkdir -p assets/images/innovation`
 
-- [ ] **Step 2: Generate via anthropic-skills:anywise-visual-generator**
+- [ ] **Step 2a: Place the real SWIFT logo (supplied by Chris)**
+
+SWIFT uses the REAL supplied logo (low-poly blue/white bird on dark), NOT a generated image. Chris will drop the file at `assets/images/innovation/swift.jpg` (or `.png` — update the `<img src>` in Task 4 to match the extension). Treatment decision: because the other three tiles are conceptual/photographic while this is a product logo on dark, either (a) present the logo centred on a branded tile (dark bg, subtle accent border — matches `.innov-media` bg) or (b) build a SWIFT capability visual with the logo as a small lockup. Default to (a) — the `.innov-media` container already has a dark bg + border, and `object-fit: cover` should become `object-fit: contain` with padding for a logo. Add to Task 5 CSS if chosen: `.innov-block:nth-of-type(3) .innov-media img { object-fit: contain; padding: 2.5rem; }` (SWIFT is the 3rd block).
+
+- [ ] **Step 2b: Generate the other three via anthropic-skills:anywise-visual-generator**
 
 Invoke the skill to produce Nano Banana (Gemini) prompts in the Anywise palette (Apple green #39a849, Lime #c3e01b, Mint #2d7f36), abstract and public-safe (NO identifiable hardware/equipment):
-- `sentia.jpg` — abstract sensor→commander ecosystem / six-stage pipeline.
-- `swift.jpg` — abstract disaggregated/multipath message across multiple paths.
 - `sensing-vision.jpg` — abstract distributed small-sensor field / edge sensing (no identifiable devices).
-- `alt-comms.jpg` — abstract self-healing mesh / spectrum motif.
+- `sentia.jpg` — abstract sensor→commander ecosystem / six-stage pipeline.
+- `alt-comms.jpg` — abstract self-healing mesh / spectrum motif (Assured Connectivity).
 
 Save to the paths above (4:3, ~600×450 or larger). Chris will swap in real photography later; styled containers degrade gracefully if an image is missing.
 
 - [ ] **Step 3: Verify**
 
-Run: `for f in sentia swift sensing-vision alt-comms; do test -f assets/images/innovation/$f.jpg && echo "$f OK" || echo "$f MISSING"; done`
-Expected: four `OK` (or note deferred if Chris supplies later).
+Run: `for f in sensing-vision sentia swift alt-comms; do test -f assets/images/innovation/$f.jpg -o -f assets/images/innovation/$f.png && echo "$f OK" || echo "$f MISSING"; done`
+Expected: four `OK` (or note deferred if Chris supplies later; SWIFT depends on Chris's file).
 
 - [ ] **Step 4: Commit**
 
@@ -492,8 +508,8 @@ Expected: `1`, `1`, `4`, `1`, `4`, `0`.
 
 - [ ] **Step 2: Manual browser checklist** (Playwright or browser), both themes, desktop + mobile:
 - "Innovation" in header nav; homepage click smooth-scrolls to `#innovation`; scroll-spy highlights it.
-- Homepage section reveals on scroll; pathway readable; preview cards hover-lift; "Explore our innovations →" → `innovation.html`.
-- `innovation.html`: breadcrumb, four blocks reveal on scroll, badges correct (eco/val/rd colours), SENTIA pipeline chips wrap cleanly, use-case tags on sensing block, "Engage us" opens modal, "Back to home" works.
+- Homepage section reveals on scroll; pathway readable; preview cards hover-lift (fielded-first order); "See what we've built →" → `innovation.html`.
+- `innovation.html`: breadcrumb, four blocks reveal in fielded-first order (Sensing → SENTIA → SWIFT → Assured Connectivity), badges correct (eco/val/rd colours), SENTIA pipeline chips wrap cleanly, use-case tags + "For:" line on sensing block, every block has a "For:" line, closing CTA line shows, "Bring us your problem" opens Engage modal, "Back to home" works.
 - Mobile: pathway stacks (arrows hidden), preview → 1 col, `.innov-block` stacks with image on top, feature grid → 1 col.
 - `prefers-reduced-motion`: reveals static.
 - No console errors; homepage globe/hero/counters unaffected.
@@ -511,5 +527,6 @@ git commit -m "fix(innovation): address verification findings"
 
 - **Spec coverage:** homepage narrative + pathway + 4-preview + CTA (Tasks 1–2) ✓; detailed page with four problem-first sections and correct maturity badges (Tasks 3–5) ✓; SENTIA "The ecosystem"/no-TRL, SWIFT TRL 3→4, Sensing TRL 5 fielded, Alt comms R&D ✓; public-safe / no named hardware or protocols (enforced by grep in Tasks 4 & 8) ✓; nav link + scroll-spy (Task 2) ✓; placement after Products before Track (Task 2) ✓; imagery via visual-generator, public-safe (Task 6) ✓; motion reuse, no new JS (uses `.reveal`) ✓; sitemap (Task 7) ✓; light/dark + responsive + reduced-motion (Task 8) ✓.
 - **Placeholder scan:** all code blocks complete; no TBD/TODO.
-- **Class consistency:** homepage (`innovation`, `innovation-head`, `innovation-pathway`, `innovation-step`, `step-n/t/d`, `innovation-arrow`, `innovation-preview-label`, `innovation-preview`, `innovation-prev-card`) and page (`page-hero`, `innovation-detail`, `innov-block`, `innov-content`, `innov-name`, `innov-tag`, `innov-desc`, `innov-badge`, `badge-eco/val/rd`, `innov-pipe`, `innov-feat`, `feat-x`, `innov-usecase`, `innov-media`, `innov-cta`) are used identically in markup (Tasks 2/4) and CSS (Tasks 1/5).
+- **Class consistency:** homepage (`innovation`, `innovation-head`, `innovation-pathway`, `innovation-step`, `step-n/t/d`, `innovation-arrow`, `innovation-preview-label`, `innovation-preview`, `innovation-prev-card`) and page (`page-hero`, `innovation-detail`, `innov-block`, `innov-content`, `innov-name`, `innov-tag`, `innov-desc`, `innov-badge`, `badge-eco/val/rd`, `innov-pipe`, `innov-feat`, `feat-x`, `innov-usecase`, `innov-for`, `innov-media`, `innov-cta`, `innov-cta-line`, `innov-cta-btns`) are used identically in markup (Tasks 2/4) and CSS (Tasks 1/5).
+- **Copy source of truth:** all copy matches the v4 customer-lens rewrite in the spec — outward headline, fielded-first order (Sensing → SENTIA → SWIFT → Assured Connectivity), "For:" lines, "Bring us your problem" CTA, sovereignty framed as Melbourne-based / in-house Australian RD&I / Agile speed. SENTIA's "second brain" line removed. "Alternative communications" renamed "Assured Connectivity".
 - **Note:** `.innov-media img` uses images from Task 6; if imagery is deferred, the `img` renders empty inside a styled container (bg + border) — acceptable degradation.
