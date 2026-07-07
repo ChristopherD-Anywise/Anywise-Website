@@ -71,6 +71,7 @@ html, body {
   --accent-dim: #2d7f36;
   --accent-muted: rgba(57,168,73,0.06);
   --accent-glow: rgba(57,168,73,0.1);
+  --danger: #e5686c;
 
   /* Layout */
   --white: #ffffff;
@@ -104,6 +105,7 @@ html, body {
   --accent-dim:     #39a849;
   --accent-muted:   rgba(57,168,73,0.04);
   --accent-glow:    rgba(57,168,73,0.06);
+  --danger:         #c0272d;
 }
 
 /* ═══ LIGHT MODE — HERO ═══ */
@@ -201,7 +203,7 @@ html, body {
 }
 
 [data-theme="light"] .stat-box p {
-  color: rgba(0,0,0,0.5);
+  color: rgba(0,0,0,0.72);
 }
 
 /* ═══ LIGHT MODE — CAPABILITY CARDS ═══ */
@@ -752,7 +754,7 @@ a.nav-cta:hover::after { width: 100%; }
 
 /* Stat boxes - horizontal bar */
 .stat-box {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1.4rem 1.8rem;
@@ -764,7 +766,7 @@ a.nav-cta:hover::after { width: 100%; }
   transition: opacity 0.6s, transform 0.6s, background 0.3s;
 }
 .stat-box:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.62);
 }
 .stat-box:last-child { border-right: none; }
 .hero.in-view .stat-box {
@@ -775,7 +777,7 @@ a.nav-cta:hover::after { width: 100%; }
 .hero.in-view .stat-box:nth-child(2) { transition-delay: 0.45s; }
 .hero.in-view .stat-box:nth-child(3) { transition-delay: 0.55s; }
 
-.stat-box h3 {
+.stat-value {
   font-family: var(--font);
   font-size: 1.5rem;
   font-weight: 700;
@@ -783,12 +785,12 @@ a.nav-cta:hover::after { width: 100%; }
   margin-bottom: 0.25rem;
   letter-spacing: -0.02em;
 }
-.stat-box h3 .accent {
+.stat-value .accent {
   color: var(--accent);
 }
 .stat-box p {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.78);
   line-height: 1.4;
   font-family: var(--font);
   letter-spacing: 0.02em;
@@ -1692,11 +1694,9 @@ footer {
   <div class="container">
     <a href="/" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#capabilities">Capabilities</a></li>
-      <li><a href="#approach">Approach</a></li>
       <li><a href="products/index.html">Products &amp; Services</a></li>
       <li><a href="innovation.html">Innovation</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="blog/index.html">Insights</a></li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
@@ -1747,15 +1747,15 @@ footer {
     <!-- Stats bar -->
     <div class="hero-stats-bar">
       <div class="stat-box">
-        <h3><span class="accent">10+</span></h3>
+        <div class="stat-value"><span class="accent">10+</span></div>
         <p>Years in defence &amp; gov</p>
       </div>
       <div class="stat-box">
-        <h3><span class="accent">APAC &middot; EU</span></h3>
+        <div class="stat-value"><span class="accent">APAC &middot; EU</span></div>
         <p>Operating jurisdictions</p>
       </div>
       <div class="stat-box">
-        <h3><span class="accent">Ethical AI</span></h3>
+        <div class="stat-value"><span class="accent">Ethical AI</span></div>
         <p>Human-centred decision augmentation</p>
       </div>
     </div>
@@ -1794,6 +1794,7 @@ footer {
 <div class="section-divider"></div>
 <section class="capabilities" id="capabilities">
   <div class="container">
+    <p class="label">Capabilities</p>
     <div class="cap-grid">
       <div class="cap-card reveal">
         <p class="cap-num">01 — Capability</p>
@@ -1871,7 +1872,7 @@ footer {
     <div class="products-head reveal">
       <div>
         <p class="label">Products &amp; Services</p>
-        <h2>Sovereign, Australian-designed intelligence platforms.</h2>
+        <h2>Australian-designed intelligence platforms.</h2>
       </div>
       <p>Our products combine advanced data integration, GenAI-enabled analytics and human expertise to deliver augmented intelligence directly into the hands of user communities, from defence and emergency services to infrastructure and industry.</p>
     </div>
@@ -1972,7 +1973,7 @@ footer {
     <div class="innovation-preview">
       <a href="innovation.html" class="product-card reveal">
         <div class="product-card-img-wrap">
-          <img class="product-card-img" src="assets/images/innovation/sentia-ecosystem-dark.svg" alt="SENTIA ecosystem" loading="lazy">
+          <img class="product-card-img" src="assets/images/innovation/sentia-ecosystem-dark.svg" alt="SENTIA ecosystem" loading="lazy" decoding="async" width="1000" height="750">
         </div>
         <div class="product-card-body">
           <p class="product-card-tag">The Ecosystem</p>
@@ -1983,7 +1984,7 @@ footer {
       </a>
       <a href="innovation.html" class="product-card reveal">
         <div class="product-card-img-wrap">
-          <img class="product-card-img" src="assets/images/innovation/sensing-vision.png" alt="Sensing and vision" loading="lazy">
+          <img class="product-card-img" src="assets/images/innovation/sensing-vision.png" alt="Sensing and vision" loading="lazy" decoding="async" width="1061" height="671">
         </div>
         <div class="product-card-body">
           <p class="product-card-tag">Fielded</p>
@@ -1994,7 +1995,7 @@ footer {
       </a>
       <a href="innovation.html" class="product-card reveal">
         <div class="product-card-img-wrap swift-tile">
-          <img class="product-card-img" src="assets/images/innovation/swift.png" alt="SWIFT">
+          <img class="product-card-img" src="assets/images/innovation/swift.png" alt="SWIFT" loading="lazy" decoding="async" width="1188" height="659">
         </div>
         <div class="product-card-body">
           <p class="product-card-tag">Validated</p>
@@ -2005,7 +2006,7 @@ footer {
       </a>
       <a href="innovation.html" class="product-card reveal">
         <div class="product-card-img-wrap">
-          <img class="product-card-img" src="assets/images/innovation/alt-comms.png" alt="Assured Connectivity" loading="lazy">
+          <img class="product-card-img" src="assets/images/innovation/alt-comms.png" alt="Assured Connectivity" loading="lazy" decoding="async" width="621" height="603">
         </div>
         <div class="product-card-body">
           <p class="product-card-tag">Active R&amp;D</p>
@@ -2062,7 +2063,7 @@ footer {
         <p>Our "T-Shaped" people bring deep specialist expertise and broad collaborative reach, working arm-in-arm to achieve your goals.</p>
       </div>
       <div class="team-img reveal-right">
-        <img src="./assets/images/team/team-photo.png" alt="The Anywise team">
+        <img src="./assets/images/team/team-photo.png" alt="The Anywise team" loading="lazy" decoding="async" width="700" height="464">
       </div>
     </div>
   </div>
@@ -2081,7 +2082,7 @@ footer {
     <div class="news-grid">
       <a href="blog/post.html?slug=transforming-operational-challenges" class="news-card reveal">
         <div class="news-card-thumb-wrap">
-          <img class="news-card-thumb" src="./assets/images/blog/podcast-ep1.jpg" alt="Transforming Operational Challenges into Dual-Use Intelligence Solutions">
+          <img class="news-card-thumb" src="./assets/images/blog/podcast-ep1.jpg" alt="Transforming Operational Challenges into Dual-Use Intelligence Solutions" loading="lazy" decoding="async" width="400" height="260">
         </div>
         <div class="news-card-body">
           <span class="news-date">15 Feb 2026 &middot; 3 min</span>
@@ -2090,7 +2091,7 @@ footer {
       </a>
       <a href="blog/post.html?slug=dcsp-catalyst-for-real-change" class="news-card reveal">
         <div class="news-card-thumb-wrap">
-          <img class="news-card-thumb" src="./assets/images/blog/podcast-ep1-alt.png" alt="The DCSP Must Be a Catalyst for Real Change">
+          <img class="news-card-thumb" src="./assets/images/blog/podcast-ep1-alt.png" alt="The DCSP Must Be a Catalyst for Real Change" loading="lazy" decoding="async" width="400" height="260">
         </div>
         <div class="news-card-body">
           <span class="news-date">4 Jan 2026 &middot; 4 min</span>
@@ -2099,7 +2100,7 @@ footer {
       </a>
       <a href="blog/post.html?slug=vicworx-preparing-for-lift-off" class="news-card reveal">
         <div class="news-card-thumb-wrap">
-          <img class="news-card-thumb" src="./assets/images/blog/blog-thumb-1.png" alt="VICWORX is Preparing for Lift Off">
+          <img class="news-card-thumb" src="./assets/images/blog/blog-thumb-1.png" alt="VICWORX is Preparing for Lift Off" loading="lazy" decoding="async" width="400" height="260">
         </div>
         <div class="news-card-body">
           <span class="news-date">25 Feb 2025 &middot; 2 min</span>
@@ -2108,7 +2109,7 @@ footer {
       </a>
       <a href="blog/post.html?slug=commitment-to-ethical-quality-business" class="news-card reveal">
         <div class="news-card-thumb-wrap">
-          <img class="news-card-thumb" src="./assets/images/blog/blog-thumb-2.webp" alt="Strengthening Our Commitment to Ethical, Quality-Driven Business">
+          <img class="news-card-thumb" src="./assets/images/blog/blog-thumb-2.webp" alt="Strengthening Our Commitment to Ethical, Quality-Driven Business" loading="lazy" decoding="async" width="400" height="260">
         </div>
         <div class="news-card-body">
           <span class="news-date">3 Oct 2024 &middot; 3 min</span>
@@ -2128,15 +2129,16 @@ footer {
   <div class="container">
     <div class="cta-box reveal-scale">
       <div class="cta-content">
+        <p class="label">Get in touch</p>
         <h2>Ready to tackle your most complex challenge?</h2>
         <p>Whether you're navigating a procurement decision, standing up a new capability, or exploring what ethical AI looks like in your context, let's talk.</p>
         <div class="cta-actions">
-          <a href="#" class="btn btn-primary" data-engage aria-haspopup="dialog">Start a Conversation</a>
-          <a href="#capabilities" class="btn btn-accent"><span>View Capabilities</span></a>
+          <a href="#" class="btn btn-primary" data-engage aria-haspopup="dialog">Engage Us</a>
+          <a href="#capabilities" class="btn btn-accent"><span>Our Capabilities</span></a>
         </div>
       </div>
       <div class="cta-image">
-        <img src="./assets/images/team/team-photo-alt.jpg" alt="Anywise team">
+        <img src="./assets/images/team/team-photo-alt.jpg" alt="Anywise team" loading="lazy" decoding="async" width="600" height="500">
       </div>
     </div>
   </div>

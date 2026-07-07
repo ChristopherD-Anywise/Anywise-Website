@@ -9,7 +9,7 @@
     "tagline": "Purpose Driven Projects",
     "description": "The word 'Anywise' combines 'any' and 'wise', meaning in any way, by any means possible, or anything it takes.",
     "company": {
-      "legal_name": "Anywise Consulting Pty Ltd",
+      "legal_name": "Anywise Pty Ltd",
       "abn": "86 169 092 960",
       "registered_address": "Level 4/333 Collins Street, Melbourne 3000",
       "postal_address": "PO BOX 292 Brunswick East, Victoria, Australia 3067",
@@ -140,23 +140,39 @@
   },
 
   "typography": {
+    "_note": "The live website uses General Sans (headings + body) and JetBrains Mono (labels, eyebrows, stats). Open Sans / Roboto were the original 2020 brand fonts and are retained here as historical reference only; the web implementation below is authoritative for anything on anywise.com.au.",
     "display_headings_titles": {
-      "font_family": "Open Sans Bold",
-      "weight": "Bold",
-      "source": "https://fonts.google.com/specimen/Open+Sans",
-      "use": "Headings and titles"
+      "font_family": "General Sans",
+      "weight": "Bold (700)",
+      "source": "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700",
+      "use": "Headings and titles",
+      "css_token": "--font"
     },
     "sub_headings": {
-      "font_family": "Open Sans Semi-Bold",
-      "weight": "Semi-Bold",
-      "source": "https://fonts.google.com/specimen/Open+Sans",
-      "use": "Sub-headings"
+      "font_family": "General Sans",
+      "weight": "SemiBold (600)",
+      "source": "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700",
+      "use": "Sub-headings",
+      "css_token": "--font"
     },
     "body_copy": {
-      "font_family": "Roboto Regular",
-      "weight": "Regular",
-      "source": "https://fonts.google.com/specimen/Roboto",
-      "use": "Body copy — open, welcoming and easy to read"
+      "font_family": "General Sans",
+      "weight": "Regular (400)",
+      "source": "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700",
+      "use": "Body copy — open, welcoming and easy to read",
+      "css_token": "--font"
+    },
+    "mono_labels": {
+      "font_family": "JetBrains Mono",
+      "weight": "Regular / Medium (400, 500)",
+      "source": "https://fonts.google.com/specimen/JetBrains+Mono",
+      "use": "Eyebrow labels, stat figures, technical/meta text",
+      "css_token": "--mono"
+    },
+    "legacy_brand_fonts": {
+      "_note": "Original 2020 brand bible fonts, superseded on the web by General Sans / JetBrains Mono.",
+      "display": "Open Sans Bold",
+      "body": "Roboto Regular"
     }
   },
 

@@ -1,1 +1,6 @@
 .worktrees
+
+# macOS / OneDrive "copy 2" duplicate artifacts — never commit these
+*\ 2.*
+# stale double-extension AVIF (correct file is FABHUMS.avif)
+assets/images/products\ \&\ services/FABHUMS.jpg.avif

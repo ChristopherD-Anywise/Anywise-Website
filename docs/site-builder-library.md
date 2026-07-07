@@ -498,7 +498,7 @@ document.documentElement.style.setProperty('--scroll-progress', scrollPercent);
 ```js
 // Inline IIFE (runs before DOM paint)
 (function() {
-  var stored = localStorage.getItem('anywise-theme');
+  var stored = localStorage.getItem('theme');
   var isLight;
   
   if (stored === 'light' || stored === 'dark') {
@@ -529,7 +529,7 @@ function applyTheme(theme) {
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.content = theme === 'light' ? '#f5f6f3' : '#0e110e';
   themeToggle.textContent = theme === 'light' ? '☾' : '☀';
-  localStorage.setItem('anywise-theme', theme);
+  localStorage.setItem('theme', theme);
   if (window.updateGlobeTheme) window.updateGlobeTheme(theme === 'light');
 }
 ```

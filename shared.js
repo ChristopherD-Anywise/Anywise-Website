@@ -3,10 +3,14 @@
 /* ─── Theme Detection IIFE ────────────────────────────────────────────────── */
 (function () {
   function getSydneyHour() {
-    const now = new Date();
-    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-    const sydneyOffset = 10 * 3600000;
-    return new Date(utcMs + sydneyOffset).getHours();
+    /* Use the IANA zone so daylight saving (AEDT, UTC+11) is handled correctly */
+    try {
+      return new Date(
+        new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })
+      ).getHours();
+    } catch (e) {
+      return new Date().getHours();
+    }
   }
 
   function applyTheme(theme) {
@@ -286,9 +290,26 @@ function injectEngageModal() {
     if (e.target === modal) closeEngageModal();
   });
 
-  /* ESC key */
+  /* ESC key + Tab focus-trap (a11y) */
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.hidden) closeEngageModal();
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeEngageModal(); return; }
+    if (e.key !== 'Tab') return;
+    /* Keep Tab focus cycling within the modal */
+    var focusable = modal.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    focusable = Array.prototype.filter.call(focusable, function (el) {
+      return el.offsetParent !== null; /* visible only */
+    });
+    if (!focusable.length) return;
+    var firstEl = focusable[0];
+    var lastEl = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === firstEl) {
+      e.preventDefault(); lastEl.focus();
+    } else if (!e.shiftKey && document.activeElement === lastEl) {
+      e.preventDefault(); firstEl.focus();
+    }
   });
 
   /* Form submission handler */
@@ -340,10 +361,8 @@ function handleEngageSubmit(e) {
     .catch(function (err) {
       const errEl = document.createElement('p');
       errEl.className = 'engage-error';
+      errEl.setAttribute('role', 'alert');
       errEl.textContent = err.message || 'Failed to send. Please try again.';
-      errEl.style.color = '#e74c3c';
-      errEl.style.fontSize = '0.875rem';
-      errEl.style.marginBottom = '0.75rem';
       const actionsDiv = form.querySelector('.engage-actions');
       if (actionsDiv) {
         actionsDiv.parentElement.insertBefore(errEl, actionsDiv);
@@ -364,9 +383,13 @@ function wireEngageTriggers() {
 }
 
 /* ─── Open / Close ────────────────────────────────────────────────────────── */
+var engageLastFocused = null;
+
 function openEngageModal() {
   const modal = document.getElementById('engageModal');
   if (!modal) return;
+  /* Remember what had focus so we can restore it on close (a11y) */
+  engageLastFocused = document.activeElement;
   modal.removeAttribute('hidden');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -389,6 +412,11 @@ function closeEngageModal() {
   modal.classList.remove('open');
   document.body.style.overflow = '';
   setTimeout(function () { modal.setAttribute('hidden', ''); }, 300);
+  /* Restore focus to the trigger that opened the modal (a11y) */
+  if (engageLastFocused && typeof engageLastFocused.focus === 'function') {
+    engageLastFocused.focus();
+    engageLastFocused = null;
+  }
 }
 
 /* Expose globally so inline onclick / product page CTAs can call these */

@@ -41,8 +41,8 @@
   "isPartOf": { "@type": "WebSite", "@id": "https://anywise.com.au/#website" },
   "about": [
     { "@type": "Thing", "name": "SENTIA", "description": "The Anywise ecosystem our solutions sit within. It senses, links and interprets data from sensor to commander, delivering AI-assisted, provenance-tracked decision support with human oversight." },
-    { "@type": "Thing", "name": "SWIFT", "description": "Resilient, disaggregated tactical communications for defence, emergency services and low-bandwidth environments. Splits each message across multiple bearers so it gets through when the network is jammed or denied. TRL 3, advancing to TRL 4." },
     { "@type": "Thing", "name": "Low-SWaP Sensing and Vision", "description": "Small, low-cost, fielded sensing suites that operate where there is no reliable power and no network, for vehicle detection and classification, wildlife and animal detection, and event-of-significance detection. TRL 5, fielded." },
+    { "@type": "Thing", "name": "SWIFT", "description": "Resilient, disaggregated tactical communications for defence, emergency services and low-bandwidth environments. Splits each message across multiple bearers so it gets through when the network is jammed or denied. TRL 3, advancing to TRL 4." },
     { "@type": "Thing", "name": "Assured Connectivity", "description": "Active R&D into self-healing communications networks that use all available spectrum to push data through contested and obstructed environments where conventional networks fail." }
   ],
   "mainEntity": {
@@ -85,10 +85,6 @@
   [data-theme="light"] .badge-val { color: var(--mint); background: rgba(45,127,54,0.10); border-color: rgba(45,127,54,0.30); }
   [data-theme="light"] .badge-rd { background: rgba(0,0,0,0.03); }
 
-  .innov-pipe { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin: 0 0 1.25rem; }
-  .innov-pipe span { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: #06210b; background: var(--accent); padding: 0.5rem 0.7rem; border-radius: 6px; }
-  [data-theme="light"] .innov-pipe span { background: #39a849; }
-  .innov-pipe em { font-style: normal; color: var(--text-tertiary); }
 
   .innov-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .feat-x { border-left: 2px solid var(--border-accent); padding: 0.2rem 0 0.2rem 0.9rem; }
@@ -103,14 +99,12 @@
   .innov-for b { color: var(--text-secondary); font-weight: 400; }
   [data-theme="light"] .innov-for { color: var(--mint); }
 
+  /* Media tiles: photos fill the tile (cover) on a neutral surface; logos are contained on a dark panel. */
   .innov-media { aspect-ratio: 4/3; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .innov-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .innov-media-logo { background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+  /* SWIFT logo has a dark background baked into the image, so this tile stays dark in both themes */
+  .innov-media-logo { background: #12140f; display: flex; align-items: center; justify-content: center; }
   .innov-media-logo img { object-fit: contain; padding: 2rem; }
-  [data-theme="light"] .innov-media-logo { background: #1a1a1a; }
-  /* Product photo on a white background: contain on a clean light tile */
-  .innov-media-photo { background: #ffffff; }
-  .innov-media-photo img { object-fit: contain; padding: 1rem; }
 
   /* SENTIA secondary hero: full-width feature band, centred */
   .sentia-hero { padding: 2.5rem 0 4rem; }
@@ -182,11 +176,9 @@
   <div class="container">
     <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#capabilities">Capabilities</a></li>
-      <li><a href="index.html#approach">Approach</a></li>
       <li><a href="products/index.html">Products &amp; Services</a></li>
       <li><a href="innovation.html" class="active">Innovation</a></li>
-      <li><a href="index.html#about">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="blog/index.html">Insights</a></li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
@@ -224,7 +216,7 @@
       <p class="sentia-hero-sub">It is the connective tissue that turns those separate outputs into one trusted picture. SENTIA senses, links and interprets across sources, then hands the decision-maker a clear recommendation with the reasoning and evidence behind it, so they can trust it or overrule it. Sensing, SWIFT and the rest all plug in here.</p>
     </div>
     <div class="sentia-figure reveal" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
-      <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" xmlns="http://www.w3.org/2000/svg">
+      <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" role="presentation" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="sentiaBg" x1="0" y1="0" x2="866" y2="866" gradientTransform="matrix(1.1547,0,0,0.52176,0,122.766)" gradientUnits="userSpaceOnUse">
               <stop offset="0" class="s-bg1"/><stop offset="1" class="s-bg2"/>
@@ -285,7 +277,7 @@
         </div>
         <p class="innov-for"><b>For:</b> anyone who needs to know what's happening somewhere they can't reach, power, or connect.</p>
       </div>
-      <div class="innov-media innov-media-photo"><img src="assets/images/innovation/sensing-vision.png" alt="A ruggedised multicam sensor unit with dual cameras" loading="lazy" width="1061" height="671"></div>
+      <div class="innov-media"><img src="assets/images/innovation/sensing-vision.png" alt="A ruggedised multicam sensor unit with dual cameras" loading="lazy" width="1061" height="671"></div>
     </div>
 
     <div class="innov-block reveal">

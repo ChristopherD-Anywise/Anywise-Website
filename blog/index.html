@@ -177,11 +177,9 @@
   <div class="container">
     <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="../index.html#capabilities">Capabilities</a></li>
-      <li><a href="../index.html#approach">Approach</a></li>
       <li><a href="../products/index.html">Products &amp; Services</a></li>
       <li><a href="../innovation.html">Innovation</a></li>
-      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../about.html">About</a></li>
       <li><a href="../blog/index.html" class="active">Insights</a></li>
       <li><a href="../careers.html">Careers</a></li>
       <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
@@ -330,21 +328,21 @@
       }
 
       /* Sort newest first */
-      posts.sort(function(a, b) { return b.publishDate.localeCompare(a.publishDate); });
+      posts.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
 
       /* Hide future-dated posts */
       var today = new Date().toISOString().split('T')[0];
-      posts = posts.filter(function(p) { return p.publishDate <= today; });
+      posts = posts.filter(function(p) { return (p.date || '') <= today; });
 
       posts.forEach(function(post) {
-        const excerpt = truncate(post.excerpt, 160);
-        const dateStr = formatDate(post.publishDate);
+        const excerpt = truncate(post.excerpt || post.intro || '', 160);
+        const dateStr = formatDate(post.date);
         const thumb = post.heroImage
           ? `<img src="${escapeHtml(post.heroImage)}" alt="${escapeHtml(post.title)}" loading="lazy">`
           : thumbSVG();
 
         const item = document.createElement('a');
-        item.href = 'post.html?slug=' + encodeURIComponent(post.slug);
+        item.href = post.slug + '.html';
         item.className = 'blog-post-item reveal';
         item.setAttribute('role', 'listitem');
         item.innerHTML = `
