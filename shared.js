@@ -3,10 +3,14 @@
 /* ─── Theme Detection IIFE ────────────────────────────────────────────────── */
 (function () {
   function getSydneyHour() {
-    const now = new Date();
-    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-    const sydneyOffset = 10 * 3600000;
-    return new Date(utcMs + sydneyOffset).getHours();
+    /* Use the IANA zone so daylight saving (AEDT, UTC+11) is handled correctly */
+    try {
+      return new Date(
+        new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' })
+      ).getHours();
+    } catch (e) {
+      return new Date().getHours();
+    }
   }
 
   function applyTheme(theme) {
