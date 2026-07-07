@@ -6,7 +6,23 @@ copy decisions, and element/component cohesion. Distinct from the 2026-07-07 acc
 consistency audit (which covered a11y, tokens, perf, SEO). This is design judgement.
 
 **How to use:** each finding has a recommendation and, where it's a real choice, options.
-Decide each (especially IA-1, the nav model) before implementing. Nothing here is built yet.
+Decide each (especially IA-1, the nav model) before implementing.
+
+## DECISIONS (2026-07-07, confirmed by Chris)
+- **IA-1 → Destinations-only nav, FULL.** Top bar becomes: Products & Services · Innovation ·
+  Insights · Careers · About — all real pages. Build a new `about.html` (move homepage
+  team/purpose/people content into it). Remove Capabilities & Approach from the top bar;
+  they remain homepage-scroll content reached via the hero "Our Capabilities" CTA.
+- **IA-2 →** follows IA-1: Purpose/Track Record/News stay as homepage narrative, not nav.
+- **C-1 → Reword Products** H2 to "Australian-designed intelligence platforms." (Innovation
+  keeps "sovereign").
+- **C-2 → Leave hero stat bar as-is.**
+- **C-3 → Standardise contact CTAs on "Engage Us"** (modal triggers); KEEP the innovation
+  page's "Bring us your problem"; "Our Capabilities" hero scroll link stays.
+- **C-4 → Add eyebrow labels** to the Capabilities section and the closing CTA section.
+- **E-1 → Keep green-gradient `.cap-card`** as a deliberate Capabilities-only accent.
+- **E-2 → Leave** card counts (constrained by real product count).
+- **E-3 → Leave "any." device** as an occasional flourish.
 
 ---
 
