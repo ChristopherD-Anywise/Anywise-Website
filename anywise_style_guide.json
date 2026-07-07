@@ -9,8 +9,7 @@
     "tagline": "Purpose Driven Projects",
     "description": "The word 'Anywise' combines 'any' and 'wise', meaning in any way, by any means possible, or anything it takes.",
     "company": {
-      "legal_name": "Anywise Consulting Pty Ltd",
-      "_legal_name_note": "The live website footer and Organization schema use 'Anywise Pty Ltd'. Confirm which is the correct registered entity name (ABN 86 169 092 960) and align both the site and this file.",
+      "legal_name": "Anywise Pty Ltd",
       "abn": "86 169 092 960",
       "registered_address": "Level 4/333 Collins Street, Melbourne 3000",
       "postal_address": "PO BOX 292 Brunswick East, Victoria, Australia 3067",
