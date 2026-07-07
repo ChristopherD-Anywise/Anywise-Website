@@ -37,10 +37,19 @@ Applies to `/*`: `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN
 - Don't auto-push — the owner reviews locally first. See `docs/cloudflare-deployment-guide.md` for the full deploy notes and any gotchas.
 - The repo lives under OneDrive, which periodically regenerates macOS `" 2"` duplicate files; `.gitignore` excludes `* 2.*` so they don't get committed.
 
+## OG / social preview images
+- Site-wide default: **`og-image.png`** at repo root (1200×630, referenced as `https://anywise.com.au/og-image.png`). Fine for pages without a more relevant image.
+- People/company-focused pages (about, careers) use `assets/images/team/team-photo-alt.jpg` (also 1200×630).
+- Blog articles use their per-article hero (set by the generator).
+- Pick the most relevant existing 1200×630 image; only create a new OG asset if nothing fits. Set `og:image:width` 1200 / `og:image:height` 630 / `og:image:type` to match, and mirror to `twitter:image`.
+
+## Novel page types not covered above
+If you're building a page type this skill doesn't enumerate (e.g. Partners, Events), don't invent a bespoke convention — pick the **closest documented analogue** and follow it: JSON-LD → `CollectionPage` + `BreadcrumbList` for a listing page (like Innovation), `AboutPage` for a company/story page; sitemap priority → match the nearest tier (a secondary content page ≈ `0.7–0.8`); components → reuse `.product-card` unless a better pattern exists. And decide top-nav vs footer-only by whether it's a **primary destination** (top nav — but remember that's a site-wide nav change on every page) or a **secondary/utility page** (footer Company column only). When you create a genuinely new reusable pattern (e.g. a partner logo wall), add it to `design-system.md` so the skill grows with the site.
+
 ## When adding SEO/meta to a new page
 1. Unique `<title>` (`Name — Category | Anywise`), unique meta description ≤160 chars.
 2. `<link rel="canonical">` self-referencing the real URL.
-3. Full OG + Twitter set (per-page title/description/image).
-4. The right JSON-LD type for the page (see above).
+3. Full OG + Twitter set (per-page title/description/image — see OG images above).
+4. The right JSON-LD type for the page (see above; closest-analogue for novel types).
 5. Add to `sitemap.xml`.
 6. If it introduces an external origin, update `_headers` CSP.
