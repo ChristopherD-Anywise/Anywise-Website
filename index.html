@@ -203,7 +203,7 @@ html, body {
 }
 
 [data-theme="light"] .stat-box p {
-  color: rgba(0,0,0,0.5);
+  color: rgba(0,0,0,0.72);
 }
 
 /* ═══ LIGHT MODE — CAPABILITY CARDS ═══ */
@@ -754,7 +754,7 @@ a.nav-cta:hover::after { width: 100%; }
 
 /* Stat boxes - horizontal bar */
 .stat-box {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1.4rem 1.8rem;
@@ -766,7 +766,7 @@ a.nav-cta:hover::after { width: 100%; }
   transition: opacity 0.6s, transform 0.6s, background 0.3s;
 }
 .stat-box:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.62);
 }
 .stat-box:last-child { border-right: none; }
 .hero.in-view .stat-box {
@@ -777,7 +777,7 @@ a.nav-cta:hover::after { width: 100%; }
 .hero.in-view .stat-box:nth-child(2) { transition-delay: 0.45s; }
 .hero.in-view .stat-box:nth-child(3) { transition-delay: 0.55s; }
 
-.stat-box h3 {
+.stat-value {
   font-family: var(--font);
   font-size: 1.5rem;
   font-weight: 700;
@@ -785,12 +785,12 @@ a.nav-cta:hover::after { width: 100%; }
   margin-bottom: 0.25rem;
   letter-spacing: -0.02em;
 }
-.stat-box h3 .accent {
+.stat-value .accent {
   color: var(--accent);
 }
 .stat-box p {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.78);
   line-height: 1.4;
   font-family: var(--font);
   letter-spacing: 0.02em;
@@ -1749,15 +1749,15 @@ footer {
     <!-- Stats bar -->
     <div class="hero-stats-bar">
       <div class="stat-box">
-        <h3><span class="accent">10+</span></h3>
+        <div class="stat-value"><span class="accent">10+</span></div>
         <p>Years in defence &amp; gov</p>
       </div>
       <div class="stat-box">
-        <h3><span class="accent">APAC &middot; EU</span></h3>
+        <div class="stat-value"><span class="accent">APAC &middot; EU</span></div>
         <p>Operating jurisdictions</p>
       </div>
       <div class="stat-box">
-        <h3><span class="accent">Ethical AI</span></h3>
+        <div class="stat-value"><span class="accent">Ethical AI</span></div>
         <p>Human-centred decision augmentation</p>
       </div>
     </div>
