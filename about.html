@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Anywise — Sovereign Technology for Defence &amp; Government</title>
+<meta name="description" content="Anywise is a wholly Australian-owned, veteran-owned, female-led B Corp delivering ethical decision augmentation for defence and government. Our purpose, values and people.">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0e110e">
+<link rel="canonical" href="https://anywise.com.au/about.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="About | Anywise">
+<meta property="og:description" content="A wholly Australian-owned, veteran-owned, female-led B Corp delivering ethical decision augmentation for defence and government. Our purpose, values and people.">
+<meta property="og:image" content="https://anywise.com.au/assets/images/team/team-photo-alt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:url" content="https://anywise.com.au/about.html">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About | Anywise">
+<meta name="twitter:description" content="A wholly Australian-owned, veteran-owned, female-led B Corp delivering ethical decision augmentation for defence and government.">
+<meta name="twitter:image" content="https://anywise.com.au/assets/images/team/team-photo-alt.jpg">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "url": "https://anywise.com.au/about.html",
+  "name": "About | Anywise",
+  "description": "Anywise is a wholly Australian-owned, veteran-owned, female-led B Corp delivering ethical decision augmentation for defence and government.",
+  "mainEntity": { "@type": "Organization", "@id": "https://anywise.com.au/#organization" }
+}
+</script>
+<style>
+  /* About page labels are static (not scroll-revealed), so keep them visible */
+  .about-hero .label, .about-section .label { opacity: 1; transform: none; }
+  .about-hero { padding: 9rem 0 2rem; }
+  .about-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.08; letter-spacing: -0.03em; margin: 1rem 0; }
+  .about-hero h1 em { font-style: normal; color: var(--accent); }
+  .about-hero-sub { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 42rem; }
+
+  .about-section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+  .about-section:first-of-type { border-top: none; }
+  .about-purpose h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.02em; max-width: 48rem; margin-top: 0.8rem; }
+  .about-purpose h2 em { font-style: normal; color: var(--accent); }
+
+  .values-list { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; max-width: 60rem; }
+  .value-row { display: flex; gap: 2rem; align-items: baseline; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+  .value-row:first-child { border-top: none; }
+  .value-name { flex: 0 0 16rem; color: var(--text-primary); font-weight: 600; font-size: 1.05rem; }
+  .value-desc { color: var(--text-secondary); line-height: 1.7; font-size: 0.98rem; }
+
+  .about-team-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: 3rem; align-items: center; }
+  .about-team-grid h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; line-height: 1.15; margin: 0.6rem 0 1rem; }
+  .about-team-grid h2 em { font-style: normal; color: var(--accent); }
+  .about-team-grid p { color: var(--text-secondary); line-height: 1.75; margin-bottom: 1rem; }
+  .about-team-media { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-elevated); }
+  .about-team-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .about-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+  .about-fact { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; }
+  .about-fact .f-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+  .about-fact .f-value { color: var(--text-primary); font-weight: 600; font-size: 1rem; line-height: 1.3; }
+
+  .about-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+
+  @media (max-width: 860px) {
+    .about-team-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .about-team-media { order: -1; aspect-ratio: 16/9; }
+    .value-row { flex-direction: column; gap: 0.35rem; }
+    .value-name { flex: 0 0 auto; }
+    .about-facts { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="products/index.html">Products &amp; Services</a></li>
+      <li><a href="innovation.html">Innovation</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="blog/index.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="#" class="nav-cta" data-engage aria-haspopup="dialog"><span>Engage Us</span></a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="close-x">&times;</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main-content">
+
+<section class="about-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>About</span>
+    </div>
+    <p class="label">About Anywise</p>
+    <h1>Purpose-driven people, <em>solving what matters.</em></h1>
+    <p class="about-hero-sub">Anywise is a wholly Australian-owned, veteran-owned, female-led B Corp. We mobilise high-performing teams to solve complex capability, technology and strategic challenges for defence and government, where the stakes are highest.</p>
+  </div>
+</section>
+
+<section class="about-section about-purpose">
+  <div class="container">
+    <p class="label">Our Purpose</p>
+    <h2>Empowering people and organisations to create a <em>positive impact</em> in the world by enabling better decisions.</h2>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <p class="label">Our Values</p>
+    <div class="values-list">
+      <div class="value-row">
+        <span class="value-name">Act Ethically &amp; with Integrity</span>
+        <span class="value-desc">We hold ourselves to the highest standards of honesty, transparency and accountability in everything we do.</span>
+      </div>
+      <div class="value-row">
+        <span class="value-name">Be Curious &amp; Innovative</span>
+        <span class="value-desc">We embrace continuous learning and creative problem-solving to deliver forward-thinking solutions.</span>
+      </div>
+      <div class="value-row">
+        <span class="value-name">Champion Empowerment &amp; Collaboration</span>
+        <span class="value-desc">We lift each other up, share knowledge freely and work together to achieve extraordinary outcomes.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-team-grid">
+      <div>
+        <p class="label">Our People</p>
+        <h2>any.<em>one</em> is welcome</h2>
+        <p>We are a diverse, multidisciplinary team of engineers, analysts, veterans and specialists who care about the work as much as the craft. We bring lived operational experience together with deep technical expertise, and we build teams around the problem in front of us.</p>
+        <p>As a certified B Corporation, we hold ourselves to a higher standard of social and environmental performance, transparency and accountability, not just to our clients, but to our people and our community.</p>
+      </div>
+      <div class="about-team-media">
+        <img src="assets/images/team/team-photo.png" alt="The Anywise team" loading="lazy" decoding="async" width="700" height="464">
+      </div>
+    </div>
+    <div class="about-facts">
+      <div class="about-fact"><p class="f-label">Ownership</p><p class="f-value">Wholly Australian-owned</p></div>
+      <div class="about-fact"><p class="f-label">Certification</p><p class="f-value">Certified B Corporation</p></div>
+      <div class="about-fact"><p class="f-label">Leadership</p><p class="f-value">Veteran-owned, female-led</p></div>
+      <div class="about-fact"><p class="f-label">Presence</p><p class="f-value">Melbourne · Canberra · Brisbane</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <p class="label">Get in touch</p>
+    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;line-height:1.2;margin:0.6rem 0 0;">Ready to tackle your most <em style="font-style:normal;color:var(--accent);">complex challenge?</em></h2>
+    <div class="about-cta">
+      <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
+      <a href="careers.html" class="btn btn-ghost">Join the team</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="section-divider"></div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="22"></a>
+        <p>Sovereign, ethical technology and services for defence and government.</p>
+        <p class="footer-legal">ABN 86 169 092 960 &nbsp;·&nbsp; B Corp Certified &nbsp;·&nbsp; Wholly Australian-Owned</p>
+        <p class="footer-phone"><a href="tel:1800861893">1800 861 893</a></p>
+        <p class="footer-email"><a href="mailto:sales@anywise.com.au">sales@anywise.com.au</a></p>
+        <p class="footer-social"><a href="https://www.linkedin.com/company/anywiseaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="index.html#capabilities">Technology</a>
+        <a href="index.html#capabilities">Services</a>
+        <a href="index.html#approach">Our Approach</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Services</h4>
+        <a href="products/wisdom.html">WISDOM</a>
+        <a href="products/engaide.html">ENG|AIDE</a>
+        <a href="products/fraud-analytics.html">Fraud &amp; Analytics</a>
+        <a href="products/impact-framework.html">Impact Measurement</a>
+        <a href="products/fabhums.html">FABHUMS</a>
+        <a href="products/campaide.html">CAMP|AIDE</a>
+        <a href="products/ils.html">ILS</a>
+        <a href="products/aide.html">AIDE</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="innovation.html">Innovation</a>
+        <a href="blog/index.html">Insights</a>
+        <a href="careers.html">Careers</a>
+        <a href="grievance-policy.html">Grievance Policy</a>
+        <a href="whistleblower-policy.html">Whistleblower Policy</a>
+        <a href="weapons-exclusion.html">Defence Disclosure</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="copyrightYear">2026</span> Anywise Pty Ltd. All rights reserved. ABN 86 169 092 960.</p>
+      <div class="footer-locations">
+        <span>Melbourne</span>
+        <span>Canberra</span>
+        <span>Brisbane</span>
+      </div>
+    </div>
+    <div class="acknowledgement">
+      Anywise accepts the invitation of the Uluru Statement from the Heart and supports a First Nations Voice to Parliament enshrined in the Australian Constitution.
+      <a href="https://ulurustatement.org">UluruStatement.org</a><br>
+      Anywise acknowledges the Traditional Owners of the land on which we operate. We pay our respects to Elders past, present, and emerging.
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+
+</body>
+</html>
