@@ -31,22 +31,32 @@
 <style>
 /* ─── Page-specific styles ──────────────────────────────────────────────── */
 .products-hero {
-  padding: 7rem 0 4rem;
-  text-align: center;
+  padding: 9rem 0 1rem;
 }
+.products-hero .label { opacity: 1; transform: none; color: var(--accent); }
 .products-hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0.75rem 0 1rem;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 1rem 0;
 }
+.products-hero h1 em { font-style: normal; color: var(--accent); }
 .products-hero p {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 40rem;
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.7;
 }
+.products-hero .products-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 46rem;
+  margin: 1.75rem 0 0;
+}
+.products-hero .products-hero-lead strong { color: var(--text-primary); font-weight: 500; }
 
 /* ─── Card Grid ─────────────────────────────────────────────────────────── */
 .products-grid-section {
@@ -212,12 +222,13 @@
   <div class="container">
     <div class="breadcrumb">
       <a href="../index.html">Home</a>
-      <span>/</span>
+      <span class="breadcrumb-sep">/</span>
       <span>Products &amp; Services</span>
     </div>
-    <span class="label">Products &amp; Services</span>
-    <h1>Sovereign, Australian-designed<br>intelligence platforms and services.</h1>
-    <p>Eight purpose-built platforms and specialist services that transform operational complexity into actionable intelligence, for defence, government, and industry.</p>
+    <p class="label">Products &amp; Services</p>
+    <h1>Australian-designed <em>intelligence platforms.</em></h1>
+    <p>Eight purpose-built platforms and specialist services that turn operational complexity into intelligence people can act on, for defence, government and industry.</p>
+    <p class="products-hero-lead">Each one combines advanced data integration, GenAI-enabled analytics and human expertise, so the same rigour runs from strategic intelligence to health monitoring in the field. <strong>Explore the full range below.</strong></p>
   </div>
 </section>
 

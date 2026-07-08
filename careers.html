@@ -36,22 +36,34 @@
 <style>
 /* ═══ HERO ═══ */
 .careers-hero {
-  padding: 7rem 0 4rem;
+  padding: 9rem 0 4rem;
 }
+.careers-hero .label { opacity: 1; transform: none; margin-top: 1rem; color: var(--accent); }
 .careers-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
-  line-height: 1;
-  margin: 3.6rem 0 1rem;
+  line-height: 1.08;
+  margin: 1rem 0;
 }
-.careers-hero h1 span {
-  color: var(--accent);
+.careers-hero h1 em { font-style: normal; color: var(--accent); }
+.hero-wordmark {
+  display: inline-block;
+  margin-left: 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+  vertical-align: middle;
+  text-transform: none;
 }
 .careers-hero p {
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  max-width: 520px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 42rem;
 }
 
 /* ═══ JOB LISTINGS ═══ */
@@ -549,7 +561,8 @@
       <span>/</span>
       <span>Careers</span>
     </div>
-    <h1>any<span>.</span>careers</h1>
+    <p class="label">Careers</p>
+    <h1>Work that <em>matters, with people who care.</em> <span class="hero-wordmark">any.careers</span></h1>
     <p>Help build sovereign, ethical technology for the organisations that protect and serve Australia. We're looking for people who care about the work as much as the craft.</p>
   </div>
 </section>

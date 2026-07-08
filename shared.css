@@ -361,6 +361,16 @@ button:focus-visible,
   position: relative;
   z-index: 1002;
 }
+/* Extend the tappable area to 44x44 (WCAG 2.5.5) without changing the 24x16 visual. */
+.mobile-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
 .mobile-toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
@@ -659,6 +669,13 @@ textarea.invalid {
 }
 @media (max-width: 768px) {
   .engage-form-row { grid-template-columns: 1fr; }
+  /* 16px prevents iOS Safari auto-zoom on focus; padding lifts the field to a 44px touch target. */
+  .engage-group input,
+  .engage-group select,
+  .engage-group textarea {
+    font-size: 16px;
+    padding: 0.75rem 0.875rem;
+  }
   .engage-overlay { align-items: flex-end; padding: 0; }
   .engage-panel {
     padding: 1.75rem 1.25rem;

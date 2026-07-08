@@ -36,7 +36,7 @@
   "@id": "https://anywise.com.au/innovation.html#innovation",
   "url": "https://anywise.com.au/innovation.html",
   "name": "Innovation | Anywise",
-  "headline": "Hard problems, engineered into capability",
+  "headline": "Research that ends up in the field",
   "description": "The innovations behind Anywise: SENTIA, SWIFT, low-SWaP sensing and vision, and Assured Connectivity. Sovereign defence and government technology, engineered in Australia.",
   "isPartOf": { "@type": "WebSite", "@id": "https://anywise.com.au/#website" },
   "about": [
@@ -113,41 +113,105 @@
   .sentia-hero-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text-primary); line-height: 1.12; letter-spacing: -0.02em; margin: 0.8rem 0; }
   .sentia-hero-head h2 em { font-style: normal; color: var(--accent); }
   .sentia-hero-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0; }
-  .sentia-figure { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
-  .sentia-svg { width: 100%; height: auto; display: block; }
-  /* Dark (default) palette */
-  .sentia-svg .s-bg1 { stop-color: #04211a; }
-  .sentia-svg .s-bg2 { stop-color: #02120d; }
-  .sentia-svg .s-hairline { stroke: #1c3f31; }
-  .sentia-svg .s-flow { font-weight: 700; fill: #7fa892; letter-spacing: 2px; }
-  .sentia-svg .s-flowline { stroke: #2c5a45; }
-  .sentia-svg .s-ribbonT { font-weight: 700; fill: #04211a; letter-spacing: 1px; }
-  .sentia-svg .s-ribbonB { font-family: 'Roboto',Arial,sans-serif; fill: #0c3a24; }
-  .sentia-svg .s-letter { font-weight: 800; fill: #ffffff; }
-  .sentia-svg .s-name { font-weight: 700; fill: #eafff0; letter-spacing: 1px; }
-  .sentia-svg .s-desc { font-family: 'Roboto',Arial,sans-serif; fill: #d3f2da; }
-  .sentia-svg .s-eyebrow { font-weight: 700; fill: #c3e01b; letter-spacing: 3px; }
-  .sentia-svg .s-sub { font-family: 'Roboto',Arial,sans-serif; fill: #a9c9b6; }
-  .sentia-svg .s-chip-bg { fill: #0c3325; }
-  .sentia-svg .s-chip { font-weight: 700; fill: #eafff0; }
-  .sentia-svg .s-callout { fill: #0a2c21; stroke: #1c4c39; }
-  .sentia-svg .s-bandT { font-weight: 700; fill: #c3e01b; letter-spacing: 1px; }
-  .sentia-svg .s-bandB { font-family: 'Roboto',Arial,sans-serif; fill: #c8e6d1; }
-  /* Light palette: flip backgrounds light, text dark; keep greens */
-  [data-theme="light"] .sentia-svg .s-bg1 { stop-color: #eef5ee; }
-  [data-theme="light"] .sentia-svg .s-bg2 { stop-color: #dfeadf; }
-  [data-theme="light"] .sentia-svg .s-hairline { stroke: #c2d4c6; }
-  [data-theme="light"] .sentia-svg .s-flow { fill: #4a5f52; }
-  [data-theme="light"] .sentia-svg .s-flowline { stroke: #9dbfa8; }
-  [data-theme="light"] .sentia-svg .s-ribbonT { fill: #04211a; }
-  [data-theme="light"] .sentia-svg .s-ribbonB { fill: #0c3a24; }
-  [data-theme="light"] .sentia-svg .s-eyebrow { fill: #2d7f36; }
-  [data-theme="light"] .sentia-svg .s-sub { fill: #4a5f52; }
-  [data-theme="light"] .sentia-svg .s-chip-bg { fill: #ffffff; }
-  [data-theme="light"] .sentia-svg .s-chip { fill: #1a3d1e; }
-  [data-theme="light"] .sentia-svg .s-callout { fill: #f0f6f0; stroke: #cfe0d3; }
-  [data-theme="light"] .sentia-svg .s-bandT { fill: #2d7f36; }
-  [data-theme="light"] .sentia-svg .s-bandB { fill: #33473a; }
+
+  /* ── Interactive SENTIA ecosystem explorer ──
+     Fully token-driven so it inherits the site's dark default + [data-theme="light"] overrides. */
+  .sentia {
+    max-width: 920px; margin: 0 auto;
+    color: var(--text-primary);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  .sentia * { box-sizing: border-box; }
+
+  .sentia__flow { display: flex; align-items: center; gap: 0.75rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 0.9rem; }
+  .sentia__flowline { flex: 1; height: 2px; background: var(--gradient-al); border-radius: 2px; position: relative; }
+  .sentia__flowline::after { content: ""; position: absolute; right: -2px; top: -4px; border-left: 9px solid var(--lime); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
+  .sentia__ribbon { padding: 0.6rem 0.9rem; border-radius: var(--radius); background: var(--accent-muted); border: 1px solid var(--border-accent); color: var(--text-primary); font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .sentia__ribbon strong { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--accent); }
+  .sentia__ribbon .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+  .sentia__ribbontext { color: var(--text-secondary); }
+
+  .sentia__hint { font-size: 0.85rem; color: var(--text-secondary); margin: 0.9rem 0.15rem 0.75rem; }
+
+  .sentia__tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+  .sentia__tile {
+    appearance: none; cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text-secondary);
+    border-radius: var(--radius); padding: 0.75rem 0.25rem 0.65rem; text-align: center; font-family: inherit;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .sentia__tile:hover { transform: translateY(-3px); border-color: var(--border-accent); }
+  .sentia__tile .l { font-size: clamp(1.4rem, 4.5vw, 2rem); font-weight: 800; line-height: 1; display: block; color: var(--text-primary); }
+  .sentia__tile .n { font-family: var(--mono); font-size: clamp(0.5rem, 1.6vw, 0.65rem); font-weight: 500; letter-spacing: 0.06em; margin-top: 0.4rem; display: block; }
+  .sentia__tile[aria-selected="true"] {
+    background: var(--accent); color: #06210b;
+    border-color: var(--accent); box-shadow: 0 6px 18px var(--accent-glow); transform: translateY(-3px);
+  }
+  .sentia__tile[aria-selected="true"] .l,
+  .sentia__tile[aria-selected="true"] .n { color: #06210b; }
+  .sentia__tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .sentia__swift {
+    margin-top: 0.65rem; padding: 0.7rem 0.9rem; border-radius: var(--radius); cursor: pointer;
+    border: 1px dashed var(--border-accent); background: transparent; color: var(--text-secondary);
+    display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.85rem;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .sentia__swift em { font-style: normal; color: var(--text-tertiary); }
+  .sentia__swift:hover { background: var(--accent-muted); }
+  .sentia__swift[aria-pressed="true"] { border-style: solid; border-color: var(--accent); background: var(--accent-muted); }
+  .sentia__swiftlabel { font-family: var(--mono); font-weight: 700; letter-spacing: 0.12em; color: var(--accent); }
+  .sentia__swifttext { flex: 1; min-width: 12rem; }
+  .sentia__swifthint { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); }
+  .sentia__swift:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .sentia__panel { margin-top: 1rem; padding: 1.25rem; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border); }
+  .sentia__panelhead { display: flex; align-items: center; gap: 0.9rem; }
+  .sentia__badge {
+    width: 52px; height: 52px; flex: 0 0 auto; border-radius: var(--radius);
+    background: var(--accent); color: #06210b;
+    font-weight: 800; font-size: 1.6rem; display: flex; align-items: center; justify-content: center;
+  }
+  .sentia__stage { font-size: 1.25rem; font-weight: 800; color: var(--accent); }
+  .sentia__role { font-size: 0.82rem; color: var(--text-secondary); }
+  .sentia__does { font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); margin: 0.9rem 0 0.25rem; }
+  .sentia__prodlabel { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; color: var(--text-tertiary); margin-top: 1rem; text-transform: uppercase; }
+  .sentia__note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem; }
+
+  .sentia__products { margin-top: 0.65rem; }
+  .sentia__products.rows { display: flex; flex-direction: column; gap: 0.65rem; }
+  .sentia__products.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.65rem; }
+  .sentia__prod {
+    display: flex; align-items: center; gap: 0.75rem;
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 0.7rem 0.85rem;
+    background: var(--accent-muted);
+  }
+  /* Product logos are dark ink on transparent, so the tile stays white in BOTH themes
+     (reads as a clean logo chip on dark, blends on light). */
+  .sentia__prodlogo {
+    flex: 0 0 auto; width: 3.6rem; height: 2.5rem; border-radius: 6px;
+    background: #ffffff; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .sentia__prodlogo img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 0.35rem; display: block; }
+  /* Logos with a baked dark background (e.g. SWIFT) keep a dark tile in both themes */
+  .sentia__prodlogo.is-dark { background: #12140f; border-color: rgba(255,255,255,0.08); }
+  .sentia__prodtext b { font-size: 0.88rem; color: var(--text-primary); }
+  .sentia__prodtext span { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-secondary); }
+
+  .sentia__oversight {
+    margin-top: 1rem; padding: 0.9rem 1rem; border-radius: var(--radius);
+    background: var(--accent-muted); border: 1px solid var(--border); border-left: 3px solid var(--lime);
+  }
+  .sentia__oslabel { font-family: var(--mono); font-weight: 700; letter-spacing: 0.08em; color: var(--accent); font-size: 0.75rem; }
+  .sentia__oversight p { font-size: 0.82rem; line-height: 1.5; color: var(--text-secondary); margin: 0.4rem 0 0; }
+
+  @media (max-width: 520px) {
+    .sentia__tile .n { display: none; }
+    .sentia__flow { font-size: 0.6rem; letter-spacing: 0.06em; }
+  }
 
   .innov-cta { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 0.5rem; }
   .innov-cta-line { font-size: 1.05rem; color: var(--text-primary); margin: 0 0 1.25rem; max-width: 34rem; }
@@ -202,9 +266,9 @@
       <span>Innovation</span>
     </div>
     <p class="label">Innovation</p>
-    <h1>Hard problems, <em>engineered into capability.</em></h1>
-    <p class="page-hero-sub">From fielded systems to active research, here's what we've built, what it does for the people who use it, and how far it's come.</p>
-    <p class="page-hero-lead">Most capability today is disaggregated. Sensors, radios and analytics each do their job and produce an output, but on their own those outputs sit in silos. A feed no one can act on in time, a report that never reaches the decision-maker, a data point with no context. Output is not the same as insight, and insight is not the same as a decision someone can stand behind. That gap is where we build.</p>
+    <h1>Research that <em>ends up in the field.</em></h1>
+    <p class="page-hero-sub">This is where our research and development lives, from active experiments to systems already in operators' hands, and how each one has matured along the way.</p>
+    <p class="page-hero-lead">We invest in the problems others park as too hard, and we run our own R&amp;D to work them out. Some of what you see here is still in the lab; some has been trialled, hardened and fielded. What ties it together is a way of working: prove the difficult part first, test it against the real environment, then keep developing it until it holds up where it matters. That is how an idea becomes something people can rely on.</p>
   </div>
 </section>
 
@@ -215,48 +279,46 @@
       <h2>SENTIA is the ecosystem our <em>solutions sit within.</em></h2>
       <p class="sentia-hero-sub">It is the connective tissue that turns those separate outputs into one trusted picture. SENTIA senses, links and interprets across sources, then hands the decision-maker a clear recommendation with the reasoning and evidence behind it, so they can trust it or overrule it. Sensing, SWIFT and the rest all plug in here.</p>
     </div>
-    <div class="sentia-figure reveal" role="img" aria-label="The SENTIA ecosystem: a six-stage flow from sensors and data through Sense, Enrich, Nexus, Think, Inform and Assure to a commander's decision, with provenance and human oversight.">
-      <svg class="sentia-svg" viewBox="0 122 1000 435" font-family="'Open Sans','Roboto',Arial,sans-serif" role="presentation" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="sentiaBg" x1="0" y1="0" x2="866" y2="866" gradientTransform="matrix(1.1547,0,0,0.52176,0,122.766)" gradientUnits="userSpaceOnUse">
-              <stop offset="0" class="s-bg1"/><stop offset="1" class="s-bg2"/>
-            </linearGradient>
-            <linearGradient id="sentiaCard" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#39a849"/><stop offset="1" stop-color="#1f6e30"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="122.766" width="1000" height="451.853" fill="url(#sentiaBg)"/>
-          <line x1="40" y1="126" x2="960" y2="126" class="s-hairline" stroke-width="1.5"/>
-          <text x="70" y="162" class="s-flow" font-size="11">SENSORS &amp; DATA</text>
-          <text x="930" y="162" text-anchor="end" class="s-flow" font-size="11">COMMANDER'S DECISION</text>
-          <line x1="250" y1="158" x2="688" y2="158" class="s-flowline" stroke-width="2"/>
-          <polygon points="688,153 700,158 688,163" fill="#c3e01b"/>
-          <rect x="70" y="176" width="860" height="30" rx="6" fill="#c3e01b"/>
-          <circle cx="92" cy="191" r="3.5" fill="#04211a"/>
-          <text x="104" y="195" class="s-ribbonT" font-size="12">PROVENANCE &amp; TRUST</text>
-          <text x="300" y="195" class="s-ribbonB" font-size="12">every output is traceable and confidence-scored at each stage</text>
-          <g class="s-card"><rect x="70" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="135" y="272" text-anchor="middle" class="s-letter" font-size="42">S</text><text x="135" y="298" text-anchor="middle" class="s-name" font-size="14">SENSE</text><line x1="90" y1="310" x2="180" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="135" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Capture data from</text><text x="135" y="344" text-anchor="middle" class="s-desc" font-size="10.5">sensors and sources</text></g>
-          <g class="s-card"><rect x="216" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="281" y="272" text-anchor="middle" class="s-letter" font-size="42">E</text><text x="281" y="298" text-anchor="middle" class="s-name" font-size="14">ENRICH</text><line x1="236" y1="310" x2="326" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="281" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Structure raw inputs</text><text x="281" y="344" text-anchor="middle" class="s-desc" font-size="10.5">into intelligence</text></g>
-          <g class="s-card"><rect x="362" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="427" y="272" text-anchor="middle" class="s-letter" font-size="42">N</text><text x="427" y="298" text-anchor="middle" class="s-name" font-size="14">NEXUS</text><line x1="382" y1="310" x2="472" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="427" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Link and correlate</text><text x="427" y="344" text-anchor="middle" class="s-desc" font-size="10.5">across sources</text></g>
-          <g class="s-card"><rect x="508" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="573" y="272" text-anchor="middle" class="s-letter" font-size="42">T</text><text x="573" y="298" text-anchor="middle" class="s-name" font-size="14">THINK</text><line x1="528" y1="310" x2="618" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="573" y="330" text-anchor="middle" class="s-desc" font-size="10.5">AI interprets patterns,</text><text x="573" y="344" text-anchor="middle" class="s-desc" font-size="10.5">recommends options</text></g>
-          <g class="s-card"><rect x="654" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="719" y="272" text-anchor="middle" class="s-letter" font-size="42">I</text><text x="719" y="298" text-anchor="middle" class="s-name" font-size="14">INFORM</text><line x1="674" y1="310" x2="764" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="719" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Deliver decision-</text><text x="719" y="344" text-anchor="middle" class="s-desc" font-size="10.5">ready outputs</text></g>
-          <g class="s-card"><rect x="800" y="222" width="130" height="150" rx="10" fill="url(#sentiaCard)" stroke="#c3e01b" stroke-opacity="0.5"/><text x="865" y="272" text-anchor="middle" class="s-letter" font-size="42">A</text><text x="865" y="298" text-anchor="middle" class="s-name" font-size="14">ASSURE</text><line x1="820" y1="310" x2="910" y2="310" stroke="#c3e01b" stroke-opacity="0.4"/><text x="865" y="330" text-anchor="middle" class="s-desc" font-size="10.5">Traceable, confidence-</text><text x="865" y="344" text-anchor="middle" class="s-desc" font-size="10.5">scored results</text></g>
-          <g fill="#c3e01b"><polygon points="204,290 214,297 204,304"/><polygon points="350,290 360,297 350,304"/><polygon points="496,290 506,297 496,304"/><polygon points="642,290 652,297 642,304"/><polygon points="788,290 798,297 788,304"/></g>
-          <text x="71" y="408.8" class="s-eyebrow" font-size="11">MODULAR SPECIALIST APPS</text>
-          <text x="327" y="408.8" class="s-sub" font-size="12">plug in at Think and Inform, so the ecosystem extends without rebuilding</text>
-          <g font-size="12.5" transform="translate(1.35,-43.17)">
-            <rect x="70" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="145" y="486" text-anchor="middle" class="s-chip">Engineering</text>
-            <rect x="234" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="309" y="486" text-anchor="middle" class="s-chip">Logistics</text>
-            <rect x="398" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="473" y="486" text-anchor="middle" class="s-chip">Medical &amp; Health</text>
-            <rect x="562" y="464" width="150" height="34" rx="17" class="s-chip-bg" stroke="#39a849" stroke-width="1.5"/><text x="637" y="486" text-anchor="middle" class="s-chip">Deployable Camp</text>
-            <rect x="726" y="464" width="150" height="34" rx="17" fill="none" stroke="#c3e01b" stroke-width="1.5" stroke-dasharray="4, 3"/><text x="801" y="486" text-anchor="middle" class="s-chip" fill="#c3e01b">+ any specialisation</text>
-          </g>
-          <rect x="71.35" y="480.8" width="860" height="72" rx="10" class="s-callout" stroke-width="1"/>
-          <rect x="71.35" y="480.8" width="6" height="72" rx="3" fill="#c3e01b"/>
-          <text x="97.35" y="508.8" class="s-bandT" font-size="14">HUMAN OVERSIGHT</text>
-          <text x="97.35" y="530.8" class="s-bandB" font-size="13">The commander sets the level of automation. AI does what humans cannot at scale, then makes its reasoning visible.</text>
-          <text x="97.35" y="546.8" class="s-bandB" font-size="13">High-risk decisions always stay with people.</text>
-        </svg>
+    <div class="sentia reveal" role="group" aria-label="SENTIA ecosystem explorer">
+      <div class="sentia__flow">
+        <span>SENSORS &amp; DATA</span>
+        <span class="sentia__flowline" aria-hidden="true"></span>
+        <span>COMMANDER'S DECISION</span>
+      </div>
+
+      <div class="sentia__ribbon">
+        <span class="dot" aria-hidden="true"></span><strong>PROVENANCE &amp; TRUST</strong>
+        <span class="sentia__ribbontext">every fact is traceable and confidence-scored at each stage</span>
+      </div>
+
+      <p class="sentia__hint">Hover, tap or use the arrow keys to explore each stage and the Anywise products behind it.</p>
+
+      <div class="sentia__tiles" role="tablist" aria-label="SENTIA stages"></div>
+
+      <div class="sentia__swift" tabindex="0" role="button" aria-pressed="false" data-key="swift">
+        <div class="sentia__swiftlabel">SWIFT</div>
+        <div class="sentia__swifttext">Keeps data flowing when comms are degraded. Wraps every stage. <em>(In development.)</em></div>
+        <div class="sentia__swifthint">tap for more</div>
+      </div>
+
+      <div class="sentia__panel" role="tabpanel" aria-live="polite">
+        <div class="sentia__panelhead">
+          <div class="sentia__badge" data-badge>S</div>
+          <div>
+            <div class="sentia__stage" data-stage>SENSE</div>
+            <div class="sentia__role" data-role></div>
+          </div>
+        </div>
+        <p class="sentia__does" data-does></p>
+        <div class="sentia__prodlabel" data-prodlabel>Anywise products</div>
+        <div class="sentia__note" data-note></div>
+        <div class="sentia__products" data-products></div>
+      </div>
+
+      <div class="sentia__oversight">
+        <div class="sentia__oslabel">HUMAN OVERSIGHT</div>
+        <p>The commander sets how much the system does. AI does what people cannot at scale, then shows its reasoning. High-risk decisions always stay with people.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -384,6 +446,126 @@
 
 <!-- ═══ SCRIPTS ═══ -->
 <script src="shared.js"></script>
+
+<!-- ═══ SENTIA ecosystem explorer ═══ -->
+<script>
+(function(){
+  var widget = document.querySelector('.sentia');
+  if (!widget) return;
+
+  var STAGES = {
+    // Each product: [name, description, logoSrc|null, logoDark(true if the logo has a baked dark background)]
+    S:{name:"SENSE", role:"Gather raw data from machines and people",
+       does:"SENTIA gathers raw data from machines and people, so nothing useful is missed.",
+       layout:"rows",
+       products:[["Sensor, data & human inputs","Fielded sensors, data feeds and human reporting, brought into one place.",null]]},
+    E:{name:"ENRICH", role:"Clean, structure and quality-check it",
+       does:"It cleans, structures and quality-checks that data so it can be trusted and reused.",
+       layout:"rows",
+       products:[["WISDOM","Structures and links data so the same facts serve any objective or domain.","assets/images/products & services/WISDOM Logo.png"]]},
+    N:{name:"NEXUS", role:"Link everything into a connected picture",
+       does:"It links everything into one connected picture, instead of scattered, separate facts.",
+       layout:"rows",
+       products:[["WISDOM","Structures and links data so the same facts serve any objective or domain.","assets/images/products & services/WISDOM Logo.png"]]},
+    T:{name:"THINK", role:"Work out what it means, assess risk",
+       does:"It works out what the information means and assesses the risks.",
+       layout:"grid",
+       note:"Specialist apps do the thinking and informing. All perform Think and Inform.",
+       products:[
+         ["ENG|AIDE","Combat engineering","assets/images/products & services/Eng-Aide Logo.png"],
+         ["CAMP|AIDE","Deployable camps","assets/images/products & services/CAMPAIDE_Logo.png"],
+         ["FABHUMS Engine","Asset health & usage","assets/images/products & services/FABHUMS-Logo.png"],
+         ["Fraud analytics","Fraud detection","assets/images/products & services/Fraud_Detection_Logo.png"],
+         ["ANY|AIDE","Any specialisation",null]
+       ]},
+    I:{name:"INFORM", role:"Turn analysis into decision options",
+       does:"It turns that analysis into clear options the decision-maker can act on.",
+       layout:"grid",
+       note:"The same specialist apps turn the analysis into clear decision options.",
+       products:[
+         ["ENG|AIDE","Combat engineering","assets/images/products & services/Eng-Aide Logo.png"],
+         ["CAMP|AIDE","Deployable camps","assets/images/products & services/CAMPAIDE_Logo.png"],
+         ["FABHUMS Engine","Asset health & usage","assets/images/products & services/FABHUMS-Logo.png"],
+         ["Fraud analytics","Fraud detection","assets/images/products & services/Fraud_Detection_Logo.png"],
+         ["ANY|AIDE","Any specialisation",null]
+       ]},
+    A:{name:"ASSURE", role:"Prove every step can be trusted",
+       does:"It proves every step can be trusted, tracking where each fact came from.",
+       layout:"rows",
+       products:[["Provenance protocols","Tracks where every fact came from. In development.",null]]},
+    swift:{name:"SWIFT", role:"Keeps data flowing when comms are degraded", badge:"SW",
+       does:"A subsystem that wraps the whole ecosystem and keeps information moving when the network is degraded, denied or contested.",
+       layout:"rows",
+       products:[["SWIFT","Adaptive delivery with no single point of failure. In development.","assets/images/innovation/swift.png",true]]}
+  };
+  var ORDER = ["S","E","N","T","I","A"];
+
+  var tiles = widget.querySelector('.sentia__tiles');
+  var swiftEl = widget.querySelector('.sentia__swift');
+  var badge = widget.querySelector('[data-badge]');
+  var stageEl = widget.querySelector('[data-stage]');
+  var roleEl = widget.querySelector('[data-role]');
+  var doesEl = widget.querySelector('[data-does]');
+  var noteEl = widget.querySelector('[data-note]');
+  var prodEl = widget.querySelector('[data-products]');
+
+  var btns = [];
+  ORDER.forEach(function(k){
+    var b = document.createElement('button');
+    b.className = 'sentia__tile';
+    b.type = 'button';
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected','false');
+    b.setAttribute('data-key',k);
+    b.innerHTML = '<span class="l">'+k+'</span><span class="n">'+STAGES[k].name+'</span>';
+    tiles.appendChild(b);
+    btns.push(b);
+  });
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function render(k){
+    var s = STAGES[k];
+    badge.textContent = s.badge ? s.badge : k;
+    stageEl.textContent = s.name;
+    roleEl.textContent = s.role;
+    doesEl.textContent = s.does;
+    noteEl.textContent = s.note || '';
+    noteEl.style.display = s.note ? 'block' : 'none';
+    prodEl.className = 'sentia__products ' + s.layout;
+    prodEl.innerHTML = '';
+    s.products.forEach(function(p){
+      var d = document.createElement('div');
+      d.className = 'sentia__prod';
+      var logo = p[2]
+        ? '<div class="sentia__prodlogo'+(p[3] ? ' is-dark' : '')+'"><img src="'+esc(p[2])+'" alt="'+esc(p[0])+' logo" loading="lazy" decoding="async"></div>'
+        : '';
+      d.innerHTML = logo + '<div class="sentia__prodtext"><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></div>';
+      prodEl.appendChild(d);
+    });
+    btns.forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-key')===k ? 'true':'false'); });
+    swiftEl.setAttribute('aria-pressed', k==='swift' ? 'true':'false');
+  }
+
+  function wire(el, k){
+    el.addEventListener('mouseenter', function(){ render(k); });
+    el.addEventListener('focus', function(){ render(k); });
+    el.addEventListener('click', function(){ render(k); });
+  }
+  btns.forEach(function(b){ wire(b, b.getAttribute('data-key')); });
+  wire(swiftEl,'swift');
+  swiftEl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); render('swift'); } });
+
+  tiles.addEventListener('keydown', function(e){
+    var i = btns.indexOf(document.activeElement);
+    if(i<0) return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); btns[(i+1)%btns.length].focus(); }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); btns[(i-1+btns.length)%btns.length].focus(); }
+  });
+
+  render('S');
+})();
+</script>
 
 </body>
 </html>
