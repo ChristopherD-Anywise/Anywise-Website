@@ -1,5 +1,61 @@
 [
   {
+    "slug": "swift-voice-denied-networks",
+    "title": "Getting Voice Through When the Network is Denied",
+    "date": "2026-07-31",
+    "readTime": 3,
+    "category": "Thought Leadership",
+    "author": "Anywise Team",
+    "heroImage": "../assets/images/innovation/swift.png",
+    "intro": "When a tactical network degrades, voice is the first thing people reach for and the first thing they lose. Jam the bearer, intercept it, or move into terrain that swallows it, and the message stops at the moment it matters most. On Wednesday 5 August we're presenting SWIFT at the ASCA Pitch Day 2026 for Resilient Command and Control, held inside the ADSTAR Summit at the Adelaide Convention Centre. Christopher Dennis, our Head of Growth, is giving the pitch.",
+    "sections": [
+      {
+        "heading": "What ASCA is Asking Industry to Solve",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The Advanced Strategic Capabilities Accelerator opened its [Resilient Command and Control](https://www.asca.gov.au/activities/resilient-command-control) Request for Information in March 2026 and closed it on 14 April. It set three challenge statements: operating in denied, degraded, intermittent and limited environments, protecting and ensuring resilient C2 capabilities, and recovering degraded C2 networks. Fourteen organisations were invited to pitch. We're one of them, alongside Lockheed Martin Australia, Boeing Defence Australia, the Australian National University, Q-CTRL and nine others."
+          },
+          {
+            "type": "paragraph",
+            "content": "What makes the problem hard is that the usual answers cost something a force cannot easily spare. Add a bearer and you add procurement, training and another thing to carry. Add hardware and you commit to a fleet-wide upgrade. Encrypt harder and you still hand an adversary a single stream to find and sit on. The question worth asking is whether resilience can be built into how a message travels, using the radios a unit already operates."
+          }
+        ]
+      },
+      {
+        "heading": "What Splitting the Message Buys You",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "SWIFT takes a voice message and splits it across several bearers at once, then reassembles it at the far end. No single bearer ever carries the whole thing. That one design decision changes the arithmetic in several directions at the same time."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Lose a bearer and the message still completes, because each bearer only ever held a part of it",
+              "Intercept a bearer and an adversary collects a meaningless fragment",
+              "Short bursts and fragmented traffic make the signal harder to find and harder to jam",
+              "The system reroutes before a bearer fails, not after it has already gone",
+              "It runs on the tactical radios a unit already operates, so there is no new hardware to field"
+            ]
+          },
+          {
+            "type": "pullquote",
+            "content": "Lose a bearer and the message still completes. Intercept one and an adversary gets a meaningless fragment."
+          },
+          {
+            "type": "paragraph",
+            "content": "SWIFT is part of SENTIA, the wider system our products plug into, which means delivery is something you can prove rather than assume: did the message arrive, and did it arrive intact. On maturity, SWIFT sits at TRL 4, tested on commercial off the shelf bearers. That's where the work stands today, and the next step is proving it on the radios units already carry."
+          },
+          {
+            "type": "paragraph",
+            "content": "The session runs from 10:30am to 12:30pm on 5 August, in person and virtually, with prizes awarded to the top pitches at the ADSTAR Gala Dinner that evening. If you're at ADSTAR, come and find Christopher, and if you're joining virtually the registration details are on the [ASCA event page](https://www.asca.gov.au/news-and-events/events/2026-08-05/asca-pitch-day-2026-resilient-command-control). There's more on the rest of our research at [anywise.com.au/innovation](../innovation.html), and if you work somewhere the network can't be assumed, we'd like to hear where you think this breaks."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "transforming-operational-challenges",
     "title": "Transforming Operational Challenges into Dual-Use Intelligence Solutions in Engineering",
     "date": "2026-02-15",
