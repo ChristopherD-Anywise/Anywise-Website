@@ -28,16 +28,30 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+// Inline links use markdown-style [text](url) inside otherwise plain content.
+// Content is HTML-escaped FIRST, then the (already-escaped) link syntax is converted
+// to anchors — so author copy can never inject raw HTML. Only http(s) and
+// same-site relative URLs are linked; anything else is left as visible text.
+function renderInline(str) {
+  return escapeHtml(str).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (whole, text, url) => {
+    const external = /^https?:\/\//i.test(url);
+    const internal = /^(\.\.\/|\.\/|\/)[^:]*$/.test(url);
+    if (!external && !internal) return whole;
+    const rel = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${url}"${rel}>${text}</a>`;
+  });
+}
+
 function renderBlock(block) {
   if (block.type === 'paragraph') {
-    return `<p>${escapeHtml(block.content)}</p>`;
+    return `<p>${renderInline(block.content)}</p>`;
   }
   if (block.type === 'pullquote') {
     // CSS class is 'pullquote' (not 'post-pullquote') — must match shared.css
     return `<blockquote class="pullquote">${escapeHtml(block.content)}</blockquote>`;
   }
   if (block.type === 'list') {
-    const items = block.items.map(i => `<li>${escapeHtml(i)}</li>`).join('\n      ');
+    const items = block.items.map(i => `<li>${renderInline(i)}</li>`).join('\n      ');
     return `<ul>\n      ${items}\n    </ul>`;
   }
   return '';
