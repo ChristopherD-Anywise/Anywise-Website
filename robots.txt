@@ -4,6 +4,9 @@
 User-agent: *
 Content-Signal: search=yes,ai-train=no
 Allow: /
+# Commercial-in-confidence page prepared for client discussion. Also carries
+# a noindex meta tag. Neither is access control — the URL remains fetchable.
+Disallow: /wisdom-legislation.html
 
 # === TRAINING DATA CRAWLERS — blocked ===
 User-agent: CCBot
