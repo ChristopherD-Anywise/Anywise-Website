@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products & Services | Anywise</title>
-<meta name="description" content="Sovereign, Australian-designed intelligence platforms and services for defence and government. WISDOM, ENG|AIDE, Fraud & Analytics, Impact Measurement, FABHUMS, CAMP|AIDE, ILS, AIDE.">
+<title>Capabilities | Anywise</title>
+<meta name="description" content="Five areas where Anywise solves hard problems for defence and government: decision augmentation, sensing, asset management, data, and innovation. Sovereign, Australian-designed platforms and services.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Products &amp; Services | Anywise">
-<meta property="og:description" content="Sovereign, Australian-designed intelligence platforms and services for defence and government. WISDOM, ENG|AIDE, Fraud & Analytics, Impact Measurement, FABHUMS, CAMP|AIDE, ILS, AIDE.">
+<meta property="og:title" content="Capabilities | Anywise">
+<meta property="og:description" content="Five areas where Anywise solves hard problems for defence and government: decision augmentation, sensing, asset management, data, and innovation.">
 <meta property="og:image" content="https://anywise.com.au/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Products &amp; Services | Anywise">
-<meta name="twitter:description" content="Sovereign, Australian-designed intelligence platforms and services for defence and government. WISDOM, ENG|AIDE, Fraud & Analytics, Impact Measurement, FABHUMS, CAMP|AIDE, ILS, AIDE.">
+<meta name="twitter:title" content="Capabilities | Anywise">
+<meta name="twitter:description" content="Five areas where Anywise solves hard problems for defence and government: decision augmentation, sensing, asset management, data, and innovation.">
 <meta name="twitter:image" content="https://anywise.com.au/og-image.png">
 <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
@@ -28,13 +28,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Capabilities | Anywise",
+  "description": "Five areas where Anywise solves hard problems for defence and government: decision augmentation, sensing, asset management, data, and innovation.",
+  "url": "https://anywise.com.au/products/",
+  "hasPart": [
+    { "@type": "WebPage", "name": "Decision Augmentation", "url": "https://anywise.com.au/products/decision-augmentation.html" },
+    { "@type": "WebPage", "name": "Sensing", "url": "https://anywise.com.au/products/sensing.html" },
+    { "@type": "WebPage", "name": "Asset Management", "url": "https://anywise.com.au/products/asset-management.html" },
+    { "@type": "WebPage", "name": "Data", "url": "https://anywise.com.au/products/data.html" },
+    { "@type": "WebPage", "name": "Innovation", "url": "https://anywise.com.au/products/innovation.html" }
+  ]
+}
+</script>
 <style>
-/* ─── Page-specific styles ──────────────────────────────────────────────── */
-.products-hero {
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.cap-hero {
   padding: 9rem 0 1rem;
 }
-.products-hero .label { opacity: 1; transform: none; color: var(--accent); }
-.products-hero h1 {
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.cap-hero h1 {
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   font-weight: 800;
   color: var(--text-primary);
@@ -42,150 +59,236 @@
   letter-spacing: -0.03em;
   margin: 1rem 0;
 }
-.products-hero h1 em { font-style: normal; color: var(--accent); }
-.products-hero p {
-  max-width: 40rem;
-  color: var(--text-secondary);
+.cap-hero h1 em { font-style: normal; color: var(--accent); }
+.cap-hero-sub {
   font-size: 1.1rem;
   line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 40rem;
+  margin: 0;
 }
-.products-hero .products-hero-lead {
+.cap-hero-lead {
   font-size: 1.05rem;
   line-height: 1.75;
   color: var(--text-secondary);
   max-width: 46rem;
   margin: 1.75rem 0 0;
 }
-.products-hero .products-hero-lead strong { color: var(--text-primary); font-weight: 500; }
+.cap-hero-lead strong { color: var(--text-primary); font-weight: 500; }
 
-/* ─── Card Grid ─────────────────────────────────────────────────────────── */
-.products-grid-section {
-  padding: 3rem 0 6rem;
-}
-.prod-grid-top {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-.prod-grid-mid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-.prod-grid-bottom {
-  max-width: 66.666%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
+/* ─── Capability list (follows the .innov-block row pattern) ────────────── */
+.cap-index-section { padding: 1rem 0 7rem; }
 
-.prod-card {
-  background: var(--bg-card);
+.cap-row {
+  display: grid;
+  grid-template-columns: 1fr 0.72fr;
+  gap: 2.5rem;
+  align-items: start;
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+.cap-row:last-of-type { border-bottom: 1px solid var(--border); }
+
+.cap-row-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4rem;
+  line-height: 1.2;
+}
+.cap-row-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.cap-row-title a:hover { color: var(--accent); }
+.cap-row-problem {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+[data-theme="light"] .cap-row-problem { color: var(--mint); }
+.cap-row-desc {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+}
+.cap-row-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: gap 0.2s, opacity 0.2s;
+}
+.cap-row-go:hover { gap: 0.6rem; opacity: 0.75; }
+
+/* ─── Platform flow strip ───────────────────────────────────────────────────
+   Echoes the SENTIA explorer on innovation.html: mono flow header with a
+   gradient rule, selectable tiles, and a live detail panel. Tiles are a
+   wrapping grid, so narrow screens reflow to 2-up instead of scrolling
+   sideways. Logos sit on white chips (as .sentia__prodlogo does) because the
+   product marks are dark ink on transparent. */
+.cap-flow {
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  display: flex;
-  flex-direction: column;
+  padding: 1.15rem;
+  transition: border-color 0.4s;
 }
-.prod-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px var(--border-accent);
-  border-color: var(--border-accent);
+.cap-row:hover .cap-flow { border-color: var(--border-accent); }
+
+.cap-flow-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.85rem;
+}
+.cap-flow-line {
+  flex: 1;
+  height: 2px;
+  background: var(--gradient-al);
+  border-radius: 2px;
+  position: relative;
+}
+.cap-flow-line::after {
+  content: "";
+  position: absolute;
+  right: -2px; top: -4px;
+  border-left: 9px solid var(--lime);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
 }
 
-.prod-card-img {
-  aspect-ratio: 16/9;
-  background: var(--bg-elevated);
+.cap-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: 0.5rem;
+}
+.cap-tile {
+  font: inherit;
+  cursor: pointer;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.cap-tile:hover { border-color: var(--border-accent); }
+.cap-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cap-tile[aria-selected="true"] {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+}
+
+/* White chip keeps dark-ink logos legible in both themes.
+   Logo aspect ratios vary a lot (CAMP|AIDE is 1.2:1, WISDOM is 5.5:1), so the
+   chip is deliberately tall enough for square marks to fill the width rather
+   than shrinking to a sliver inside a letterbox. */
+.cap-tile-mark {
+  width: 100%;
+  height: 3.1rem;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
-.prod-card-img svg {
-  width: 48px;
-  height: 48px;
-  opacity: 0.2;
-}
-
-.prod-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.prod-card-tag {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-.prod-card-body h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+.cap-tile-mark img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 0.35rem; display: block; }
+/* SWIFT's logo has a dark background baked in, so its chip stays dark */
+.cap-tile-mark.is-dark { background: #12140f; border-color: rgba(255,255,255,0.08); }
+/* Wordmarks for platforms with no logo file */
+.cap-tile-mark.is-word {
+  background: transparent;
+  border-color: transparent;
+  font-weight: 800;
+  font-size: 1.05rem;
   letter-spacing: -0.01em;
-}
-.prod-card-body p {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.6;
-  flex: 1;
-  margin-bottom: 1rem;
-}
-.prod-card-highlight {
-  font-size: 0.82rem;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-  font-family: var(--mono);
-}
-.prod-card-link {
-  font-size: 0.9rem;
-  font-weight: 600;
   color: var(--text-primary);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: color 0.15s, gap 0.15s;
 }
-.prod-card-link:hover {
-  color: var(--accent);
-  gap: 0.6rem;
+.cap-tile-mark.is-word.is-small { font-size: 0.8rem; letter-spacing: 0; text-align: center; line-height: 1.25; padding: 0 0.3rem; }
+.cap-tile-name {
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+.cap-tile[aria-selected="true"] .cap-tile-name { color: var(--accent); }
+
+.cap-flow-panel {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+.cap-flow-panel b {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+.cap-flow-panel span {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
 }
 
-/* ─── CTA Strip ─────────────────────────────────────────────────────────── */
-.prod-cta {
-  padding: 5rem 0;
+@media (max-width: 400px) {
+  .cap-tiles { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── CTA ───────────────────────────────────────────────────────────────── */
+.cap-cta {
+  padding: 7rem 0;
   text-align: center;
   border-top: 1px solid var(--border);
 }
-.prod-cta h2 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 700;
-  margin-bottom: 0.75rem;
+.cap-cta .label { justify-content: center; }
+.cap-cta h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
-.prod-cta p {
+.cap-cta p {
+  font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  max-width: 34rem;
 }
 
 /* ─── Responsive ────────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .prod-grid-top { grid-template-columns: repeat(2, 1fr); }
-  .prod-grid-mid { grid-template-columns: repeat(2, 1fr); }
-  .prod-grid-bottom { max-width: 100%; }
+@media (max-width: 860px) {
+  .cap-row { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
 }
-@media (max-width: 600px) {
-  .prod-grid-top,
-  .prod-grid-mid,
-  .prod-grid-bottom { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+  .cap-hero { padding: 7rem 0 1rem; }
+  .cap-index-section { padding: 1rem 0 4.5rem; }
+  .cap-cta { padding: 4.5rem 0; }
 }
 </style>
 </head>
@@ -199,7 +302,7 @@
   <div class="container">
     <a href="../index.html" class="nav-brand"><img src="../assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="../products/index.html" class="active">Products &amp; Services</a></li>
+      <li><a href="../products/index.html" class="active">Capabilities</a></li>
       <li><a href="../innovation.html">Innovation</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="../blog/index.html">Insights</a></li>
@@ -218,160 +321,99 @@
 <main id="main-content">
 
 <!-- ═══ HERO ═══ -->
-<section class="products-hero">
+<section class="cap-hero">
   <div class="container">
     <div class="breadcrumb">
       <a href="../index.html">Home</a>
       <span class="breadcrumb-sep">/</span>
-      <span>Products &amp; Services</span>
+      <span>Capabilities</span>
     </div>
-    <p class="label">Products &amp; Services</p>
-    <h1>Australian-designed <em>intelligence platforms.</em></h1>
-    <p>Eight purpose-built platforms and specialist services that turn operational complexity into intelligence people can act on, for defence, government and industry.</p>
-    <p class="products-hero-lead">Each one combines advanced data integration, GenAI-enabled analytics and human expertise, so the same rigour runs from strategic intelligence to health monitoring in the field. <strong>Explore the full range below.</strong></p>
+    <p class="label">Capabilities</p>
+    <h1>The problems we&rsquo;re <em>built to solve.</em></h1>
+    <p class="cap-hero-sub">Five areas where operational complexity outpaces the tools available to deal with it, and where we've built platforms, services and teams to close that gap.</p>
+    <p class="cap-hero-lead">We don't lead with a product catalogue, because the problem comes first. Each capability below describes a class of problem we understand deeply, what we do about it, and the platforms and services we bring to bear. <strong>Start with the problem that sounds like yours.</strong></p>
   </div>
 </section>
 
-<!-- ═══ PRODUCT GRID ═══ -->
-<section class="products-grid-section">
+<!-- ═══ CAPABILITY INDEX ═══ -->
+<section class="cap-index-section" aria-labelledby="capabilities-heading">
   <div class="container">
+    <h2 id="capabilities-heading" class="sr-only">Our capability areas</h2>
 
-    <!-- Top row: 3 columns -->
-    <div class="prod-grid-top">
+    <!-- 01 Decision Augmentation -->
+    <article class="cap-row reveal">
+      <div>
+        <h3 class="cap-row-title"><a href="decision-augmentation.html">Decision Augmentation</a></h3>
+        <p class="cap-row-problem">The information is there. The decision still isn't.</p>
+        <p class="cap-row-desc">Commanders and executives are drowning in data and starved of judgement-ready insight. We build systems that fuse fragmented sources, reason over them, and hand back a recommendation with the evidence attached, so a person can trust it or overrule it.</p>
+        <a class="cap-row-go" href="decision-augmentation.html">Explore decision augmentation <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div>
+        <div class="cap-flow" data-flow="decision"></div>
+      </div>
+    </article>
 
-      <!-- WISDOM -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img">
-          <img src="../assets/images/products%20%26%20services/WISDOM%20Logo.png" alt="WISDOM logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Strategic Intelligence</div>
-          <h3>WISDOM</h3>
-          <p>Accelerated, reliable decision-making for complex strategic environments. Integrates disparate data sources into coherent operational pictures.</p>
-          <div class="prod-card-highlight">→ Strategic decision support</div>
-          <a href="wisdom.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+    <!-- 02 Sensing -->
+    <article class="cap-row reveal">
+      <div>
+        <h3 class="cap-row-title"><a href="sensing.html">Sensing</a></h3>
+        <p class="cap-row-problem">You can't act on what you can't see.</p>
+        <p class="cap-row-desc">The places that matter most are often the ones you can't watch: no power, no network, no easy access. We design and field low-cost, low-power sensors you can deploy in numbers and leave in place, and the systems that turn what they detect into a live picture.</p>
+        <a class="cap-row-go" href="sensing.html">Explore sensing <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div>
+        <div class="cap-flow" data-flow="sensing"></div>
+      </div>
+    </article>
 
-      <!-- ENG|AIDE -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img">
-          <img src="../assets/images/products%20%26%20services/Eng-Aide%20Logo.png" alt="ENG|AIDE logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Engineering Intelligence</div>
-          <h3>ENG|AIDE</h3>
-          <p>Reducing operational risk and improving reliability through intelligent engineering support. Real-time analysis of complex system interdependencies.</p>
-          <div class="prod-card-highlight">→ Reducing operational risk</div>
-          <a href="engaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+    <!-- 03 Asset Management -->
+    <article class="cap-row reveal">
+      <div>
+        <h3 class="cap-row-title"><a href="asset-management.html">Asset Management</a></h3>
+        <p class="cap-row-problem">Buying the capability is the easy part. Keeping it is not.</p>
+        <p class="cap-row-desc">Complex platforms spend decades in service and most of their cost after delivery. We make systems supportable through life, with the engineering, logistics and monitoring that keep availability up and surprises down.</p>
+        <a class="cap-row-go" href="asset-management.html">Explore asset management <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div>
+        <div class="cap-flow" data-flow="asset"></div>
+      </div>
+    </article>
 
-      <!-- Fraud Detection & Compliance Analytics -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img" style="display:flex;align-items:center;justify-content:center;">
-          <img src="../assets/images/products%20%26%20services/Fraud_Detection_Logo.png" alt="Fraud Detection logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Compliance Intelligence</div>
-          <h3>Fraud &amp; Analytics</h3>
-          <p>Protecting programme integrity through intelligent data analysis. Custom detection engines that integrate with your existing data pipeline.</p>
-          <div class="prod-card-highlight">→ 80% faster case screening</div>
-          <a href="fraud-analytics.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    </div>
+    <!-- 04 Data -->
+    <article class="cap-row reveal">
+      <div>
+        <h3 class="cap-row-title"><a href="data.html">Data</a></h3>
+        <p class="cap-row-problem">Fragmented records, unproven outcomes, undetected risk.</p>
+        <p class="cap-row-desc">Programme data usually arrives inconsistent, incomplete and too late to steer anything. We build the collection standards, detection engines and reporting pipelines that turn it into evidence: what's working, what isn't, and where integrity is at risk.</p>
+        <a class="cap-row-go" href="data.html">Explore data <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div>
+        <div class="cap-flow" data-flow="data"></div>
+      </div>
+    </article>
 
-    <!-- Middle row: 3 columns -->
-    <div class="prod-grid-mid">
-
-      <!-- Impact Measurement & Reporting -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img" style="display:flex;align-items:center;justify-content:center;">
-          <img src="../assets/images/products%20%26%20services/Impact_Framework_Logo.png" alt="Impact Framework logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Programme Intelligence</div>
-          <h3>Impact Measurement</h3>
-          <p>Turn fragmented programme data into clear evidence of what works. Standardised data collection and automated reporting dashboards for multi-site programmes.</p>
-          <div class="prod-card-highlight">→ Evidence of what works</div>
-          <a href="impact-framework.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-
-      <!-- FABHUMS -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img">
-          <img src="../assets/images/products%20%26%20services/FABHUMS-Logo.png" alt="FABHUMS logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Health &amp; Usage Monitoring</div>
-          <h3>FABHUMS</h3>
-          <p>Enhancing safety and extending asset life through continuous health and usage monitoring. Predictive insights before failures occur.</p>
-          <div class="prod-card-highlight">→ Enhancing safety, extending asset life</div>
-          <a href="fabhums.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-
-      <!-- CAMP|AIDE -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img" style="display:flex;align-items:center;justify-content:center;">
-          <img src="../assets/images/products%20%26%20services/CAMPAIDE_Logo.png" alt="CAMP|AIDE logo" data-logo style="width:100%;height:100%;object-fit:contain;padding:1.5rem;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Facilities Intelligence</div>
-          <h3>CAMP|AIDE</h3>
-          <p>Faster planning and safer outcomes for facilities and estate management. Intelligent support for complex, multi-site operational environments.</p>
-          <div class="prod-card-highlight">→ Faster planning, safer outcomes</div>
-          <a href="campaide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Bottom row: 2 columns (centered) -->
-    <div class="prod-grid-bottom">
-
-      <!-- Integrated Logistics Support -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img">
-          <img src="../assets/images/products%20%26%20services/FABHUMS_Training.jpg" alt="Integrated Logistics Support training" style="width:100%;height:auto;">
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Logistics Intelligence</div>
-          <h3>ILS</h3>
-          <p>Making complex systems supportable through life. We develop ILS frameworks and technical publications that keep capabilities operational long after initial delivery.</p>
-          <div class="prod-card-highlight">→ Supportable through life</div>
-          <a href="ils.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-
-      <!-- AIDE -->
-      <article class="prod-card reveal">
-        <div class="prod-card-img" style="display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;" aria-label="AIDE logo" data-logo>
-            <text x="150" y="55" text-anchor="middle" fill="currentColor" font-size="60" font-weight="800" font-family="var(--font)" letter-spacing="-0.03em">AIDE</text>
-            <text x="150" y="75" text-anchor="middle" fill="currentColor" font-size="10" font-family="var(--font)" letter-spacing="0.15em">ENTERPRISE INTELLIGENCE</text>
-          </svg>
-        </div>
-        <div class="prod-card-body">
-          <div class="prod-card-tag">Enterprise Intelligence</div>
-          <h3>AIDE</h3>
-          <p>Unified foresight at decision speed. The enterprise intelligence layer that connects all Anywise platforms into a single coherent operational view.</p>
-          <div class="prod-card-highlight">→ Unified foresight at decision speed</div>
-          <a href="aide.html" class="prod-card-link">Learn more <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    </div>
+    <!-- 05 Innovation -->
+    <article class="cap-row reveal">
+      <div>
+        <h3 class="cap-row-title"><a href="innovation.html">Innovation</a></h3>
+        <p class="cap-row-problem">Some problems don't have a product yet.</p>
+        <p class="cap-row-desc">We invest in the problems others park as too hard, and run our own R&amp;D to work them out: denied networks, no power, data no one can act on in time. We prove the difficult part first, test it against the real environment, then keep developing until it holds up in operators' hands.</p>
+        <a class="cap-row-go" href="innovation.html">Explore innovation <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div>
+        <div class="cap-flow" data-flow="innovation"></div>
+      </div>
+    </article>
 
   </div>
 </section>
 
 <!-- ═══ CTA ═══ -->
-<section class="prod-cta">
+<section class="cap-cta">
   <div class="container">
     <span class="label">Get in touch</span>
-    <h2>Ready to explore our products &amp; services?</h2>
-    <p>Tell us about your challenge and we'll show you how Anywise can help.</p>
+    <h2>Not sure which one fits?</h2>
+    <p>Most real problems cut across more than one. Tell us what you're dealing with and we'll point you at the right part of the business.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
     </div>
@@ -394,12 +436,14 @@
       </div>
       <div class="footer-col">
         <h4>Capabilities</h4>
-        <a href="../index.html#capabilities">Technology</a>
-        <a href="../index.html#capabilities">Services</a>
-        <a href="../index.html#approach">Our Approach</a>
+        <a href="decision-augmentation.html">Decision Augmentation</a>
+        <a href="sensing.html">Sensing</a>
+        <a href="asset-management.html">Asset Management</a>
+        <a href="data.html">Data</a>
+        <a href="innovation.html">Innovation</a>
       </div>
       <div class="footer-col">
-        <h4>Products &amp; Services</h4>
+        <h4>Platforms</h4>
         <a href="wisdom.html">WISDOM</a>
         <a href="engaide.html">ENG|AIDE</a>
         <a href="fraud-analytics.html">Fraud &amp; Analytics</a>
@@ -441,5 +485,104 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 <script src="../shared.js"></script>
+<script>
+/* Platform flow strips — one per capability row.
+   Mirrors the SENTIA explorer on innovation.html: hover/focus/tap a tile to
+   swap the detail panel. Tiles are real buttons in a tablist, so keyboard and
+   screen-reader behaviour matches that component. */
+(function () {
+  var LOGOS = '../assets/images/products & services/';
+
+  // [key, label, blurb, logo|null, isDarkLogo]
+  var FLOWS = {
+    decision: [
+      ['AIDE', 'Enterprise intelligence', 'Connects every Anywise platform into one coherent operational view.', null],
+      ['WISDOM', 'Strategic intelligence', 'Fuses fragmented data, GenAI and analysts into decision-ready foresight.', LOGOS + 'WISDOM Logo.png'],
+      ['ENG|AIDE', 'Engineering intelligence', 'Turns technical documentation, telemetry and lifecycle data into clear decisions.', LOGOS + 'Eng-Aide Logo.png'],
+      ['CAMP|AIDE', 'Facilities intelligence', 'Faster planning and safer outcomes across complex, multi-site estates.', LOGOS + 'CAMPAIDE_Logo.png']
+    ],
+    sensing: [
+      ['FABHUMS', 'Health & usage monitoring', 'Real-time structural health and usage monitoring across mixed fleets.', LOGOS + 'FABHUMS-Logo.png'],
+      ['Sensing & vision', 'Low-SWaP sensing', 'Small, low-cost sensors you can deploy in numbers and leave in place.', null],
+      ['SWIFT', 'Resilient comms', 'Keeps data moving when the network is degraded, denied or contested.', '../assets/images/innovation/swift.png', true]
+    ],
+    asset: [
+      ['ILS', 'Logistics intelligence', 'Support frameworks and technical publications that keep capability operational.', null],
+      ['FABHUMS', 'Health & usage monitoring', 'Predictive insight from real condition data, before failures occur.', LOGOS + 'FABHUMS-Logo.png'],
+      ['ENG|AIDE', 'Engineering intelligence', 'Lifecycle and telemetry data turned into clear engineering decisions.', LOGOS + 'Eng-Aide Logo.png'],
+      ['CAMP|AIDE', 'Facilities intelligence', 'Estate management where the infrastructure itself is the asset base.', LOGOS + 'CAMPAIDE_Logo.png']
+    ],
+    data: [
+      ['Fraud & Analytics', 'Compliance intelligence', 'Custom detection engines with hierarchical risk classification. 80% faster case screening.', LOGOS + 'Fraud_Detection_Logo.png'],
+      ['Impact Measurement', 'Programme intelligence', 'Standardised collection and automated reporting for multi-site programmes.', LOGOS + 'Impact_Framework_Logo.png']
+    ],
+    innovation: [
+      ['SENTIA', 'The ecosystem', 'Senses, links and interprets from sensor to commander, with provenance tracked throughout.', null],
+      ['SWIFT', 'Resilient comms', 'Voice and data that keep moving through degraded and denied networks.', '../assets/images/innovation/swift.png', true],
+      ['Applied R&D', 'Research partnering', 'We take problems with no product answer from concept through to something fieldable.', null]
+    ]
+  };
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  Object.keys(FLOWS).forEach(function (key) {
+    var host = document.querySelector('.cap-flow[data-flow="' + key + '"]');
+    if (!host) return;
+    var items = FLOWS[key];
+
+    host.innerHTML =
+      '<div class="cap-flow-head"><span>Platforms &amp; services</span><span class="cap-flow-line" aria-hidden="true"></span></div>' +
+      '<div class="cap-tiles" role="tablist" aria-label="Platforms and services"></div>' +
+      '<div class="cap-flow-panel" aria-live="polite"><b data-name></b><span data-blurb></span></div>';
+
+    var tiles = host.querySelector('.cap-tiles');
+    var nameEl = host.querySelector('[data-name]');
+    var blurbEl = host.querySelector('[data-blurb]');
+    var btns = [];
+
+    items.forEach(function (p, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cap-tile';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      b.addEventListener('click', function () { show(i); });
+
+      var mark;
+      if (p[3]) {
+        mark = '<span class="cap-tile-mark' + (p[4] ? ' is-dark' : '') + '">' +
+               '<img src="' + esc(p[3]) + '" alt="" loading="lazy" decoding="async"></span>';
+      } else {
+        var small = p[0].length > 8 ? ' is-small' : '';
+        mark = '<span class="cap-tile-mark is-word' + small + '">' + esc(p[0]) + '</span>';
+      }
+      b.innerHTML = mark + '<span class="cap-tile-name">' + esc(p[1]) + '</span>';
+
+      b.addEventListener('mouseenter', function () { show(i); });
+      b.addEventListener('focus', function () { show(i); });
+      tiles.appendChild(b);
+      btns.push(b);
+    });
+
+    function show(i) {
+      var p = items[i];
+      nameEl.textContent = p[0];
+      blurbEl.textContent = p[2];
+      btns.forEach(function (b, j) { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+    }
+
+    tiles.addEventListener('keydown', function (e) {
+      var i = btns.indexOf(document.activeElement);
+      if (i < 0) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); btns[(i + 1) % btns.length].focus(); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); btns[(i - 1 + btns.length) % btns.length].focus(); }
+    });
+
+    show(0);
+  });
+})();
+</script>
 </body>
 </html>

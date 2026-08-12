@@ -1,0 +1,330 @@
+/* capability.css — shared layout for Anywise capability pages
+   Used by: decision-augmentation, sensing, asset-management, data, innovation
+   Follows the established site conventions:
+   - page-hero sizing from innovation.html
+   - card language from index.html .product-card (tag = mono/tertiary, body 0.82rem,
+     highlight = mono italic accent, hover = border + shadow, no lift)
+   - 7rem section rhythm, 1.2rem grid gap, 1.5rem card padding
+   Tokens only, no raw colours. */
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ─── Hero (matches .page-hero on innovation.html) ──────────────────────── */
+.capp-hero { padding: 9rem 0 1rem; }
+.capp-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 1rem 0;
+}
+.capp-hero h1 em { font-style: normal; color: var(--accent); }
+.capp-hero-sub {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  color: var(--accent);
+  max-width: 40rem;
+  margin: 0 0 1.5rem;
+}
+[data-theme="light"] .capp-hero-sub { color: var(--mint); }
+.capp-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 46rem;
+  margin: 0;
+}
+.capp-hero-lead strong { color: var(--text-primary); font-weight: 500; }
+
+/* ─── Shared section heading scale (matches .innovation-head h2) ────────── */
+.capp-problem h2,
+.capp-approach-head h2,
+.capp-products-head h2,
+.capp-related-heading {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.1rem;
+}
+.capp-problem h2 em,
+.capp-approach-head h2 em,
+.capp-products-head h2 em { font-style: normal; color: var(--accent); }
+
+/* ─── The problem ───────────────────────────────────────────────────────── */
+.capp-problem {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.capp-problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 4rem;
+  align-items: start;
+}
+.capp-problem p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 1rem;
+  max-width: 34rem;
+}
+
+/* Symptom list — borrows the .feat-x rule-and-indent pattern from innovation.html */
+.capp-symptoms { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
+.capp-symptoms li {
+  border-left: 2px solid var(--border-accent);
+  padding: 0.2rem 0 0.2rem 0.9rem;
+}
+.capp-symptom-num {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.4rem;
+}
+.capp-symptoms h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem;
+}
+.capp-symptoms p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ─── What we do ────────────────────────────────────────────────────────── */
+.capp-approach { padding: 7rem 0; }
+.capp-approach-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.capp-approach-head p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.capp-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.capp-step {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.capp-step:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.capp-step-num {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.8rem;
+}
+.capp-step h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.capp-step p {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ─── Platforms & services (mirrors .product-card) ──────────────────────── */
+.capp-products { padding: 7rem 0; background: var(--bg-deep); }
+.capp-products-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.capp-products-head p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.capp-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.2rem;
+}
+.capp-prod-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.capp-prod-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.capp-prod-img {
+  height: 200px;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.capp-prod-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2rem;
+}
+.capp-prod-img.is-photo img { object-fit: cover; padding: 0; }
+.capp-prod-img.is-mark { color: var(--accent); }
+.capp-prod-img.is-mark svg { width: 52px; height: 52px; opacity: 0.85; }
+
+.capp-prod-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.capp-prod-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.6rem;
+}
+.capp-prod-body h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.capp-prod-desc {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+  margin: 0;
+}
+.capp-prod-highlight {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-style: italic;
+  margin: 0.8rem 0 1.1rem;
+}
+[data-theme="light"] .capp-prod-highlight { color: var(--mint); }
+.capp-prod-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: gap 0.2s, opacity 0.2s;
+}
+.capp-prod-card:hover .capp-prod-link { gap: 0.6rem; opacity: 0.75; }
+
+/* ─── Related capabilities ──────────────────────────────────────────────── */
+.capp-related { padding: 7rem 0; }
+.capp-related-heading { margin-bottom: 2.5rem; }
+.capp-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.2rem;
+}
+.capp-related-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.capp-related-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.capp-related-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.capp-related-card p {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+  margin: 0 0 1.1rem;
+}
+.capp-related-go {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: gap 0.2s, opacity 0.2s;
+}
+.capp-related-card:hover .capp-related-go { gap: 0.6rem; opacity: 0.75; }
+
+/* ─── CTA (matches .prod-final-cta) ─────────────────────────────────────── */
+.capp-cta {
+  padding: 7rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.capp-cta .label { justify-content: center; }
+.capp-cta h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.capp-cta p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 auto 2rem;
+  max-width: 34rem;
+}
+.capp-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .capp-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .capp-problem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .capp-problem p { max-width: none; }
+}
+@media (max-width: 640px) {
+  .capp-hero { padding: 7rem 0 1rem; }
+  .capp-problem, .capp-approach, .capp-products, .capp-related, .capp-cta { padding: 4.5rem 0; }
+  .capp-steps { grid-template-columns: 1fr; }
+  .capp-prod-grid, .capp-related-grid { grid-template-columns: 1fr; }
+}

@@ -1030,6 +1030,73 @@ a.nav-cta:hover::after { width: 100%; }
   color: var(--text-secondary);
   line-height: 1.7;
 }
+
+/* ── Homepage capability grid ── */
+.home-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+.home-cap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.home-cap:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.home-cap:hover h3 { color: var(--accent); }
+.home-cap-num {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.6rem;
+}
+.home-cap h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  transition: color var(--transition);
+}
+.home-cap-problem {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+.home-cap-desc {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+  margin-bottom: 1.1rem;
+}
+.home-cap-chips {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+.home-cap-platforms { margin-bottom: 1.6rem; }
+.home-cap-platforms .label { margin-bottom: 0; }
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1718,7 +1785,7 @@ footer {
   <div class="container">
     <a href="/" class="nav-brand"><img src="assets/Anywise_Logo.png" alt="Anywise" height="26"></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="products/index.html">Products &amp; Services</a></li>
+      <li><a href="products/index.html">Capabilities</a></li>
       <li><a href="innovation.html">Innovation</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="blog/index.html">Insights</a></li>
@@ -1889,17 +1956,64 @@ footer {
   </div>
 </section>
 
-<!-- ═══ PRODUCTS ═══ -->
+<!-- ═══ CAPABILITIES ═══ -->
 <div class="section-divider"></div>
 <section class="products" id="products">
   <div class="container">
     <div class="products-head reveal">
       <div>
-        <p class="label">Products &amp; Services</p>
-        <h2>Australian-designed intelligence platforms.</h2>
+        <p class="label">Capabilities</p>
+        <h2>The problems we're built to solve.</h2>
       </div>
-      <p>Our products combine advanced data integration, GenAI-enabled analytics and human expertise to deliver augmented intelligence directly into the hands of user communities, from defence and emergency services to infrastructure and industry.</p>
+      <p>We don't lead with a product catalogue, because the problem comes first. Five areas where operational complexity outpaces the tools available to deal with it, and where we've built the platforms, services and teams to close the gap.</p>
     </div>
+
+    <div class="home-cap-grid">
+      <a href="products/decision-augmentation.html" class="home-cap reveal">
+        <span class="home-cap-num">01</span>
+        <h3>Decision Augmentation</h3>
+        <p class="home-cap-problem">The information is there. The decision still isn't.</p>
+        <p class="home-cap-desc">Systems that fuse fragmented sources, reason over them, and hand back a recommendation with the evidence attached, so a person can trust it or overrule it.</p>
+        <span class="home-cap-chips">AIDE &middot; WISDOM &middot; ENG|AIDE &middot; CAMP|AIDE</span>
+      </a>
+
+      <a href="products/sensing.html" class="home-cap reveal">
+        <span class="home-cap-num">02</span>
+        <h3>Sensing</h3>
+        <p class="home-cap-problem">You can't act on what you can't see.</p>
+        <p class="home-cap-desc">Low-cost, low-power sensors you can deploy in numbers and leave in place, turning the sites you can't reach, power or connect into a live picture.</p>
+        <span class="home-cap-chips">FABHUMS &middot; Sensing &amp; vision &middot; SWIFT</span>
+      </a>
+
+      <a href="products/asset-management.html" class="home-cap reveal">
+        <span class="home-cap-num">03</span>
+        <h3>Asset Management</h3>
+        <p class="home-cap-problem">Buying the capability is the easy part.</p>
+        <p class="home-cap-desc">The engineering, logistics and monitoring that keep complex systems supportable through life, so availability stays up and surprises stay down.</p>
+        <span class="home-cap-chips">ILS &middot; FABHUMS &middot; ENG|AIDE &middot; CAMP|AIDE</span>
+      </a>
+
+      <a href="products/data.html" class="home-cap reveal">
+        <span class="home-cap-num">04</span>
+        <h3>Data</h3>
+        <p class="home-cap-problem">Fragmented records, unproven outcomes.</p>
+        <p class="home-cap-desc">Collection standards, detection engines and reporting pipelines that turn programme data into evidence of what's working and where integrity is at risk.</p>
+        <span class="home-cap-chips">Fraud &amp; Analytics &middot; Impact Measurement</span>
+      </a>
+
+      <a href="products/innovation.html" class="home-cap reveal">
+        <span class="home-cap-num">05</span>
+        <h3>Innovation</h3>
+        <p class="home-cap-problem">Some problems don't have a product yet.</p>
+        <p class="home-cap-desc">We invest in the problems others park as too hard, prove the difficult part first, and keep developing until it holds up in operators' hands.</p>
+        <span class="home-cap-chips">SENTIA &middot; SWIFT &middot; Applied R&amp;D</span>
+      </a>
+    </div>
+
+    <div class="home-cap-platforms reveal">
+      <p class="label">Featured platforms</p>
+    </div>
+
     <div class="product-grid">
       <a href="products/wisdom.html" class="product-card reveal">
         <div class="product-card-img-wrap">
@@ -1960,7 +2074,7 @@ footer {
       </a>
     </div>
     <div class="section-view-all reveal">
-      <a href="products/index.html" class="view-all-link">View all products &amp; services &rarr;</a>
+      <a href="products/index.html" class="view-all-link">Explore all capabilities &rarr;</a>
     </div>
   </div>
 </section>
@@ -2228,12 +2342,14 @@ footer {
       </div>
       <div class="footer-col">
         <h4>Capabilities</h4>
-        <a href="#capabilities">Technology</a>
-        <a href="#capabilities">Services</a>
-        <a href="#approach">Our Approach</a>
+        <a href="products/decision-augmentation.html">Decision Augmentation</a>
+        <a href="products/sensing.html">Sensing</a>
+        <a href="products/asset-management.html">Asset Management</a>
+        <a href="products/data.html">Data</a>
+        <a href="products/innovation.html">Innovation</a>
       </div>
       <div class="footer-col">
-        <h4>Products &amp; Services</h4>
+        <h4>Platforms</h4>
         <a href="products/wisdom.html">WISDOM</a>
         <a href="products/engaide.html">ENG|AIDE</a>
         <a href="products/fraud-analytics.html">Fraud &amp; Analytics</a>
