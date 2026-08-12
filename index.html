@@ -1032,12 +1032,17 @@ a.nav-cta:hover::after { width: 100%; }
 }
 
 /* ── Homepage capability grid ── */
+/* Five capabilities: 5-up on wide screens, then 3+2 and 2+2+1 as it narrows.
+   auto-fit would give 4+1 at desktop widths and strand the fifth card. */
 .home-cap-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.2rem;
   margin-bottom: 4rem;
 }
+@media (max-width: 1100px) { .home-cap-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 780px)  { .home-cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .home-cap-grid { grid-template-columns: 1fr; } }
 .home-cap {
   background: var(--bg-card);
   border: 1px solid var(--border);
