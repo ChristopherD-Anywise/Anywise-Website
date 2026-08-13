@@ -938,17 +938,23 @@
       return badges;
     }
 
+    function renderInlineMarkup(str) {
+      return escapeHtml(str)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, '$1<em>$2</em>');
+    }
+
     function renderList(items) {
       if (!Array.isArray(items)) return '';
       return '<ul>' + items.map(function (item) {
-        return '<li>' + escapeHtml(item) + '</li>';
+        return '<li>' + renderInlineMarkup(item) + '</li>';
       }).join('') + '</ul>';
     }
 
     var aboutAnywiseHTML = ''
       + '<div class="job-detail-section">'
       + '  <h3>About Anywise</h3>'
-      + '  <p>Anywise is a sovereign, wholly Australian-owned technology and services company working at '
+      + '  <p>Anywise is a female veteran-owned and led, sovereign, wholly Australian-owned technology and services company working at '
       + 'the intersection of defence, government, and emerging technology. Founded by veterans with a '
       + 'mission to do things differently, we mobilise high-performing teams to solve complex capability, '
       + 'technology, and strategic challenges - with ethics at the centre of everything we build.</p>'
@@ -1294,18 +1300,24 @@
           'Casual': 'TEMPORARY'
         };
 
+        function stripMarkup(str) {
+          return escapeHtml(str)
+            .replace(/\*\*(.+?)\*\*/g, '$1')
+            .replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, '$1$2');
+        }
+
         function buildJobDescription(j) {
           var html = '<p>' + escapeHtml(j.shortDescription) + '</p>';
           if (j.opportunity) html += '<h3>The Opportunity</h3><p>' + escapeHtml(j.opportunity) + '</p>';
           if (j.whatYoullBeDoing) html += '<h3>What You\'ll Be Doing</h3><p>' + escapeHtml(j.whatYoullBeDoing) + '</p>';
           if (j.whatWereLookingFor && j.whatWereLookingFor.length) {
-            html += '<h3>What We\'re Looking For</h3><ul>' + j.whatWereLookingFor.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+            html += '<h3>What We\'re Looking For</h3><ul>' + j.whatWereLookingFor.map(function (i) { return '<li>' + stripMarkup(i) + '</li>'; }).join('') + '</ul>';
           }
           if (j.bonusPoints && j.bonusPoints.length) {
-            html += '<h3>Bonus Points</h3><ul>' + j.bonusPoints.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+            html += '<h3>Bonus Points</h3><ul>' + j.bonusPoints.map(function (i) { return '<li>' + stripMarkup(i) + '</li>'; }).join('') + '</ul>';
           }
           if (j.whatMattersMoreThanYourCV && j.whatMattersMoreThanYourCV.length) {
-            html += '<h3>What Matters More Than Your CV</h3><ul>' + j.whatMattersMoreThanYourCV.map(function (i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+            html += '<h3>What Matters More Than Your CV</h3><ul>' + j.whatMattersMoreThanYourCV.map(function (i) { return '<li>' + stripMarkup(i) + '</li>'; }).join('') + '</ul>';
           }
           if (j.securityClearance) html += '<h3>Security Clearance</h3><p>' + escapeHtml(j.securityClearance) + '</p>';
           return html;
