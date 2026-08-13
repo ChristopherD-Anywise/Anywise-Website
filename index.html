@@ -206,18 +206,6 @@ html, body {
   color: rgba(0,0,0,0.72);
 }
 
-/* ═══ LIGHT MODE — CAPABILITY CARDS ═══ */
-[data-theme="light"] .cap-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-left: 3px solid var(--accent);
-}
-
-[data-theme="light"] .cap-card:hover {
-  background: var(--bg-card-hover);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(57,168,73,0.06);
-}
-
 /* ═══ LIGHT MODE — PRODUCT & NEWS CARDS ═══ */
 [data-theme="light"] .product-card:hover {
   box-shadow: 0 12px 40px rgba(0,0,0,0.1);
@@ -849,80 +837,6 @@ a.nav-cta:hover::after { width: 100%; }
 .value-desc {
   color: var(--text-secondary);
   line-height: 1.5;
-}
-
-/* ═══ CAPABILITIES ═══ */
-.capabilities {
-  padding: 7rem 0;
-  position: relative;
-}
-.cap-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.cap-card {
-  padding: 2.2rem 1.8rem;
-  border: 1px solid rgba(45,127,54,0.3);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, #1a3d1e 0%, #1b5e2a 50%, #163d1f 100%);
-  box-shadow: none;
-  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s, background 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-/* Gradient top line on hover */
-.cap-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gradient-al);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cap-card:hover::before { transform: scaleX(1); }
-/* Spotlight glow that follows cursor */
-.cap-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(57,168,73,0.06), transparent 40%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.cap-card:hover::after { opacity: 1; }
-.cap-card:hover {
-  border-color: rgba(57,168,73,0.5);
-  background: linear-gradient(145deg, #224a27 0%, #247035 50%, #1e4a28 100%);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 50px rgba(57,168,73,0.15);
-}
-.cap-num {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: 1.2rem;
-  transition: color 0.3s;
-}
-.cap-card:hover .cap-num { color: var(--text-secondary); }
-.cap-card h3 {
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-.cap-card p {
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
 }
 
 /* ═══ APPROACH ═══ */
@@ -1638,7 +1552,7 @@ footer {
   .hero-main { flex-direction: column; align-items: flex-start; }
   .hero-stats-bar { flex-direction: column; }
   .approach-grid, .products-head, .team-grid, .cta-box { grid-template-columns: 1fr; }
-  .cap-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid-bottom { grid-template-columns: 1fr; }
   .track-row { display: grid; grid-template-columns: 1fr 1fr; }
   .track-item + .track-item { border-left: none; }
@@ -1681,7 +1595,7 @@ footer {
   .mobile-toggle { display: block; }
   .hero { min-height: auto; padding: 8rem 0 2rem; }
   .hero-stats-bar { flex-direction: column; }
-  .cap-grid, .product-grid, .news-grid { grid-template-columns: 1fr; }
+  .product-grid, .news-grid { grid-template-columns: 1fr; }
   .track-row { display: grid; grid-template-columns: 1fr 1fr; }
   .track-item + .track-item { border-left: none; }
   .track-item { border-bottom: 1px solid var(--border); padding: 1rem; }
@@ -1826,7 +1740,7 @@ footer {
         </h1>
         <p class="hero-sub">We mobilise high-performing teams to solve your most complex capability, technology, and strategic challenges, where the stakes are highest.</p>
         <div class="hero-actions">
-          <a href="#capabilities" class="btn btn-primary">Our Capabilities</a>
+          <a href="#products" class="btn btn-primary">Our Capabilities</a>
           <a href="#" class="btn btn-accent" data-engage aria-haspopup="dialog"><span>Engage Us &rarr;</span></a>
         </div>
       </div>
@@ -1873,31 +1787,6 @@ footer {
           <span class="value-dash"></span>
           <span class="value-desc">We lift each other up, share knowledge freely and work together to achieve extraordinary outcomes.</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CAPABILITIES ═══ -->
-<div class="section-divider"></div>
-<section class="capabilities" id="capabilities">
-  <div class="container">
-    <p class="label">Capabilities</p>
-    <div class="cap-grid">
-      <div class="cap-card reveal">
-        <p class="cap-num">01 — Capability</p>
-        <h3>Ethical Decision Augmentation</h3>
-        <p>Applying rigorous ethical frameworks to human-AI teaming, so your people make better decisions, faster, without surrendering judgement to the machine.</p>
-      </div>
-      <div class="cap-card reveal">
-        <p class="cap-num">02 — Capability</p>
-        <h3>Defence Procurement &amp; Advisory</h3>
-        <p>Deep knowledge of Australian sovereign capability processes, CASG procurement pathways, and the AUKUS technology ecosystem. We translate complexity into clear strategy.</p>
-      </div>
-      <div class="cap-card reveal">
-        <p class="cap-num">03 — Capability</p>
-        <h3>Technology Strategy &amp; Integration</h3>
-        <p>From requirement to delivery, we bridge the gap between policy intent and technical execution, mobilising expert teams to deliver on your most critical programmes.</p>
       </div>
     </div>
   </div>
@@ -2264,7 +2153,7 @@ footer {
         <p>Whether you're navigating a procurement decision, standing up a new capability, or exploring what ethical AI looks like in your context, let's talk.</p>
         <div class="cta-actions">
           <a href="#" class="btn btn-primary" data-engage aria-haspopup="dialog">Engage Us</a>
-          <a href="#capabilities" class="btn btn-accent"><span>Our Capabilities</span></a>
+          <a href="#products" class="btn btn-accent"><span>Our Capabilities</span></a>
         </div>
       </div>
       <div class="cta-image">
@@ -2519,7 +2408,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
 // ── CARD TILT + SPOTLIGHT ──
-document.querySelectorAll('.product-card, .cap-card').forEach(card => {
+document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
