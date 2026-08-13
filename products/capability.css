@@ -200,6 +200,10 @@
 .capp-prod-img.is-photo img { object-fit: cover; padding: 0; }
 .capp-prod-img.is-mark { color: var(--accent); }
 .capp-prod-img.is-mark svg { width: 52px; height: 52px; opacity: 0.85; }
+/* Logos with a dark background baked into the image (SWIFT) keep a dark tile in
+   both themes — same treatment as .innov-media-logo on innovation.html */
+.capp-prod-img.is-logo-dark { background: #12140f; }
+.capp-prod-img.is-logo-dark img { object-fit: contain; padding: 2.5rem; }
 
 .capp-prod-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
 .capp-prod-tag {
