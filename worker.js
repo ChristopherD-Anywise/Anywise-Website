@@ -16,16 +16,6 @@ export default {
       return handleEngageForm(request);
     }
 
-    /* ── /products/* -> /capabilities/* (301) ──
-       The section was renamed when Products & Services became Capabilities.
-       This lives here rather than in _redirects because this Worker handles
-       every request, and env.ASSETS.fetch() bypasses the _redirects file. */
-    if (url.pathname === '/products' || url.pathname.startsWith('/products/')) {
-      const rest = url.pathname.replace(/^\/products\/?/, '');
-      url.pathname = '/capabilities/' + rest;
-      return Response.redirect(url.toString(), 301);
-    }
-
     /* ── Everything else: serve static assets ── */
     return env.ASSETS.fetch(request);
   }
