@@ -2,29 +2,13 @@
 #
 # /products/* -> /capabilities/*  (301, permanent)
 # The section was renamed when Products & Services became Capabilities.
-# The product pages below were indexed at the old paths, so these preserve
-# their search ranking and keep any external links and bookmarks working.
-# Order matters: Cloudflare applies the first matching rule.
+# These preserve search ranking on the previously-indexed platform pages and
+# keep external links and bookmarks working.
+#
+# NOTE: Cloudflare Pages serves clean URLs and strips the .html extension, so
+# an inbound /products/wisdom.html is normalised to /products/wisdom. The splat
+# rule below covers both forms; explicit .html rules alone do NOT match.
 
-/products/                            /capabilities/                            301
-/products/index.html                  /capabilities/                            301
-
-# Capability pages
-/products/decision-augmentation.html  /capabilities/decision-augmentation.html  301
-/products/sensing.html                /capabilities/sensing.html                301
-/products/asset-management.html       /capabilities/asset-management.html       301
-/products/data.html                   /capabilities/data.html                   301
-/products/innovation.html             /capabilities/innovation.html             301
-
-# Platform pages (previously indexed)
-/products/wisdom.html                 /capabilities/wisdom.html                 301
-/products/engaide.html                /capabilities/engaide.html                301
-/products/campaide.html               /capabilities/campaide.html               301
-/products/fabhums.html                /capabilities/fabhums.html                301
-/products/fraud-analytics.html        /capabilities/fraud-analytics.html        301
-/products/impact-framework.html       /capabilities/impact-framework.html       301
-/products/ils.html                    /capabilities/ils.html                    301
-/products/aide.html                   /capabilities/aide.html                   301
-
-# Catch-all for anything under /products/ not listed above
-/products/*                           /capabilities/:splat                      301
+/products/*    /capabilities/:splat    301
+/products      /capabilities/          301
+/products/     /capabilities/          301
