@@ -11,3 +11,6 @@
 *\ 2.*
 # stale double-extension AVIF (correct file is FABHUMS.avif)
 assets/images/products\ \&\ services/FABHUMS.jpg.avif
+
+# Cloudflare Pages build output
+public/
