@@ -398,7 +398,7 @@
   }
 
   function renderMoreCard(post) {
-    return '<a href="post.html?slug=' + encodeURIComponent(post.slug) + '" class="more-card">' +
+    return '<a href="' + encodeURIComponent(post.slug) + '.html" class="more-card">' +
       '<div class="more-card-meta">' +
         '<span class="post-cat">' + escapeHtml(post.category) + '</span>' +
         '<span>·</span>' +
